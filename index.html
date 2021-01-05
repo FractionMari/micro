@@ -1,59 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Punch-O-Meter</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-  <meta name="description" content="Punch-O-Meter">
-  <meta name="theme-color" content="#0071c5">
-  <!-- Origin Trial Token, feature = Generic Sensors, origin = https://intel.github.io, expires = 2018-02-27 -->
-  <!-- <meta http-equiv="origin-trial" data-feature="Generic Sensors" data-expires="2018-02-27" content="AjL+UlBzLjx+0FPXrML6IMA/Ax9GsO/7rUvV/aaKkh3KknUSwDBgymn0d3NhGeRMNS7FlYD73ernqvZNoqzNMw4AAABWeyJvcmlnaW4iOiJodHRwczovL2ludGVsLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiR2VuZXJpY1NlbnNvciIsImV4cGlyeSI6MTUxOTczOTAwNX0="> -->
-  <link rel="stylesheet" href="punchmeter/styles.css">
-  <link rel="manifest" href="punchmeter/manifest.json">
-  <link rel="shortcut icon" sizes="192x192" href="punchmeter/images/app-icon-192.png">
-  <script src="trial1.js"></script>
-  <script src="punchmeter/gauge/gauge.js"></script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Demo - The Web's Sixth Sense: A Study of Scripts Accessing Smartphone Sensors</title>
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <title>JavaScript Sensor Access Demo</title>
+    <style>
+      #demo-div {color: lightgrey; border-radius: 0.3rem;}
+      #demo-div span, #demo-div #num-observed-events {color: black;}
+      h1 {margin-top: 0.5rem;}
+      h4 {margin-top: 0.66rem; font-size:1.33rem;}
+      #demo-div li {line-height: 21px;}
+      #demo-div ul {margin-bottom: 0.66rem;}
+    </style>
 </head>
-
 <body>
-  <div class="container" align="center">
-      <div id="intro" class="punchAnimation">
-         <img class="logo" src="punchmeter/images/punchometer.png"/>
-         <div class="readyToPunch">
-            Klar for å prøve denne rare appen?
-         </div>
-      </div>
-  </div>
+<main role="main" class="container">
 
-  <div id="game" class="game">
-      <div id="game_text" class="shakeToStart" style="display:none;">
-              Rist mobilen!
-      </div>
-      <canvas id="gauge"></canvas>
-      <div id="measurement" class="shakeToStart" style="display:none;">
-        <div id="preview">0</div>
-        <div>km/h</div>
-      </div>
-  </div>
-  
-  <script>
-    // Service worker
-    if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                    navigator.serviceWorker.register('sw.js').then(function(registration) {
-                    }, function(err) {
-                    console.log('ServiceWorker registration failed: ', err);
-                    });
-            });
-    }
+<h1 align="left">JavaScript Sensor Access Mari</h1>
+<h1 align="left">Maris versjon for Micro</h1>
+<p><b>This demo page should be run from a mobile phone or a tablet.</b></p>
+<p>This demo page shows how websites can access sensor data from mobile devices using <a href="https://developer.mozilla.org/en-US/docs/Web/Events/devicemotion"><i>deviceorientation</i></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/Events/deviceorientation"><i>devicemotion</i></a> events.</p>
 
-    // Entry point after animation
-    let intro = document.getElementById("intro");
-    function onAnimationEnd() {
-        intro.removeEventListener("animationend", onAnimationEnd);
-        setTimeout(main, 2000);
-    }
-    intro.addEventListener("animationend", onAnimationEnd, false);
-  </script>
+<p><i>deviceorientation</i> provides <i>alpha</i>, <i>beta</i> and <i>gamma</i> components which correspond to orientation along the Z, X and Y axes, respectively.</p><p><i>devicemotion</i> provides acceleration and rotation rate along three axes using MEMS accelerometers and gyroscopes.</p>
+
+<p>The sensor data shown below does not leave your browser: it is not collected, shared or transmitted. However this may not be true for other websites that you visit. For more information, see the companion page for our study: <a href="https://sensor-js.xyz/">"The Web's Sixth Sense: A Study of Scripts Accessing Smartphone Sensors"</a>.</p>
+
+<div class="p-3 mb-2 bg-secondary" id="demo-div">
+<a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start the demo</a>
+<p style="margin-top:1rem;">Num. of datapoints: <span class="badge badge-warning" id="num-observed-events">0</span></p>
+
+
+<h4 style="margin-top:0.75rem;">Orientation</h4>
+<ul>
+  <li>X-axis (&beta;): <span id="Orientation_b">0</span><span>&deg;</span></li>
+  <li>Y-axis (&gamma;): <span id="Orientation_g">0</span><span>&deg;</span></li>
+  <li>Z-axis (&alpha;): <span id="Orientation_a">0</span><span>&deg;</span></li>
+</ul>
+
+<h4>Accelerometer</h4>
+<ul>
+  <li>X-axis: <span id="Accelerometer_x">0</span><span> m/s<sup>2</sup></span></li>
+  <li>Y-axis: <span id="Accelerometer_y">0</span><span> m/s<sup>2</sup></span></li>
+  <li>Z-axis: <span id="Accelerometer_z">0</span><span> m/s<sup>2</sup></span></li>
+  <li>Data Interval: <span id="Accelerometer_i">0</span><span> ms</span></li>
+</ul>
+
+<h4>Accelerometer including gravity</h4>
+
+<ul>
+  <li>X-axis: <span id="Accelerometer_gx">0</span><span> m/s<sup>2</sup></span></li>
+  <li>Y-axis: <span id="Accelerometer_gy">0</span><span> m/s<sup>2</sup></span></li>
+  <li>Z-axis: <span id="Accelerometer_gz">0</span><span> m/s<sup>2</sup></span></li>
+</ul>
+
+<h4>Gyroscope</h4>
+<ul>
+  <li>X-axis: <span id="Gyroscope_x">0</span><span>&deg;/s</span></li>
+  <li>Y-axis: <span id="Gyroscope_y">0</span><span>&deg;/s</span></li>
+  <li>Z-axis: <span id="Gyroscope_z">0</span><span>&deg;/s</span></li>
+</ul>
+
+</div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted small">This page is hosted on GitHub Pages, please see GitHub's privacy statement
+    <a href="https://help.github.com/articles/github-privacy-statement/">here</a>.</span>
+  </div>
+</footer>
+<script src="trial3.js"></script>
 </body>
 </html>
