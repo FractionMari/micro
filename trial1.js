@@ -4,7 +4,7 @@ var measurement = null;
 var gauge = null;
 var acl = null;
 var speedCalculator = null;
-var quotes = ["Punch not detected", "Great punch!", "Roll with the punches!"];
+var quotes = ["Merket ingenting", "Bra gjort!", "Du er sterk!"];
 
 
 // Calculates the *first* velocity peak about X axis, or exiting on timeout.
@@ -29,7 +29,7 @@ class MaxSpeedCalculator {
      let vx = this.vx + (this.accel.x + this.ax) / 2 * dt;
      let speed = Math.abs(vx);
 
-     const punchTreashold = 2; // m/s
+     const punchTreashold = 3; // m/s
      if (this.maxSpeed < speed && speed >= punchTreashold) {
        this.maxSpeed = speed;
        if (!this.punchDetected && this.onpunchdetected) {
