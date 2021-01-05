@@ -226,7 +226,7 @@ function main() {
   setMeasurement(0);
   function startApp() {
     acl = new LinearAccelerationSensor({frequency: 60});
-    speedCalculator = new MaxSpeedCalculator(acl, onresult, generateKickSound);
+    speedCalculator = new MaxSpeedCalculator(acl, generateKickSound, onresult);
 
     acl.addEventListener('activate', setToInitialState);
     acl.addEventListener('error', error => {
