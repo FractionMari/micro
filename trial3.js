@@ -77,7 +77,7 @@ demo_button.onclick = function(e) {
     o.type = 'square';
 
 	//gainNode.gain.value = xValue;
-    gainNode.gain.value = 0.5;
+    gainNode.gain.value = xValue;
 	gainNode2.gain.value = 0.01;
 
 	document.querySelector("#button1").addEventListener('click', function() {
@@ -92,7 +92,7 @@ demo_button.onclick = function(e) {
 
 	document.querySelector("#button2").addEventListener('click', function() {
 		oscType = 'sine'
-		gainNode.gain.value = 0.3;
+		gainNode.gain.value = 0.5;
 	  });
 
 	  document.querySelector("#button3").addEventListener('click', function() {
