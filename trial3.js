@@ -73,27 +73,30 @@ demo_button.onclick = function(e) {
 	var gainNode2 = ctx.createGain();
 	var oscType = undefined
 	var oscType2 = undefined
+    var o = ctx.createOscillator();	
+    o.type = 'square';
 
-	gainNode.gain.value = xValue;
+	//gainNode.gain.value = xValue;
+    gainNode.gain.value = 0.5;
 	gainNode2.gain.value = 0.01;
 
 	document.querySelector("#button1").addEventListener('click', function() {
-        var o = ctx.createOscillator();	
-		o.type = 'square';
+
+
         o.connect(gainNode);
         gainNode.connect(ctx.destination);
 		o.frequency.value = 440;
-        o.start(ctx.currentTime);
+        o.start();
 	
 	});
 
 	document.querySelector("#button2").addEventListener('click', function() {
 		oscType = 'sine'
-		gainNode.gain.value = 0.01;
+		gainNode.gain.value = 0.3;
 	  });
 
 	  document.querySelector("#button3").addEventListener('click', function() {
-		o.stop(ctx.currentTime);
+		gainNode.gain.value = 0;
 	  });
 
 	  document.querySelector("#button4").addEventListener('click', function() {
