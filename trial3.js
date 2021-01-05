@@ -1,54 +1,3 @@
-// Audio variables
-    var ctx = new (window.AudioContext || window.webkitAudioContext)();
-	var gainNode = ctx.createGain();
-	var gainNode2 = ctx.createGain();
-	var oscType = undefined
-	var oscType2 = undefined
-
-	gainNode.gain.value = 0.01;
-	gainNode2.gain.value = 0.01;
-    xValue = event.acceleration.x
-
-	document.querySelector("#button1").addEventListener('click', function() {
-        var o = ctx.createOscillator();
-		oscType = 'square';
-		gainNode.gain.value = 0.01;
-        			
-		o.type = oscType;
-        o.connect(gainNode);
-        gainNode.connect(ctx.destination);
-		o.frequency.value = xValue * 10;
-		oValue = o.frequency.value
-        o.start(ctx.currentTime);
-	
-	});
-
-	document.querySelector("#button2").addEventListener('click', function() {
-		oscType = 'sine'
-		gainNode.gain.value = 0.01;
-	  });
-
-	  document.querySelector("#button3").addEventListener('click', function() {
-		o.stop(ctx.currentTime);
-	  });
-
-	  document.querySelector("#button4").addEventListener('click', function() {
-		oscType2 = 'square';
-		gainNode2.gain.value = 0.01;
-	  });
-
-	  document.querySelector("#button5").addEventListener('click', function() {
-		oscType2 = 'sine';
-		gainNode2.gain.value = 0.01;
-	  });
-
-	  document.querySelector("#button6").addEventListener('click', function() {
-		gainNode2.gain.value = 0;
-	  });
-
-
-
-
 
 function handleOrientation(event) {
   updateFieldIfNotNull('Orientation_a', event.alpha);
@@ -83,6 +32,8 @@ function handleMotion(event) {
   updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
   updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
   incrementEventCount();
+
+  xValue = event.acceleration.x
 }
 
 let is_running = false;
@@ -114,6 +65,55 @@ demo_button.onclick = function(e) {
     is_running = true;
   }
 };
+
+
+// Audio variables
+    var ctx = new (window.AudioContext || window.webkitAudioContext)();
+	var gainNode = ctx.createGain();
+	var gainNode2 = ctx.createGain();
+	var oscType = undefined
+	var oscType2 = undefined
+
+	gainNode.gain.value = xValue;
+	gainNode2.gain.value = 0.01;
+
+	document.querySelector("#button1").addEventListener('click', function() {
+        var o = ctx.createOscillator();	
+		o.type = 'square';
+        o.connect(gainNode);
+        gainNode.connect(ctx.destination);
+		o.frequency.value = 440;
+        o.start(ctx.currentTime);
+	
+	});
+
+	document.querySelector("#button2").addEventListener('click', function() {
+		oscType = 'sine'
+		gainNode.gain.value = 0.01;
+	  });
+
+	  document.querySelector("#button3").addEventListener('click', function() {
+		o.stop(ctx.currentTime);
+	  });
+
+	  document.querySelector("#button4").addEventListener('click', function() {
+		oscType2 = 'square';
+		gainNode2.gain.value = 0.01;
+	  });
+
+	  document.querySelector("#button5").addEventListener('click', function() {
+		oscType2 = 'sine';
+		gainNode2.gain.value = 0.01;
+	  });
+
+	  document.querySelector("#button6").addEventListener('click', function() {
+		gainNode2.gain.value = 0;
+	  });
+
+
+
+
+
 
 /*
 Light and proximity are not supported anymore by mainstream browsers.
