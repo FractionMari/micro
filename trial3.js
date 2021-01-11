@@ -91,7 +91,7 @@ var playing;
 document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
-oscillator.frequency.value = yGravAcc * 100;
+oscillator.frequency.value = 440;
 
 oscillator.start();
 
