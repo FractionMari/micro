@@ -25,7 +25,18 @@ function handleMotion(event) {
   let zValue = event.acceleration.z;
   let totAcc = (xValue + yValue + zValue);
   totAcc = Math.abs(totAcc);
-  totAcc = Math.min(Math.max(parseInt(totAcc), 0.1), 0.9);
+ // totAcc = Math.min(Math.max(parseInt(totAcc), 0.1), 0.9);
+
+ function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
+  var offset = newMin - prevMin,
+      scale = (newMax - newMin) / (prevMax - prevMin);
+  return function (x) {
+      return offset + scale * x;
+  };
+};
+
+var fn = generateScaleFunction(0, 5, 0, 0.9);
+var newAcc = fn(totAcc);
 
   //let yGravAcc = event.accelerationIncludingGravity.y;
   
@@ -36,7 +47,7 @@ function handleMotion(event) {
   updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
   updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
   updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
-  updateFieldIfNotNull('Total_acc', totAcc);
+  updateFieldIfNotNull('Total_acc', newAcc);
 
   updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
 
@@ -45,7 +56,7 @@ function handleMotion(event) {
   updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
   incrementEventCount();
 
-  volume.gain.value = totAcc
+  volume.gain.value = newAcc
 
 }
 
@@ -96,7 +107,7 @@ var playing;
 document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
-oscillator.frequency.value = 200;
+oscillator.frequency.value = 600;
 
 oscillator.start();
 
