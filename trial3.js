@@ -73,14 +73,14 @@ demo_button.onclick = function(e) {
     is_running = true;
   }
 };
-/* 
+
 window.onload = function() {
 
   if (playing == 1) {
     //oscillator.frequency.value = x;
     volume.gain.value = totAcc
   }
-}; */
+};
 
 var oscillator; 
 var volume;
