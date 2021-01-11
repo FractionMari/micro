@@ -73,10 +73,17 @@ demo_button.onclick = function(e) {
   }
 };
 
+window.onload = function() {
+
+  if (playing == 1) {
+    //oscillator.frequency.value = x;
+    volume.gain.value = totAcc;
+}
 
 var oscillator; 
 var volume;
 var volumeslider = document.getElementById("volume");
+var playing;
 
 
 document.querySelector("#button1").addEventListener('click', function() {
@@ -95,6 +102,8 @@ volumeslider.oninput = function() {
 }  
 oscillator.connect(volume); 
 volume.connect(context.destination);  
+
+playing = 1;
 });
 
 
