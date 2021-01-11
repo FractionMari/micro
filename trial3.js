@@ -36,7 +36,7 @@ function handleMotion(event) {
   };
 };
 
-var fn = generateScaleFunction(0, 13, 0.9, 0);
+var fn = generateScaleFunction(0, 13, 0.5, 0);
 var newAcc = fn(totAcc);
 
 let yGravAcc = event.accelerationIncludingGravity.y;
@@ -144,4 +144,5 @@ volume.connect(context.destination);
 
 document.querySelector("#button2").addEventListener('click', function() {
 oscillator.stop();
+oscillator2.stop();
 });
