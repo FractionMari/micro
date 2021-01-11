@@ -35,7 +35,7 @@ function handleMotion(event) {
   };
 };
 
-var fn = generateScaleFunction(0, 14, 0.9, 0);
+var fn = generateScaleFunction(0, 7, 0.9, 0);
 var newAcc = fn(totAcc);
 
 let yGravAcc = event.accelerationIncludingGravity.y;
@@ -58,7 +58,7 @@ let yGravAcc = event.accelerationIncludingGravity.y;
   incrementEventCount();
 
   volume.gain.value = newAcc;
-  oscillator.frequency.value = yGravAcc * 100;
+  //oscillator.frequency.value = yGravAcc * 100;
 
 }
 
