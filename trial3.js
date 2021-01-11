@@ -39,7 +39,8 @@ function handleMotion(event) {
 var fn = generateScaleFunction(0, 13, 0.9, 0);
 var newAcc = fn(totAcc);
 
-//let yGravAcc = event.accelerationIncludingGravity.y;
+let yGravAcc = event.accelerationIncludingGravity.y;
+
   
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
   updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
@@ -59,7 +60,10 @@ var newAcc = fn(totAcc);
   incrementEventCount();
 
   volume.gain.value = newAcc;
-  //oscillator.frequency.value = yGravAcc * 100;
+  
+  // Rotation to control oscillator pitch
+  oscillator.frequency.value = yGravAcc * 100;
+  oscillator2.frequency.value = yGravAcc * 100 - 13;
 
 }
 
@@ -101,7 +105,11 @@ demo_button.onclick = function(e) {
   }
 }; */
 
-var oscillator; 
+// This is the first oscillator
+var oscillator;
+
+// creating a second oscillator
+var oscillator2;  
 var volume;
 // var volumeslider = document.getElementById("volume");
 var playing;
@@ -110,9 +118,13 @@ var playing;
 document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
+oscillator2 = context.createOscillator();
 oscillator.frequency.value = 180;
+oscillator2.frequency.value = 167;
+oscillator2.type = "sawtooth";
 
 oscillator.start();
+oscillator2.start();
 
 volume = context.createGain();
 volume.gain.value = 0.5;
@@ -123,6 +135,7 @@ volume.gain.value = 0.5;
 }   */
 
 oscillator.connect(volume); 
+oscillator2.connect(volume); 
 volume.connect(context.destination);  
 
 // playing = 1;
