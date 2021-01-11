@@ -20,10 +20,11 @@ function updateFieldIfNotNull(fieldName, value, precision=10){
 function handleMotion(event) {
 
 
-  xValue = event.acceleration.x
-  yValue = event.acceleration.y
-  zValue = event.acceleration.z
-  totAcc = xValue + yValue + zValue
+  let xValue = event.acceleration.x
+  let yValue = event.acceleration.y
+  let zValue = event.acceleration.z
+  let totAcc = (xValue + yValue + zValue)
+  let yGravAcc = event.accelerationIncludingGravity.y
   
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
   updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
@@ -78,7 +79,8 @@ window.onload = function() {
   if (playing == 1) {
     //oscillator.frequency.value = x;
     volume.gain.value = totAcc;
-}
+  }
+};
 
 var oscillator; 
 var volume;
@@ -89,7 +91,7 @@ var playing;
 document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
-oscillator.frequency.value = 440;
+oscillator.frequency.value = yGravAcc * 100;
 
 oscillator.start();
 
@@ -100,6 +102,7 @@ volumeslider.oninput = function() {
   volume.gain.value = this.value;
   console.log(this.value);
 }  
+
 oscillator.connect(volume); 
 volume.connect(context.destination);  
 
