@@ -35,7 +35,7 @@ function handleMotion(event) {
   };
 };
 
-var fn = generateScaleFunction(0, 5, 0, 0.9);
+var fn = generateScaleFunction(0, 100, 0, 0.9);
 var newAcc = fn(totAcc);
 
 //let yGravAcc = event.accelerationIncludingGravity.y;
@@ -109,7 +109,7 @@ var playing;
 document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
-oscillator.frequency.value = 300;
+oscillator.frequency.value = 350;
 
 oscillator.start();
 
