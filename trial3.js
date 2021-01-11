@@ -25,7 +25,7 @@ function handleMotion(event) {
   let zValue = event.acceleration.z;
   let totAcc = (xValue + yValue + zValue);
   totAcc = Math.abs(totAcc);
-  totAcc = Math.min(Math.max(parseInt(totAcc, 0.1), 0.9);
+  totAcc = Math.min(Math.max(parseInt(totAcc, 0.1), 0.9));
 
   //let yGravAcc = event.accelerationIncludingGravity.y;
   
