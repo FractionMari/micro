@@ -24,9 +24,9 @@ function handleMotion(event) {
   let yValue = event.acceleration.y;
   let zValue = event.acceleration.z;
   let totAcc = (xValue + yValue + zValue);
-  totAcc = Math.abs(totAcc);
- // totAcc = Math.min(Math.max(parseInt(totAcc), 0.1), 0.9);
 
+//  totAcc = Math.abs(totAcc);
+//Scaling the incoming number
  function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
   var offset = newMin - prevMin,
       scale = (newMax - newMin) / (prevMax - prevMin);
@@ -35,7 +35,7 @@ function handleMotion(event) {
   };
 };
 
-var fn = generateScaleFunction(0, 5, 0, 0.9);
+var fn = generateScaleFunction(0, 14, 0.9, 0);
 var newAcc = fn(totAcc);
 
 let yGravAcc = event.accelerationIncludingGravity.y;
