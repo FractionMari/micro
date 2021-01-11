@@ -18,12 +18,18 @@ function updateFieldIfNotNull(fieldName, value, precision=10){
 }
 
 function handleMotion(event) {
+
+
+  xValue = event.acceleration.x
+  yValue = event.acceleration.y
+  zValue = event.acceleration.z
+
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
   updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
   updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
-  updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
-  updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
+  updateFieldIfNotNull('Accelerometer_x', xValue);
+  updateFieldIfNotNull('Accelerometer_y', yValue);
   updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
   updateFieldIfNotNull('Total_acc', (event.acceleration.z + event.acceleration.y + event.acceleration.z));
 
@@ -34,7 +40,6 @@ function handleMotion(event) {
   updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
   incrementEventCount();
 
-  xValue = event.acceleration.x
 }
 
 let is_running = false;
