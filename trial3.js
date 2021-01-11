@@ -25,7 +25,7 @@ function handleMotion(event) {
   let zValue = event.acceleration.z;
   let totAcc = (xValue + yValue + zValue);
   totAcc = Math.abs(totAcc);
-  totAcc = Math.min(Math.max(parseInt(totAcc, 0.1), 0.9));
+  totAcc = Math.min(Math.max(parseInt(totAcc), 0.1), 0.9);
 
   //let yGravAcc = event.accelerationIncludingGravity.y;
   
@@ -96,7 +96,7 @@ var playing;
 document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
-oscillator.frequency.value = 500;
+oscillator.frequency.value = 200;
 
 oscillator.start();
 
