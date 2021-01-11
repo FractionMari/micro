@@ -38,7 +38,7 @@ function handleMotion(event) {
 var fn = generateScaleFunction(0, 5, 0, 0.9);
 var newAcc = fn(totAcc);
 
-  //let yGravAcc = event.accelerationIncludingGravity.y;
+let yGravAcc = event.accelerationIncludingGravity.y;
   
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
   updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
@@ -48,6 +48,7 @@ var newAcc = fn(totAcc);
   updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
   updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
   updateFieldIfNotNull('Total_acc', newAcc);
+  updateFieldIfNotNull('Prev_acc', totAcc);
 
   updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
 
@@ -56,7 +57,8 @@ var newAcc = fn(totAcc);
   updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
   incrementEventCount();
 
-  volume.gain.value = newAcc
+  volume.gain.value = newAcc;
+  oscillator.frequency.value = yGravAcc * 100;
 
 }
 
@@ -100,7 +102,7 @@ demo_button.onclick = function(e) {
 
 var oscillator; 
 var volume;
-var volumeslider = document.getElementById("volume");
+// var volumeslider = document.getElementById("volume");
 var playing;
 
 
