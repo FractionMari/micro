@@ -23,15 +23,16 @@ function handleMotion(event) {
   xValue = event.acceleration.x
   yValue = event.acceleration.y
   zValue = event.acceleration.z
-
+  totAcc = xValue + yValue + zValue
+  
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
   updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
   updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
-  updateFieldIfNotNull('Accelerometer_x', xValue);
-  updateFieldIfNotNull('Accelerometer_y', yValue);
+  updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
+  updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
   updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
-  updateFieldIfNotNull('Total_acc', (event.acceleration.z + event.acceleration.y + event.acceleration.z));
+  updateFieldIfNotNull('Total_acc', totAcc);
 
   updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
 
