@@ -68,15 +68,28 @@ demo_button.onclick = function(e) {
 
 
 var oscillator; 
+var volume;
+var volumeslider = document.getElementById("volume");
 
 
 document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
-oscillator.connect(context.destination);
 oscillator.frequency.value = 440;
+
 oscillator.start();
+
+volume = context.createGain();
+volume.gain.value = 0.5;
+
+volumeslider.oninput = function() {
+  volume.gain.value = this.value;
+  console.log(this.value);
+}  
+oscillator.connect(volume); 
+volume.connect(context.destination);  
 });
+
 
 document.querySelector("#button2").addEventListener('click', function() {
 oscillator.stop();
