@@ -35,10 +35,10 @@ function handleMotion(event) {
   };
 };
 
-var fn = generateScaleFunction(0, 7, 0.9, 0);
+var fn = generateScaleFunction(0, 7, 0, 0.9);
 var newAcc = fn(totAcc);
 
-let yGravAcc = event.accelerationIncludingGravity.y;
+//let yGravAcc = event.accelerationIncludingGravity.y;
   
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
   updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
