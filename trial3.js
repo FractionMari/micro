@@ -98,10 +98,10 @@ oscillator.start();
 volume = context.createGain();
 volume.gain.value = 0.5;
 
-volumeslider.oninput = function() {
+/* volumeslider.oninput = function() {
   volume.gain.value = this.value;
   console.log(this.value);
-}  
+}   */
 
 oscillator.connect(volume); 
 volume.connect(context.destination);  
