@@ -26,7 +26,7 @@ function handleMotion(event) {
   let totAcc = (xValue * yValue * zValue);
 
   totAcc = Math.abs(totAcc);
-  totAcc = Math.log(totAcc);
+  totAcc = Math.floor(totAcc);
 //Scaling the incoming number
  function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
   var offset = newMin - prevMin,
@@ -110,7 +110,7 @@ var playing;
 document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
-oscillator.frequency.value = 370;
+oscillator.frequency.value = 270;
 
 oscillator.start();
 
