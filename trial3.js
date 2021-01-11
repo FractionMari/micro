@@ -42,6 +42,8 @@ function handleMotion(event) {
   updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
   incrementEventCount();
 
+  volume.gain.value = totAcc
+
 }
 
 let is_running = false;
@@ -74,13 +76,13 @@ demo_button.onclick = function(e) {
   }
 };
 
-window.onload = function() {
+/* window.onload = function() {
 
   if (playing == 1) {
     //oscillator.frequency.value = x;
     volume.gain.value = totAcc
   }
-};
+}; */
 
 var oscillator; 
 var volume;
@@ -91,7 +93,7 @@ var playing;
 document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
-oscillator.frequency.value = 440;
+oscillator.frequency.value = 400;
 
 oscillator.start();
 
