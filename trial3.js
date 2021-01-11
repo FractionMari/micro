@@ -26,6 +26,7 @@ function handleMotion(event) {
   let totAcc = (xValue * yValue * zValue);
 
   totAcc = Math.abs(totAcc);
+  totAcc = Math.log(totAcc);
 //Scaling the incoming number
  function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
   var offset = newMin - prevMin,
