@@ -25,7 +25,7 @@ function handleMotion(event) {
   let zValue = event.acceleration.z;
   let totAcc = (xValue + yValue + zValue);
 
-//  totAcc = Math.abs(totAcc);
+  totAcc = Math.abs(totAcc);
 //Scaling the incoming number
  function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
   var offset = newMin - prevMin,
