@@ -25,6 +25,7 @@ function handleMotion(event) {
   updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
   updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
   updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
+  updateFieldIfNotNull('Total_acc', (event.acceleration.z + event.acceleration.y + event.acceleration.z));
 
   updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
 
