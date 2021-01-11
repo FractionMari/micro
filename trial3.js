@@ -110,7 +110,7 @@ var playing;
 document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
-oscillator.frequency.value = 350;
+oscillator.frequency.value = 370;
 
 oscillator.start();
 
