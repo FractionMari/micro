@@ -67,54 +67,20 @@ demo_button.onclick = function(e) {
 };
 
 
-// Audio variables
-    var ctx = new (window.AudioContext || window.webkitAudioContext)();
-	var gainNode = ctx.createGain();
-	var gainNode2 = ctx.createGain();
-	var oscType = undefined
-	var oscType2 = undefined
-    var o = ctx.createOscillator();	
-    o.type = 'square';
-
-	//gainNode.gain.value = xValue;
-    gainNode.gain.value = xValue;
-	gainNode2.gain.value = 0.01;
-
-	document.querySelector("#button1").addEventListener('click', function() {
+var oscillator; 
 
 
-        o.connect(gainNode);
-        gainNode.connect(ctx.destination);
-		o.frequency.value = 440;
-        o.start();
-	
-	});
+document.querySelector("#button1").addEventListener('click', function() {
+var context = new AudioContext();
+oscillator = context.createOscillator();
+oscillator.connect(context.destination);
+oscillator.frequency.value = 440;
+oscillator.start();
+});
 
-	document.querySelector("#button2").addEventListener('click', function() {
-		oscType = 'sine'
-		gainNode.gain.value = 0.5;
-	  });
-
-	  document.querySelector("#button3").addEventListener('click', function() {
-		gainNode.gain.value = 0;
-	  });
-
-	  document.querySelector("#button4").addEventListener('click', function() {
-		oscType2 = 'square';
-		gainNode2.gain.value = 0.01;
-	  });
-
-	  document.querySelector("#button5").addEventListener('click', function() {
-		oscType2 = 'sine';
-		gainNode2.gain.value = 0.01;
-	  });
-
-	  document.querySelector("#button6").addEventListener('click', function() {
-		gainNode2.gain.value = 0;
-	  });
-
-
-
+document.querySelector("#button2").addEventListener('click', function() {
+oscillator.stop();
+});
 
 
 
