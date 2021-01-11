@@ -20,11 +20,11 @@ function updateFieldIfNotNull(fieldName, value, precision=10){
 function handleMotion(event) {
 
 
-  let xValue = event.acceleration.x
-  let yValue = event.acceleration.y
-  let zValue = event.acceleration.z
-  let totAcc = (xValue + yValue + zValue)
-  let yGravAcc = event.accelerationIncludingGravity.y
+  let xValue = event.acceleration.x;
+  let yValue = event.acceleration.y;
+  let zValue = event.acceleration.z;
+  let totAcc = (xValue + yValue + zValue);
+  //let yGravAcc = event.accelerationIncludingGravity.y;
   
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
   updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
