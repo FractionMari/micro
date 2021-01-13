@@ -26,7 +26,7 @@ function handleMotion(event) {
   // let totAcc = (xValue + yValue + zValue);
 
   let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2)
-  totAcc = xValue(n+1) - xValue(n)
+  //totAcc = xValue(n+1) - xValue(n)
 
   totAcc = Math.abs(totAcc);
 //  totAcc = Math.floor(totAcc);
@@ -122,8 +122,8 @@ document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
 oscillator2 = context.createOscillator();
-oscillator.frequency.value = 180;
-oscillator2.frequency.value = 167;
+oscillator.frequency.value = 280;
+oscillator2.frequency.value = 267;
 oscillator2.type = "sawtooth";
 
 oscillator.start();
