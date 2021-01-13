@@ -1,4 +1,5 @@
 // Få lyden vekk fra eventen kanskje?
+
 function handleOrientation(event) {
   updateFieldIfNotNull('Orientation_a', event.alpha);
   updateFieldIfNotNull('Orientation_b', event.beta);
@@ -10,7 +11,8 @@ function incrementEventCount(){
   let counterElement = document.getElementById("num-observed-events")
   let eventCount = parseInt(counterElement.innerHTML)
  // counterElement.innerHTML = totAcc(eventCount + 1) - totAcc(eventCount);
-  counterElement.innerHTML = totAcc;
+ // counterElement.innerHTML = totAcc;
+   counterElement.innerHTML = eventCount + 1;
 }
 
 function updateFieldIfNotNull(fieldName, value, precision=10){
@@ -58,7 +60,7 @@ let yGravAcc = event.accelerationIncludingGravity.y;
   updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
   updateFieldIfNotNull('Total_acc', newAcc);
   updateFieldIfNotNull('Prev_acc', totAcc);
-  //updateFieldIfNotNull('Event_acc', eventAcc);
+  updateFieldIfNotNull('Event_acc', (totAcc(eventCount + 1)) - (totAcc(eventCount)));
   //updateFieldIfNotNull('Samples_acc', samplesAcc);
 
   updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
@@ -128,8 +130,8 @@ document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
 oscillator2 = context.createOscillator();
-oscillator.frequency.value = 120;
-oscillator2.frequency.value = 187;
+oscillator.frequency.value = 440;
+oscillator2.frequency.value = 220;
 //oscillator2.type = "sine";
 
 oscillator.start();
