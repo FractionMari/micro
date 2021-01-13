@@ -9,7 +9,7 @@ function handleOrientation(event) {
 function incrementEventCount(){
   let counterElement = document.getElementById("num-observed-events")
   let eventCount = parseInt(counterElement.innerHTML)
-  counterElement.innerHTML = eventCount + 1;
+  counterElement.innerHTML = (eventCount + 1) - (eventCount);
 }
 
 function updateFieldIfNotNull(fieldName, value, precision=10){
@@ -27,7 +27,7 @@ function handleMotion(event) {
 // Calculating the vector sum of the 3 axises:
 
   let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2);
-  let eventAcc = (eventCount+1) - (eventCount);
+  //let eventAcc = (eventCount+1) - (eventCount);
   //let samplesAcc = totAcc / eventAcc;
 
 
@@ -57,7 +57,7 @@ let yGravAcc = event.accelerationIncludingGravity.y;
   updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
   updateFieldIfNotNull('Total_acc', newAcc);
   updateFieldIfNotNull('Prev_acc', totAcc);
-  updateFieldIfNotNull('Event_acc', eventAcc);
+  //updateFieldIfNotNull('Event_acc', eventAcc);
   //updateFieldIfNotNull('Samples_acc', samplesAcc);
 
   updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
@@ -128,8 +128,8 @@ var context = new AudioContext();
 oscillator = context.createOscillator();
 oscillator2 = context.createOscillator();
 oscillator.frequency.value = 220;
-oscillator2.frequency.value = 287;
-oscillator2.type = "sawtooth";
+oscillator2.frequency.value = 387;
+oscillator2.type = "square";
 
 oscillator.start();
 oscillator2.start();
