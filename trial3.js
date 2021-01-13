@@ -9,7 +9,8 @@ function handleOrientation(event) {
 function incrementEventCount(){
   let counterElement = document.getElementById("num-observed-events")
   let eventCount = parseInt(counterElement.innerHTML)
-  counterElement.innerHTML = totAcc(eventCount + 1) - totAcc(eventCount);
+ // counterElement.innerHTML = totAcc(eventCount + 1) - totAcc(eventCount);
+  counterElement.innerHTML = totAcc;
 }
 
 function updateFieldIfNotNull(fieldName, value, precision=10){
@@ -129,7 +130,7 @@ oscillator = context.createOscillator();
 oscillator2 = context.createOscillator();
 oscillator.frequency.value = 120;
 oscillator2.frequency.value = 187;
-oscillator2.type = "square";
+//oscillator2.type = "sine";
 
 oscillator.start();
 oscillator2.start();
