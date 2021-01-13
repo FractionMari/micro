@@ -124,8 +124,8 @@ document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
 oscillator2 = context.createOscillator();
-oscillator.frequency.value = 280;
-oscillator2.frequency.value = 267;
+oscillator.frequency.value = 380;
+oscillator2.frequency.value = 367;
 oscillator2.type = "sawtooth";
 
 oscillator.start();
