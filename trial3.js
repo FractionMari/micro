@@ -23,7 +23,10 @@ function handleMotion(event) {
   let xValue = event.acceleration.x;
   let yValue = event.acceleration.y;
   let zValue = event.acceleration.z;
-  let totAcc = (xValue + yValue + zValue);
+  // let totAcc = (xValue + yValue + zValue);
+
+  let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2)
+  let totAcc = xValue(n+1) - xValue(n)
 
   totAcc = Math.abs(totAcc);
 //  totAcc = Math.floor(totAcc);
