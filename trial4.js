@@ -40,6 +40,12 @@ function handleOrientation(event) {
   
   var fn = generateScaleFunction(0, 25, 0.5, 0);
   var newAcc = fn(totAcc);
+
+  function clamp(min, max, val) {
+    return Math.min(Math.max(min, +val), max);
+  }
+
+  newAcc = (clamp(0, 0.5, newAcc));
   
   let yGravAcc = event.accelerationIncludingGravity.y;
   
@@ -123,7 +129,7 @@ function handleOrientation(event) {
   oscillator2 = context.createOscillator();
   oscillator.frequency.value = 380;
   oscillator2.frequency.value = 157;
-  oscillator2.type = "square";
+  oscillator2.type = "sine";
   
   oscillator.start();
   oscillator2.start();
