@@ -22,8 +22,10 @@ function handleOrientation(event) {
     let xValue = event.acceleration.x;
     let yValue = event.acceleration.y;
     let zValue = event.acceleration.z;
-    //let totAcc = (xValue + yValue + zValue);
-    let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2);
+    let totAcc = (xValue + yValue + zValue);
+    
+// When using this method, I get values that are "Not a Number".
+    //let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2);
   
     totAcc = Math.abs(totAcc);
 
@@ -36,7 +38,7 @@ function handleOrientation(event) {
     };
   };
   
-  var fn = generateScaleFunction(0, 1000, 0.5, 0);
+  var fn = generateScaleFunction(0, 3, 0.5, 0);
   var newAcc = fn(totAcc);
   
   let yGravAcc = event.accelerationIncludingGravity.y;
@@ -121,7 +123,7 @@ function handleOrientation(event) {
   oscillator2 = context.createOscillator();
   oscillator.frequency.value = 380;
   oscillator2.frequency.value = 157;
-  oscillator2.type = "sine";
+  oscillator2.type = "square";
   
   oscillator.start();
   oscillator2.start();
