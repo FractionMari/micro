@@ -27,7 +27,7 @@ function handleMotion(event) {
 // Calculating the vector sum of the 3 axises:
 
   let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2)
- // totAcc = totAcc(n+1) - totAcc(n)
+  let eventAcc = totAcc(eventCount+1) - totAcc(eventCount)
 
 
   // totAcc = Math.abs(totAcc);
@@ -56,6 +56,7 @@ let yGravAcc = event.accelerationIncludingGravity.y;
   updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
   updateFieldIfNotNull('Total_acc', newAcc);
   updateFieldIfNotNull('Prev_acc', totAcc);
+  updateFieldIfNotNull('Event_acc', eventAcc);
 
   updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
 
