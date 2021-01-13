@@ -1,4 +1,4 @@
-
+// Få lyden vekk fra eventen kanskje?
 function handleOrientation(event) {
   updateFieldIfNotNull('Orientation_a', event.alpha);
   updateFieldIfNotNull('Orientation_b', event.beta);
@@ -9,7 +9,7 @@ function handleOrientation(event) {
 function incrementEventCount(){
   let counterElement = document.getElementById("num-observed-events")
   let eventCount = parseInt(counterElement.innerHTML)
-  counterElement.innerHTML = (eventCount + 1) - (eventCount);
+  counterElement.innerHTML = totAcc(eventCount + 1) - totAcc(eventCount);
 }
 
 function updateFieldIfNotNull(fieldName, value, precision=10){
@@ -127,8 +127,8 @@ document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
 oscillator2 = context.createOscillator();
-oscillator.frequency.value = 220;
-oscillator2.frequency.value = 387;
+oscillator.frequency.value = 120;
+oscillator2.frequency.value = 187;
 oscillator2.type = "square";
 
 oscillator.start();
