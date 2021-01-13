@@ -45,8 +45,10 @@ function handleMotion(event) {
   let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2);
   //let eventAcc = (eventCount+1) - (eventCount);
   //let samplesAcc = totAcc / eventAcc;
-
-
+  
+  let diffAcc = setTimeout(function(){ totAcc; }, 16);
+  
+  
   // totAcc = Math.abs(totAcc);
 //  totAcc = Math.floor(totAcc);
 //Scaling the incoming number
@@ -66,7 +68,7 @@ let yGravAcc = event.accelerationIncludingGravity.y;
   
 
   updateFieldIfNotNull('Accelerometer_totAcc', totAcc, 2);
-  updateFieldIfNotNull2('Accelerometer_gx2', totAcc, 2);
+  updateFieldIfNotNull('Accelerometer_gx2', diffAcc, 2);
 
   //updateFieldIfNotNull('Accelerometer_gy2', event.accelerationIncludingGravity.y);
   //updateFieldIfNotNull('Accelerometer_gz2', event.accelerationIncludingGravity.z);
@@ -91,10 +93,9 @@ let yGravAcc = event.accelerationIncludingGravity.y;
   updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
   volume.gain.value = newAcc;
-  let accFrame = document.getElementById("Accelerometer_totAcc")
-  let nextFrame = document.getElementById("Accelerometer_gx2")
 
-  let diffFrame = accFrame - nextFrame
+
+  let diffFrame = totAcc - diffAcc;
   updateFieldIfNotNull('Diff_frame', diffFrame, 2);
 
 
@@ -156,8 +157,8 @@ document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
 oscillator2 = context.createOscillator();
-oscillator.frequency.value = 440;
-oscillator2.frequency.value = 220;
+oscillator.frequency.value = 330;
+oscillator2.frequency.value = 120;
 //oscillator2.type = "sine";
 
 oscillator.start();
