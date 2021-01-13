@@ -55,11 +55,11 @@ var newAcc = fn(totAcc);
 let yGravAcc = event.accelerationIncludingGravity.y;
 
   
-  updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
+  updateFieldIfNotNull('Accelerometer_gx', totAcc);
   updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
   updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
-  updateFieldIfNotNull('Accelerometer_gx2', event.accelerationIncludingGravity.x, 2000);
+  updateFieldIfNotNull('Accelerometer_gx2', totAcc, 200);
 
   //updateFieldIfNotNull('Accelerometer_gy2', event.accelerationIncludingGravity.y);
   //updateFieldIfNotNull('Accelerometer_gz2', event.accelerationIncludingGravity.z);
