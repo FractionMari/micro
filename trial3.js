@@ -91,7 +91,13 @@ let yGravAcc = event.accelerationIncludingGravity.y;
   updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
   volume.gain.value = newAcc;
-  let nextFrame = document.getElementById("Accelerometer_totAcc")
+  let accFrame = document.getElementById("Accelerometer_totAcc")
+  let nextFrame = document.getElementById("Accelerometer_gx2")
+
+  let diffFrame = accFrame - nextFrame
+  updateFieldIfNotNull('Diff_frame', diffFrame, 2);
+
+
   // Rotation to control oscillator pitch
   oscillator.frequency.value = yGravAcc * 100;
   oscillator2.frequency.value = yGravAcc * 100 - 13;
