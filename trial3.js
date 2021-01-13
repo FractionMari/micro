@@ -24,11 +24,13 @@ function handleMotion(event) {
   let yValue = event.acceleration.y;
   let zValue = event.acceleration.z;
   // let totAcc = (xValue + yValue + zValue);
+// Calculating the vector sum of the 3 axises:
 
   let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2)
-  //totAcc = xValue(n+1) - xValue(n)
+ // totAcc = totAcc(n+1) - totAcc(n)
 
-  totAcc = Math.abs(totAcc);
+
+  // totAcc = Math.abs(totAcc);
 //  totAcc = Math.floor(totAcc);
 //Scaling the incoming number
  function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
@@ -39,7 +41,7 @@ function handleMotion(event) {
   };
 };
 
-var fn = generateScaleFunction(0, 13, 0.5, 0);
+var fn = generateScaleFunction(1, 13, 0.5, 0);
 var newAcc = fn(totAcc);
 
 let yGravAcc = event.accelerationIncludingGravity.y;
