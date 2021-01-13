@@ -19,7 +19,8 @@ function handleOrientation(event) {
   
   function handleMotion(event) {
   
-    let xValue = (event.acceleration.x * 10) / 10;
+    let xValue = (event.acceleration.x * 10);
+    xValue = (Math.trunc(xValue))
     let yValue = event.acceleration.y;
     let zValue = event.acceleration.z;
     let totAcc = (xValue + yValue + zValue);
@@ -121,7 +122,7 @@ function handleOrientation(event) {
   oscillator2 = context.createOscillator();
   oscillator.frequency.value = 180;
   oscillator2.frequency.value = 167;
-  oscillator2.type = "sawtooth";
+  oscillator2.type = "square";
   
   oscillator.start();
   oscillator2.start();
