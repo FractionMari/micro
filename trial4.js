@@ -20,7 +20,7 @@ function handleOrientation(event) {
   function handleMotion(event) {
   
     let xValue = (event.acceleration.x * 10);
-    xValue = (Math.trunc(xValue))
+    xValue = (Math.trunc(xValue));
     let yValue = event.acceleration.y;
     let zValue = event.acceleration.z;
     let totAcc = (xValue + yValue + zValue);
