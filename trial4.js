@@ -145,4 +145,5 @@ function handleOrientation(event) {
   
   document.querySelector("#button2").addEventListener('click', function() {
   oscillator.stop();
+  oscillator2.stop();
   });
