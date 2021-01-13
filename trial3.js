@@ -41,8 +41,10 @@ function handleMotion(event) {
   let zValue = event.accelerationIncludingGravity.z;
 
 // Calculating the vector sum of the 3 axises:
-
-  let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2);
+let totAcc = (xValue + yValue + zValue);
+    
+// When using this method, I get values that are "Not a Number".
+// let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2);
   //let eventAcc = (eventCount+1) - (eventCount);
   //let samplesAcc = totAcc / eventAcc;
   
@@ -96,8 +98,8 @@ let yGravAcc = event.accelerationIncludingGravity.y;
   let accFrame = document.getElementById("Accelerometer_totAcc");
   let nextFrame = document.getElementById("Accelerometer_gx2");
 
-  let diffFrame = (accFrame - nextFrame);
-  updateFieldIfNotNull('Diff_frame', diffFrame, 2);
+  //let diffFrame = (accFrame - nextFrame);
+  updateFieldIfNotNull('Diff_frame', nextFrame, 2);
 
 
   // Rotation to control oscillator pitch
