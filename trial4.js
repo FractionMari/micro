@@ -19,7 +19,8 @@ function handleOrientation(event) {
   
   function handleMotion(event) {
   
-    let xValue = (event.acceleration.x * 10);
+    let xValue = event.acceleration.x;
+    xValue = xValue * 10
     xValue = (Math.trunc(xValue));
     let yValue = event.acceleration.y;
     let zValue = event.acceleration.z;
@@ -120,8 +121,8 @@ function handleOrientation(event) {
   var context = new AudioContext();
   oscillator = context.createOscillator();
   oscillator2 = context.createOscillator();
-  oscillator.frequency.value = 180;
-  oscillator2.frequency.value = 167;
+  oscillator.frequency.value = 480;
+  oscillator2.frequency.value = 247;
   oscillator2.type = "square";
   
   oscillator.start();
