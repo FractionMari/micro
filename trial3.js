@@ -93,10 +93,10 @@ let yGravAcc = event.accelerationIncludingGravity.y;
   updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
   volume.gain.value = newAcc;
-  let accFrame = document.getElementById("Accelerometer_totAcc")
-  let nextFrame = document.getElementById("Accelerometer_gx2")
+  let accFrame = document.getElementById("Accelerometer_totAcc");
+  let nextFrame = document.getElementById("Accelerometer_gx2");
 
-  let diffFrame = accFrame - nextFrame
+  let diffFrame = (accFrame - nextFrame);
   updateFieldIfNotNull('Diff_frame', diffFrame, 2);
 
 
