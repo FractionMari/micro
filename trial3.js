@@ -26,8 +26,8 @@ function handleMotion(event) {
   // let totAcc = (xValue + yValue + zValue);
 // Calculating the vector sum of the 3 axises:
 
-  let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2)
-  let eventAcc = totAcc(eventCount+1) - totAcc(eventCount)
+  let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2);
+  let eventAcc = (eventCount+1) - (eventCount);
 
 
   // totAcc = Math.abs(totAcc);
