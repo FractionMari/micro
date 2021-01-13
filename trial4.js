@@ -47,7 +47,7 @@ function handleOrientation(event) {
 
   newAcc = (clamp(0, 0.5, newAcc));
   
-  let yGravAcc = event.accelerationIncludingGravity.y;
+  let pitchWheel = event.gamma;
   
     
     updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
@@ -70,8 +70,8 @@ function handleOrientation(event) {
     volume.gain.value = newAcc;
     
     // Rotation to control oscillator pitch
-    oscillator.frequency.value = yGravAcc * 100;
-    oscillator2.frequency.value = yGravAcc * 100 - 13;
+    oscillator.frequency.value = pitchWheel;
+    oscillator2.frequency.value = pitchWheel - 13;
   
   }
   
