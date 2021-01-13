@@ -1,5 +1,11 @@
-// Få lyden vekk fra eventen kanskje?
-
+// I denne versjonen prøver jeg Alexanders tilnærming som han forklarte
+// Den vanlige måten å beregne det på er ved beregne vektornormen. Hvis du
+// har tre variabler fra aksellerometeret (xyz) kan du ta: sqrt(x^2 + y^2 +
+// z^2). og så beregne forskjellen mellom samples: x(n+1)-x(n). Da får du
+// en verdi som er 0 hvis telefonen ligger stille, og gi et positivt tall
+// som øker avhengig av hvor du mye beveger den. Men det er kanskje det du
+// har gjort? : 
+ 
 function handleOrientation(event) {
   updateFieldIfNotNull('Orientation_a', event.alpha);
   updateFieldIfNotNull('Orientation_b', event.beta);
@@ -23,10 +29,10 @@ function updateFieldIfNotNull(fieldName, value, precision=10){
 function handleMotion(event) {
 
 
-  let xValue = event.acceleration.x;
-  let yValue = event.acceleration.y;
-  let zValue = event.acceleration.z;
-  // let totAcc = (xValue + yValue + zValue);
+  let xValue = event.accelerationIncludingGravity.x;
+  let yValue = event.accelerationIncludingGravity.y;
+  let zValue = event.accelerationIncludingGravity.z;
+
 // Calculating the vector sum of the 3 axises:
 
   let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2);
@@ -54,6 +60,10 @@ let yGravAcc = event.accelerationIncludingGravity.y;
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
   updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
   updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
+
+  updateFieldIfNotNull('Accelerometer_gx2', event.accelerationIncludingGravity.x + event);
+  //updateFieldIfNotNull('Accelerometer_gy2', event.accelerationIncludingGravity.y);
+  //updateFieldIfNotNull('Accelerometer_gz2', event.accelerationIncludingGravity.z);
 
   updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
   updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
