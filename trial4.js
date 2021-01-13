@@ -38,7 +38,7 @@ function handleOrientation(event) {
     };
   };
   
-  var fn = generateScaleFunction(0, 3, 0.5, 0);
+  var fn = generateScaleFunction(0, 25, 0.5, 0);
   var newAcc = fn(totAcc);
   
   let yGravAcc = event.accelerationIncludingGravity.y;
