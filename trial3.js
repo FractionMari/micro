@@ -28,7 +28,7 @@ function handleMotion(event) {
 
   let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2);
   let eventAcc = (eventCount+1) - (eventCount);
-  let samplesAcc = totAcc / eventAcc;
+  //let samplesAcc = totAcc / eventAcc;
 
 
   // totAcc = Math.abs(totAcc);
@@ -58,7 +58,7 @@ let yGravAcc = event.accelerationIncludingGravity.y;
   updateFieldIfNotNull('Total_acc', newAcc);
   updateFieldIfNotNull('Prev_acc', totAcc);
   updateFieldIfNotNull('Event_acc', eventAcc);
-  updateFieldIfNotNull('Samples_acc', samplesAcc);
+  //updateFieldIfNotNull('Samples_acc', samplesAcc);
 
   updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
 
@@ -127,7 +127,7 @@ document.querySelector("#button1").addEventListener('click', function() {
 var context = new AudioContext();
 oscillator = context.createOscillator();
 oscillator2 = context.createOscillator();
-oscillator.frequency.value = 180;
+oscillator.frequency.value = 200;
 oscillator2.frequency.value = 167;
 oscillator2.type = "sawtooth";
 
