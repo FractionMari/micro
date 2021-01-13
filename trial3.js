@@ -24,6 +24,15 @@ function updateFieldIfNotNull(fieldName, value, precision=10){
     document.getElementById(fieldName).innerHTML = value.toFixed(precision);
 }
 
+function updateFieldIfNotNull2(fieldName, value, precision=10){
+
+  if (value != null)
+  setTimeout(function(){
+    document.getElementById(fieldName).innerHTML = value.toFixed(precision); 
+  }, 100);
+    
+}
+
 function handleMotion(event) {
 
 
@@ -56,17 +65,17 @@ let yGravAcc = event.accelerationIncludingGravity.y;
 
   
 
-updateFieldIfNotNull('Accelerometer_totAcc', totAcc);
-  updateFieldIfNotNull('Accelerometer_gx2', totAcc, 2);
+  updateFieldIfNotNull('Accelerometer_totAcc', totAcc, 2);
+  updateFieldIfNotNull2('Accelerometer_gx2', totAcc, 2);
 
   //updateFieldIfNotNull('Accelerometer_gy2', event.accelerationIncludingGravity.y);
   //updateFieldIfNotNull('Accelerometer_gz2', event.accelerationIncludingGravity.z);
 
-  updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
-  updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
-  updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
-  updateFieldIfNotNull('Total_acc', newAcc);
-  updateFieldIfNotNull('Prev_acc', totAcc);
+  updateFieldIfNotNull('Accelerometer_x', event.acceleration.x, 2);
+  updateFieldIfNotNull('Accelerometer_y', event.acceleration.y, 2);
+  updateFieldIfNotNull('Accelerometer_z', event.acceleration.z, 2);
+  updateFieldIfNotNull('Total_acc', newAcc, 2);
+  updateFieldIfNotNull('Prev_acc', totAcc, 2);
   // updateFieldIfNotNull('Event_acc', (totAcc(eventCount + 1)) - (totAcc(eventCount)));
   //updateFieldIfNotNull('Samples_acc', samplesAcc);
 
@@ -82,7 +91,7 @@ updateFieldIfNotNull('Accelerometer_totAcc', totAcc);
   updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
   volume.gain.value = newAcc;
-  
+  let nextFrame = document.getElementById("Accelerometer_totAcc")
   // Rotation to control oscillator pitch
   oscillator.frequency.value = yGravAcc * 100;
   oscillator2.frequency.value = yGravAcc * 100 - 13;
