@@ -20,12 +20,10 @@ function handleOrientation(event) {
   function handleMotion(event) {
   
     let xValue = event.acceleration.x;
-    xValue = xValue * 10
-    xValue = (Math.trunc(xValue));
     let yValue = event.acceleration.y;
     let zValue = event.acceleration.z;
-    let totAcc = (xValue + yValue + zValue);
-    //let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2);
+    //let totAcc = (xValue + yValue + zValue);
+    let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2);
   
     totAcc = Math.abs(totAcc);
 
@@ -38,7 +36,7 @@ function handleOrientation(event) {
     };
   };
   
-  var fn = generateScaleFunction(0, 13, 0.5, 0);
+  var fn = generateScaleFunction(0, 1000, 0.5, 0);
   var newAcc = fn(totAcc);
   
   let yGravAcc = event.accelerationIncludingGravity.y;
@@ -121,9 +119,9 @@ function handleOrientation(event) {
   var context = new AudioContext();
   oscillator = context.createOscillator();
   oscillator2 = context.createOscillator();
-  oscillator.frequency.value = 480;
-  oscillator2.frequency.value = 247;
-  oscillator2.type = "square";
+  oscillator.frequency.value = 380;
+  oscillator2.frequency.value = 157;
+  oscillator2.type = "sine";
   
   oscillator.start();
   oscillator2.start();
