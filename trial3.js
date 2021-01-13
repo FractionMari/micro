@@ -36,9 +36,9 @@ function updateFieldIfNotNull2(fieldName, value, precision=10){
 function handleMotion(event) {
 
 
-  let xValue = event.accelerationIncludingGravity.x;
-  let yValue = event.accelerationIncludingGravity.y;
-  let zValue = event.accelerationIncludingGravity.z;
+  let xValue = event.acceleration.x;
+  let yValue = event.acceleration.y;
+  let zValue = event.acceleration.z;
 
 // Calculating the vector sum of the 3 axises:
 let totAcc = (xValue + yValue + zValue);
@@ -53,6 +53,15 @@ let totAcc = (xValue + yValue + zValue);
   
   // totAcc = Math.abs(totAcc);
 //  totAcc = Math.floor(totAcc);
+
+
+  setTimeout(function(){
+    let totAcc2 = totAcc.toFixed(2); 
+  }, 100);
+    
+
+
+
 //Scaling the incoming number
  function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
   var offset = newMin - prevMin,
@@ -70,7 +79,10 @@ let yGravAcc = event.accelerationIncludingGravity.y;
   
 
   updateFieldIfNotNull('Accelerometer_totAcc', totAcc, 2);
-  updateFieldIfNotNull2('Accelerometer_gx2', totAcc, 2);
+  updateFieldIfNotNull('Accelerometer_gx2', totAcc2, 2);
+
+
+
 
   //updateFieldIfNotNull('Accelerometer_gy2', event.accelerationIncludingGravity.y);
   //updateFieldIfNotNull('Accelerometer_gz2', event.accelerationIncludingGravity.z);
@@ -95,11 +107,14 @@ let yGravAcc = event.accelerationIncludingGravity.y;
   updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
   volume.gain.value = newAcc;
-  let accFrame = document.getElementById("Accelerometer_totAcc");
-  let nextFrame = document.getElementById("Accelerometer_gx2");
+/*   let accFrame = document.getElementById("Accelerometer_totAcc");
+  let nextFrame = document.getElementById("Accelerometer_gx2"); */
+
 
   //let diffFrame = (accFrame - nextFrame);
-  updateFieldIfNotNull('Diff_frame', nextFrame, 2);
+    let diffFrame = (totAcc - totAcc2);
+
+  updateFieldIfNotNull('Diff_frame', diffFrame, 2);
 
 
   // Rotation to control oscillator pitch
