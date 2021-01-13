@@ -55,11 +55,9 @@ var newAcc = fn(totAcc);
 let yGravAcc = event.accelerationIncludingGravity.y;
 
   
-  updateFieldIfNotNull('Accelerometer_gx', totAcc);
-  updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
-  updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
-  updateFieldIfNotNull('Accelerometer_gx2', totAcc, 200);
+updateFieldIfNotNull('Accelerometer_totAcc', totAcc);
+  updateFieldIfNotNull('Accelerometer_gx2', totAcc, 2);
 
   //updateFieldIfNotNull('Accelerometer_gy2', event.accelerationIncludingGravity.y);
   //updateFieldIfNotNull('Accelerometer_gz2', event.accelerationIncludingGravity.z);
@@ -72,12 +70,16 @@ let yGravAcc = event.accelerationIncludingGravity.y;
   // updateFieldIfNotNull('Event_acc', (totAcc(eventCount + 1)) - (totAcc(eventCount)));
   //updateFieldIfNotNull('Samples_acc', samplesAcc);
 
-  updateFieldIfNotNull('Accelerometer_i', event.interval, 4);
+  updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
 
   updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
   updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
   updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
   incrementEventCount();
+
+  updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
+  updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
+  updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
   volume.gain.value = newAcc;
   
