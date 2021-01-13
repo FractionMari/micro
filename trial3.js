@@ -16,8 +16,6 @@ function handleOrientation(event) {
 function incrementEventCount(){
   let counterElement = document.getElementById("num-observed-events")
   let eventCount = parseInt(counterElement.innerHTML)
- // counterElement.innerHTML = totAcc(eventCount + 1) - totAcc(eventCount);
- // counterElement.innerHTML = totAcc;
    counterElement.innerHTML = eventCount + 1;
 }
 
@@ -61,7 +59,8 @@ let yGravAcc = event.accelerationIncludingGravity.y;
   updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
   updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
-  updateFieldIfNotNull('Accelerometer_gx2', event.accelerationIncludingGravity.x + event);
+  updateFieldIfNotNull('Accelerometer_gx2', event.accelerationIncludingGravity.x + eventCount);
+
   //updateFieldIfNotNull('Accelerometer_gy2', event.accelerationIncludingGravity.y);
   //updateFieldIfNotNull('Accelerometer_gz2', event.accelerationIncludingGravity.z);
 
