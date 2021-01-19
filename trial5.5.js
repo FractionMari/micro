@@ -21,7 +21,7 @@
     oscillator2.start();
     
     volume = context.createGain();
-    volume.gain.value = 0.5;
+    //volume.gain.value = 0.5;
     oscillator.connect(volume); 
     oscillator2.connect(volume); 
     volume.connect(context.destination);  
@@ -66,7 +66,7 @@ class LowPassFilterData {
   accl.onreading = () => {
 
     // trying to avoid the "clicks" when changing volume
-    volume.gain.setTargetAtTime(0, context.currentTime, 0.015)
+    //volume.gain.setTargetAtTime(0, context.currentTime, 0.015)
 
     let xValue = accl.x;
     let yValue = accl.y;
