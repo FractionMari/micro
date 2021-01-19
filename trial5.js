@@ -36,8 +36,14 @@ class LowPassFilterData {
     let totAcc = Math.sqrt(Math.abs(xValue^2) + Math.abs(yValue^2) + Math.abs(zValue^2));
     filter.update(accl); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', accl.x );
+    updateFieldIfNotNull('filter_x', filter.x );
+
     updateFieldIfNotNull('test_y', accl.y );
+    updateFieldIfNotNull('filter_x', filter.x );
+
     updateFieldIfNotNull('test_z', accl.z );
+    updateFieldIfNotNull('filter_x', filter.x );
+
     updateFieldIfNotNull('total_acc', totAcc );
     console.log(`Isolated gravity (${filter.x}, ${filter.y}, ${filter.z})`);
   }
