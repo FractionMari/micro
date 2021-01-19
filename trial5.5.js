@@ -45,7 +45,7 @@ class LowPassFilterData {
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
 
     let diffAcc = totAcc - totFilter;
-    diffAcc = Math.abs(diffAcc);
+   // diffAcc = Math.abs(diffAcc);
 
     filter.update(accl); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', accl.x );
