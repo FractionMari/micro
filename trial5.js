@@ -11,24 +11,20 @@ class LowPassFilterData {
       this.bias = bias;
     }
   
-/*     update(reading) {
+    update(reading) {
       this.x = this.x * this.bias + reading.x * (1 - this.bias);
       this.y = this.y * this.bias + reading.y * (1 - this.bias);
       this.z = this.z * this.bias + reading.z * (1 - this.bias);
-    } */
+    }
 
     // removing the filter, but trying to preserve the delay of updated frames
-    update(reading) {
-        this.x = reading.x * (1 - this.bias);
-        this.y = reading.y * (1 - this.bias);
-        this.z = reading.y * (1 - this.bias);
-      }
+
   };
   
   const accl = new Accelerometer({ frequency: 20 });
                 
   // Isolate gravity with low-pass filter.
-  const filter = new LowPassFilterData(accl, 0.8);
+  const filter = new LowPassFilterData(accl);
 
 
 
