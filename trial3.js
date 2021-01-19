@@ -5,6 +5,8 @@
 // en verdi som er 0 hvis telefonen ligger stille, og gi et positivt tall
 // som øker avhengig av hvor du mye beveger den. Men det er kanskje det du
 // har gjort? : 
+
+// problemet her er at jeg får NAN når jeg bruker sqrt av accelerelometer inkl. gravity, og resten av regnestykket får jeg ikke helt til.
  
 function handleOrientation(event) {
   updateFieldIfNotNull('Orientation_a', event.alpha);
