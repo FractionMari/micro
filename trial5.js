@@ -23,15 +23,17 @@ class LowPassFilterData {
   // Isolate gravity with low-pass filter.
   const filter = new LowPassFilterData(accl, 0.8);
 
-  let xValue = filter.x;
-  let yValue = filter.y;
-  let zValue = filter.z;
 
-  let totAcc = Math.sqrt(Math.abs(xValue^2) + Math.abs(yValue^2) + Math.abs(zValue^2));
 
 
   
   accl.onreading = () => {
+
+    let xValue = filter.x;
+    let yValue = filter.y;
+    let zValue = filter.z;
+  
+    let totAcc = Math.sqrt(Math.abs(xValue^2) + Math.abs(yValue^2) + Math.abs(zValue^2));
     filter.update(accl); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', filter.x );
     updateFieldIfNotNull('test_y', filter.y );
