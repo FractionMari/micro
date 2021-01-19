@@ -39,10 +39,10 @@ class LowPassFilterData {
     updateFieldIfNotNull('filter_x', filter.x );
 
     updateFieldIfNotNull('test_y', accl.y );
-    updateFieldIfNotNull('filter_x', filter.x );
+    updateFieldIfNotNull('filter_y', filter.y );
 
     updateFieldIfNotNull('test_z', accl.z );
-    updateFieldIfNotNull('filter_x', filter.x );
+    updateFieldIfNotNull('filter_z', filter.z );
 
     updateFieldIfNotNull('total_acc', totAcc );
     console.log(`Isolated gravity (${filter.x}, ${filter.y}, ${filter.z})`);
