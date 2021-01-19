@@ -77,7 +77,7 @@ class LowPassFilterData {
     return Math.min(Math.max(min, +val), max);
   }
 
-  newAcc = (clamp(0.1, 0.5, newAcc));
+ // newAcc = (clamp(0.1, 0.5, newAcc));
 
     // volume control:
     volume.gain.value = newAcc;
@@ -100,8 +100,8 @@ class LowPassFilterData {
     var context = new AudioContext();
     oscillator = context.createOscillator();
     oscillator2 = context.createOscillator();
-    oscillator.frequency.value = 380;
-    oscillator2.frequency.value = 280;
+    oscillator.frequency.value = 250;
+    oscillator2.frequency.value = 125;
     oscillator2.type = "sine";
     
     oscillator.start();
