@@ -16,7 +16,7 @@ function handleOrientation(event) {
     counterElement.innerHTML = eventCount + 1;
   }
   
-  function updateFieldIfNotNull(fieldName, value, precision=10){
+  function updateFieldIfNotNull(fieldName, value, precision=2){
     if (value != null)
       document.getElementById(fieldName).innerHTML = value.toFixed(precision);
   }
@@ -76,7 +76,7 @@ function handleOrientation(event) {
     // Rotation to control oscillator pitch
 
       
-  let pitchWheel = event.alptha;
+  let pitchWheel = event.alpha;
   pitchWheel = pitchWheel + 180;
 
     oscillator.frequency.value = pitchWheel;
@@ -138,7 +138,7 @@ function handleOrientation(event) {
   oscillator2 = context.createOscillator();
   oscillator.frequency.value = 380;
   oscillator2.frequency.value = 157;
-  oscillator2.type = "sqaure";
+  oscillator2.type = "square";
   
   oscillator.start();
   oscillator2.start();
