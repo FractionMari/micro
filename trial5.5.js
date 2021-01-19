@@ -65,6 +65,9 @@ class LowPassFilterData {
 
   accl.onreading = () => {
 
+    // trying to avoid the "clicks" when changing volume
+    volume.gain.setTargetAtTime(0, context.currentTime, 0.015)
+
     let xValue = accl.x;
     let yValue = accl.y;
     let zValue = accl.z;
@@ -112,6 +115,7 @@ class LowPassFilterData {
   }
 
 newAcc = (clamp(0.1, 0.5, newAcc));
+
 
     // volume control:
     volume.gain.value = newAcc;
