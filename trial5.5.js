@@ -13,7 +13,7 @@
     var context = new AudioContext();
     oscillator = context.createOscillator();
     oscillator2 = context.createOscillator();
-    oscillator.frequency.value = 400;
+    oscillator.frequency.value = 300;
     oscillator2.frequency.value = 200;
     oscillator2.type = "sine";
     
@@ -58,7 +58,7 @@ class LowPassFilterData {
 
   };
   
-  const accl = new Accelerometer({ frequency: 100 });
+  const accl = new Accelerometer({ frequency: 5 });
                 
   // Isolate gravity with low-pass filter.
   const filter = new LowPassFilterData(accl, 0.8);
