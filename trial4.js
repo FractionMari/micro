@@ -29,13 +29,13 @@ function handleOrientation(event) {
   
   function handleMotion(event) {
   
-    let xValue = event.acceleration.x;
-    let yValue = event.acceleration.y;
-    let zValue = event.acceleration.z;
-    let totAcc = (xValue + yValue + zValue);
+    let xValue = event.accelerationIncludingGravity.x; //event.acceleration.x;
+    let yValue = event.accelerationIncludingGravity.y; //event.acceleration.y;
+    let zValue = event.accelerationIncludingGravity.z //event.acceleration.z;
+   // let totAcc = (xValue + yValue + zValue);
     
 // When using this method, I get values that are "Not a Number".
-    //let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2);
+    let totAcc = Math.sqrt(Math.abs(xValue^2) + Math.abs(yValue^2) + Math.abs(zValue^2));
   
     totAcc = Math.abs(totAcc);
 
