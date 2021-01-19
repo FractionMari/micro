@@ -26,6 +26,8 @@ class LowPassFilterData {
   accl.onreading = () => {
     filter.update(accl); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', filter.x );
+    updateFieldIfNotNull('test_y', filter.y );
+    updateFieldIfNotNull('test_z', filter.z );
     console.log(`Isolated gravity (${filter.x}, ${filter.y}, ${filter.z})`);
   }
   
