@@ -8,6 +8,12 @@ function handleOrientation(event) {
     updateFieldIfNotNull('Orientation_b', event.beta);
     updateFieldIfNotNull('Orientation_g', event.gamma);
     incrementEventCount();
+
+    // Rotation to control oscillator pitch
+    let pitchWheel = event.beta;
+    pitchWheel = pitchWheel + 180;
+    oscillator.frequency.value = pitchWheel;
+    oscillator2.frequency.value = pitchWheel - 13;
   }
   
   function incrementEventCount(){
@@ -71,17 +77,6 @@ function handleOrientation(event) {
     incrementEventCount();
   
     volume.gain.value = newAcc;
-    
-
-    // Rotation to control oscillator pitch
-
-      
-  let pitchWheel = event.alpha;
-  pitchWheel = pitchWheel + 180;
-
-    oscillator.frequency.value = pitchWheel;
-    oscillator2.frequency.value = pitchWheel - 13;
-  
   }
   
   let is_running = false;
