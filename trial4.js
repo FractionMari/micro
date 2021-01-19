@@ -48,7 +48,7 @@ function handleOrientation(event) {
     };
   };
   
-  var fn = generateScaleFunction(2.45, 13, 0.5, 0);
+  var fn = generateScaleFunction(2.4, 13, 0.5, 0);
   var newAcc = fn(totAcc);
 
   function clamp(min, max, val) {
