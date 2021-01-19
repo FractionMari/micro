@@ -21,6 +21,7 @@
     oscillator2.start();
     
     volume = context.createGain();
+    volume.gain.value = newAcc;
     //volume.gain.value = 0.5;
     oscillator.connect(volume); 
     oscillator2.connect(volume); 
@@ -58,7 +59,7 @@ class LowPassFilterData {
 
   };
   
-  const accl = new Accelerometer({ frequency: 5 });
+  const accl = new Accelerometer({ frequency: 20 });
                 
   // Isolate gravity with low-pass filter.
   const filter = new LowPassFilterData(accl, 0.8);
@@ -118,7 +119,7 @@ newAcc = (clamp(0.1, 0.5, newAcc));
 
 
     // volume control:
-    volume.gain.value = newAcc;
+
 
     updateFieldIfNotNull('volume_acc', newAcc );
 
