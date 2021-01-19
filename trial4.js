@@ -29,9 +29,9 @@ function handleOrientation(event) {
   
   function handleMotion(event) {
   
-    let xValue = event.accelerationIncludingGravity.x; //event.acceleration.x;
-    let yValue = event.accelerationIncludingGravity.y; //event.acceleration.y;
-    let zValue = event.accelerationIncludingGravity.z //event.acceleration.z;
+    let xValue = event.rotationRate.alpha; //event.accelerationIncludingGravity.x; //event.acceleration.x;
+    let yValue = event.rotationRate.beta; //event.accelerationIncludingGravity.y; //event.acceleration.y;
+    let zValue = event.rotationRate.gamma; //event.accelerationIncludingGravity.z; //event.acceleration.z;
    // let totAcc = (xValue + yValue + zValue);
     
 // When using this method, I get values that are "Not a Number".
@@ -133,7 +133,7 @@ function handleOrientation(event) {
   oscillator2 = context.createOscillator();
   oscillator.frequency.value = 380;
   oscillator2.frequency.value = 157;
-  oscillator2.type = "square";
+  oscillator2.type = "sine";
   
   oscillator.start();
   oscillator2.start();
