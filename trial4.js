@@ -129,7 +129,7 @@ function handleOrientation(event) {
   oscillator2 = context.createOscillator();
   oscillator.frequency.value = 380;
   oscillator2.frequency.value = 157;
-  oscillator2.type = "sine";
+  oscillator2.type = "sqaure";
   
   oscillator.start();
   oscillator2.start();
