@@ -39,8 +39,12 @@ class LowPassFilterData {
     let yFilter = filter.y;
     let zFilter = filter.z;
   
-    let totAcc = Math.sqrt(Math.abs(xValue^2) + Math.abs(yValue^2) + Math.abs(zValue^2));
-    let totFilter = Math.sqrt(Math.abs(xFilter^2) + Math.abs(yFilter^2) + Math.abs(zFilter^2));
+/*     let totAcc = Math.sqrt(Math.abs(xValue^2) + Math.abs(yValue^2) + Math.abs(zValue^2));
+    let totFilter = Math.sqrt(Math.abs(xFilter^2) + Math.abs(yFilter^2) + Math.abs(zFilter^2)); */
+
+    let totAcc = Math.sqrt(xValue^2 + yValue^2 + zValue^2);
+    let totFilter = Math.sqrt(xFilter^2 + yFilter^2 + zFilter^2);
+
     let diffAcc = totAcc - totFilter;
 
     filter.update(accl); // Pass latest values through filter.
