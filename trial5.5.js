@@ -24,7 +24,7 @@
     volume.gain.value = newAcc;
     //volume.gain.value = 0.5;
     oscillator.connect(volume); 
-    oscillator2.connect(volume); 
+    //oscillator2.connect(volume); 
     volume.connect(context.destination);  
     
 
