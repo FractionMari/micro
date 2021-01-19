@@ -13,7 +13,7 @@ function handleOrientation(event) {
     let pitchWheel = event.beta;
     pitchWheel = pitchWheel + 180;
     oscillator.frequency.value = pitchWheel;
-    oscillator2.frequency.value = pitchWheel - 13;
+    oscillator2.frequency.value = pitchWheel / 2;
   }
   
   function incrementEventCount(){
@@ -48,7 +48,7 @@ function handleOrientation(event) {
     };
   };
   
-  var fn = generateScaleFunction(0, 10, 0.5, 0);
+  var fn = generateScaleFunction(2.45, 13, 0.5, 0);
   var newAcc = fn(totAcc);
 
   function clamp(min, max, val) {
