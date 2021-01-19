@@ -1,6 +1,40 @@
 // Prøver med en annen tutorial fra https://w3c.github.io/motion-sensors/
 // prøver å kombinere dette med den trial4.js
 
+  ////// OSCIllATOR ///////
+  
+    // This is the first oscillator
+    var oscillator;
+    // creating a second oscillator
+    var oscillator2;  
+    var volume;
+
+    document.querySelector("#button1").addEventListener('click', function() {
+    var context = new AudioContext();
+    oscillator = context.createOscillator();
+    oscillator2 = context.createOscillator();
+    oscillator.frequency.value = 300;
+    oscillator2.frequency.value = 150;
+    oscillator2.type = "sine";
+    
+    oscillator.start();
+    oscillator2.start();
+    
+    volume = context.createGain();
+    volume.gain.value = 0.5;
+    oscillator.connect(volume); 
+    oscillator2.connect(volume); 
+    volume.connect(context.destination);  
+    
+
+    });
+    
+    // stop button of the oscillator
+    
+    document.querySelector("#button2").addEventListener('click', function() {
+    oscillator.stop();
+    oscillator2.stop();
+    });
 
 function updateFieldIfNotNull(fieldName, value, precision=2){
     if (value != null)
@@ -88,36 +122,4 @@ newAcc = (clamp(0.1, 0.5, newAcc));
   }
   accl.start();
 
-  ////// OSCIllATOR ///////
-  
-    // This is the first oscillator
-    var oscillator;
-    // creating a second oscillator
-    var oscillator2;  
-    var volume;
 
-    document.querySelector("#button1").addEventListener('click', function() {
-    var context = new AudioContext();
-    oscillator = context.createOscillator();
-    oscillator2 = context.createOscillator();
-    oscillator.frequency.value = 300;
-    oscillator2.frequency.value = 150;
-    oscillator2.type = "sine";
-    
-    oscillator.start();
-    oscillator2.start();
-    
-    volume = context.createGain();
-    volume.gain.value = 0.5;
-    oscillator.connect(volume); 
-    oscillator2.connect(volume); 
-    volume.connect(context.destination);  
-    
-    // playing = 1;
-    });
-    
-    
-    document.querySelector("#button2").addEventListener('click', function() {
-    oscillator.stop();
-    oscillator2.stop();
-    });
