@@ -70,14 +70,14 @@ class LowPassFilterData {
     };
   };
   
-  var fn = generateScaleFunction(0, 2, 0.5, 0);
+  var fn = generateScaleFunction(0, 2, 0.5, 0.1);
   var newAcc = fn(diffAcc);
 
   function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
   }
 
-  newAcc = (clamp(0, 0.5, newAcc));
+  newAcc = (clamp(0.1, 0.5, newAcc));
 
     // volume control:
     volume.gain.value = newAcc;
