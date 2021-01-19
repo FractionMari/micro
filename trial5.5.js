@@ -21,7 +21,7 @@
     oscillator2.start();
     
     volume = context.createGain();
-    volume.gain.value = newAcc;
+
     //volume.gain.value = 0.5;
     oscillator.connect(volume); 
     //oscillator2.connect(volume); 
@@ -116,6 +116,7 @@ class LowPassFilterData {
   }
 
 newAcc = (clamp(0.1, 0.5, newAcc));
+volume.gain.value = newAcc;
 
 
     // volume control:
