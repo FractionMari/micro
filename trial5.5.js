@@ -46,6 +46,7 @@ class LowPassFilterData {
     let totFilter = Math.sqrt(Math.abs(xFilter^2) + Math.abs(yFilter^2) + Math.abs(zFilter^2));
 
     let diffAcc = totAcc - totFilter;
+    diffAcc = Math.abs(diffAcc);
 
     filter.update(accl); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', accl.x );
@@ -61,8 +62,28 @@ class LowPassFilterData {
     updateFieldIfNotNull('total_filter', totFilter );
     updateFieldIfNotNull('diff_acc', diffAcc );
 
+      //Scaling the incoming number
+   function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
+    var offset = newMin - prevMin,
+        scale = (newMax - newMin) / (prevMax - prevMin);
+    return function (x) {
+        return offset + scale * x;
+    };
+  };
+  
+  var fn = generateScaleFunction(0, 1, 0.7, 0);
+  var newAcc = fn(diffAcc);
+
+  function clamp(min, max, val) {
+    return Math.min(Math.max(min, +val), max);
+  }
+
+  newAcc = (clamp(0, 0.5, newAcc));
+
     // volume control:
-    volume.gain.value = diffAcc;
+    volume.gain.value = newAcc;
+
+    updateFieldIfNotNull('volume_acc', newAcc );
 
     // console.log(`Isolated gravity (${filter.x}, ${filter.y}, ${filter.z})`);
   }
