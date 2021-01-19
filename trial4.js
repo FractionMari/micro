@@ -1,4 +1,8 @@
 
+// Last changes to this version was on 19 January 2021
+
+// In this version I am trying out some effects and variables to the synth and fine tuning the accelerometer volume
+
 function handleOrientation(event) {
     updateFieldIfNotNull('Orientation_a', event.alpha);
     updateFieldIfNotNull('Orientation_b', event.beta);
@@ -46,8 +50,7 @@ function handleOrientation(event) {
   }
 
   newAcc = (clamp(0, 0.5, newAcc));
-  
-  let pitchWheel = event.gamma;
+
   
     
     updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
@@ -69,7 +72,13 @@ function handleOrientation(event) {
   
     volume.gain.value = newAcc;
     
+
     // Rotation to control oscillator pitch
+
+      
+  let pitchWheel = event.alptha;
+  pitchWheel = pitchWheel + 180;
+
     oscillator.frequency.value = pitchWheel;
     oscillator2.frequency.value = pitchWheel - 13;
   
