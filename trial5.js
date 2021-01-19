@@ -17,10 +17,11 @@ class LowPassFilterData {
       this.z = this.z * this.bias + reading.z * (1 - this.bias);
     } */
 
+    // removing the filter, but trying to preserve the delay of updated frames
     update(reading) {
-        this.x = (1 - this.bias);
-        this.y = (1 - this.bias);
-        this.z = (1 - this.bias);
+        this.x = reading.x * (1 - this.bias);
+        this.y = reading.y * (1 - this.bias);
+        this.z = reading.y * (1 - this.bias);
       }
   };
   
