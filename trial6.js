@@ -73,7 +73,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   }
 
 // LowPassFilterData(reading, bias)
-  
+
 class LowPassFilterData {
   constructor(reading) {
     Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
@@ -117,8 +117,8 @@ class LowPassFilterData {
     let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
 
-    let diffAcc = totAcc - totFilter;
-   // diffAcc = Math.abs(diffAcc);
+    let diffAcc = this.totAcc - this.totFilter;
+
 
     filter.update(accl); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', accl.x );
@@ -135,7 +135,7 @@ class LowPassFilterData {
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
 
-      //Scaling the incoming number
+  //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
     var offset = newMin - prevMin,
         scale = (newMax - newMin) / (prevMax - prevMin);
