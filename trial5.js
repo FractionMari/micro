@@ -18,9 +18,9 @@ class LowPassFilterData {
     } */
   // experimenting
     update(reading) {
-      this.x = this.x + (this.x - 1);
-      this.y = this.y + (this.y - 1);
-      this.z = this.z + (this.z - 1);
+      this.x = this.x;
+      this.y = this.y;
+      this.z = this.z;
     }
 
 /*     update(reading) {
