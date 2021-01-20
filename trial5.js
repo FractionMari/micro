@@ -73,7 +73,7 @@ class LowPassFilterData2 {
     let diffAcc = totAcc - totFilter;
 
     filter.update(accl); // Pass latest values through filter.
-    filter2.update(filter); // Pass latest values through filter.
+    filter2.update(accl); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', filter.x );
     updateFieldIfNotNull('filter_x', filter2.x );
 
