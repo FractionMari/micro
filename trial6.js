@@ -4,35 +4,49 @@
 // Fikk ikke dette helt til, det er en crackling sound på volumet som jeg prøvde å fikse.
 // Prøver videre med å spille av audio i stedet for oscillator.
 
+    // Method 1 for loading sound
+    function loadSound(soundfile) {
+        var request = new XMLHttpRequest();
+        request.open('GET', soundfile, true);
+        request.responseType = 'arraybuffer';
+        // Decode asynchronously
+        request.onload = function() {
+          context.decodeAudioData(request.response, function(buffer) {
+            player.buffer = buffer;
+            player.start();
+          }, onError);
+        }
+        request.send();
+        
+      }
+      function onError(){
+        console.log("The file could not be loaded");
+      }
 
-
-
+    var AudioContext = window.AudioContext || window.webkitAudioContext;  
     var volume;
     var newAcc;
-    var player;
+    var context, player;
     var playing = 0;
 
     document.querySelector("#button1").addEventListener('click', function() {
-    var context = new AudioContext();
+    context = new AudioContext();
     volume = context.createGain();
     // create a sound input node from an audio sample
     player = context.createBufferSource();
     player.loop = true;
     // loading the sound
     loadSound("jazzkos.mp3");
- 
-    
-
-/* 
+    /* 
     var volumeslider = document.getElementById("volume_acc");
     volumeslider.oninput = function() {
     volume.gain.value = this.value;
     } */
-    
+    volume.gain.value = 0.5;
     player.connect(volume);    
     volume.connect(context.destination);  
     playing = 1;
-    volume.gain.value = 0.5;
+    
     
 
     });
@@ -45,24 +59,7 @@
 
     });
 
-    // Method 1 for loading sound
-  function loadSound(soundfile) {
-    var request = new XMLHttpRequest();
-    request.open('GET', soundfile, true);
-    request.responseType = 'arraybuffer';
-    // Decode asynchronously
-    request.onload = function() {
-      context.decodeAudioData(request.response, function(buffer) {
-        player.buffer = buffer;
-        player.start();
-      }, onError);
-    }
-    request.send();
-    
-  }
-  function onError(){
-    console.log("The file could not be loaded");
-  }
+
 
 function updateFieldIfNotNull(fieldName, value, precision=2){
     if (value != null)
