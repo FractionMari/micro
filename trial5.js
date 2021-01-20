@@ -53,7 +53,7 @@ class LowPassFilterData2 {
   // Isolate gravity with low-pass filter.
   const filter = new LowPassFilterData(accl, 0.8);
 
-  const filter2 = new LowPassFilterData2(filter);
+  const filter2 = new LowPassFilterData2(accl);
 
   
   accl.onreading = () => {
@@ -73,7 +73,7 @@ class LowPassFilterData2 {
     let diffAcc = totAcc - totFilter;
 
     filter.update(accl); // Pass latest values through filter.
-    filter2.update(accl); // Pass latest values through filter.
+    filter2.update(filter); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', filter.x );
     updateFieldIfNotNull('filter_x', filter2.x );
 
