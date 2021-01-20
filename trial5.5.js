@@ -1,6 +1,11 @@
 // Prøver med en annen tutorial fra https://w3c.github.io/motion-sensors/
 // prøver å kombinere dette med den trial4.js
 
+volumeslider.oninput = function() {
+  volume.gain.value = this.value;
+  console.log(this.value);
+}  
+
   ////// OSCIllATOR ///////
   
     // This is the first oscillator
