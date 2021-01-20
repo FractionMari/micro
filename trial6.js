@@ -10,6 +10,7 @@
     var volume;
     var newAcc;
     var player;
+    var playing = 0;
 
     document.querySelector("#button1").addEventListener('click', function() {
     var context = new AudioContext();
