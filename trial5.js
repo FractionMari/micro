@@ -34,7 +34,7 @@ class LowPassFilterData2 {
   };
 
   // LowPassFilterData2 experiment
-/* class LowPassFilterData {
+class LowPassFilterData {
     constructor(reading) {
       Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
     }
@@ -45,13 +45,13 @@ class LowPassFilterData2 {
     this.z = reading.z;
   }
 
-}; */
+};
   
   
   const accl = new Accelerometer({ frequency: 20 });
                 
   // Isolate gravity with low-pass filter.
-  //const filter = new LowPassFilterData(accl);
+  const filter = new LowPassFilterData(accl);
 
   const filter2 = new LowPassFilterData2(accl, 0.8);
 
@@ -73,6 +73,7 @@ class LowPassFilterData2 {
     let diffAcc = totAcc - totFilter;
 
     filter.update(accl); // Pass latest values through filter.
+    filter2.update(filter); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', filter.x );
     updateFieldIfNotNull('filter_x', filter2.x );
 
