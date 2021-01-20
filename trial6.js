@@ -75,16 +75,20 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 // LowPassFilterData(reading, bias)
   
 class LowPassFilterData {
-    constructor(reading, bias) {
-      Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
-      this.bias = bias;
-    }
+  constructor(reading) {
+    Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
+  }
   
     update(reading) {
+      this.x = reading.x;
+      this.y = reading.y;
+      this.z = reading.z;
+    }
+/*     update(reading) {
       this.x = this.x * this.bias + reading.x * (1 - this.bias);
       this.y = this.y * this.bias + reading.y * (1 - this.bias);
       this.z = this.z * this.bias + reading.z * (1 - this.bias);
-    }
+    } */
 
 
 
@@ -93,7 +97,7 @@ class LowPassFilterData {
   const accl = new Accelerometer({ frequency: 50 });
                 
   // Isolate gravity with low-pass filter.
-  const filter = new LowPassFilterData(accl, 0.8);
+  const filter = new LowPassFilterData(accl);
 
   accl.onreading = () => {
 
