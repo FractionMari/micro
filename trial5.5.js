@@ -109,6 +109,7 @@ class LowPassFilterData {
     updateFieldIfNotNull('total_acc', totAcc );
     updateFieldIfNotNull('total_filter', totFilter );
     updateFieldIfNotNull('diff_acc', diffAcc );
+    updateFieldIfNotNull('volume_acc', newAcc );
 
       //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
@@ -134,7 +135,7 @@ newAcc = (clamp(0.1, 0.5, newAcc));
 
 
 
-    updateFieldIfNotNull('volume_acc', newAcc );
+    
 
     // console.log(`Isolated gravity (${filter.x}, ${filter.y}, ${filter.z})`);
 
