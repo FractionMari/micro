@@ -35,14 +35,14 @@ class LowPassFilterData {
 
   // LowPassFilterData2 experiment
 class LowPassFilterData2 {
-    constructor(reading2) {
-      Object.assign(this, { x: reading2.x, y: reading2.y, z: reading2.z });
+    constructor(reading) {
+      Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
     }
 
   update(reading2) {
-    this.x = reading2.x;
-    this.y = reading2.y;
-    this.z = reading2.z;
+    this.x = reading.x;
+    this.y = reading.y;
+    this.z = reading.z;
   }
 
 };
