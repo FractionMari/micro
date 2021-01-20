@@ -5,13 +5,13 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   }
 
 // LowPassFilterData(reading, bias)
-/* class LowPassFilterData {
+class LowPassFilterData {
     constructor(reading, bias) {
       Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
       this.bias = bias;
-    } */
+    }
 
-class LowPassFilterData {
+/* class LowPassFilterData {
     constructor(reading, bias) {
       Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
       this.bias = bias;
@@ -21,13 +21,13 @@ class LowPassFilterData {
       this.x = this.x - 1;
       this.y = this.y - 1;
       this.z = this.z - 1;
-    }
+    } */
 
-/*     update(reading) {
+    update(reading) {
       this.x = this.x * this.bias + reading.x * (1 - this.bias);
       this.y = this.y * this.bias + reading.y * (1 - this.bias);
       this.z = this.z * this.bias + reading.z * (1 - this.bias);
-    } */
+    }
     
 
     // removing the filter, but trying to preserve the delay of updated frames
@@ -52,8 +52,8 @@ class LowPassFilterData {
     let yFilter = filter.y;
     let zFilter = filter.z;
   
-    let totAcc = Math.sqrt(Math.abs(xValue^2) + Math.abs(yValue^2) + Math.abs(zValue^2));
-    let totFilter = Math.sqrt(Math.abs(xFilter^2) + Math.abs(yFilter^2) + Math.abs(zFilter^2));
+    let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
+    let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
 
 
 
