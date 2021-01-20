@@ -5,6 +5,12 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   }
 
 // LowPassFilterData(reading, bias)
+/* class LowPassFilterData {
+    constructor(reading, bias) {
+      Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
+      this.bias = bias;
+    } */
+
 class LowPassFilterData {
     constructor(reading, bias) {
       Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
@@ -12,9 +18,9 @@ class LowPassFilterData {
     }
   
     update(reading) {
-      this.x = this.x;
-      this.y = this.y;
-      this.z = this.z;
+      this.x = this.x + 1;
+      this.y = this.y + 1;
+      this.z = this.z + 1;
     }
 
 /*     update(reading) {
