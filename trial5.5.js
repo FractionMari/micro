@@ -16,7 +16,7 @@
     var context = new AudioContext();
     oscillator = context.createOscillator();
     oscillator2 = context.createOscillator();
-    oscillator.frequency.value = 300;
+    oscillator.frequency.value = 400;
     oscillator2.frequency.value = 200;
     oscillator2.type = "sine";
     
@@ -25,12 +25,12 @@
     
     volume = context.createGain();
 
-    var volumeslider = document.getElementById("volume_acc");
+/*     var volumeslider = document.getElementById("volume_acc");
 
     volumeslider.oninput = function() {
     volume.gain.value = this.value;
-    }
-    //volume.gain.value = newAcc;
+    } */
+    volume.gain.value = document.getElementById("volume_acc");
 
 
     //volume.gain.value = 0.5;
