@@ -39,7 +39,7 @@ class LowPassFilterData2 {
       Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
     }
 
-  update(reading2) {
+  update(reading) {
     this.x = reading.x;
     this.y = reading.y;
     this.z = reading.z;
