@@ -119,7 +119,7 @@ class LowPassFilterData {
 
 newAcc = (clamp(0.1, 0.5, newAcc));
 // volume.gain.value = newAcc;
-
+var volumeslider = document.getElementById("volume");
 volumeslider.oninput = function() {
   volume.gain.value = this.value;
   console.log(this.value);
