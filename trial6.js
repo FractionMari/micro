@@ -1,8 +1,9 @@
-// Trial 6: går over til LYDFIL i stedet for oscillator.
+// Trial 6: 20. januar 2021 går over til LYDFIL i stedet for oscillator.
 // Prøver med en annen tutorial fra https://w3c.github.io/motion-sensors/
 // prøver å kombinere dette med den trial4.js
 // Fikk ikke dette helt til, det er en crackling sound på volumet som jeg prøvde å fikse.
 // Prøver videre med å spille av audio i stedet for oscillator.
+// det virker mye bedre, så neste steg blir å rydde opp i differencen mellom framesa.
 
     // Method 1 for loading sound
     function loadSound(soundfile) {
@@ -23,12 +24,14 @@
         console.log("The file could not be loaded");
       }
 
+    // Preparing the audio variables
     var AudioContext = window.AudioContext || window.webkitAudioContext;  
     var volume;
     var newAcc;
     var context, player;
     var playing = 0;
-
+    
+    // A button for playback of music track
     document.querySelector("#button1").addEventListener('click', function() {
     context = new AudioContext();
     volume = context.createGain();
@@ -37,21 +40,23 @@
     player.loop = true;
     // loading the sound
     loadSound("jazzkos.mp3");
-    /* 
-    var volumeslider = document.getElementById("volume_acc");
-    volumeslider.oninput = function() {
-    volume.gain.value = this.value;
-    } */
+    // Setting default volume value
     volume.gain.value = 0.5;
     player.connect(volume);    
     volume.connect(context.destination);  
     playing = 1;
+
+        /* 
+    var volumeslider = document.getElementById("volume_acc");
+    volumeslider.oninput = function() {
+    volume.gain.value = this.value;
+    } */
     
     
 
     });
     
-    // stop button of the oscillator
+    // stop button of the music player
     
     document.querySelector("#button2").addEventListener('click', function() {
         player.stop();
@@ -60,12 +65,14 @@
     });
 
 
+// function for updating values for sensor data
 
 function updateFieldIfNotNull(fieldName, value, precision=2){
     if (value != null)
       document.getElementById(fieldName).innerHTML = value.toFixed(precision);
   }
 
+// LowPassFilterData(reading, bias)
   
 class LowPassFilterData {
     constructor(reading, bias) {
