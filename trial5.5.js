@@ -12,7 +12,41 @@
     var volume;
     var newAcc;
 
+    document.querySelector("#button1").addEventListener('click', function() {
+    var context = new AudioContext();
+    oscillator = context.createOscillator();
+    oscillator2 = context.createOscillator();
+    oscillator.frequency.value = 300;
+    oscillator2.frequency.value = 200;
+    oscillator2.type = "sine";
     
+    oscillator.start();
+    oscillator2.start();
+    
+    volume = context.createGain();
+/* 
+    var volumeslider = document.getElementById("volume_acc");
+
+    volumeslider.oninput = function() {
+    volume.gain.value = this.value;
+    } */
+    volume.gain.value = newAcc;
+
+
+    //volume.gain.value = 0.5;
+    oscillator.connect(volume); 
+    //oscillator2.connect(volume); 
+    volume.connect(context.destination);  
+    
+
+    });
+    
+    // stop button of the oscillator
+    
+    document.querySelector("#button2").addEventListener('click', function() {
+    oscillator.stop();
+    oscillator2.stop();
+    });
 
 function updateFieldIfNotNull(fieldName, value, precision=2){
     if (value != null)
@@ -95,43 +129,6 @@ class LowPassFilterData {
 
 newAcc = (clamp(0.1, 0.5, newAcc));
 // volume.gain.value = newAcc;
-
-
-document.querySelector("#button1").addEventListener('click', function() {
-  var context = new AudioContext();
-  oscillator = context.createOscillator();
-  oscillator2 = context.createOscillator();
-  oscillator.frequency.value = 300;
-  oscillator2.frequency.value = 200;
-  oscillator2.type = "sine";
-  
-  oscillator.start();
-  oscillator2.start();
-  
-  volume = context.createGain();
-/* 
-  var volumeslider = document.getElementById("volume_acc");
-
-  volumeslider.oninput = function() {
-  volume.gain.value = this.value;
-  } */
-  volume.gain.value = newAcc;
-
-
-  //volume.gain.value = 0.5;
-  oscillator.connect(volume); 
-  //oscillator2.connect(volume); 
-  volume.connect(context.destination);  
-  
-
-  });
-  
-  // stop button of the oscillator
-  
-  document.querySelector("#button2").addEventListener('click', function() {
-  oscillator.stop();
-  oscillator2.stop();
-  });
 
 }  
 
