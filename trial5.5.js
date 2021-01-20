@@ -10,6 +10,7 @@
     // creating a second oscillator
     var oscillator2;  
     var volume;
+    var newAcc;
 
     document.querySelector("#button1").addEventListener('click', function() {
     var context = new AudioContext();
@@ -29,6 +30,7 @@
     volumeslider.oninput = function() {
     volume.gain.value = this.value;
     }
+    volume.gain.value = newAcc;
 
 
     //volume.gain.value = 0.5;
@@ -118,7 +120,7 @@ class LowPassFilterData {
   };
   
   var fn = generateScaleFunction(0, 2, 0.5, 0.1);
-  var newAcc = fn(diffAcc);
+  newAcc = fn(diffAcc);
 
   function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
@@ -129,7 +131,6 @@ newAcc = (clamp(0.1, 0.5, newAcc));
 
 }  
 
-    // volume control:
 
 
     updateFieldIfNotNull('volume_acc', newAcc );
