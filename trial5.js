@@ -16,11 +16,11 @@ class LowPassFilterData {
       Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
       this.bias = bias;
     } */
-  
+  // experimenting
     update(reading) {
-      this.x = this.x + (reading.x - 1);
-      this.y = this.y + (reading.y - 1);
-      this.z = this.z + (reading.z - 1);
+      this.x = this.x + (this.x - 1);
+      this.y = this.y + (this.y - 1);
+      this.z = this.z + (this.z - 1);
     }
 
 /*     update(reading) {
