@@ -144,7 +144,7 @@ class LowPassFilterData {
     };
   };
   
-  var fn = generateScaleFunction(0, 2, 0.5, 0.1);
+  var fn = generateScaleFunction(0, 1.5, 0.5, 0);
   newAcc = fn(diffAcc);
 
   function clamp(min, max, val) {
