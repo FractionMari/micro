@@ -1,3 +1,4 @@
+// Trial 6: går over til LYDFIL i stedet for oscillator.
 // Prøver med en annen tutorial fra https://w3c.github.io/motion-sensors/
 // prøver å kombinere dette med den trial4.js
 // Fikk ikke dette helt til, det er en crackling sound på volumet som jeg prøvde å fikse.
@@ -5,40 +6,32 @@
 
 
 
-  ////// OSCIllATOR ///////
-  
-    // This is the first oscillator
-    var oscillator;
-    // creating a second oscillator
-    var oscillator2;  
+
     var volume;
     var newAcc;
+    var player;
 
     document.querySelector("#button1").addEventListener('click', function() {
     var context = new AudioContext();
-    oscillator = context.createOscillator();
-    oscillator2 = context.createOscillator();
-    oscillator.frequency.value = 300;
-    oscillator2.frequency.value = 200;
-    oscillator2.type = "sine";
-    
-    oscillator.start();
-    oscillator2.start();
-    
     volume = context.createGain();
+    // create a sound input node from an audio sample
+    player = context.createBufferSource();
+    player.loop = true;
+    // loading the sound
+    loadSound("jazzkos.mp3");
+ 
+    
+
 /* 
     var volumeslider = document.getElementById("volume_acc");
-
     volumeslider.oninput = function() {
     volume.gain.value = this.value;
     } */
     
-
-
-    //volume.gain.value = 0.5;
-    oscillator.connect(volume); 
-    //oscillator2.connect(volume); 
+    player.connect(volume);    
     volume.connect(context.destination);  
+    playing = 1;
+    volume.gain.value = 0.5;
     
 
     });
@@ -46,9 +39,29 @@
     // stop button of the oscillator
     
     document.querySelector("#button2").addEventListener('click', function() {
-    oscillator.stop();
-    oscillator2.stop();
+        player.stop();
+        playing = 0;
+
     });
+
+    // Method 1 for loading sound
+  function loadSound(soundfile) {
+    var request = new XMLHttpRequest();
+    request.open('GET', soundfile, true);
+    request.responseType = 'arraybuffer';
+    // Decode asynchronously
+    request.onload = function() {
+      context.decodeAudioData(request.response, function(buffer) {
+        player.buffer = buffer;
+        player.start();
+      }, onError);
+    }
+    request.send();
+    
+  }
+  function onError(){
+    console.log("The file could not be loaded");
+  }
 
 function updateFieldIfNotNull(fieldName, value, precision=2){
     if (value != null)
@@ -139,7 +152,6 @@ volume.gain.value = newAcc;
 
     
 
-    // console.log(`Isolated gravity (${filter.x}, ${filter.y}, ${filter.z})`);
 
   accl.start();
 
