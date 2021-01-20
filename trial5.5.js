@@ -119,13 +119,11 @@ class LowPassFilterData {
 
 newAcc = (clamp(0.1, 0.5, newAcc));
 // volume.gain.value = newAcc;
-VolumeSample.prototype.changeVolume = function(element) {
-  var volume_slider = element.value;
-  var fraction = parseInt(element.value) / parseInt(element.max);
-  // Let's use an x*x curve (x-squared) since simple linear (x) does not
-  // sound as good.
-  this.volume.gain.value = fraction * fraction;
-};
+var volumeslider = document.getElementById("volume");
+volumeslider.oninput = function() {
+  volume.gain.value = this.value;
+  console.log(this.value);
+}  
 
     // volume control:
 
