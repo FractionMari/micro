@@ -39,15 +39,11 @@ class LowPassFilterData2 {
       Object.assign(this, { x1: reading2.x1, y1: reading2.y1, z1: reading2.z1 });
     }
 
-
   update(reading2) {
     this.x1 = reading2.x1;
     this.y1 = reading2.y1;
     this.z1 = reading2.z1;
   }
-
-
-
 
 };
   
@@ -55,12 +51,9 @@ class LowPassFilterData2 {
   const accl = new Accelerometer({ frequency: 20 });
                 
   // Isolate gravity with low-pass filter.
-  const filter = new LowPassFilterData(accl, bias);
+  const filter = new LowPassFilterData(accl, 0.8);
 
   const filter2 = new LowPassFilterData2(filter);
-
-
-
 
   
   accl.onreading = () => {
