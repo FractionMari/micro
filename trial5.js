@@ -10,7 +10,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
     } */
 
-class LowPassFilterData2 {
+class LowPassFilterData {
     constructor(reading, bias) {
       Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
       this.bias = bias;
@@ -34,7 +34,7 @@ class LowPassFilterData2 {
   };
 
   // LowPassFilterData2 experiment
-class LowPassFilterData {
+class LowPassFilterData2 {
     constructor(reading) {
       Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
     }
