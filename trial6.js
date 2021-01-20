@@ -83,7 +83,7 @@ class LowPassFilterData {
 
   };
   
-  const accl = new Accelerometer({ frequency: 20 });
+  const accl = new Accelerometer({ frequency: 50 });
                 
   // Isolate gravity with low-pass filter.
   const filter = new LowPassFilterData(accl, 0.8);
