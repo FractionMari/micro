@@ -15,19 +15,19 @@ class LowPassFilterData {
     constructor(reading, bias) {
       Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
       this.bias = bias;
-    }
+    } */
   
     update(reading) {
-      this.x = this.x - 1;
-      this.y = this.y - 1;
-      this.z = this.z - 1;
-    } */
+      this.x = this.x + (reading.x - 1);
+      this.y = this.y + (reading.y - 1);
+      this.z = this.z + (reading.z - 1);
+    }
 
-    update(reading) {
+/*     update(reading) {
       this.x = this.x * this.bias + reading.x * (1 - this.bias);
       this.y = this.y * this.bias + reading.y * (1 - this.bias);
       this.z = this.z * this.bias + reading.z * (1 - this.bias);
-    }
+    } */
     
 
     // removing the filter, but trying to preserve the delay of updated frames
