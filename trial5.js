@@ -40,7 +40,7 @@ class LowPassFilterData2 {
     }
 
 
-  update(reading) {
+  update(reading2) {
     this.x = reading2.x;
     this.y = reading2.y;
     this.z = reading2.z;
@@ -80,20 +80,20 @@ class LowPassFilterData2 {
     let diffAcc = totAcc - totFilter;
 
     filter.update(accl); // Pass latest values through filter.
-    updateFieldIfNotNull('test_x', accl.x );
-    updateFieldIfNotNull('filter_x', filter.x );
+    updateFieldIfNotNull('test_x', filter.x );
+    updateFieldIfNotNull('filter_x', filter2.x );
 
-    updateFieldIfNotNull('test_y', accl.y );
-    updateFieldIfNotNull('filter_y', filter.y );
+    updateFieldIfNotNull('test_y', filter.y );
+    updateFieldIfNotNull('filter_y', filter2.y );
 
-    updateFieldIfNotNull('test_z', accl.z );
-    updateFieldIfNotNull('filter_z', filter.z );
+    updateFieldIfNotNull('test_z', filter.z );
+    updateFieldIfNotNull('filter_z', filter2.z );
 
     updateFieldIfNotNull('total_acc', totAcc );
     updateFieldIfNotNull('total_filter', totFilter );
     updateFieldIfNotNull('diff_acc', diffAcc );
 
-    console.log(`Isolated gravity (${filter.x}, ${filter.y}, ${filter.z})`);
+
   }
   
   accl.start();
