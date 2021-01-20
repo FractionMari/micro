@@ -53,7 +53,7 @@ class LowPassFilterData2 {
   // Isolate gravity with low-pass filter.
   const filter = new LowPassFilterData(accl, 0.8);
 
-  const filter2 = new LowPassFilterData2(filter);
+  const filter2 = new LowPassFilterData2(accl);
 
   
   accl.onreading = () => {
