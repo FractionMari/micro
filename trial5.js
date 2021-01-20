@@ -5,38 +5,59 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   }
 
 // LowPassFilterData(reading, bias)
-class LowPassFilterData {
+/* class LowPassFilterData {
     constructor(reading) {
       Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
-    }
+    } */
 
-/* class LowPassFilterData {
+class LowPassFilterData {
     constructor(reading, bias) {
       Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
       this.bias = bias;
-    } */
-  // experimenting
+    }
+/*   // experimenting
     update(reading) {
       this.x = reading.x;
       this.y = reading.y;
       this.z = reading.z;
-    }
+    } */
 
-/*     update(reading) {
+    update(reading) {
       this.x = this.x * this.bias + reading.x * (1 - this.bias);
       this.y = this.y * this.bias + reading.y * (1 - this.bias);
       this.z = this.z * this.bias + reading.z * (1 - this.bias);
-    } */
+    }
     
 
     // removing the filter, but trying to preserve the delay of updated frames
 
   };
+
+  // LowPassFilterData2 experiment
+class LowPassFilterData2 {
+    constructor(reading) {
+      Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
+    }
+
+
+  update(reading) {
+    this.x = reading.x;
+    this.y = reading.y;
+    this.z = reading.z;
+  }
+
+
+
+
+};
+  
   
   const accl = new Accelerometer({ frequency: 20 });
                 
   // Isolate gravity with low-pass filter.
-  const filter = new LowPassFilterData(accl);
+  const filter = new LowPassFilterData(accl, bias);
+
+  const filter2 = new LowPassFilterData2(filter);
 
 
 
@@ -44,12 +65,12 @@ class LowPassFilterData {
   
   accl.onreading = () => {
 
-    let xValue = accl.x;
-    let yValue = accl.y;
-    let zValue = accl.z;
-    let xFilter = filter.x;
-    let yFilter = filter.y;
-    let zFilter = filter.z;
+    let xValue = filter.x;
+    let yValue = filter.y;
+    let zValue = filter.z;
+    let xFilter = filter2.x;
+    let yFilter = filter2.y;
+    let zFilter = filter2.z;
   
     let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
