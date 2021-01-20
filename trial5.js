@@ -51,9 +51,9 @@ class LowPassFilterData {
   const accl = new Accelerometer({ frequency: 20 });
                 
   // Isolate gravity with low-pass filter.
-  const filter = new LowPassFilterData(accl, 0.8);
+  const filter = new LowPassFilterData(accl);
 
-  const filter2 = new LowPassFilterData2(accl);
+  const filter2 = new LowPassFilterData2(accl, 0.8);
 
   
   accl.onreading = () => {
