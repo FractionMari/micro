@@ -36,13 +36,13 @@ class LowPassFilterData {
   // LowPassFilterData2 experiment
 class LowPassFilterData2 {
     constructor(reading2) {
-      Object.assign(this, { x1: reading2.x1, y1: reading2.y1, z1: reading2.z1 });
+      Object.assign(this, { x: reading2.x, y: reading2.y, z: reading2.z });
     }
 
   update(reading2) {
-    this.x1 = reading2.x1;
-    this.y1 = reading2.y1;
-    this.z1 = reading2.z1;
+    this.x = reading2.x;
+    this.y = reading2.y;
+    this.z = reading2.z;
   }
 
 };
@@ -61,9 +61,9 @@ class LowPassFilterData2 {
     let xValue = filter.x;
     let yValue = filter.y;
     let zValue = filter.z;
-    let xFilter = filter2.x1;
-    let yFilter = filter2.y1;
-    let zFilter = filter2.z1;
+    let xFilter = filter2.x;
+    let yFilter = filter2.y;
+    let zFilter = filter2.z;
   
     let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
@@ -74,13 +74,13 @@ class LowPassFilterData2 {
 
     filter.update(accl); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', filter.x );
-    updateFieldIfNotNull('filter_x', filter2.x1 );
+    updateFieldIfNotNull('filter_x', filter2.x );
 
     updateFieldIfNotNull('test_y', filter.y );
-    updateFieldIfNotNull('filter_y', filter2.y1 );
+    updateFieldIfNotNull('filter_y', filter2.y );
 
     updateFieldIfNotNull('test_z', filter.z );
-    updateFieldIfNotNull('filter_z', filter2.z1 );
+    updateFieldIfNotNull('filter_z', filter2.z );
 
     updateFieldIfNotNull('total_acc', totAcc );
     updateFieldIfNotNull('total_filter', totFilter );
