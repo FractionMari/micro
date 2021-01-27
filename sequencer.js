@@ -51,7 +51,9 @@ function playSweep() {
   sweepEnv.gain.linearRampToValueAtTime(1, audioCtx.currentTime + attackTime);
   sweepEnv.gain.linearRampToValueAtTime(0, audioCtx.currentTime + sweepLength - releaseTime);
 
-  osc.connect(sweepEnv).connect(volume).connect(audioCtx.destination);
+  osc.connect(sweepEnv);
+  sweepEnv.connect(volume);
+  volume.connect(audioCtx.destination);
   osc.start();
   osc.stop(audioCtx.currentTime + sweepLength);
 }
@@ -85,7 +87,9 @@ function playPulse() {
   lfo.frequency.setValueAtTime(lfoHz, audioCtx.currentTime);
 
   lfo.connect(amp.gain);
-  osc.connect(amp).connect(volume).connect(audioCtx.destination);
+  osc.connect(amp);
+  amp.connect(volume);
+  volume.connect(audioCtx.destination);
   lfo.start();
   osc.start();
   osc.stop(audioCtx.currentTime + pulseTime);
@@ -124,7 +128,9 @@ function playNoise() {
   bandpass.frequency.value = bandHz;
 
   // connect our graph
-  noise.connect(bandpass).connect(volume).connect(audioCtx.destination);
+  noise.connect(bandpass);
+  bandpass.connect(volume);
+  volume.connect(audioCtx.destination);
   noise.start();
 }
 
