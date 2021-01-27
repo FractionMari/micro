@@ -45,8 +45,8 @@ function playSweep() {
   const osc = audioCtx.createOscillator();
   osc.setPeriodicWave(wave);
   osc.frequency.value = 380;
-  const volume = audioCtx.createGain();
-  volume.gain.value = newAcc;
+  
+
 
   const sweepEnv = audioCtx.createGain();
 
@@ -292,3 +292,6 @@ setupSample()
       }
     })
   });
+
+  const volume = audioCtx.createGain();
+  volume.gain.value = newAcc;
