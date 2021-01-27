@@ -2,6 +2,8 @@
 console.clear();
 
 const audioCtx = new AudioContext();
+const volume = audioCtx.createGain();
+volume.gain.value = 0.5;
 
 // TODO make all frequencies like each other
 // TODO set value at time rather than value
@@ -268,8 +270,7 @@ setupSample()
 
     playButton.addEventListener('click', ev => {
       isPlaying = !isPlaying;
-      var volume = audioCtx.createGain();
-      volume.gain.value = 0.5;
+
 
       if (isPlaying) { // start playing
 
