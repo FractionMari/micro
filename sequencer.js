@@ -1,138 +1,3 @@
-<!-- 27. January 2021: IN THIS VERSION I am trying out to merge the previous version with a 
-  step-sequencer borrowed from the web audio repo: https://github.com/mdn/webaudio-examples.   -->
-
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Micro step Sequencer</title>
-    <meta name="description" content="Making an instrument with the Web Audio API">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-  <div class="loading">
-    <p>Loading...</p>
-  </div>
-
-  <div id="sequencer">
-    <section class="controls-main">
-      <h1>ModemDN</h1>
-      <label for="bpm">BPM</label>
-      <input name="bpm" id="bpm" type="range" min="60" max="180" value="120" step="1" />
-      <span id="bpmval">120</span>
-      <button data-playing="false">Play</button>
-    </section>
-
-    <div id="tracks">
-      <!-- track one: bleep -->
-      <section class="track-one">
-        <h2>Sweep</h2>
-        <section class="controls">
-          <label for="attack">Att</label>
-          <input name="attack" id="attack" type="range" min="0" max="1" value="0.2" step="0.1" />
-          <label for="release">Rel</label>
-          <input name="release" id="release" type="range" min="0" max="1" value="0.5" step="0.1" />
-        </section><!--
-
-        --><section class="pads">
-          <button role="switch" aria-checked="false"><span>Voice 1, Note 1</span></button>
-          <button role="switch" aria-checked="false"><span>Voice 1, Note 2</span></button>
-          <button role="switch" aria-checked="false"><span>Voice 1, Note 3</span></button>
-          <button role="switch" aria-checked="false"><span>Voice 1, Note 4</span></button>
-        </section>
-      </section>
-
-      <!-- track two: pad/sweep -->
-      <section class="track-two">
-        <h2>Pulse</h2>
-        <section class="controls">
-          <label for="hz">Hz</label>
-          <input name="hz" id="hz" type="range" min="660" max="1320" value="880" step="1" />
-          <label for="lfo">LFO</label>
-          <input name="lfo" id="lfo" type="range" min="20" max="40" value="30" step="1" />
-        </section><!--
-
-        --><section class="pads">
-          <button role="switch" aria-checked="false"><span>Voice 2, Note 1</span></button>
-          <button role="switch" aria-checked="false"><span>Voice 2, Note 2</span></button>
-          <button role="switch" aria-checked="false"><span>Voice 2, Note 3</span></button>
-          <button role="switch" aria-checked="false"><span>Voice 2, Note 4</span></button>
-        </section>
-      </section>
-
-      <!-- track three: noise -->
-      <section class="track-three">
-        <h2>Noise</h2>
-        <section class="controls">
-          <label for="duration">Dur</label>
-          <input name="duration" id="duration" type="range" min="0" max="2" value="1" step="0.1" />
-          <label for="band">Band</label>
-          <input name="band" id="band" type="range" min="400" max="1200" value="1000" step="5" />
-        </section><!--
-
-        --><section class="pads">
-          <button role="switch" aria-checked="false"><span>Voice 3, Note 1</span></button>
-          <button role="switch" aria-checked="false"><span>Voice 3, Note 2</span></button>
-          <button role="switch" aria-checked="false"><span>Voice 3, Note 3</span></button>
-          <button role="switch" aria-checked="false"><span>Voice 3, Note 4</span></button>
-        </section>
-      </section>
-
-      <!-- track four: drill -->
-      <section class="track-four">
-        <h2>DTMF</h2>
-        <section class="controls">
-          <label for="rate">Rate</label>
-          <input name="rate" id="rate" type="range" min="0.1" max="2" value="1" step="0.1" />
-        </section><!--
-
-        --><section class="pads">
-          <button role="switch" aria-checked="false"><span>Voice 4, Note 1</span></button>
-          <button role="switch" aria-checked="false"><span>Voice 4, Note 2</span></button>
-          <button role="switch" aria-checked="false"><span>Voice 4, Note 3</span></button>
-          <button role="switch" aria-checked="false"><span>Voice 4, Note 4</span></button>
-        </section>
-      </section>
-    </div>
-  </div><!-- sequencer -->
-
-<script src="wavetable.js"></script>
-
-<!--////////////// from old version//////////////s -->
-<p> Synth 1:</p>
-<button type="button" id="button1">Play</button>
-<button type="button" id="button2">Stop</button>
-
-<p> Control the volume by moving your phone!  </p>
-
-<h1> Testing with a different approach 6</h1>
-
-
-<li>X-axis: <span id="test_x">0</span></li>
-<li>X-axis with filter: <span id="filter_x">0</span></li>
-
-<li>Y-axis: <span id="test_y">0</span></li>
-<li>X-axis with filter: <span id="filter_y">0</span></li>
-
-<li>Z-axis: <span id="test_z">0</span></li>
-<li>X-axis with filter: <span id="filter_z">0</span></li>
-
-<li>Total acc: <span id="total_acc">0</span></li>
-<li>Total filter: <span id="total_filter">0</span></li>
-<li>The difference: <span id="diff_acc">0</span></li>
-<li>Volume: <span id="volume_acc">0</span></li>
-</main>
-
-
-<script src="trial6.js"></script>
-
-<a href ="./index6.html">A previous version 2</a>
-<a href ="./index_trial4.html">A previous version 1</a>
-<!-- ////////////// From old version //////////////-->
-
-<script type="text/javascript">
 // import { AudioContext } from 'https://dev.jspm.io/standardized-audio-context';
 console.clear();
 
@@ -180,12 +45,14 @@ function playSweep() {
   osc.frequency.value = 380;
 
   const sweepEnv = audioCtx.createGain();
+  var volume = audioCtx.createGain();
+  volume.gain.value = 0.5;
   sweepEnv.gain.cancelScheduledValues(audioCtx.currentTime);
   sweepEnv.gain.setValueAtTime(0, audioCtx.currentTime);
   sweepEnv.gain.linearRampToValueAtTime(1, audioCtx.currentTime + attackTime);
   sweepEnv.gain.linearRampToValueAtTime(0, audioCtx.currentTime + sweepLength - releaseTime);
 
-  osc.connect(sweepEnv).connect(audioCtx.destination);
+  osc.connect(sweepEnv).connect(volume).connect(audioCtx.destination);
   osc.start();
   osc.stop(audioCtx.currentTime + sweepLength);
 }
@@ -211,6 +78,8 @@ function playPulse() {
   osc.frequency.setValueAtTime(pulseHz, audioCtx.currentTime);
 
   const amp = audioCtx.createGain();
+  var volume = audioCtx.createGain();
+  volume.gain.value = 0.5;
   amp.gain.setValueAtTime(1, audioCtx.currentTime);
 
   const lfo = audioCtx.createOscillator();
@@ -218,7 +87,7 @@ function playPulse() {
   lfo.frequency.setValueAtTime(lfoHz, audioCtx.currentTime);
 
   lfo.connect(amp.gain);
-  osc.connect(amp).connect(audioCtx.destination);
+  osc.connect(amp).connect(volume).connect(audioCtx.destination);
   lfo.start();
   osc.start();
   osc.stop(audioCtx.currentTime + pulseTime);
@@ -250,6 +119,8 @@ function playNoise() {
 
   // create a buffer source for our created data
   const noise = audioCtx.createBufferSource();
+  var volume = audioCtx.createGain();
+  volume.gain.value = 0.5;
   noise.buffer = buffer;
 
   const bandpass = audioCtx.createBiquadFilter();
@@ -257,7 +128,7 @@ function playNoise() {
   bandpass.frequency.value = bandHz;
 
   // connect our graph
-  noise.connect(bandpass).connect(audioCtx.destination);
+  noise.connect(bandpass).connect(volume).connect(audioCtx.destination);
   noise.start();
 }
 
@@ -415,8 +286,3 @@ setupSample()
     })
   });
 
-
-
-</script>
-</body>
-</html>
