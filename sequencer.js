@@ -2,6 +2,8 @@
 console.clear();
 
 const audioCtx = new AudioContext();
+const volume = audioCtx.createGain();
+
 
 
 
@@ -293,5 +295,3 @@ setupSample()
     })
   });
 
-  const volume = audioCtx.createGain();
-  volume.gain.value = newAcc;
