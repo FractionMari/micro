@@ -5,6 +5,10 @@
 // Prøver videre med å spille av audio i stedet for oscillator.
 // det virker mye bedre, så neste steg blir å rydde opp i differencen mellom framesa.
 
+
+// Det er nå gjort. Men fortsatt høres det ikke veldig smooth ut. 
+
+
     // Method 1 for loading sound
     function loadSound(soundfile) {
         var request = new XMLHttpRequest();
