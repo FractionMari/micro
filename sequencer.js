@@ -2,8 +2,7 @@
 console.clear();
 
 const audioCtx = new AudioContext();
-const volume = audioCtx.createGain();
-volume.gain.value = 0.5;
+
 
 
 // TODO make all frequencies like each other
@@ -46,6 +45,7 @@ function playSweep() {
   const osc = audioCtx.createOscillator();
   osc.setPeriodicWave(wave);
   osc.frequency.value = 380;
+  const volume = audioCtx.createGain();
   volume.gain.value = newAcc;
 
   const sweepEnv = audioCtx.createGain();
