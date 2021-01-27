@@ -45,8 +45,7 @@ function playSweep() {
   osc.frequency.value = 380;
 
   const sweepEnv = audioCtx.createGain();
-  var volume = audioCtx.createGain();
-  volume.gain.value = 0.5;
+
   sweepEnv.gain.cancelScheduledValues(audioCtx.currentTime);
   sweepEnv.gain.setValueAtTime(0, audioCtx.currentTime);
   sweepEnv.gain.linearRampToValueAtTime(1, audioCtx.currentTime + attackTime);
@@ -78,8 +77,7 @@ function playPulse() {
   osc.frequency.setValueAtTime(pulseHz, audioCtx.currentTime);
 
   const amp = audioCtx.createGain();
-  var volume = audioCtx.createGain();
-  volume.gain.value = 0.5;
+
   amp.gain.setValueAtTime(1, audioCtx.currentTime);
 
   const lfo = audioCtx.createOscillator();
@@ -119,8 +117,6 @@ function playNoise() {
 
   // create a buffer source for our created data
   const noise = audioCtx.createBufferSource();
-  var volume = audioCtx.createGain();
-  volume.gain.value = 0.5;
   noise.buffer = buffer;
 
   const bandpass = audioCtx.createBiquadFilter();
@@ -266,6 +262,8 @@ setupSample()
 
     playButton.addEventListener('click', ev => {
       isPlaying = !isPlaying;
+      var volume = audioCtx.createGain();
+      volume.gain.value = 0.5;
 
       if (isPlaying) { // start playing
 
@@ -285,4 +283,3 @@ setupSample()
       }
     })
   });
-
