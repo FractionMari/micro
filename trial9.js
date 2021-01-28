@@ -159,6 +159,7 @@ class LowPassFilterData {
 
 newAcc = (clamp(0.1, 0.5, newAcc));
 volume.gain.value = newAcc;
+biquadFilter.detune.value = accl.z * 5;
 
 }  
 
