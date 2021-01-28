@@ -19,8 +19,6 @@ See the License for the specific language governing permissions and
 limitations under the License.  * echovalue
  */
 
-let volume = context.createGain(); 
-var newAcc;
 
 
 function RoomEffectsSample(inputs) {
@@ -87,6 +85,10 @@ function RoomEffectsSample(inputs) {
           
 //////// Dette er Accelerometerkoden: ///////////
 
+let volume = context.createGain(); 
+var newAcc;
+volume.gain.value = 0.5;
+
 // function for updating values for sensor data
 
 function updateFieldIfNotNull(fieldName, value, precision=2){
@@ -116,8 +118,6 @@ class LowPassFilterData {
 
   accl.onreading = () => {
 
-    // trying to avoid the "clicks" when changing volume
-    //volume.gain.setTargetAtTime(0, context.currentTime, 0.015)
 
     let xValue = accl.x;
     let yValue = accl.y;
@@ -156,10 +156,10 @@ class LowPassFilterData {
     };
   };
   
-  var fn = generateScaleFunction(0, 1.5, 0.5, 0);
-  newAcc = fn(diffAcc);
+    var fn = generateScaleFunction(0, 1.5, 0.5, 0);
+    newAcc = fn(diffAcc);
 
-  function clamp(min, max, val) {
+    function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
   }
 
