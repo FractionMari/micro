@@ -138,7 +138,7 @@ class LowPassFilterData {
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
 
     let diffAcc = Math.abs(totAcc - totFilter);
-    let biquadAcc = Math.abs(zValue);
+    
 
 
     filter.update(accl); // Pass latest values through filter.
@@ -175,6 +175,7 @@ class LowPassFilterData {
   newAcc = fn(diffAcc);
 
 var fn_biquad = generateScaleFunction(0, 10, 0, 5000);
+let biquadAcc = Math.abs(zValue);
 biquadAcc = fn_biquad(biquadAcc)
 
 newAcc = (clamp(0.1, 0.5, newAcc));
