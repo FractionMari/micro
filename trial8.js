@@ -83,7 +83,30 @@ function RoomEffectsSample(inputs) {
 
         //// prøver å putte inn gammel kode her ..
 
-    //////// Dette er Accelerometerkoden: ///////////
+        
+
+    
+
+
+
+      let echoslider = document.getElementById("echo_value");
+      let echovalue = 0;
+
+        echoslider.oninput = function() {
+        echovalue = this.value;
+        console.log(this.value);
+        }   
+      // Make a source node for the sample.
+      var source = context.createBufferSource();
+      source.buffer = this.buffer;
+      // Make a convolver node for the impulse response.
+      var convolver = context.createConvolver();
+      convolver.buffer = this.impulseResponseBuffer;
+      //console.log(convolver.buffer["length"]);
+      //convolver.buffer["length"] = this.impulseResponseBuffer * echovalue;
+      //console.log(convolver.buffer["length"]);
+      
+//////// Dette er Accelerometerkoden: ///////////
 
 // function for updating values for sensor data
 
@@ -169,27 +192,6 @@ volume.gain.value = newAcc;
   accl.start();
 
 
-
-
-
-      let echoslider = document.getElementById("echo_value");
-      let echovalue = 0;
-
-        echoslider.oninput = function() {
-        echovalue = this.value;
-        console.log(this.value);
-        }   
-      // Make a source node for the sample.
-      var source = context.createBufferSource();
-      source.buffer = this.buffer;
-      // Make a convolver node for the impulse response.
-      var convolver = context.createConvolver();
-      convolver.buffer = this.impulseResponseBuffer;
-      //console.log(convolver.buffer["length"]);
-      //convolver.buffer["length"] = this.impulseResponseBuffer * echovalue;
-      //console.log(convolver.buffer["length"]);
-      
-      console.log(convolver);
       // Connect the graph.
       source.connect(convolver);
       convolver.connect(volume);
