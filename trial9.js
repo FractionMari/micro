@@ -39,7 +39,7 @@
 
     biquadFilter.type = "bandpass";
     biquadFilter.frequency.value = 1000;
-    biquadFilter.Q.value = 5;
+    biquadFilter.Q.value = 1;
     biquadFilter.detune.value = 100;
 
     //// testing of biquad vlaues
@@ -153,7 +153,7 @@ class LowPassFilterData {
     updateFieldIfNotNull('total_filter', totFilter );
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
-    updateFieldIfNotNull('biquad', biquadAcc );
+    updateFieldIfNotNull('biquad_freq', biquadAcc );
 
   //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
