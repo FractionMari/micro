@@ -161,11 +161,6 @@ volume.gain.value = newAcc;
 }  
 
 
-
-
-    
-
-
   accl.start();
 
 
