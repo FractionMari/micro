@@ -153,7 +153,7 @@ class LowPassFilterData {
     updateFieldIfNotNull('total_filter', totFilter );
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
-    updateFieldIfNotNull('biquad_freq', biquadAcc );
+    updateFieldIfNotNull('biquad', biquadAcc );
 
   //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
