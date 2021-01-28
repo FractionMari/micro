@@ -164,6 +164,7 @@ class LowPassFilterData {
     return function (x) {
         return offset + scale * x;
     };
+
   };
 
   function clamp(min, max, val) {
@@ -175,7 +176,7 @@ class LowPassFilterData {
   newAcc = fn(diffAcc);
 
 var fn_biquad = generateScaleFunction(0, 10, 0, 5000);
-biquadAcc = fn_biquad(biquadAcc)
+biquadAcc = fn_biquad(biquadAcc);
 
 newAcc = (clamp(0.1, 0.5, newAcc));
 volume.gain.value = newAcc;
