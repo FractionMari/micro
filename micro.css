@@ -16,13 +16,18 @@ body {
     color: #99CCFF;
     }
 
-    button {
-        background-color: #2118a8; /* Green */
-        border-radius: 12px;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-      }
+button {
+    background-color: #2118a8; /* Green */
+    border-radius: 12px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    }
+
+
+a {
+    color: hotpink;
+    }

@@ -154,6 +154,8 @@ class LowPassFilterData {
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
     updateFieldIfNotNull('biquad', biquadAcc );
+    
+    biquadFilter.frequency.value = biquadAcc;
 
   //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
@@ -162,6 +164,8 @@ class LowPassFilterData {
     return function (x) {
         return offset + scale * x;
     };
+
+    
 
     
   };
@@ -178,7 +182,7 @@ class LowPassFilterData {
 
 newAcc = (clamp(0.1, 0.5, newAcc));
 volume.gain.value = newAcc;
-biquadFilter.frequency.value = biquadAcc;
+
 
 
 }  
