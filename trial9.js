@@ -53,9 +53,9 @@
         biquadFilter.Q.value = this.value;
     }  
 
-/*     biquad_freq_slider.oninput = function() {
+    biquad_freq_slider.oninput = function() {
         biquadFilter.frequency.value = this.value;
-    }   */
+    }  
 
 
     // create a sound input node from an audio sample
