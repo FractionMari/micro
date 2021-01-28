@@ -104,12 +104,6 @@ class LowPassFilterData {
       this.y = reading.y;
       this.z = reading.z;
     }
-/*     update(reading) {
-      this.x = this.x * this.bias + reading.x * (1 - this.bias);
-      this.y = this.y * this.bias + reading.y * (1 - this.bias);
-      this.z = this.z * this.bias + reading.z * (1 - this.bias);
-    } */
-
 
 
   };
@@ -141,7 +135,7 @@ class LowPassFilterData {
     var fn_biquad = generateScaleFunction(0, 10, 0, 5000);
     let biquadAcc = Math.abs(zValue);
     biquadAcc = fn_biquad(biquadAcc);
-    biquadFilter.frequency.value = biquadAcc;
+    
     
 
 
@@ -184,6 +178,7 @@ class LowPassFilterData {
 
 newAcc = (clamp(0.1, 0.5, newAcc));
 volume.gain.value = newAcc;
+biquadFilter.frequency.value = biquadAcc;
 
 
 }  
