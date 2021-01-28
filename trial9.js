@@ -170,12 +170,12 @@ class LowPassFilterData {
     return Math.min(Math.max(min, +val), max);
   }
   var fn = generateScaleFunction(0, 1.5, 0.5, 0);
-  var fn_biquad = generateScaleFunction(0, 10, 0, 5000);
-  biquadAcc = fn_biquad(biquadAcc)
+
 
   newAcc = fn(diffAcc);
 
-
+var fn_biquad = generateScaleFunction(0, 10, 0, 5000);
+biquadAcc = fn_biquad(biquadAcc)
 
 newAcc = (clamp(0.1, 0.5, newAcc));
 volume.gain.value = newAcc;
