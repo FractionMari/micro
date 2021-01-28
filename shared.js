@@ -1,8 +1,8 @@
 // Start off by initializing a new context.
 context = new (window.AudioContext || window.webkitAudioContext)();
 
-if (!context.createGain)
-  context.createGain = context.createGainNode;
+//if (!context.createGain)
+//  context.createGain = context.createGainNode;
 if (!context.createDelay)
   context.createDelay = context.createDelayNode;
 if (!context.createScriptProcessor)
