@@ -31,3 +31,7 @@ button {
 a {
     color: hotpink;
     }
+
+a:hover {
+    color: rgb(198, 255, 105);
+    }

@@ -26,12 +26,14 @@
     var newAcc;
     var context, player;
     var playing = 0;
+    var biquadAcc;
+    var biquadFilter;
     
     // A button for playback of music track
     document.querySelector("#button1").addEventListener('click', function() {
     context = new AudioContext();
     volume = context.createGain();
-    var biquadFilter = context.createBiquadFilter();
+    biquadFilter = context.createBiquadFilter();
     
     // Manipulate the Biquad filter
 
@@ -132,9 +134,7 @@ class LowPassFilterData {
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
 
     let diffAcc = Math.abs(totAcc - totFilter);
-    var fn_biquad = generateScaleFunction(0, 10, 0, 5000);
-    let biquadAcc = Math.abs(zValue);
-    biquadAcc = fn_biquad(biquadAcc);
+
     
     
 
@@ -154,8 +154,6 @@ class LowPassFilterData {
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
     updateFieldIfNotNull('biquad', biquadAcc );
-    
-    biquadFilter.frequency.value = biquadAcc;
 
   //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
@@ -166,8 +164,6 @@ class LowPassFilterData {
     };
 
     
-
-    
   };
 
   function clamp(min, max, val) {
@@ -175,12 +171,16 @@ class LowPassFilterData {
   }
   var fn = generateScaleFunction(0, 1.5, 0.5, 0);
 
-
   newAcc = fn(diffAcc);
+
+  var fn_biquad = generateScaleFunction(0, 10, 0, 5000);
+  biquadAcc = Math.abs(zValue);
+  biquadAcc = fn_biquad(biquadAcc);
 
 
 
 newAcc = (clamp(0.1, 0.5, newAcc));
+biquadFilter.frequency.value = biquadAcc;
 volume.gain.value = newAcc;
 
 
