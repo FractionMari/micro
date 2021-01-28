@@ -32,7 +32,14 @@
     context = new AudioContext();
     volume = context.createGain();
     var biquadFilter = context.createBiquadFilter();
+    
+    // Manipulate the Biquad filter
+
+    biquadFilter.type = "lowshelf";
+    biquadFilter.frequency.value = 1000;
+    biquadFilter.gain.value = 25;
     biquadFilter.detune.value = 100;
+
     // create a sound input node from an audio sample
     player = context.createBufferSource();
     player.loop = true;
