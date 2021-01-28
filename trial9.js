@@ -138,15 +138,6 @@ class LowPassFilterData {
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
 
     let diffAcc = Math.abs(totAcc - totFilter);
-
-      //Scaling the incoming number
-   function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
-    var offset = newMin - prevMin,
-        scale = (newMax - newMin) / (prevMax - prevMin);
-    return function (x) {
-        return offset + scale * x;
-    };
-    
     var fn_biquad = generateScaleFunction(0, 10, 0, 5000);
     let biquadAcc = Math.abs(zValue);
     biquadAcc = fn_biquad(biquadAcc)
@@ -169,9 +160,15 @@ class LowPassFilterData {
     updateFieldIfNotNull('volume_acc', newAcc );
     updateFieldIfNotNull('biquad', biquadAcc );
 
+  //Scaling the incoming number
+   function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
+    var offset = newMin - prevMin,
+        scale = (newMax - newMin) / (prevMax - prevMin);
+    return function (x) {
+        return offset + scale * x;
+    };
 
-
-
+    
   };
 
   function clamp(min, max, val) {
