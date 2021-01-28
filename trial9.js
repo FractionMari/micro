@@ -124,6 +124,7 @@ class LowPassFilterData {
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
 
     let diffAcc = Math.abs(totAcc - totFilter);
+    let biquadAcc = accl.z * 5;
 
 
     filter.update(accl); // Pass latest values through filter.
@@ -140,6 +141,7 @@ class LowPassFilterData {
     updateFieldIfNotNull('total_filter', totFilter );
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
+    updateFieldIfNotNull('biquad', biquadAcc );
 
   //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
@@ -159,7 +161,7 @@ class LowPassFilterData {
 
 newAcc = (clamp(0.1, 0.5, newAcc));
 volume.gain.value = newAcc;
-biquadFilter.detune.value = accl.z * 5;
+biquadFilter.detune.value = biquadAcc;
 
 }  
 
