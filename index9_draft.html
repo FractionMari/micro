@@ -3,17 +3,33 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Micro Demo 5</title>
+    <title>Micro Draft 9</title>
+    <link href="micro.css" rel="stylesheet">
 
 </head>
 <body>
     <p> Sample no. 1:</p>
     <button type="button" id="button1">Play</button>
     <button type="button" id="button2">Stop</button>
+
+    <div class="slidecontainer">
+        <p>Biquad Detune:</p>
+        <input type="range" min="0" max="500" value="0.5" step="0.01" class="slider" id="biquad_detune">
+
+      </div>
     
+      <div class="slidecontainer">
+        <p>Biquad Q:</p>
+        <input type="range" min="0.0001" max="4" value="0.5" step="0.01" class="slider" id="biquad_gain">
+      </div>
+
+      <div class="slidecontainer">
+        <p>Biquad Freq:</p>
+        <input type="range" min="1" max="3000" value="0.5" step="0.01" class="slider" id="biquad_freq">
+      </div>
     <p> Control the volume by moving your phone!  </p>
 
-<h1> New version versågod. 1.4</h1>
+<h1> New version versågod. 1.5</h1>
 
 
   <li>X-axis: <span id="test_x">0</span></li>

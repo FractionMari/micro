@@ -35,10 +35,28 @@
     
     // Manipulate the Biquad filter
 
-    biquadFilter.type = "lowshelf";
+    biquadFilter.type = "bandpass";
     biquadFilter.frequency.value = 1000;
-    biquadFilter.gain.value = 25;
+    biquadFilter.Q.value = 5;
     biquadFilter.detune.value = 100;
+
+    //// testing of biquad vlaues
+    var biquad_detune_slider = document.getElementById("biquad_detune");
+    var biquad_gain_slider = document.getElementById("biquad_gain");
+    var biquad_freq_slider = document.getElementById("biquad_freq");
+
+    biquad_detune_slider.oninput = function() {
+        biquadFilter.detune.value = this.value;
+    }  
+
+    biquad_gain_slider.oninput = function() {
+        biquadFilter.Q.value = this.value;
+    }  
+
+    biquad_freq_slider.oninput = function() {
+        biquadFilter.frequency.value = this.value;
+    }  
+
 
     // create a sound input node from an audio sample
     player = context.createBufferSource();
@@ -52,11 +70,7 @@
     volume.connect(context.destination);  
     playing = 1;
 
-        /* 
-    var volumeslider = document.getElementById("volume_acc");
-    volumeslider.oninput = function() {
-    volume.gain.value = this.value;
-    } */
+
     
     
 
@@ -124,7 +138,7 @@ class LowPassFilterData {
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
 
     let diffAcc = Math.abs(totAcc - totFilter);
-    let biquadAcc = zValue * 5;
+    let biquadAcc = zValue * 50;
 
 
     filter.update(accl); // Pass latest values through filter.
@@ -161,7 +175,7 @@ class LowPassFilterData {
 
 newAcc = (clamp(0.1, 0.5, newAcc));
 volume.gain.value = newAcc;
-biquadFilter.detune.value = biquadAcc;
+biquadFilter.frequency.value = biquadAcc;
 
 }  
 
