@@ -1,3 +1,6 @@
+// Trial 7 den 27. januar: Prøver å kombinere med sequencer fra https://github.com/mdn/webaudio-examples
+
+
 // import { AudioContext } from 'https://dev.jspm.io/standardized-audio-context';
 console.clear();
 
@@ -298,9 +301,9 @@ setupSample()
   });
 
 
-// Accelerometer code:
-// Trial 7 den 27. januar: Prøver å kombinere med sequencer fra https://github.com/mdn/webaudio-examples
-
+/////////////////////////////////
+///// Accelerometer code: ////////
+//////////////////////////////////
 
 
 
@@ -382,6 +385,12 @@ class LowPassFilterData {
 
 newAcc = (clamp(0.1, 0.5, newAcc));
 volume.gain.value = newAcc;
+
+
+//// putte inn den andre koden her  //// putte inn den andre koden her  //// putte inn den andre koden her 
+
+
+//// putte inn den andre koden her  //// putte inn den andre koden her  //// putte inn den andre koden her 
 
 }  
 
