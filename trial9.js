@@ -124,7 +124,7 @@ class LowPassFilterData {
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
 
     let diffAcc = Math.abs(totAcc - totFilter);
-    let biquadAcc = accl.z * 5;
+    let biquadAcc = zValue * 5;
 
 
     filter.update(accl); // Pass latest values through filter.
