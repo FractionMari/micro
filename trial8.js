@@ -20,8 +20,9 @@ limitations under the License.  * echovalue
  */
 
 let volume = context.createGain(); 
+var newAcc;
 
-/* 
+
 function RoomEffectsSample(inputs) {
     var ctx = this;
     for (var i = 0; i < inputs.length; i++) {
@@ -83,45 +84,7 @@ function RoomEffectsSample(inputs) {
 
         //// prøver å putte inn gammel kode her ..
 
-
-
-      let echoslider = document.getElementById("echo_value");
-      let echovalue = 0;
-
-        echoslider.oninput = function() {
-        echovalue = this.value;
-        console.log(this.value);
-        }   
-      // Make a source node for the sample.
-      var source = context.createBufferSource();
-      source.buffer = this.buffer;
-      // Make a convolver node for the impulse response.
-      var convolver = context.createConvolver();
-      convolver.buffer = this.impulseResponseBuffer;
-      //console.log(convolver.buffer["length"]);
-      //convolver.buffer["length"] = this.impulseResponseBuffer * echovalue;
-      //console.log(convolver.buffer["length"]);
-      
-      console.log(convolver);
-      // Connect the graph.
-      source.connect(convolver);
-      convolver.connect(volume);
-      volume.connect(context.destination);
-      // Save references to important nodes.
-      this.source = source;
-      this.convolver = convolver;
-      // Start playback.
-      this.source[this.source.start ? 'start': 'noteOn'](0);
-    } else {
-      this.source[this.source.stop ? 'stop': 'noteOff'](0);
-    }
-    this.isPlaying = !this.isPlaying;
-  };
-   */
-
-
-
-
+          
 //////// Dette er Accelerometerkoden: ///////////
 
 // function for updating values for sensor data
@@ -206,4 +169,43 @@ volume.gain.value = newAcc;
 }  
 
   accl.start();
+
+
+
+
+
+      let echoslider = document.getElementById("echo_value");
+      let echovalue = 0;
+
+        echoslider.oninput = function() {
+        echovalue = this.value;
+        console.log(this.value);
+        }   
+      // Make a source node for the sample.
+      var source = context.createBufferSource();
+      source.buffer = this.buffer;
+      // Make a convolver node for the impulse response.
+      var convolver = context.createConvolver();
+      convolver.buffer = this.impulseResponseBuffer;
+      //console.log(convolver.buffer["length"]);
+      //convolver.buffer["length"] = this.impulseResponseBuffer * echovalue;
+      //console.log(convolver.buffer["length"]);
+      
+      console.log(convolver);
+      // Connect the graph.
+      source.connect(convolver);
+      convolver.connect(volume);
+      volume.connect(context.destination);
+      // Save references to important nodes.
+      this.source = source;
+      this.convolver = convolver;
+      // Start playback.
+      this.source[this.source.start ? 'start': 'noteOn'](0);
+    } else {
+      this.source[this.source.stop ? 'stop': 'noteOff'](0);
+    }
+    this.isPlaying = !this.isPlaying;
+  };
+  
+
 
