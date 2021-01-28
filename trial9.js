@@ -53,9 +53,9 @@
         biquadFilter.Q.value = this.value;
     }  
 
-    biquad_freq_slider.oninput = function() {
+/*     biquad_freq_slider.oninput = function() {
         biquadFilter.frequency.value = this.value;
-    }  
+    }   */
 
 
     // create a sound input node from an audio sample
@@ -140,7 +140,8 @@ class LowPassFilterData {
     let diffAcc = Math.abs(totAcc - totFilter);
     var fn_biquad = generateScaleFunction(0, 10, 0, 5000);
     let biquadAcc = Math.abs(zValue);
-    biquadAcc = fn_biquad(biquadAcc)
+    biquadAcc = fn_biquad(biquadAcc);
+    biquadFilter.frequency.value = biquadAcc;
     
 
 
@@ -183,7 +184,7 @@ class LowPassFilterData {
 
 newAcc = (clamp(0.1, 0.5, newAcc));
 volume.gain.value = newAcc;
-biquadFilter.frequency.value = biquadAcc;
+
 
 }  
 
