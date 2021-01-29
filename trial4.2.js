@@ -15,27 +15,7 @@
     var biquadFilter;
     var oscillator;
     var oscillator2;  
-    function handleOrientation(event) {
-        updateFieldIfNotNull('Orientation_a', event.alpha);
-        updateFieldIfNotNull('Orientation_b', event.beta);
-        updateFieldIfNotNull('Orientation_g', event.gamma);
-        incrementEventCount();
-    
-        // Rotation to control oscillator pitch
-        let pitchWheel = event.beta;
-        pitchWheel = pitchWheel + 180;
-        oscillator.frequency.value = pitchWheel;
-        oscillator2.frequency.value = pitchWheel /2;
-      }
-    
-    if (
-    DeviceMotionEvent &&
-    typeof DeviceMotionEvent.requestPermission === "function"
-    ) {
-    DeviceMotionEvent.requestPermission();
-    }
-    
-window.addEventListener("deviceorientation", handleOrientation, true);
+
 
     // A button for playback of music track
     document.querySelector("#button1").addEventListener('click', function() {
@@ -166,6 +146,29 @@ class LowPassFilterData {
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
     updateFieldIfNotNull('biquad', biquadAcc );
+
+    function handleOrientation(event) {
+        updateFieldIfNotNull('Orientation_b', event.beta);
+        updateFieldIfNotNull('Orientation_g', event.gamma);
+        updateFieldIfNotNull('Orientation_a', event.alpha);
+
+        incrementEventCount();
+    
+        // Rotation to control oscillator pitch
+        let pitchWheel = event.beta;
+        pitchWheel = pitchWheel + 180;
+        oscillator.frequency.value = pitchWheel;
+        oscillator2.frequency.value = pitchWheel /2;
+      }
+    
+    if (
+    DeviceMotionEvent &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+    ) {
+    DeviceMotionEvent.requestPermission();
+    }
+
+window.addEventListener("deviceorientation", handleOrientation, true);
 
 
 
