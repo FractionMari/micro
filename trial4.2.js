@@ -10,15 +10,9 @@
     var volume;
     var newAcc;
     var context;
-    var playing = 0;
     var biquadAcc;
     var biquadFilter;
-
-
-      // This is the first oscillator
     var oscillator;
-  
-  // creating a second oscillator
     var oscillator2;  
 
     // A button for playback of music track
@@ -29,14 +23,12 @@
     oscillator2 = context.createOscillator();
     oscillator.frequency.value = 380;
     oscillator2.frequency.value = 157;
-    oscillator2.type = "sine";
-    
+    oscillator2.type = "square";
     oscillator.start();
     oscillator2.start();
-    volume.gain.value = 0.5;
-
 
     volume = context.createGain();
+    volume.gain.value = 0.5;
     biquadFilter = context.createBiquadFilter();
     
     // Manipulate the Biquad filter

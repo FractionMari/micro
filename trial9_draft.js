@@ -175,6 +175,8 @@ class LowPassFilterData {
 
 newAcc = (clamp(0.1, 0.7, newAcc));
 biquadFilter.frequency.value = biquadAcc;
+
+// more smooth change of volume:
 volume.gain.value = newAcc;
 volume.gain.cancelScheduledValues(context.currentTime);
 volume.gain.setValueAtTime(volume.gain.value, context.currentTime);
