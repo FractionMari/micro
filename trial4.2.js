@@ -38,20 +38,11 @@ function handleOrientation(event) {
 // oscillator variables
     oscillator = context.createOscillator();
     oscillator2 = context.createOscillator();
-    //oscillator.frequency.value = 380;
-    //oscillator2.frequency.value = 157;
+    oscillator.frequency.value = 380;
+    oscillator2.frequency.value = 157;
     oscillator2.type = "square";
     oscillator.start();
     oscillator2.start();
-
-    if (
-        DeviceMotionEvent &&
-        typeof DeviceMotionEvent.requestPermission === "function"
-        ) {
-        DeviceMotionEvent.requestPermission();
-        }
-      window.addEventListener("deviceorientation", handleOrientation);
-    
 
     volume = context.createGain();
     volume.gain.value = 0.5;
@@ -87,8 +78,6 @@ function handleOrientation(event) {
     volume.connect(context.destination);  
 
 
-
-
     });
     
     // stop button of the oscillator
@@ -99,6 +88,15 @@ function handleOrientation(event) {
 
 
     });
+
+if (
+    DeviceMotionEvent &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+    ) {
+    DeviceMotionEvent.requestPermission();
+    }
+
+window.addEventListener("deviceorientation", handleOrientation);
 
 
 // function for updating values for sensor data
