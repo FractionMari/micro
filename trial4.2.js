@@ -147,41 +147,6 @@ class LowPassFilterData {
     updateFieldIfNotNull('volume_acc', newAcc );
     updateFieldIfNotNull('biquad', biquadAcc );
 
-    function handleOrientation(event) {
-        updateFieldIfNotNull('Orientation_b', event.beta);
-        updateFieldIfNotNull('Orientation_g', event.gamma);
-        updateFieldIfNotNull('Orientation_a', event.alpha);
-
-        incrementEventCount();
-    
-        // Rotation to control oscillator pitch
-        let pitchWheel = event.beta;
-        pitchWheel = pitchWheel + 180;
-        oscillator.frequency.value = pitchWheel;
-        oscillator2.frequency.value = pitchWheel /2;
-      }
-    
-    if (
-    DeviceMotionEvent &&
-    typeof DeviceMotionEvent.requestPermission === "function"
-    ) {
-    DeviceMotionEvent.requestPermission();
-    }
-
-window.addEventListener("deviceorientation", handleOrientation, true);
-
-
-
-    
-
-
-
-    
-/*     // oscillator and pitchwheel
-    let pitchWheel =yValue;
-    pitchWheel = pitchWheel + 180;
-    oscillator.frequency.value = pitchWheel;
-    oscillator2.frequency.value = pitchWheel /2; */
 
   //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
@@ -209,6 +174,29 @@ window.addEventListener("deviceorientation", handleOrientation, true);
 
 newAcc = (clamp(0.1, 0.6, newAcc));
 biquadFilter.frequency.value = biquadAcc;
+
+function handleOrientation(event) {
+    updateFieldIfNotNull('Orientation_b', event.beta);
+    updateFieldIfNotNull('Orientation_g', event.gamma);
+    updateFieldIfNotNull('Orientation_a', event.alpha);
+
+    incrementEventCount();
+
+    // Rotation to control oscillator pitch
+    let pitchWheel = event.beta;
+    pitchWheel = pitchWheel + 180;
+    oscillator.frequency.value = pitchWheel;
+    oscillator2.frequency.value = pitchWheel /2;
+  }
+
+if (
+DeviceMotionEvent &&
+typeof DeviceMotionEvent.requestPermission === "function"
+) {
+DeviceMotionEvent.requestPermission();
+}
+
+window.addEventListener("deviceorientation", handleOrientation, true);
 
 // more smooth change of volume:
 volume.gain.value = newAcc;

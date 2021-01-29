@@ -59,6 +59,7 @@ a:hover {
     border: 10px rgb(84, 117, 6) solid;
     background-image: url("bg8.jpg");
     color: rgb(68, 7, 38) solid;;
+    background-size: cover;
     }
 
 .slider {
