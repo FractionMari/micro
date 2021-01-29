@@ -2,7 +2,18 @@
 
 // 29. januar. 
 ////////////
+function handleOrientation(event) {
+    updateFieldIfNotNull('Orientation_b', event.beta);
+    updateFieldIfNotNull('Orientation_g', event.gamma);
+    updateFieldIfNotNull('Orientation_a', event.alpha);
+    incrementEventCount();
 
+    // Rotation to control oscillator pitch
+    let pitchWheel = event.beta;
+    pitchWheel = pitchWheel + 180;
+    oscillator.frequency.value = pitchWheel;
+    oscillator2.frequency.value = pitchWheel /2;
+  }
 
 ///////////
 
@@ -175,19 +186,7 @@ class LowPassFilterData {
 newAcc = (clamp(0.1, 0.6, newAcc));
 biquadFilter.frequency.value = biquadAcc;
 
-function handleOrientation(event) {
-    updateFieldIfNotNull('Orientation_b', event.beta);
-    updateFieldIfNotNull('Orientation_g', event.gamma);
-    updateFieldIfNotNull('Orientation_a', event.alpha);
 
-    incrementEventCount();
-
-    // Rotation to control oscillator pitch
-    let pitchWheel = event.beta;
-    pitchWheel = pitchWheel + 180;
-    oscillator.frequency.value = pitchWheel;
-    oscillator2.frequency.value = pitchWheel /2;
-  }
 
 if (
 DeviceMotionEvent &&

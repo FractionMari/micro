@@ -80,7 +80,7 @@ a:hover {
     width: 25px;
     height: 25px;
     border-radius: 50%; 
-    background: #4CAF50;
+    background: rgb(84, 117, 6);
     cursor: pointer;
     }
     
@@ -88,6 +88,6 @@ a:hover {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #4CAF50;
+    background: rgb(84, 117, 6);
     cursor: pointer;
     }
