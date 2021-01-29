@@ -3,7 +3,7 @@
 // 29. januar. 
 ////////////
 
-DeviceMotionEvent.requestPermission();
+
 ///////////
 
     // Preparing the audio variables
@@ -18,6 +18,10 @@ DeviceMotionEvent.requestPermission();
 
     // A button for playback of music track
     document.querySelector("#button1").addEventListener('click', function() {
+    DeviceMotionEvent.requestPermission();
+    window.addEventListener("deviceorientation", handleOrientation, true);
+
+
     context = new AudioContext();
 // oscillator variables
     oscillator = context.createOscillator();
@@ -156,7 +160,7 @@ class LowPassFilterData {
         oscillator2.frequency.value = pitchWheel /2;
       }
 
-    window.addEventListener("deviceorientation", handleOrientation, true);
+    
 
 
 
