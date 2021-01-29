@@ -138,12 +138,26 @@ class LowPassFilterData {
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
     updateFieldIfNotNull('biquad', biquadAcc );
+
+    function handleOrientation(event) {
+        updateFieldIfNotNull('Orientation_a', event.alpha);
+        updateFieldIfNotNull('Orientation_b', event.beta);
+        updateFieldIfNotNull('Orientation_g', event.gamma);
+        incrementEventCount();
     
-    // oscillator and pitchwheel
+        // Rotation to control oscillator pitch
+        let pitchWheel = event.beta;
+        pitchWheel = pitchWheel + 180;
+        oscillator.frequency.value = pitchWheel;
+        oscillator2.frequency.value = pitchWheel /2;
+      }
+    window.addEventListener("deviceorientation", handleOrientation);
+    
+/*     // oscillator and pitchwheel
     let pitchWheel =yValue;
     pitchWheel = pitchWheel + 180;
     oscillator.frequency.value = pitchWheel;
-    oscillator2.frequency.value = pitchWheel /2;
+    oscillator2.frequency.value = pitchWheel /2; */
 
   //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
