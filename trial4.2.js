@@ -140,10 +140,10 @@ class LowPassFilterData {
     updateFieldIfNotNull('biquad', biquadAcc );
     
     // oscillator and pitchwheel
-/*     let pitchWheel = event.beta;
+    let pitchWheel =yValue;
     pitchWheel = pitchWheel + 180;
     oscillator.frequency.value = pitchWheel;
-    oscillator2.frequency.value = pitchWheel /2; */
+    oscillator2.frequency.value = pitchWheel /2;
 
   //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
@@ -159,7 +159,7 @@ class LowPassFilterData {
   function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
   }
-  var fn = generateScaleFunction(0, 1.5, 0.7, 0);
+  var fn = generateScaleFunction(0, 1.5, 0.6, 0);
 
   newAcc = fn(diffAcc);
 
@@ -169,7 +169,7 @@ class LowPassFilterData {
 
 
 
-newAcc = (clamp(0.1, 0.7, newAcc));
+newAcc = (clamp(0.1, 0.6, newAcc));
 biquadFilter.frequency.value = biquadAcc;
 
 // more smooth change of volume:

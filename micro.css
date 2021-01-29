@@ -56,6 +56,7 @@ a:hover {
     height: auto;
     background: rgb(0, 0, 0);
     padding: 20px;
-    border: 10px rgb(68, 7, 38) solid;
-    background-image: url("bg7.jpg");
+    border: 10px rgb(84, 117, 6) solid;
+    background-image: url("bg8.jpg");
+    color: rgb(68, 7, 38) solid;;
     }
