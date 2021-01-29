@@ -1,9 +1,10 @@
 // The oscillator version with new code
 
 // 29. januar. 
+////////////
 
-
-
+DeviceMotionEvent.requestPermission();
+///////////
 
     // Preparing the audio variables
     var AudioContext = window.AudioContext || window.webkitAudioContext;  
@@ -99,12 +100,9 @@ class LowPassFilterData {
   };
   
   const accl = new Accelerometer({ frequency: 50 });
-  if (
-    DeviceMotionEvent &&
-    typeof DeviceMotionEvent.requestPermission === "function"
-  ) {
-    DeviceMotionEvent.requestPermission();
-  }
+
+
+  
                 
   // Isolate gravity with low-pass filter.
   const filter = new LowPassFilterData(accl);
@@ -157,7 +155,9 @@ class LowPassFilterData {
         oscillator.frequency.value = pitchWheel;
         oscillator2.frequency.value = pitchWheel /2;
       }
-    window.addEventListener("deviceorientation", handleOrientation);
+
+    window.addEventListener("deviceorientation", handleOrientation, true);
+
 
 
     
