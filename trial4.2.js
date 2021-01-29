@@ -2,18 +2,7 @@
 
 // 29. januar. 
 ////////////
-function handleOrientation(event) {
-    updateFieldIfNotNull('Orientation_b', event.beta);
-    updateFieldIfNotNull('Orientation_g', event.gamma);
-    updateFieldIfNotNull('Orientation_a', event.alpha);
-    incrementEventCount();
 
-    // Rotation to control oscillator pitch
-    let pitchWheel = event.beta;
-    pitchWheel = pitchWheel + 180;
-    oscillator.frequency.value = pitchWheel;
-    oscillator2.frequency.value = pitchWheel /2;
-  }
 
 ///////////
 
@@ -42,6 +31,20 @@ function handleOrientation(event) {
     oscillator2.type = "square";
     oscillator.start();
     oscillator2.start();
+
+    function handleOrientation(event) {
+        updateFieldIfNotNull('Orientation_b', event.beta);
+        updateFieldIfNotNull('Orientation_g', event.gamma);
+        updateFieldIfNotNull('Orientation_a', event.alpha);
+        incrementEventCount();
+    
+        // Rotation to control oscillator pitch
+        let pitchWheel = event.beta;
+        pitchWheel = pitchWheel + 180;
+        oscillator.frequency.value = pitchWheel;
+        oscillator2.frequency.value = pitchWheel /2;
+      }
+    window.addEventListener("deviceorientation", handleOrientation, true);
 
     volume = context.createGain();
     volume.gain.value = 0.5;
@@ -195,7 +198,7 @@ typeof DeviceMotionEvent.requestPermission === "function"
 DeviceMotionEvent.requestPermission();
 }
 
-window.addEventListener("deviceorientation", handleOrientation, true);
+
 
 // more smooth change of volume:
 volume.gain.value = newAcc;
