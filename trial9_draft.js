@@ -163,7 +163,7 @@ class LowPassFilterData {
   function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
   }
-  var fn = generateScaleFunction(0, 1.5, 0.6, 0);
+  var fn = generateScaleFunction(0, 1.5, 0.7, 0);
 
   newAcc = fn(diffAcc);
 
@@ -173,7 +173,7 @@ class LowPassFilterData {
 
 
 
-newAcc = (clamp(0.1, 0.6, newAcc));
+newAcc = (clamp(0.1, 0.7, newAcc));
 biquadFilter.frequency.value = biquadAcc;
 volume.gain.value = newAcc;
 
