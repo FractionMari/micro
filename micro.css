@@ -17,14 +17,15 @@ body {
     }
 
 button {
-    background-color: #800055; /* Green */
-    border-radius: 12px;
+    background-color: #800055;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    border-radius: 17px;
     color: #ccde07;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 24px;
     }
 
 

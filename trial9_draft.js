@@ -176,6 +176,10 @@ class LowPassFilterData {
 newAcc = (clamp(0.1, 0.7, newAcc));
 biquadFilter.frequency.value = biquadAcc;
 volume.gain.value = newAcc;
+volume.gain.cancelScheduledValues(context.currentTime);
+volume.gain.setValueAtTime(volume.gain.value, context.currentTime);
+volume.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2);
+
 
 
 
