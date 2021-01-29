@@ -99,6 +99,12 @@ class LowPassFilterData {
   };
   
   const accl = new Accelerometer({ frequency: 50 });
+  if (
+    DeviceMotionEvent &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+  ) {
+    DeviceMotionEvent.requestPermission();
+  }
                 
   // Isolate gravity with low-pass filter.
   const filter = new LowPassFilterData(accl);
@@ -152,6 +158,8 @@ class LowPassFilterData {
         oscillator2.frequency.value = pitchWheel /2;
       }
     window.addEventListener("deviceorientation", handleOrientation);
+
+
     
 /*     // oscillator and pitchwheel
     let pitchWheel =yValue;
