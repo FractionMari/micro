@@ -26,8 +26,8 @@
 // oscillator variables
     oscillator = context.createOscillator();
     oscillator2 = context.createOscillator();
-    oscillator.frequency.value = 380;
-    oscillator2.frequency.value = 157;
+    //oscillator.frequency.value = 380;
+    //oscillator2.frequency.value = 157;
     oscillator2.type = "square";
     oscillator.start();
     oscillator2.start();
