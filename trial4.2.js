@@ -44,7 +44,7 @@
         oscillator.frequency.value = pitchWheel;
         oscillator2.frequency.value = pitchWheel /2;
       }
-    window.addEventListener("deviceorientation", handleOrientation, true);
+    window.addEventListener("deviceorientation", handleOrientation);
 
     volume = context.createGain();
     volume.gain.value = 0.5;
