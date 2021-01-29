@@ -27,16 +27,19 @@
         oscillator.frequency.value = pitchWheel;
         oscillator2.frequency.value = pitchWheel /2;
       }
+    
+    if (
+    DeviceMotionEvent &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+    ) {
+    DeviceMotionEvent.requestPermission();
+    }
+    
+window.addEventListener("deviceorientation", handleOrientation, true);
 
     // A button for playback of music track
     document.querySelector("#button1").addEventListener('click', function() {
-        if (
-            DeviceMotionEvent &&
-            typeof DeviceMotionEvent.requestPermission === "function"
-          ) {
-            DeviceMotionEvent.requestPermission();
-          }
-    window.addEventListener("deviceorientation", handleOrientation, true);
+
 
 
     context = new AudioContext();
