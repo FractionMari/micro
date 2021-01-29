@@ -73,8 +73,6 @@
     playing = 1;
 
 
-    
-    
 
     });
     
@@ -134,10 +132,6 @@ class LowPassFilterData {
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
 
     let diffAcc = Math.abs(totAcc - totFilter);
-
-    
-    
-
 
     filter.update(accl); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', accl.x );
