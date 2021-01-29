@@ -15,10 +15,27 @@
     var biquadFilter;
     var oscillator;
     var oscillator2;  
+    function handleOrientation(event) {
+        updateFieldIfNotNull('Orientation_a', event.alpha);
+        updateFieldIfNotNull('Orientation_b', event.beta);
+        updateFieldIfNotNull('Orientation_g', event.gamma);
+        incrementEventCount();
+    
+        // Rotation to control oscillator pitch
+        let pitchWheel = event.beta;
+        pitchWheel = pitchWheel + 180;
+        oscillator.frequency.value = pitchWheel;
+        oscillator2.frequency.value = pitchWheel /2;
+      }
 
     // A button for playback of music track
     document.querySelector("#button1").addEventListener('click', function() {
-    DeviceMotionEvent.requestPermission();
+        if (
+            DeviceMotionEvent &&
+            typeof DeviceMotionEvent.requestPermission === "function"
+          ) {
+            DeviceMotionEvent.requestPermission();
+          }
     window.addEventListener("deviceorientation", handleOrientation, true);
 
 
@@ -147,18 +164,7 @@ class LowPassFilterData {
     updateFieldIfNotNull('volume_acc', newAcc );
     updateFieldIfNotNull('biquad', biquadAcc );
 
-    function handleOrientation(event) {
-        updateFieldIfNotNull('Orientation_a', event.alpha);
-        updateFieldIfNotNull('Orientation_b', event.beta);
-        updateFieldIfNotNull('Orientation_g', event.gamma);
-        incrementEventCount();
-    
-        // Rotation to control oscillator pitch
-        let pitchWheel = event.beta;
-        pitchWheel = pitchWheel + 180;
-        oscillator.frequency.value = pitchWheel;
-        oscillator2.frequency.value = pitchWheel /2;
-      }
+
 
     
 
