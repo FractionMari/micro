@@ -3,6 +3,18 @@
 // 29. januar. 
 ////////////
 
+function handleOrientation(event) {
+    updateFieldIfNotNull('Orientation_b', event.beta);
+    updateFieldIfNotNull('Orientation_g', event.gamma);
+    updateFieldIfNotNull('Orientation_a', event.alpha);
+
+    // Rotation to control oscillator pitch
+    let pitchWheel = event.beta;
+    pitchWheel = pitchWheel + 180;
+    oscillator.frequency.value = pitchWheel;
+    oscillator2.frequency.value = pitchWheel /2;
+  }
+
 
 ///////////
 
@@ -32,19 +44,14 @@
     oscillator.start();
     oscillator2.start();
 
-    function handleOrientation(event) {
-        updateFieldIfNotNull('Orientation_b', event.beta);
-        updateFieldIfNotNull('Orientation_g', event.gamma);
-        updateFieldIfNotNull('Orientation_a', event.alpha);
-        incrementEventCount();
+    if (
+        DeviceMotionEvent &&
+        typeof DeviceMotionEvent.requestPermission === "function"
+        ) {
+        DeviceMotionEvent.requestPermission();
+        }
+      window.addEventListener("deviceorientation", handleOrientation);
     
-        // Rotation to control oscillator pitch
-        let pitchWheel = event.beta;
-        pitchWheel = pitchWheel + 180;
-        oscillator.frequency.value = pitchWheel;
-        oscillator2.frequency.value = pitchWheel /2;
-      }
-    window.addEventListener("deviceorientation", handleOrientation);
 
     volume = context.createGain();
     volume.gain.value = 0.5;
@@ -78,7 +85,7 @@
 
     biquadFilter.connect(volume)    
     volume.connect(context.destination);  
-    playing = 1;
+
 
 
 
@@ -89,7 +96,7 @@
     document.querySelector("#button2").addEventListener('click', function() {
         oscillator.stop();
         oscillator2.stop();
-        playing = 0;
+
 
     });
 
@@ -191,12 +198,7 @@ biquadFilter.frequency.value = biquadAcc;
 
 
 
-if (
-DeviceMotionEvent &&
-typeof DeviceMotionEvent.requestPermission === "function"
-) {
-DeviceMotionEvent.requestPermission();
-}
+
 
 
 
