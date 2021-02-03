@@ -10,7 +10,7 @@ function handleOrientation(event) {
 
     // Rotation to control oscillator pitch
     let pitchWheel = event.gamma;
-    pitchWheel = pitchWheel + 180;
+    pitchWheel = pitchWheel + 280;
     oscillator.frequency.value = pitchWheel;
     oscillator2.frequency.value = pitchWheel /2;
   }
