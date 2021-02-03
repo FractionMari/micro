@@ -40,7 +40,7 @@ function handleOrientation(event) {
     oscillator2 = context.createOscillator();
     oscillator.frequency.value = 380;
     oscillator2.frequency.value = 157;
-    oscillator2.type = "square";
+    oscillator2.type = "saw";
     oscillator.start();
     oscillator2.start();
 
@@ -181,7 +181,7 @@ class LowPassFilterData {
   function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
   }
-  var fn = generateScaleFunction(0, 0.5, 0.9, 0);
+  var fn = generateScaleFunction(0, 0.4, 0.9, 0);
 
   newAcc = fn(diffAcc);
 
