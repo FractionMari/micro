@@ -172,7 +172,6 @@ class LowPassFilterData {
   biquadAcc = fn_biquad(biquadAcc);
 
 
-
 newAcc = (clamp(0.1, 0.7, newAcc));
 biquadFilter.frequency.value = biquadAcc;
 
