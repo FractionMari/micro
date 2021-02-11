@@ -171,7 +171,7 @@ class LowPassFilterData {
     updateFieldIfNotNull('total_filter', totFilter );
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
-    updateFieldIfNotNull('biquad', biquadAcc );
+    //updateFieldIfNotNull('biquad', biquadAcc );
 
 
   //Scaling the incoming number
@@ -192,14 +192,14 @@ class LowPassFilterData {
 
   newAcc = fn(diffAcc);
 
-  var fn_biquad = generateScaleFunction(0, 10, 0, 5000);
+/*   var fn_biquad = generateScaleFunction(0, 10, 0, 5000);
   biquadAcc = Math.abs(zValue);
-  biquadAcc = fn_biquad(biquadAcc);
+  biquadAcc = fn_biquad(biquadAcc); */
 
 
 
 newAcc = (clamp(0.1, 0.5, newAcc));
-biquadFilter.frequency.value = biquadAcc;
+//biquadFilter.frequency.value = biquadAcc;
 
 
 
@@ -207,9 +207,9 @@ biquadFilter.frequency.value = biquadAcc;
 // more smooth change of volume:
 //volume.gain.value = newAcc;
 gainNode.gain.value = newAcc;
-volume.gain.cancelScheduledValues(context.currentTime);
-volume.gain.setValueAtTime(volume.gain.value, context.currentTime);
-volume.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2);
+//volume.gain.cancelScheduledValues(context.currentTime);
+//volume.gain.setValueAtTime(volume.gain.value, context.currentTime);
+//volume.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2);
 
 
 }  
