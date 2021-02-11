@@ -20,6 +20,7 @@ function handleOrientation(event) {
 // Introducing Tone.js
 const gainNode = new Tone.Gain().toMaster();
 const synth = new Tone.Synth().connect(gainNode).toMaster();
+var newAcc;
 
 ///////////
 
