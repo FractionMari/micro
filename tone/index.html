@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <script src="https://unpkg.com/tone@13.8.25/build/Tone.js"></script>
+            
+        <button type="button" id="buttonC">C</button>
+        <button type="button" id="buttonD">D</button>
+        <button type="button" id="buttonE">E</button>
+        <button type="button" id="buttonF">F</button>
+        <button type="button" id="buttonG">G</button>
+        <button type="button" id="buttonA">A</button>
+        <button type="button" id="buttonH">H</button>
+        <button type="button" id="buttonC5">C</button>
+
+<br>
+<div class="slidecontainer">
+  <p>Volume:</p>
+  <input type="range" min="-100" max="10" value="0.5" step="0.01" class="slider" id="volume">
+</div>
+
+<script >
+        
+//create a synth and connect it to the main output (your speakers)
+
+var volumeslider = document.getElementById("volume");
+const vol = new Tone.Volume().toMaster();
+const synth = new Tone.Synth().connect(vol).toMaster();
+
+
+
+volumeslider.oninput = function() {
+    vol.volume.value = this.value;
+  console.log(this.value);
+}
+
+//play a middle 'C' for the duration of an 8th note
+
+document.querySelector("#buttonC").addEventListener('click', function() {
+    synth.triggerAttackRelease("C4", "16n");
+});
+
+document.querySelector("#buttonD").addEventListener('click', function() {
+    synth.triggerAttackRelease("D4", "16n");
+});
+
+document.querySelector("#buttonE").addEventListener('click', function() {
+    synth.triggerAttackRelease("E4", "8n");
+});
+
+document.querySelector("#buttonF").addEventListener('click', function() {
+    synth.triggerAttackRelease("F4", "8n");
+});
+
+document.querySelector("#buttonG").addEventListener('click', function() {
+    synth.triggerAttackRelease("G4", "8n");
+});
+
+document.querySelector("#buttonA").addEventListener('click', function() {
+    synth.triggerAttackRelease("A4", "8n");
+});
+
+document.querySelector("#buttonH").addEventListener('click', function() {
+    synth.triggerAttackRelease("B4", "8n");
+});
+
+document.querySelector("#buttonC5").addEventListener('click', function() {
+    synth.triggerAttackRelease("C5", "8n");
+});
+
+            </script>
+    </body>
+</html>

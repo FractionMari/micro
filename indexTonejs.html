@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Micro Draft 9</title>
+    <title>Micro Draft 4.2</title>
     <link href="micro.css" rel="stylesheet">
 
 </head>
+
+<script src="https://unpkg.com/tone@13.8.25/build/Tone.js"></script>
+
 <body>
-    <div id="container">
-    <h2> Micro App: Draft with effects, v. 2.7</h2>
+    <div id="container4">
+        <h1>Micro App:</h1><h2> Spaghetti Oscillator draft with effects and Tone.JS</h2>
     <button type="button" id="button1">Play</button>
     <button type="button" id="button2">Stop</button>
 
@@ -26,13 +29,19 @@
 
       <div class="slidecontainer">
         <p>Biquad Freq:</p>
-        <input type="range" min="1" max="3000" value="100" step="0.01" class="slider" id="biquad_freq">
+        <input type="range" min="100" max="3000" value="100" step="0.01" class="slider" id="biquad_freq">
         <li>Biquad_filter: <span id="biquad">0</span></li>
       </div>
     <p> Control the volume by moving your phone!  </p>
 
 
 
+    <h4 style="margin-top:0.75rem;">Orientation</h4>
+<ul>
+  <li>X-axis (&beta;): <span id="Orientation_b">0</span><span>&deg;</span></li>
+  <li>Y-axis (&gamma;): <span id="Orientation_g">0</span><span>&deg;</span></li>
+  <li>Z-axis (&alpha;): <span id="Orientation_a">0</span><span>&deg;</span></li>
+</ul>
 
   <li>X-axis: <span id="test_x">0</span></li>
   <li>X-axis with filter: <span id="filter_x">0</span></li>
@@ -51,12 +60,9 @@
 </main>
 
 
-<script src="trial9_draft.js"></script>
+<script src="trial4.2.js"></script>
 
-<a href ="./index4.2.html">The same app as this, but with oscillators</a>
-<br>
-<a href ="./indexTonejs.html">A Tone.js version</a>
-<br>
+
 <a href ="./index7_draft.html">An experimental version</a>
 <br>
 <a href ="./index8_draft.html">Another experimental version</a>
