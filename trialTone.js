@@ -18,8 +18,8 @@ function handleOrientation(event) {
   }
 
 // Introducing Tone.js
-const vol = new Tone.Volume().toMaster();
-const synth = new Tone.Synth().connect(vol).toMaster();
+const gainNode = new Tone.Gain().toMaster();
+const synth = new Tone.Synth().connect(gainNode).toMaster();
 
 ///////////
 
@@ -197,7 +197,7 @@ class LowPassFilterData {
 
 
 
-newAcc = (clamp(0.1, 0.5, newAcc));
+newAcc = (clamp(-1, 1, newAcc));
 biquadFilter.frequency.value = biquadAcc;
 
 
@@ -205,7 +205,7 @@ biquadFilter.frequency.value = biquadAcc;
 
 // more smooth change of volume:
 //volume.gain.value = newAcc;
-vol.volume.value = newAcc;
+gainNode.gain.value = newAcc;
 volume.gain.cancelScheduledValues(context.currentTime);
 volume.gain.setValueAtTime(volume.gain.value, context.currentTime);
 volume.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2);
