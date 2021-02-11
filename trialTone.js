@@ -207,9 +207,12 @@ newAcc = (clamp(-1, 0.5, newAcc));
 // more smooth change of volume:
 //volume.gain.value = newAcc;
 gainNode.gain.value = newAcc;
-gainNode.gain.cancelScheduledValues(context.currentTime);
+gainNode.gain.rampTo(1, 0.1);
+gainNode.gain.rampTo(0, 2, "+0.5");
+
+/* gainNode.gain.cancelScheduledValues(context.currentTime);
 gainNode.gain.setValueAtTime(gainNode.gain.value, context.currentTime);
-gainNode.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2);
+gainNode.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2); */
 //volume.gain.cancelScheduledValues(context.currentTime);
 //volume.gain.setValueAtTime(volume.gain.value, context.currentTime);
 //volume.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2);
