@@ -37,7 +37,7 @@ const synth = new Tone.Synth().connect(vol).toMaster();
     // A button for playback of music track
     document.querySelector("#button1").addEventListener('click', function() {
 
-    synth.triggerAttack("C4", now)
+    synth.triggerAttack("C4");
 
 /*     context = new AudioContext();
 // oscillator variables
@@ -90,7 +90,7 @@ const synth = new Tone.Synth().connect(vol).toMaster();
     document.querySelector("#button2").addEventListener('click', function() {
 /*         oscillator.stop();
         oscillator2.stop(); */
-    synth.triggerRelease(now + 1)
+    synth.triggerRelease();
 
 
     });
