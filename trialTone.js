@@ -129,7 +129,7 @@ class LowPassFilterData {
 
   };
   
-  const accl = new Accelerometer({ frequency: 50 });
+  const accl = new Accelerometer({ frequency: 100 });
 
 
   
@@ -198,7 +198,7 @@ class LowPassFilterData {
 
 
 
-newAcc = (clamp(-1, 0.5, newAcc));
+newAcc = (clamp(-1, 1, newAcc));
 //biquadFilter.frequency.value = biquadAcc;
 
 
@@ -207,7 +207,7 @@ newAcc = (clamp(-1, 0.5, newAcc));
 // more smooth change of volume:
 //volume.gain.value = newAcc;
 gainNode.gain.value = newAcc;
-gainNode.gain.rampTo(1, 0.1);
+
 
 
 /* gainNode.gain.cancelScheduledValues(context.currentTime);
