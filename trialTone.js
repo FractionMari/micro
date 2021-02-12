@@ -129,7 +129,7 @@ class LowPassFilterData {
 
   };
   
-  const accl = new Accelerometer({ frequency: 500 });
+  const accl = new Accelerometer({ frequency: 1280 });
 
 
   
