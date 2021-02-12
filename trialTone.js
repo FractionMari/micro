@@ -4,6 +4,9 @@
 
 
 ////////////
+const gainNode = new Tone.Gain().toMaster();
+const synth = new Tone.AMSynth().connect(gainNode).toMaster();
+var newAcc;
 
 function handleOrientation(event) {
     updateFieldIfNotNull('Orientation_b', event.beta);
@@ -13,88 +16,26 @@ function handleOrientation(event) {
     // Rotation to control oscillator pitch
     let pitchWheel = event.gamma;
     pitchWheel = pitchWheel + 280;
-  // oscillator.frequency.value = pitchWheel;
+    synth.frequency.value = pitchWheel;
   //  oscillator2.frequency.value = pitchWheel /2;
   }
 
 // Introducing Tone.js
-const gainNode = new Tone.Gain().toMaster();
-const synth = new Tone.Synth().connect(gainNode).toMaster();
-var newAcc;
-
-///////////
-
-    // Preparing the audio variables
-/*     var AudioContext = window.AudioContext || window.webkitAudioContext;  
-    var volume;
-    var newAcc;
-    var context;
-    var biquadAcc;
-    var biquadFilter;
-    var oscillator;
-    var oscillator2;   */
 
 
-    // A button for playback of music track
-    document.querySelector("#button1").addEventListener('click', function() {
 
-    synth.triggerAttack("C4");
+// A button for playback of music track
+document.querySelector("#button1").addEventListener('click', function() {
+synth.triggerAttack("C4");
 
-/*     context = new AudioContext();
-// oscillator variables
-    oscillator = context.createOscillator();
-    oscillator2 = context.createOscillator();
-    oscillator.frequency.value = 380;
-    oscillator2.frequency.value = 157;
- //   oscillator2.type = "square";
-    oscillator.start();
-    oscillator2.start();
-
-    volume = context.createGain();
-    volume.gain.value = 0.5;
-    biquadFilter = context.createBiquadFilter();
+});
     
-    // Manipulate the Biquad filter
+// stop button of the oscillator
 
-    biquadFilter.type = "bandpass";
-    biquadFilter.frequency.value = 1000;
-    biquadFilter.Q.value = 1;
-    biquadFilter.detune.value = 100;
+document.querySelector("#button2").addEventListener('click', function() {
+synth.triggerRelease();
 
-    //// testing of biquad vlaues
-    var biquad_detune_slider = document.getElementById("biquad_detune");
-    var biquad_gain_slider = document.getElementById("biquad_gain");
-    var biquad_freq_slider = document.getElementById("biquad_freq");
-
-    biquad_detune_slider.oninput = function() {
-        biquadFilter.detune.value = this.value;
-    }  
-    biquad_gain_slider.oninput = function() {
-        biquadFilter.Q.value = this.value;
-    }  
-    biquad_freq_slider.oninput = function() {
-        biquadFilter.frequency.value = this.value;
-    }  
-
-
-    oscillator.connect(biquadFilter); 
-    oscillator2.connect(biquadFilter); 
-
-    biquadFilter.connect(volume)    
-    volume.connect(context.destination);   */
-
-
-    });
-    
-    // stop button of the oscillator
-    
-    document.querySelector("#button2").addEventListener('click', function() {
-/*         oscillator.stop();
-        oscillator2.stop(); */
-    synth.triggerRelease();
-
-
-    });
+});
 
 if (
     DeviceMotionEvent &&
@@ -129,7 +70,7 @@ class LowPassFilterData {
 
   };
   
-  const accl = new Accelerometer({ frequency: 1280 });
+  const accl = new Accelerometer({ frequency: 128 });
 
 
   
