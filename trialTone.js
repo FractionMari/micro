@@ -2,7 +2,7 @@
 
 // 11. februar: including the Tone.js to improve sound quality
 
-
+// Idé: bruke tutorial-koden om farsgrense til å lage skala på xaksen
 ////////////
 const gainNode = new Tone.Gain().toMaster();
 const synth = new Tone.AMSynth().connect(gainNode).toMaster();
@@ -15,15 +15,53 @@ function handleOrientation(event) {
 
     // Rotation to control oscillator pitch
     let pitchWheel = event.beta;
-    pitchWheel = pitchWheel + 150;
-    synth.frequency.value = pitchWheel;
+    pitchWheel = pitchWheel - 180;
+    //synth.frequency.value = pitchWheel;
   //  oscillator2.frequency.value = pitchWheel /2;
   }
 
-// Introducing Tone.js
+function pitchShift (pitch) {
+  const pitchLimit = 1;
+  const intervalChange = 30;
 
+  if (pitch < pitchLimit)
+  console.log('Ok');
+  else {
+    const points = Math.floor((pitch - pitchLimit) / intervalChange);
+    if (points >= 12)
+      synth.frequency.value = "C4";
+    if (points >= 11)
+      synth.frequency.value = "B3";
+      if (points >= 10)
+      synth.frequency.value = "A3";
+    if (points >= 9)
+      synth.frequency.value = "G3";
+    
+      if (points >= 8)
+      synth.frequency.value = "F3";
+    if (points >= 7)
+      synth.frequency.value = "E3";
+    
+      if (points >= 6)
+      synth.frequency.value = "D3";
+    if (points >= 5)
+      synth.frequency.value = "C3";
+    
+    if (points >= 4)
+      synth.frequency.value = "B2";
+      if (points >= 3)
+      synth.frequency.value = "A2";
+    if (points >= 2)
+      synth.frequency.value = "G2";
+    
+      if (points >= 1)
+      synth.frequency.value = "F2";
 
+  }
 
+}
+/////////////////////////
+// Introducing Tone.js //
 // A button for playback of music track
 document.querySelector("#button1").addEventListener('click', function() {
 synth.triggerAttack("C4");
