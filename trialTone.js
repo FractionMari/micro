@@ -208,7 +208,7 @@ newAcc = (clamp(-1, 0.5, newAcc));
 //volume.gain.value = newAcc;
 gainNode.gain.value = newAcc;
 gainNode.gain.rampTo(1, 0.1);
-gainNode.gain.rampTo(0, 0.4, 0.2);
+
 
 /* gainNode.gain.cancelScheduledValues(context.currentTime);
 gainNode.gain.setValueAtTime(gainNode.gain.value, context.currentTime);
