@@ -9,7 +9,7 @@ const synth = new Tone.AMSynth().connect(gainNode).toMaster();
 var newAcc;
 
 function handleOrientation(event) {
-    updateFieldIfNotNull('Orientation_b', event.beta);
+    updateFieldIfNotNull('Orientation_b', pitchWheel);
     updateFieldIfNotNull('Orientation_g', event.gamma);
     updateFieldIfNotNull('Orientation_a', event.alpha);
 
