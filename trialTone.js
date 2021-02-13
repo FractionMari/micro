@@ -20,6 +20,7 @@ function handleOrientation(event) {
   //  oscillator2.frequency.value = pitchWheel /2;
   }
 
+pitchShift(pitchWheel);
 function pitchShift (pitch) {
   const pitchLimit = 1;
   const intervalChange = 30;
@@ -30,31 +31,31 @@ function pitchShift (pitch) {
     const points = Math.floor((pitch - pitchLimit) / intervalChange);
     if (points >= 12)
       synth.frequency.value = "C4";
-    if (points >= 11)
+    elif (points >= 11)
       synth.frequency.value = "B3";
-      if (points >= 10)
+    if (points >= 10)
       synth.frequency.value = "A3";
     if (points >= 9)
       synth.frequency.value = "G3";
     
-      if (points >= 8)
+    if (points >= 8)
       synth.frequency.value = "F3";
     if (points >= 7)
       synth.frequency.value = "E3";
     
-      if (points >= 6)
+    if (points >= 6)
       synth.frequency.value = "D3";
     if (points >= 5)
       synth.frequency.value = "C3";
     
     if (points >= 4)
       synth.frequency.value = "B2";
-      if (points >= 3)
+    if (points >= 3)
       synth.frequency.value = "A2";
     if (points >= 2)
       synth.frequency.value = "G2";
     
-      if (points >= 1)
+    if (points >= 1)
       synth.frequency.value = "F2";
 
   }
