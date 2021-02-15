@@ -182,6 +182,12 @@ class LowPassFilterData {
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
     let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
 
+      // With this function it won't go below a threshold 
+  function clamp(min, max, val) {
+    return Math.min(Math.max(min, +val), max);
+  }
+  diffAcc = (clamp(0, 4, diffAcc));
+
  
     filter.update(accl); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', accl.x );
@@ -208,11 +214,8 @@ class LowPassFilterData {
     };
     
   };
-  // With this function it won't go below a threshold 
-  function clamp(min, max, val) {
-    return Math.min(Math.max(min, +val), max);
-  }
-  diffAcc = (clamp(0, 4, diffAcc));
+
+
   var fn = generateScaleFunction(0, 4, -0.5, -1);
   newAcc = fn(diffAcc);
   newAcc = (clamp(-1, -0.5, newAcc));
