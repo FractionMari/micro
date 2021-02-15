@@ -18,9 +18,8 @@ function handleOrientation(event) {
     pitchWheel = pitchWheel - 180;
     //synth.frequency.value = pitchWheel;
   //  oscillator2.frequency.value = pitchWheel /2;
-  }
 
-pitchShift(pitchWheel);
+  pitchShift(pitchWheel);
 function pitchShift (pitch) {
   const pitchLimit = 1;
   const intervalChange = 30;
@@ -36,31 +35,28 @@ function pitchShift (pitch) {
     if (points >= 10)
       synth.frequency.value = "A3";
     if (points >= 9)
-      synth.frequency.value = "G3";
-    
+      synth.frequency.value = "G3";  
     if (points >= 8)
       synth.frequency.value = "F3";
     if (points >= 7)
       synth.frequency.value = "E3";
-    
     if (points >= 6)
       synth.frequency.value = "D3";
     if (points >= 5)
       synth.frequency.value = "C3";
-    
     if (points >= 4)
       synth.frequency.value = "B2";
     if (points >= 3)
       synth.frequency.value = "A2";
     if (points >= 2)
-      synth.frequency.value = "G2";
-    
+      synth.frequency.value = "G2"; 
     if (points >= 1)
       synth.frequency.value = "F2";
-
+  }
+}
   }
 
-}
+
 /////////////////////////
 // Introducing Tone.js //
 // A button for playback of music track
@@ -109,7 +105,7 @@ class LowPassFilterData {
 
   };
   
-  const accl = new Accelerometer({ frequency: 128 });
+  const accl = new Accelerometer({ frequency: 60 });
 
 
   
