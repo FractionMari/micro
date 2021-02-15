@@ -11,8 +11,8 @@ const synth = new Tone.AMSynth().connect(gainNode).toMaster();
 const freeverb = new Tone.Freeverb().toMaster();
 freeverb.dampening = 1000;
 // routing synth through the reverb
-const synth = new Tone.NoiseSynth().connect(freeverb);
-synth.triggerAttackRelease(0.05);
+//const synth = new Tone.NoiseSynth().connect(freeverb);
+//synth.triggerAttackRelease(0.05);
 
 var newAcc;
 
