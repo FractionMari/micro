@@ -164,9 +164,9 @@ class LowPassFilterData {
     return Math.min(Math.max(min, +val), max);
   }
 
-  var fn = generateScaleFunction(0, 8, 0, -1);
+  var fn = generateScaleFunction(0, 8, -0.5, -1);
   newAcc = fn(diffAcc);
-  newAcc = (clamp(-1, 1, newAcc));
+  newAcc = (clamp(-1, -0.5, newAcc));
 
 
 
