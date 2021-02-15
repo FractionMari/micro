@@ -171,19 +171,6 @@ class LowPassFilterData {
   // Isolate gravity with low-pass filter.
   const filter = new LowPassFilterData(accl);
 
-// This is our Linear Interpolation method. It takes 3 parameters:
-// a: The starting value
-// b: The destination value
-// n: The normal value (between 0 and 1) to control the Linear Interpolation
-//
-// If your normal value is equal to 1 the circle will instantly switch from A to B.
-// If your normal value is equal to 0 the circle will not move.
-// The closer your normal is to 0 the smoother will be the interpolation.
-// The closer your normal is to 1 the sharper will be the interpolation.
-function lerp(a, b, n) {
-  return (1 - n) * a + n * b;
-}
-
 
 
   accl.onreading = () => {
@@ -206,14 +193,11 @@ function lerp(a, b, n) {
     //totAcc = Math.floor(totAcc);
     //totFilter = totFilter * 10;
     //totFilter = Math.floor(totFilter);
-    let interpolate = lerp(totAcc, totFilter, 0.1);
 
-    let diffAcc = Math.floor((Math.abs(totAcc - totFilter)) * 10);
 
-    
+    let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
 
-    
-
+ 
     filter.update(accl); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', accl.x );
     updateFieldIfNotNull('filter_x', filter.x );
@@ -228,7 +212,7 @@ function lerp(a, b, n) {
     updateFieldIfNotNull('total_filter', totFilter );
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
-    updateFieldIfNotNull('interpolate', interpolate );
+
  
   //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
