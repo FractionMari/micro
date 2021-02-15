@@ -208,7 +208,7 @@ function lerp(a, b, n) {
     //totFilter = Math.floor(totFilter);
     let interpolate = lerp(totAcc, totFilter, 0.1);
 
-    let diffAcc = Math.abs(totAcc - totFilter);
+    let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
 
     
 
