@@ -159,19 +159,13 @@ class LowPassFilterData {
       this.y = reading.y;
       this.z = reading.z;
     }
-
-
   };
   
+  // The accelerometer
   const accl = new Accelerometer({ frequency: 60 });
-
-
-  
                 
   // Isolate gravity with low-pass filter.
   const filter = new LowPassFilterData(accl);
-
-
 
   accl.onreading = () => {
 
@@ -184,17 +178,8 @@ class LowPassFilterData {
     let xFilter = filter.x;
     let yFilter = filter.y;
     let zFilter = filter.z;
-  
-
     let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
-    //totAcc = totAcc * 10;
-    
-    //totAcc = Math.floor(totAcc);
-    //totFilter = totFilter * 10;
-    //totFilter = Math.floor(totFilter);
-
-
     let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
 
  
@@ -221,15 +206,14 @@ class LowPassFilterData {
     return function (x) {
         return offset + scale * x;
     };
-
     
   };
-
+  // With this function it won't go below a threshold 
   function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
   }
 
-  var fn = generateScaleFunction(0, 10, -0.5, -1);
+  var fn = generateScaleFunction(0, 1, -0.5, -1);
   newAcc = fn(diffAcc);
   newAcc = (clamp(-1, -0.5, newAcc));
 
