@@ -189,9 +189,9 @@ gainNode.gain.value = newAcc;
 
 
 
-/* gainNode.gain.cancelScheduledValues(context.currentTime);
+gainNode.gain.cancelScheduledValues(context.currentTime);
 gainNode.gain.setValueAtTime(gainNode.gain.value, context.currentTime);
-gainNode.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2); */
+gainNode.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2);
 //volume.gain.cancelScheduledValues(context.currentTime);
 //volume.gain.setValueAtTime(volume.gain.value, context.currentTime);
 //volume.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2);
