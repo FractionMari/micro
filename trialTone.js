@@ -168,7 +168,7 @@ class LowPassFilterData {
   newAcc = fn(diffAcc);
 
 
-//newAcc = (clamp(-1, 1, newAcc));
+newAcc = (clamp(-1, 1, newAcc));
 
 
 
