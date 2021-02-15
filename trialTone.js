@@ -185,7 +185,7 @@ newAcc = (clamp(-1, 1, newAcc));
 
 // more smooth change of volume:
 //volume.gain.value = newAcc;
-gainNode.gain.value = newAcc;
+//gainNode.gain.value = newAcc;
 
 
 
