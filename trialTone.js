@@ -17,6 +17,32 @@ function pitchShift (pitch) {
   console.log('Ok');
   else {
     const points = Math.floor((pitch - pitchLimit) / intervalChange);
+
+
+  if (points >= 12)
+    synth.frequency.value = "C4";
+  else if (points >= 11)
+    synth.frequency.value = "B3";
+  else if (points >= 10)
+    synth.frequency.value = "A3";
+  else if (points >= 9)
+    synth.frequency.value = "G3";  
+  else if (points >= 8)
+    synth.frequency.value = "F3";
+  else if (points >= 7)
+    synth.frequency.value = "E3";
+  else if (points >= 6)
+    synth.frequency.value = "D3";
+  else if (points >= 5)
+    synth.frequency.value = "C3";
+  else if (points >= 4)
+    synth.frequency.value = "B2";
+  else if (points >= 3)
+    synth.frequency.value = "A2";
+  else if (points >= 2)
+    synth.frequency.value = "G2"; 
+  else if (points >= 1)
+    synth.frequency.value = "F2";
 /*       if (points >= 12)
       synth.triggerAttackRelease("C4", "2n");
     else if (points >= 11)
@@ -41,32 +67,9 @@ function pitchShift (pitch) {
       synth.triggerAttackRelease("G2", "2n");
     else if (points >= 1)
       synth.triggerAttackRelease("F2", "2n"); */
-    if (points >= 12)
-    synth.triggerRelease(), synth.frequency.value = "C4", synth.triggerAttack();
-    else if (points >= 11)
-    synth.triggerRelease(), synth.frequency.value = "B3", synth.triggerAttack();
-    else if (points >= 10)
-    synth.triggerRelease(), synth.frequency.value = "A3", synth.triggerAttack();
-    else if (points >= 9)
-    synth.triggerRelease(), synth.frequency.value = "G3", synth.triggerAttack();  
-    else if (points >= 8)
-    synth.triggerRelease(), synth.frequency.value = "F3", synth.triggerAttack();
-    else if (points >= 7)
-    synth.triggerRelease(), synth.frequency.value = "E3", synth.triggerAttack();
-    else if (points >= 6)
-    synth.triggerRelease(), synth.frequency.value = "D3", synth.triggerAttack();
-    else if (points >= 5)
-    synth.triggerRelease(), synth.frequency.value = "C3", synth.triggerAttack();
-    else if (points >= 4)
-    synth.triggerRelease(), synth.frequency.value = "B2", synth.triggerAttack();
-    else if (points >= 3)
-    synth.triggerRelease(), synth.frequency.value = "A2", synth.triggerAttack();
-    else if (points >= 2)
-    synth.triggerRelease(), synth.frequency.value = "G2", synth.triggerAttack(); 
-    else if (points >= 1)
-    synth.triggerRelease(), synth.frequency.value = "F2", synth.triggerAttack();
 
 
+      
 /*     if (points >= 12)
       synth.triggerRelease();
     else if (points >= 11)
@@ -182,6 +185,8 @@ class LowPassFilterData {
 
     let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
+    totAcc = Math.floor(totAcc);
+    totFilter = Math.floor(totFilter);
 
     let diffAcc = Math.abs(totAcc - totFilter);
 
@@ -223,13 +228,13 @@ class LowPassFilterData {
 
 // more smooth change of volume:
 
-gainNode.gain.value = 0.5;
+gainNode.gain.value = newAcc;
 
 
 
-/* gainNode.gain.cancelScheduledValues(context.currentTime);
+gainNode.gain.cancelScheduledValues(context.currentTime);
 gainNode.gain.setValueAtTime(gainNode.gain.value, context.currentTime);
-gainNode.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2); */
+gainNode.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2);
 
 }  
 
