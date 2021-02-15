@@ -51,7 +51,7 @@ function handleOrientation(event) {
 
     // Rotation to control oscillator pitch
     let pitchWheel = event.beta;
-    pitchWheel = pitchWheel - 180;
+    pitchWheel = pitchWheel + 180;
     //synth.frequency.value = pitchWheel;
   //  oscillator2.frequency.value = pitchWheel /2;
 
