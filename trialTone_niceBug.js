@@ -72,27 +72,27 @@ function pitchShift (pitch) {
       
 
     else if (points >= 11)
-      synth.triggerRelease();
+      synth.triggerAttack("C4");
     else if (points >= 10)
       synth.triggerRelease();
     else if (points >= 9)
-      synth.triggerRelease();
+      synth.triggerAttack("B3"); 
     else if (points >= 8)
       synth.triggerRelease();
     else if (points >= 7)
-      synth.triggerRelease();
+      synth.triggerAttack("A3"); 
     else if (points >= 6)
       synth.triggerRelease();
     else if (points >= 5)
-      synth.triggerRelease();
+      synth.triggerAttack("G3"); 
     else if (points >= 4)
       synth.triggerRelease();
     else if (points >= 3)
-      synth.triggerRelease();
+      synth.triggerAttack("F3"); 
     else if (points >= 2)
       synth.triggerRelease();
     else if (points >= 1)
-    synth.triggerRelease();; 
+      synth.triggerAttack("E3"); 
       
   }
 }
