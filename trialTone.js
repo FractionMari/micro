@@ -8,6 +8,12 @@
 
 const gainNode = new Tone.Gain().toMaster();
 const synth = new Tone.AMSynth().connect(gainNode).toMaster();
+const freeverb = new Tone.Freeverb().toMaster();
+freeverb.dampening = 1000;
+// routing synth through the reverb
+const synth = new Tone.NoiseSynth().connect(freeverb);
+synth.triggerAttackRelease(0.05);
+
 var newAcc;
 
 function pitchShift (pitch) {
@@ -44,57 +50,6 @@ function pitchShift (pitch) {
     synth.frequency.value = "G2"; 
   else if (points >= 1)
     synth.frequency.value = "F2";
-/*       if (points >= 12)
-      synth.triggerAttackRelease("C4", "2n");
-    else if (points >= 11)
-      synth.triggerAttackRelease("B3", "2n");
-    else if (points >= 10)
-      synth.triggerAttackRelease("A3", "2n");
-    else if (points >= 9)
-      synth.triggerAttackRelease("G3", "2n");
-    else if (points >= 8)
-      synth.triggerAttackRelease("F3", "2n");
-    else if (points >= 7)
-      synth.triggerAttackRelease("E3", "2n");
-    else if (points >= 6)
-      synth.triggerAttackRelease("D3", "2n");
-    else if (points >= 5)
-      synth.triggerAttackRelease("C3", "2n");
-    else if (points >= 4)
-      synth.triggerAttackRelease("B2", "2n");
-    else if (points >= 3)
-      synth.triggerAttackRelease("A2", "2n");
-    else if (points >= 2)
-      synth.triggerAttackRelease("G2", "2n");
-    else if (points >= 1)
-      synth.triggerAttackRelease("F2", "2n"); */
-
-
-      
-/*     if (points >= 12)
-      synth.triggerRelease();
-    else if (points >= 11)
-      synth.triggerRelease();
-    else if (points >= 10)
-      synth.triggerRelease();
-    else if (points >= 9)
-      synth.triggerRelease();
-    else if (points >= 8)
-      synth.triggerRelease();
-    else if (points >= 7)
-      synth.triggerRelease();
-    else if (points >= 6)
-      synth.triggerRelease();
-    else if (points >= 5)
-      synth.triggerRelease();
-    else if (points >= 4)
-      synth.triggerRelease();
-    else if (points >= 3)
-      synth.triggerRelease();
-    else if (points >= 2)
-      synth.triggerRelease();
-    else if (points >= 1)
-    synth.triggerRelease();;  */
       
   }
 }
@@ -108,8 +63,6 @@ function handleOrientation(event) {
     // Rotation to control oscillator pitch
     let pitchWheel = event.beta;
     pitchWheel = pitchWheel + 180;
-    //synth.frequency.value = pitchWheel;
-  //  oscillator2.frequency.value = pitchWheel /2;
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     pitchShift(pitchWheel);
@@ -186,7 +139,7 @@ class LowPassFilterData {
   function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
   }
-  diffAcc = (clamp(0, 4, diffAcc));
+  diffAcc = (clamp(0, 8, diffAcc));
 
  
     filter.update(accl); // Pass latest values through filter.
