@@ -163,17 +163,15 @@ class LowPassFilterData {
   function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
   }
-  var fn = generateScaleFunction(0, 0.6, 1, -1);
 
+  var fn = generateScaleFunction(0.9, 8, 1, -1);
   newAcc = fn(diffAcc);
-
-
-newAcc = (clamp(-1, 1, newAcc));
+  newAcc = (clamp(-1, 1, newAcc));
 
 
 
 // more smooth change of volume:
-//volume.gain.value = newAcc;
+
 gainNode.gain.value = newAcc;
 
 
