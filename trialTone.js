@@ -225,10 +225,10 @@ class LowPassFilterData {
 
 
 // more smooth change of volume:
-gainNode.gain.cancelScheduledValues(context.currentTime);
-gainNode.gain.setValueAtTime(gainNode.gain.value, context.currentTime);
-gainNode.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2);
-gainNode.gain.value = newAcc;
+//gainNode.gain.cancelScheduledValues(context.currentTime);
+  gainNode.gain.setValueAtTime(gainNode.gain.value, context.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2);
+//gainNode.gain.value = newAcc;
 
 
 
