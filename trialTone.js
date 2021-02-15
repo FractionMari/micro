@@ -185,7 +185,10 @@ class LowPassFilterData {
 
     let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
+    totAcc = totAcc * 10;
+    
     totAcc = Math.floor(totAcc);
+    totFilter = totFilter * 10;
     totFilter = Math.floor(totFilter);
 
     let diffAcc = Math.abs(totAcc - totFilter);
