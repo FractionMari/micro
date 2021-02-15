@@ -9,6 +9,7 @@
 const gainNode = new Tone.Gain().toMaster();
 const freeverb = new Tone.Freeverb().toMaster();
 const synth = new Tone.AMSynth().toMaster();
+synth.connect(gainNode);
 synth.connect(freeverb);
 freeverb.connect(gainNode);
 var newAcc;
