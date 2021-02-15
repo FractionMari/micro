@@ -1,5 +1,5 @@
 // Functioning prototype 1: Tone.js 15. February
-//The oscillator version with new code + adding the Tone.js library.
+// The oscillator version with new code + adding the Tone.js library.
 
 // 11. februar: including the Tone.js to improve sound quality
 
@@ -8,24 +8,15 @@
 ////////////
 
 const gainNode = new Tone.Gain().toMaster();
-const synth = new Tone.AMSynth().connect(gainNode).toMaster();
-const freeverb = new Tone.Freeverb().toMaster();
-freeverb.dampening = 1000;
-// routing synth through the reverb
-//const synth = new Tone.NoiseSynth().connect(freeverb);
-//synth.triggerAttackRelease(0.05);
 
+const synth = new Tone.AMSynth().connect(gainNode).toMaster();
 var newAcc;
 
+
 function pitchShift (pitch) {
-  const pitchLimit = 1;
+  //const pitchLimit = 1;
   const intervalChange = 30;
-
-  if (pitch < pitchLimit)
-  console.log('Ok');
-  else {
-    const points = Math.floor((pitch - pitchLimit) / intervalChange);
-
+  const points = Math.floor(pitch / intervalChange);
 
   if (points >= 12)
     synth.frequency.value = "C4";
@@ -52,7 +43,6 @@ function pitchShift (pitch) {
   else if (points >= 1)
     synth.frequency.value = "F2";
       
-  }
 }
 
 function handleOrientation(event) {
@@ -140,7 +130,7 @@ class LowPassFilterData {
   function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
   }
-  diffAcc = (clamp(0, 8, diffAcc));
+  diffAcc = (clamp(0, 12, diffAcc));
 
  
     filter.update(accl); // Pass latest values through filter.
@@ -170,7 +160,7 @@ class LowPassFilterData {
   };
 
 
-  var fn = generateScaleFunction(0, 8, -0.5, -1);
+  var fn = generateScaleFunction(0, 12, -0.5, -1);
   newAcc = fn(diffAcc);
   newAcc = (clamp(-1, -0.5, newAcc));
 
