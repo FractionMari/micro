@@ -1,4 +1,5 @@
-// The oscillator version with new code + adding the Tone.js library.
+// Functioning prototype 1: Tone.js 15. February
+//The oscillator version with new code + adding the Tone.js library.
 
 // 11. februar: including the Tone.js to improve sound quality
 
@@ -139,7 +140,7 @@ class LowPassFilterData {
   function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
   }
-  diffAcc = (clamp(0, 12, diffAcc));
+  diffAcc = (clamp(0, 8, diffAcc));
 
  
     filter.update(accl); // Pass latest values through filter.
@@ -169,7 +170,7 @@ class LowPassFilterData {
   };
 
 
-  var fn = generateScaleFunction(0, 12, -0.5, -1);
+  var fn = generateScaleFunction(0, 8, -0.5, -1);
   newAcc = fn(diffAcc);
   newAcc = (clamp(-1, -0.5, newAcc));
 
