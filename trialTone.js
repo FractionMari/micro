@@ -2,6 +2,7 @@
 
 // 11. februar: including the Tone.js to improve sound quality
 
+//algoritme som lager tall imellom
 // Idé: bruke tutorial-koden om farsgrense til å lage skala på xaksen
 ////////////
 
@@ -170,6 +171,21 @@ class LowPassFilterData {
   // Isolate gravity with low-pass filter.
   const filter = new LowPassFilterData(accl);
 
+// This is our Linear Interpolation method. It takes 3 parameters:
+// a: The starting value
+// b: The destination value
+// n: The normal value (between 0 and 1) to control the Linear Interpolation
+//
+// If your normal value is equal to 1 the circle will instantly switch from A to B.
+// If your normal value is equal to 0 the circle will not move.
+// The closer your normal is to 0 the smoother will be the interpolation.
+// The closer your normal is to 1 the sharper will be the interpolation.
+function lerp(a, b, n) {
+  return (1 - n) * a + n * b;
+}
+
+
+
   accl.onreading = () => {
 
     // trying to avoid the "clicks" when changing volume
@@ -190,8 +206,13 @@ class LowPassFilterData {
     totAcc = Math.floor(totAcc);
     totFilter = totFilter * 10;
     totFilter = Math.floor(totFilter);
+    let interpolate = lerp(totAcc, totFilter, 0.1);
 
     let diffAcc = Math.abs(totAcc - totFilter);
+
+    
+
+    
 
     filter.update(accl); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', accl.x );
@@ -207,6 +228,7 @@ class LowPassFilterData {
     updateFieldIfNotNull('total_filter', totFilter );
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
+    updateFieldIfNotNull('interpolate', interpolate );
  
   //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
@@ -226,6 +248,8 @@ class LowPassFilterData {
   var fn = generateScaleFunction(0, 10, -0.5, -1);
   newAcc = fn(diffAcc);
   newAcc = (clamp(-1, -0.5, newAcc));
+
+
 
 
 
