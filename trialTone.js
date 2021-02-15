@@ -226,11 +226,13 @@ class LowPassFilterData {
 
 // more smooth change of volume:
 //gainNode.gain.cancelScheduledValues(context.currentTime);
-  gainNode.gain.value = newAcc;
+ // gainNode.gain.value = newAcc;
   
-  gainNode.gain.setValueAtTime(gainNode.gain.value, AudioContext.currentTime);
-  gainNode.gain.exponentialRampToValueAtTime(newAcc, AudioContext.currentTime + 2);
+ // gainNode.gain.setValueAtTime(gainNode.gain.value, AudioContext.currentTime);
+//  gainNode.gain.exponentialRampToValueAtTime(newAcc, AudioContext.currentTime + 2);
 //
+
+  gainNode.gain.rampTo(newAcc, 0.5);
 
 
 }  
