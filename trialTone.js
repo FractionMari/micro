@@ -216,7 +216,7 @@ class LowPassFilterData {
   };
 
 
-  var fn = generateScaleFunction(0, 4, -0.5, -1);
+  var fn = generateScaleFunction(0, 8, -0.5, -1);
   newAcc = fn(diffAcc);
   newAcc = (clamp(-1, -0.5, newAcc));
 
@@ -225,14 +225,8 @@ class LowPassFilterData {
 
 
 // more smooth change of volume:
-//gainNode.gain.cancelScheduledValues(context.currentTime);
- // gainNode.gain.value = newAcc;
-  
- // gainNode.gain.setValueAtTime(gainNode.gain.value, AudioContext.currentTime);
-//  gainNode.gain.exponentialRampToValueAtTime(newAcc, AudioContext.currentTime + 2);
-//
 
-  gainNode.gain.rampTo(newAcc, 0.5);
+  gainNode.gain.rampTo(newAcc, 0.2);
 
 
 }  
