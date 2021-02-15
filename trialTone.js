@@ -52,19 +52,19 @@ function pitchShift (pitch) {
     else if (points >= 8)
     synth.triggerRelease(), synth.frequency.value = "F3", synth.triggerAttack();
     else if (points >= 7)
-      synth.frequency.value = "E3";
+    synth.triggerRelease(), synth.frequency.value = "E3", synth.triggerAttack();
     else if (points >= 6)
-      synth.frequency.value = "D3";
+    synth.triggerRelease(), synth.frequency.value = "D3", synth.triggerAttack();
     else if (points >= 5)
-      synth.frequency.value = "C3";
+    synth.triggerRelease(), synth.frequency.value = "C3", synth.triggerAttack();
     else if (points >= 4)
-      synth.frequency.value = "B2";
+    synth.triggerRelease(), synth.frequency.value = "B2", synth.triggerAttack();
     else if (points >= 3)
-      synth.frequency.value = "A2";
+    synth.triggerRelease(), synth.frequency.value = "A2", synth.triggerAttack();
     else if (points >= 2)
-      synth.frequency.value = "G2"; 
+    synth.triggerRelease(), synth.frequency.value = "G2", synth.triggerAttack(); 
     else if (points >= 1)
-      synth.frequency.value = "F2";
+    synth.triggerRelease(), synth.frequency.value = "F2", synth.triggerAttack();
 
 
 /*     if (points >= 12)
