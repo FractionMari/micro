@@ -57,40 +57,6 @@ function handleOrientation(event) {
   pitchShift(pitchWheel);
   }
 
-  function pitchShift (pitch) {
-    const pitchLimit = 1;
-    const intervalChange = 30;
-  
-    if (pitch < pitchLimit)
-    console.log('Ok');
-    else {
-      const points = Math.floor((pitch - pitchLimit) / intervalChange);
-      if (points >= 12)
-        synth.frequency.value = "C4";
-      else if (points >= 11)
-        synth.frequency.value = "B3";
-      else if (points >= 10)
-        synth.frequency.value = "A3";
-      else if (points >= 9)
-        synth.frequency.value = "G3";  
-      else if (points >= 8)
-        synth.frequency.value = "F3";
-      else if (points >= 7)
-        synth.frequency.value = "E3";
-      else if (points >= 6)
-        synth.frequency.value = "D3";
-      else if (points >= 5)
-        synth.frequency.value = "C3";
-      else if (points >= 4)
-        synth.frequency.value = "B2";
-      else if (points >= 3)
-        synth.frequency.value = "A2";
-      else if (points >= 2)
-        synth.frequency.value = "G2"; 
-      else if (points >= 1)
-        synth.frequency.value = "F2";
-    }
-  }
 /////////////////////////
 // Introducing Tone.js //
 // A button for playback of music track
