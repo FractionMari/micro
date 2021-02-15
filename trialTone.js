@@ -45,7 +45,7 @@ var newAcc;
 
 function handleOrientation(event) {
     // updateFieldIfNotNull('Orientation_b', pitchWheel);
-    updateFieldIfNotNull('Orientation_g', event.beta);
+    updateFieldIfNotNull('Orientation_b', event.beta);
     updateFieldIfNotNull('Orientation_g', event.gamma);
     updateFieldIfNotNull('Orientation_a', event.alpha);
 
@@ -55,6 +55,7 @@ function handleOrientation(event) {
     //synth.frequency.value = pitchWheel;
   //  oscillator2.frequency.value = pitchWheel /2;
 
+    updateFieldIfNotNull('pitchweel', pitchWheel);
   //pitchShift(pitchWheel);
   }
 
