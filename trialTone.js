@@ -8,7 +8,7 @@ const gainNode = new Tone.Gain().toMaster();
 const synth = new Tone.AMSynth().connect(gainNode).toMaster();
 var newAcc;
 
-function pitchShift (pitch) {
+/* function pitchShift (pitch) {
   const pitchLimit = 1;
   const intervalChange = 30;
 
@@ -41,7 +41,7 @@ function pitchShift (pitch) {
     else if (points >= 1)
       synth.frequency.value = "F2";
   }
-}
+} */
 
 function handleOrientation(event) {
     updateFieldIfNotNull('Orientation_b', pitchWheel);
