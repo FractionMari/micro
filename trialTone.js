@@ -160,12 +160,10 @@ class LowPassFilterData {
     
   };
 
-  var fn = generateScaleFunction(0, 8, 1, 0);
-
   function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
   }
-
+  var fn = generateScaleFunction(0, 0.6, 0.6, 0);
 
   newAcc = fn(diffAcc);
 
