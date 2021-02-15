@@ -128,8 +128,6 @@ class LowPassFilterData {
     let yFilter = filter.y;
     let zFilter = filter.z;
   
-/*     let totAcc = Math.sqrt(Math.abs(xValue^2) + Math.abs(yValue^2) + Math.abs(zValue^2));
-    let totFilter = Math.sqrt(Math.abs(xFilter^2) + Math.abs(yFilter^2) + Math.abs(zFilter^2)); */
 
     let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
@@ -150,9 +148,7 @@ class LowPassFilterData {
     updateFieldIfNotNull('total_filter', totFilter );
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
-    //updateFieldIfNotNull('biquad', biquadAcc );
-
-
+ 
   //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
     var offset = newMin - prevMin,
@@ -167,19 +163,12 @@ class LowPassFilterData {
   function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
   }
-  var fn = generateScaleFunction(0, 0.6, 1, 0);
+  var fn = generateScaleFunction(0, 0.6, 8, 0);
 
   newAcc = fn(diffAcc);
 
-/*   var fn_biquad = generateScaleFunction(0, 10, 0, 5000);
-  biquadAcc = Math.abs(zValue);
-  biquadAcc = fn_biquad(biquadAcc); */
-
-
 
 newAcc = (clamp(-1, 1, newAcc));
-//biquadFilter.frequency.value = biquadAcc;
-
 
 
 
@@ -192,10 +181,6 @@ newAcc = (clamp(-1, 1, newAcc));
 gainNode.gain.cancelScheduledValues(context.currentTime);
 gainNode.gain.setValueAtTime(gainNode.gain.value, context.currentTime);
 gainNode.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2);
-//volume.gain.cancelScheduledValues(context.currentTime);
-//volume.gain.setValueAtTime(volume.gain.value, context.currentTime);
-//volume.gain.exponentialRampToValueAtTime(newAcc, context.currentTime + 2);
-
 
 }  
 
