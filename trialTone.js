@@ -7,7 +7,7 @@
 ////////////
 
 const gainNode = new Tone.Gain().toMaster();
-const synth = new Tone.AMSynth().connect(gainNode).toMaster();
+const synth = new Tone.AMSynth().connect(gainNode).connect(freeverb).toMaster();
 const freeverb = new Tone.Freeverb().toMaster();
 freeverb.dampening = 1000;
 // routing synth through the reverb
@@ -139,7 +139,7 @@ class LowPassFilterData {
   function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
   }
-  diffAcc = (clamp(0, 12, diffAcc));
+  //diffAcc = (clamp(0, 12, diffAcc));
 
  
     filter.update(accl); // Pass latest values through filter.
