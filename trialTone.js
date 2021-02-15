@@ -201,11 +201,11 @@ function lerp(a, b, n) {
 
     let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
-    totAcc = totAcc * 10;
+    //totAcc = totAcc * 10;
     
-    totAcc = Math.floor(totAcc);
-    totFilter = totFilter * 10;
-    totFilter = Math.floor(totFilter);
+    //totAcc = Math.floor(totAcc);
+    //totFilter = totFilter * 10;
+    //totFilter = Math.floor(totFilter);
     let interpolate = lerp(totAcc, totFilter, 0.1);
 
     let diffAcc = Math.abs(totAcc - totFilter);
