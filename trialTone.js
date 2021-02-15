@@ -54,7 +54,7 @@ function handleOrientation(event) {
     //synth.frequency.value = pitchWheel;
   //  oscillator2.frequency.value = pitchWheel /2;
 
-  pitchShift(pitchWheel);
+  //pitchShift(pitchWheel);
   }
 
 /////////////////////////
