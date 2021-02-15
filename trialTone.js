@@ -228,8 +228,8 @@ class LowPassFilterData {
 //gainNode.gain.cancelScheduledValues(context.currentTime);
   //gainNode.gain.value = newAcc;
   
-  gainNode.gain.setValueAtTime(gainNode.gain.value, Context.currentTime);
-  gainNode.gain.exponentialRampToValueAtTime(newAcc, Context.currentTime + 2);
+  gainNode.gain.setValueAtTime(gainNode.gain.value, AudioContext.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(newAcc, AudioContext.currentTime + 2);
 //
 
 
