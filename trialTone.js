@@ -4,6 +4,10 @@
 
 // Idé: bruke tutorial-koden om farsgrense til å lage skala på xaksen
 ////////////
+//do this before creating any Tone objects
+Tone.setContext(new AudioContext({ sampleRate: 60}))
+//now Tone outputs at this explicitly set sample rate of 96 kHz
+
 const gainNode = new Tone.Gain().toMaster();
 const synth = new Tone.AMSynth().connect(gainNode).toMaster();
 var newAcc;
