@@ -17,7 +17,31 @@ function pitchShift (pitch) {
   console.log('Ok');
   else {
     const points = Math.floor((pitch - pitchLimit) / intervalChange);
-    if (points >= 12)
+      if (points >= 12)
+      synth.triggerAttackRelease("C4", "8n");
+    else if (points >= 11)
+      synth.triggerAttackRelease("B3", "8n");
+    else if (points >= 10)
+      synth.triggerAttackRelease("A3", "8n");
+    else if (points >= 9)
+      synth.triggerAttackRelease("G3", "8n");
+    else if (points >= 8)
+      synth.triggerAttackRelease("F3", "8n");
+    else if (points >= 7)
+      synth.triggerAttackRelease("E3", "8n");
+    else if (points >= 6)
+      synth.triggerAttackRelease("D3", "8n");
+    else if (points >= 5)
+      synth.triggerAttackRelease("C3", "8n");
+    else if (points >= 4)
+      synth.triggerAttackRelease("B2", "8n");
+    else if (points >= 3)
+      synth.triggerAttackRelease("A2", "8n");
+    else if (points >= 2)
+      synth.triggerAttackRelease("G2", "8n");
+    else if (points >= 1)
+      synth.triggerAttackRelease("F2", "8n");
+/*     if (points >= 12)
       synth.frequency.value = "C4";
     else if (points >= 11)
       synth.frequency.value = "B3";
@@ -40,7 +64,7 @@ function pitchShift (pitch) {
     else if (points >= 2)
       synth.frequency.value = "G2"; 
     else if (points >= 1)
-      synth.frequency.value = "F2";
+      synth.frequency.value = "F2"; */
   }
 }
 
