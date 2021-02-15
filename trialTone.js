@@ -7,8 +7,8 @@
 ////////////
 
 const gainNode = new Tone.Gain().toMaster();
-const synth = new Tone.AMSynth().connect(gainNode).connect(freeverb).toMaster();
 const freeverb = new Tone.Freeverb().toMaster();
+const synth = new Tone.AMSynth().connect(gainNode).connect(freeverb).toMaster();
 freeverb.dampening = 1000;
 // routing synth through the reverb
 //const synth = new Tone.NoiseSynth().connect(freeverb);
