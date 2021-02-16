@@ -24,15 +24,15 @@ function crushShift (crushValue) {
 
 
   if (crushPoints >= 8)
-    crusher.bits = 8;
+    synth2.triggerAttack();
   else if (crushPoints >= 7)
-    crusher.bits = 7;
+    synth2.triggerRelease();
   else if (crushPoints >= 6)
-    crusher.bits = 6;
+    synth2.triggerAttack();
   else if (crushPoints >= 5)
-    crusher.bits = 5;
+  synth2.triggerRelease();
   else if (crushPoints >= 4)
-    crusher.bits = 4;
+    synth2.triggerAttack();
   else if (crushPoints >= 3)
     synth2.triggerRelease();
   else if (crushPoints >= 2)
