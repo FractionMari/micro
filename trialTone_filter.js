@@ -12,12 +12,11 @@ const gainNode = new Tone.Gain().toMaster();
 //const crusher = new Tone.BitCrusher().connect(gainNode);
 const autoFilter = new Tone.AutoFilter().connect(gainNode);
 const synth = new Tone.AMSynth().connect(autoFilter);
-const synth2 = new Tone.AMSynth().connect(autoFilter);
 var newAcc;
 
 
 
-function crushShift (crushValue) {
+/* function crushShift (crushValue) {
 // 360 / 8 = 45
   const crushIntervalChange = 45;
   const crushPoints = Math.floor(crushValue/ crushIntervalChange);
@@ -34,13 +33,13 @@ function crushShift (crushValue) {
   else if (crushPoints >= 4)
     crusher.bits = 4;
   else if (crushPoints >= 3)
-    synth2.triggerRelease();
+    crusher.bits = 3;
   else if (crushPoints >= 2)
-    synth2.triggerAttack();
+    crusher.bits = 2;
   else if (crushPoints >= 1)
-    synth2.triggerRelease();
+    crusher.bits = 1;
       
-  }
+  } */
 
 
 function pitchShift (pitch) {
@@ -49,41 +48,29 @@ function pitchShift (pitch) {
   const points = Math.floor(pitch / intervalChange);
 
   if (points >= 12)
-    synth.frequency.value = "C4", 
-    synth2.frequency.value = "G4";
+    synth.frequency.value = "C4";
   else if (points >= 11)
-    synth.frequency.value = "B3",
-    synth2.frequency.value = "F4";
+    synth.frequency.value = "B3";
   else if (points >= 10)
-    synth.frequency.value = "A3",
-    synth2.frequency.value = "E4";
+    synth.frequency.value = "A3";
   else if (points >= 9)
-    synth.frequency.value = "G3",
-    synth2.frequency.value = "D4"; 
+    synth.frequency.value = "G3";  
   else if (points >= 8)
-    synth.frequency.value = "F3",
-    synth2.frequency.value = "C4";
+    synth.frequency.value = "F3";
   else if (points >= 7)
-    synth.frequency.value = "E3",
-    synth2.frequency.value = "B3";
+    synth.frequency.value = "E3";
   else if (points >= 6)
-    synth.frequency.value = "D3",
-    synth2.frequency.value = "A3";
+    synth.frequency.value = "D3";
   else if (points >= 5)
-    synth.frequency.value = "C3",
-    synth2.frequency.value = "G3";
+    synth.frequency.value = "C3";
   else if (points >= 4)
-    synth.frequency.value = "B2",
-    synth2.frequency.value = "F3";
+    synth.frequency.value = "B2";
   else if (points >= 3)
-    synth.frequency.value = "A2",
-    synth2.frequency.value = "E3";
+    synth.frequency.value = "A2";
   else if (points >= 2)
-    synth.frequency.value = "G2",
-    synth2.frequency.value = "D3";
+    synth.frequency.value = "G2"; 
   else if (points >= 1)
-    synth.frequency.value = "F2",
-    synth2.frequency.value = "C3";
+    synth.frequency.value = "F2";
       
 }
 
@@ -95,11 +82,11 @@ function handleOrientation(event) {
 
     // Rotation to control oscillator pitch
     let pitchWheel = event.beta;
-    let crushWheel = event.gamma;
+    //let crushWheel = event.gamma;
     let filterWheel = event.gamma;
     filterWheel = (filterWheel + 180) * 4;
     pitchWheel = pitchWheel + 180;
-    crushWheel = (crushWheel + 180) / 8;
+    //crushWheel = (crushWheel + 180) / 8;
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
