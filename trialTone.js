@@ -19,18 +19,14 @@ var newAcc;
 
 function crushShift (crushValue) {
 // 360 / 8 = 45
-  const crushIntervalChange = 45;
+  const crushIntervalChange = 30;
   const crushPoints = Math.floor(crushValue/ crushIntervalChange);
 
 
-  if (crushPoints >= 8)
-    synth2.triggerAttack();
-  else if (crushPoints >= 7)
-    synth2.triggerRelease();
-  else if (crushPoints >= 6)
+  if (crushPoints >= 6)
     synth2.triggerAttack();
   else if (crushPoints >= 5)
-  synth2.triggerRelease();
+    synth2.triggerRelease();
   else if (crushPoints >= 4)
     synth2.triggerAttack();
   else if (crushPoints >= 3)
@@ -99,7 +95,7 @@ function handleOrientation(event) {
     let filterWheel = event.gamma;
     filterWheel = (filterWheel + 180) * 4;
     pitchWheel = pitchWheel + 180;
-    crushWheel = (crushWheel + 180) / 8;
+    crushWheel = (crushWheel + 90) / 8;
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
