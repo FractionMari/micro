@@ -1,6 +1,5 @@
 // Functioning prototype 1: Tone.js 15. February
 // The oscillator version with new code + adding the Tone.js library.
-// The oscillator version with new code + adding the Tone.js library.
 
 // 11. februar: including the Tone.js to improve sound quality
 
@@ -10,9 +9,13 @@
 
 const gainNode = new Tone.Gain().toMaster();
 //const freeverb = new Tone.Freeverb().toMaster();
-const synth = new Tone.AMSynth().connect(gainNode).toMaster();
 
-var newAcc;
+//const crusher = new Tone.BitCrusher().connect(gainNode);
+const autoFilter = new Tone.AutoFilter().connect(gainNode);
+const synth = new Tone.AMSynth().connect(autoFilter);
+let newAcc;
+
+
 
 function pitchShift (pitch) {
   //const pitchLimit = 1;
@@ -54,10 +57,18 @@ function handleOrientation(event) {
 
     // Rotation to control oscillator pitch
     let pitchWheel = event.beta;
+    //let crushWheel = event.gamma;
+    let filterWheel = event.gamma;
+    filterWheel = (filterWheel + 90) * 6;
     pitchWheel = pitchWheel + 180;
+    //crushWheel = (crushWheel + 180) / 8;
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
+    updateFieldIfNotNull('filterwheel', filterWheel);
     pitchShift(pitchWheel);
+    //crusher.bits = crushWheel;
+    autoFilter.baseFrequency = filterWheel;
+
   }
 
 /////////////////////////
@@ -161,18 +172,13 @@ class LowPassFilterData {
   };
 
 
-  var fn = generateScaleFunction(0, 12, -0.5, -1);
+  var fn = generateScaleFunction(0, 12, 0.5, 0);
   newAcc = fn(diffAcc);
-  newAcc = (clamp(-1, -0.5, newAcc));
-
-
-
+  newAcc = (clamp(0, 0.5, newAcc));
 
 
 // more smooth change of volume:
-
   gainNode.gain.rampTo(newAcc, 0.2);
-
 
 }  
 
