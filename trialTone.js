@@ -11,7 +11,7 @@ const gainNode = new Tone.Gain().toMaster();
 
 //const crusher = new Tone.BitCrusher().connect(gainNode);
 const autoFilter = new Tone.AutoFilter().connect(gainNode);
-const synth = new Tone.AMSynth().connect(crusher);
+const synth = new Tone.AMSynth().connect(autoFilter);
 
 
 var newAcc;
