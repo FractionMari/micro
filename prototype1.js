@@ -176,7 +176,7 @@ class LowPassFilterData {
 
 
 // more smooth change of volume:
-  gainNode.gain.rampTo(newAcc, 0.1);
+  gainNode.gain.rampTo(newAcc, 0.3);
 
 
 }  
