@@ -9,8 +9,10 @@
 const gainNode = new Tone.Gain().toMaster();
 //const freeverb = new Tone.Freeverb().toMaster();
 
-const crusher = new Tone.BitCrusher().connect(gainNode);
+//const crusher = new Tone.BitCrusher().connect(gainNode);
+const autoFilter = new Tone.AutoFilter().connect(gainNode);
 const synth = new Tone.AMSynth().connect(crusher);
+
 
 var newAcc;
 
@@ -82,13 +84,17 @@ function handleOrientation(event) {
 
     // Rotation to control oscillator pitch
     let pitchWheel = event.beta;
-    let crushWheel = event.gamma;
+    //let crushWheel = event.gamma;
+    let filterWheel = event.gamma;
+    filterWheel = (filterWheel + 180) * 3;
     pitchWheel = pitchWheel + 180;
-    crushWheel = (crushWheel + 180) / 8;
+    //crushWheel = (crushWheel + 180) / 8;
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
+    updateFieldIfNotNull('filterwheel', filterWheel);
     pitchShift(pitchWheel);
-    crusher.bits = crushWheel;
+    //crusher.bits = crushWheel;
+    autoFilter.baseFrequency = filterWheel;
 
   }
 

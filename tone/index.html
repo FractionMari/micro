@@ -44,8 +44,8 @@ let freeverbslider = document.getElementById("freeverb");
 
 const gainNode = new Tone.Gain().toMaster();
 
-const crusher = new Tone.BitCrusher().connect(gainNode);
-const freeverb = new Tone.AutoFilter().connect(crusher);
+//const crusher = new Tone.BitCrusher().connect(gainNode);
+const freeverb = new Tone.AutoFilter().connect(gainNode);
 const synth = new Tone.AMSynth().connect(freeverb);
 
 
