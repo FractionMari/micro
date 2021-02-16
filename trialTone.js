@@ -16,7 +16,7 @@ var newAcc;
 
 
 
-function crushShift (crushValue) {
+/* function crushShift (crushValue) {
 // 360 / 8 = 45
   const crushIntervalChange = 45;
   const crushPoints = Math.floor(crushValue/ crushIntervalChange);
@@ -39,7 +39,7 @@ function crushShift (crushValue) {
   else if (crushPoints >= 1)
     crusher.bits = 1;
       
-  }
+  } */
 
 
 function pitchShift (pitch) {
@@ -84,11 +84,12 @@ function handleOrientation(event) {
     let pitchWheel = event.beta;
     let crushWheel = event.gamma;
     pitchWheel = pitchWheel + 180;
-    crushWheel = crushWheel + 180;
+    crushWheel = (crushWheel + 180) / 8;
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     pitchShift(pitchWheel);
-    crushShift(crushWheel);
+    crusher.bits = crushWheel;
+
   }
 
 /////////////////////////

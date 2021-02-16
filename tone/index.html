@@ -29,9 +29,9 @@
   <p>Pitch:</p>
   <input type="range" min="0" max="360" value="0.5" step="0.01" class="slider" id="pitch">
   <p>Crusher:</p>
-  <input type="range" min="0" max="8" value="4" step="1" class="slider" id="crusher">
+  <input type="range" min="0" max="8" value="4" step="0.1" class="slider" id="crusher">
   <p>Freeverb:</p>
-  <input type="range" min="0" max="1" value="0.5" step="0.01" class="slider" id="freeverb">
+  <input type="range" min="0" max="1000" value="0.5" step="0.01" class="slider" id="freeverb">
 
 </div>
 
@@ -45,12 +45,12 @@ let freeverbslider = document.getElementById("freeverb");
 const gainNode = new Tone.Gain().toMaster();
 
 const crusher = new Tone.BitCrusher().connect(gainNode);
-const freeverb = new Tone.PingPongDelay("4n", 0.2).connect(crusher);
+const freeverb = new Tone.AutoFilter().connect(crusher);
 const synth = new Tone.AMSynth().connect(freeverb);
 
 
 freeverbslider.oninput = function() {
-freeverb.delayTime = (this.value);
+freeverb.baseFrequency = (this.value);
 console.log(this.value);
 }
 
@@ -112,7 +112,7 @@ pitchslider.oninput = function() {
 //play a middle 'C' for the duration of an 8th note
 
 document.querySelector("#buttonC").addEventListener('click', function() {
-    synth.triggerAttack("440");
+    synth.triggerAttack("C2");
 });
 
 document.querySelector("#buttonD").addEventListener('click', function() {
