@@ -95,7 +95,7 @@ function handleOrientation(event) {
     let filterWheel = event.gamma;
     filterWheel = (filterWheel + 180) * 4;
     pitchWheel = pitchWheel + 180;
-    crushWheel = (crushWheel + 90) / 8;
+    crushWheel = (crushWheel + 90) / 6;
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
