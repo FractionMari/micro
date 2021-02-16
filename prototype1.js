@@ -15,8 +15,6 @@ const autoFilter = new Tone.AutoFilter().connect(gainNode);
 const synth = new Tone.AMSynth().connect(autoFilter);
 let newAcc;
 
-
-
 function pitchShift (pitch) {
   //const pitchLimit = 1;
   const intervalChange = 30;
@@ -142,7 +140,7 @@ class LowPassFilterData {
   function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
   }
-  diffAcc = (clamp(0, 12, diffAcc));
+  //diffAcc = (clamp(0, 12, diffAcc));
 
  
     filter.update(accl); // Pass latest values through filter.
