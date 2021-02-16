@@ -11,7 +11,7 @@ const gainNode = new Tone.Gain().toMaster();
 //const freeverb = new Tone.Freeverb().toMaster();
 
 //const crusher = new Tone.BitCrusher().connect(gainNode);
-const autoFilter = new Tone.AutoFilter().connect(gainNode);
+const autoFilter = new Tone.AutoWah().connect(gainNode);
 const synth = new Tone.FMSynth().connect(autoFilter);
 let newAcc;
 
