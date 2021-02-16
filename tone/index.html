@@ -45,9 +45,10 @@ let freeverbslider = document.getElementById("freeverb");
 const gainNode = new Tone.Gain().toMaster();
 
 //const crusher = new Tone.BitCrusher().connect(gainNode);
-const freeverb = new Tone.AutoFilter().connect(gainNode);
-const synth = new Tone.AMSynth().connect(freeverb);
-
+const freeverb = new Tone.AutoWah().connect(gainNode);
+const synth = new Tone.Sampler({
+	"C2" : "/tink.mp3",
+}).connect(freeverb);
 
 freeverbslider.oninput = function() {
 freeverb.baseFrequency = (this.value);
