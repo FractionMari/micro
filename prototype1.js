@@ -1,5 +1,6 @@
 // Functioning prototype 1: Tone.js 15. February
 // The oscillator version with new code + adding the Tone.js library.
+// The oscillator version with new code + adding the Tone.js library.
 
 // 11. februar: including the Tone.js to improve sound quality
 
@@ -8,10 +9,10 @@
 ////////////
 
 const gainNode = new Tone.Gain().toMaster();
-
+//const freeverb = new Tone.Freeverb().toMaster();
 const synth = new Tone.AMSynth().connect(gainNode).toMaster();
-var newAcc;
 
+var newAcc;
 
 function pitchShift (pitch) {
   //const pitchLimit = 1;

@@ -8,52 +8,39 @@
 
 const gainNode = new Tone.Gain().toMaster();
 //const freeverb = new Tone.Freeverb().toMaster();
-const synth = new Tone.AMSynth().connect(gainNode).toMaster();
+
+const crusher = new Tone.BitCrusher().connect(gainNode);
+const synth = new Tone.AMSynth().connect(crusher);
 
 var newAcc;
-//freeverb.dampening = 1000;
-// routing synth through the reverb
-//const synth = new Tone.NoiseSynth().connect(freeverb);
-//synth.triggerAttackRelease(0.05);
-
-/* 
-function reverbShift (revValue) {
-  const revLimit = 1;
-  const revIntervalChange = 30;
-
-  if (revValue < revLimit)
-  console.log('Ok');
-  else {
-    const points = Math.floor((pitch - pitchLimit) / intervalChange);
 
 
-  if (points >= 12)
-    synth.frequency.value = "C4";
-  else if (points >= 11)
-    synth.frequency.value = "B3";
-  else if (points >= 10)
-    synth.frequency.value = "A3";
-  else if (points >= 9)
-    synth.frequency.value = "G3";  
-  else if (points >= 8)
-    synth.frequency.value = "F3";
-  else if (points >= 7)
-    synth.frequency.value = "E3";
-  else if (points >= 6)
-    synth.frequency.value = "D3";
-  else if (points >= 5)
-    synth.frequency.value = "C3";
-  else if (points >= 4)
-    synth.frequency.value = "B2";
-  else if (points >= 3)
-    synth.frequency.value = "A2";
-  else if (points >= 2)
-    synth.frequency.value = "G2"; 
-  else if (points >= 1)
-    synth.frequency.value = "F2";
+
+function crushShift (crushValue) {
+// 360 / 8 = 45
+  const crushIntervalChange = 45;
+  const crushPoints = Math.floor(crushValue/ crushIntervalChange);
+
+
+  if (crushValue >= 8)
+    crusher.bits = 8;
+  else if (rushValue >= 7)
+    crusher.bits = 7;
+  else if (crushValue >= 6)
+    crusher.bits = 6;
+  else if (crushValue >= 5)
+    crusher.bits = 5;
+  else if (crushValue >= 4)
+    crusher.bits = 4;
+  else if (crushValue >= 3)
+    crusher.bits = 3;
+  else if (crushValue >= 2)
+    crusher.bits = 2;
+  else if (crushValue >= 1)
+    crusher.bits = 1;
       
   }
-} */
+}
 
 function pitchShift (pitch) {
   //const pitchLimit = 1;
@@ -95,10 +82,12 @@ function handleOrientation(event) {
 
     // Rotation to control oscillator pitch
     let pitchWheel = event.beta;
+    let crushWheel = event.gamma;
     pitchWheel = pitchWheel + 180;
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     pitchShift(pitchWheel);
+    crushShift(crushWheel);
   }
 
 /////////////////////////
