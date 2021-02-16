@@ -12,8 +12,6 @@ const gainNode = new Tone.Gain().toMaster();
 //const crusher = new Tone.BitCrusher().connect(gainNode);
 const autoFilter = new Tone.AutoFilter().connect(gainNode);
 const synth = new Tone.AMSynth().connect(autoFilter);
-
-
 var newAcc;
 
 
@@ -86,7 +84,7 @@ function handleOrientation(event) {
     let pitchWheel = event.beta;
     //let crushWheel = event.gamma;
     let filterWheel = event.gamma;
-    filterWheel = (filterWheel + 180) * 3;
+    filterWheel = (filterWheel + 180) * 4;
     pitchWheel = pitchWheel + 180;
     //crushWheel = (crushWheel + 180) / 8;
 
