@@ -57,7 +57,7 @@ function handleOrientation(event) {
     let pitchWheel = event.beta;
     //let crushWheel = event.gamma;
     let filterWheel = event.gamma;
-    filterWheel = filterWheel * 4;
+    filterWheel = Math.abs(filterWheel * 4);
     pitchWheel = pitchWheel + 180;
     //crushWheel = (crushWheel + 180) / 8;
 
@@ -176,7 +176,7 @@ class LowPassFilterData {
 
 
 // more smooth change of volume:
-  gainNode.gain.rampTo(newAcc, 0.4);
+  gainNode.gain.rampTo(newAcc, 0.2);
 
 }  
 
