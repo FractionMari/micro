@@ -22,21 +22,21 @@ function crushShift (crushValue) {
   const crushPoints = Math.floor(crushValue/ crushIntervalChange);
 
 
-  if (crushValue >= 8)
+  if (crushPoints >= 8)
     crusher.bits = 8;
-  else if (rushValue >= 7)
+  else if (crushPoints >= 7)
     crusher.bits = 7;
-  else if (crushValue >= 6)
+  else if (crushPoints >= 6)
     crusher.bits = 6;
-  else if (crushValue >= 5)
+  else if (crushPoints >= 5)
     crusher.bits = 5;
-  else if (crushValue >= 4)
+  else if (crushPoints >= 4)
     crusher.bits = 4;
-  else if (crushValue >= 3)
+  else if (crushPoints >= 3)
     crusher.bits = 3;
-  else if (crushValue >= 2)
+  else if (crushPoints >= 2)
     crusher.bits = 2;
-  else if (crushValue >= 1)
+  else if (crushPoints >= 1)
     crusher.bits = 1;
       
   }
@@ -84,6 +84,7 @@ function handleOrientation(event) {
     let pitchWheel = event.beta;
     let crushWheel = event.gamma;
     pitchWheel = pitchWheel + 180;
+    crushWheel = crushWheel + 180;
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     pitchShift(pitchWheel);
