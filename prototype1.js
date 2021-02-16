@@ -170,7 +170,7 @@ class LowPassFilterData {
   };
 
 
-  var fn = generateScaleFunction(0, 0.5, 0.5, 0);
+  var fn = generateScaleFunction(0, 1, 0.5, 0);
   newAcc = fn(diffAcc);
   newAcc = (clamp(0, 0.5, newAcc));
 
