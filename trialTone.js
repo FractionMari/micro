@@ -103,6 +103,7 @@ function handleOrientation(event) {
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
+    updateFieldIfNotNull('crushwheel', crushWheel);
     pitchShift(pitchWheel);
     //crusher.bits = crushWheel;
     autoFilter.baseFrequency = filterWheel;
