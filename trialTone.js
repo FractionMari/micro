@@ -40,7 +40,7 @@ function crushShift (crushValue) {
     crusher.bits = 1;
       
   }
-}
+
 
 function pitchShift (pitch) {
   //const pitchLimit = 1;
