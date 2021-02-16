@@ -140,7 +140,7 @@ class LowPassFilterData {
   function clamp(min, max, val) {
     return Math.min(Math.max(min, +val), max);
   }
-  diffAcc = (clamp(0, 5, diffAcc));
+  diffAcc = (clamp(0, 3, diffAcc));
 
  
     filter.update(accl); // Pass latest values through filter.
@@ -170,7 +170,7 @@ class LowPassFilterData {
   };
 
 
-  var fn = generateScaleFunction(0, 5, 0.5, 0);
+  var fn = generateScaleFunction(0, 3, 0.5, 0);
   newAcc = fn(diffAcc);
   newAcc = (clamp(0, 0.5, newAcc));
 
