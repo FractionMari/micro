@@ -143,7 +143,7 @@ class LowPassFilterData {
   //diffAcc = (clamp(0, 3, diffAcc));
 
  
-    filter.update(accl); // Pass latest values through filter.
+/*     filter.update(accl); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', accl.x );
     updateFieldIfNotNull('filter_x', filter.x );
 
@@ -156,9 +156,8 @@ class LowPassFilterData {
     updateFieldIfNotNull('total_acc', totAcc );
     updateFieldIfNotNull('total_filter', totFilter );
     updateFieldIfNotNull('diff_acc', diffAcc );
-    updateFieldIfNotNull('volume_acc', newAcc );
+    updateFieldIfNotNull('volume_acc', newAcc ); */
 
- 
   //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
     var offset = newMin - prevMin,
@@ -169,18 +168,13 @@ class LowPassFilterData {
     
   };
 
-
   var fn = generateScaleFunction(0, 0.5, 0.5, 0);
   newAcc = fn(diffAcc);
   newAcc = (clamp(0, 0.5, newAcc));
 
-
 // more smooth change of volume:
   gainNode.gain.rampTo(newAcc, 0.2);
-
-
 }  
-
 
   accl.start();
 
