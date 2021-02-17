@@ -144,7 +144,7 @@ class LowPassFilterData {
 
  
     filter.update(accl); // Pass latest values through filter.
-/*     updateFieldIfNotNull('test_x', accl.x );
+    updateFieldIfNotNull('test_x', accl.x );
     updateFieldIfNotNull('filter_x', filter.x );
 
     updateFieldIfNotNull('test_y', accl.y );
@@ -154,7 +154,7 @@ class LowPassFilterData {
     updateFieldIfNotNull('filter_z', filter.z );
 
     updateFieldIfNotNull('total_acc', totAcc );
-    updateFieldIfNotNull('total_filter', totFilter ); */
+    updateFieldIfNotNull('total_filter', totFilter );
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
 
