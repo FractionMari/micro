@@ -12,7 +12,7 @@ const gainNode = new Tone.Gain().toMaster();
 
 //const crusher = new Tone.BitCrusher().connect(gainNode);
 const autoFilter = new Tone.AutoWah().connect(gainNode);
-const synth = new Tone.FMSynth().connect(autoFilter);
+const synth = new Tone.AMSynth().connect(autoFilter);
 let newAcc;
 
 function pitchShift (pitch) {
@@ -116,7 +116,7 @@ class LowPassFilterData {
   };
   
   // The accelerometer
-  const accl = new Accelerometer({ frequency: 60 });
+  const accl = new Accelerometer({ frequency: 10 });
                 
   // Isolate gravity with low-pass filter.
   const filter = new LowPassFilterData(accl);
