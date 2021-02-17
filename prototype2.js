@@ -8,7 +8,7 @@ const gainNode = new Tone.Gain().toMaster();
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 //instead of a Synth, there is a sampler
 const synth = new Tone.Sampler({
-	"C2" : "/tink.mp3",
+	"C2" : "tink.mp3",
 }).connect(autoFilter);
 let newAcc;
 
@@ -167,6 +167,6 @@ document.querySelector("#button1").addEventListener('click', function() {
       
   // stop button of the oscillator
   document.querySelector("#button2").addEventListener('click', function() {
-  synth.triggerRelease();
+  synth.triggerRelease("C2");
   
   });
