@@ -9,20 +9,20 @@ const autoFilter = new Tone.AutoWah().connect(gainNode);
 const synth = new Tone.AMSynth().connect(autoFilter);
 let newAcc;
 
-  // With this function the values won't go below a threshold 
-  function clamp(min, max, val) {
-    return Math.min(Math.max(min, +val), max);
-  }
+// With this function the values won't go below a threshold 
+function clamp(min, max, val) {
+  return Math.min(Math.max(min, +val), max);
+}
 
-  //Scaling the incoming number
-   function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
-    var offset = newMin - prevMin,
-        scale = (newMax - newMin) / (prevMax - prevMin);
-    return function (x) {
-        return offset + scale * x;
-    };
-    
-  };
+//Scaling any incoming number
+function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
+var offset = newMin - prevMin,
+    scale = (newMax - newMin) / (prevMax - prevMin);
+  return function (x) {
+      return offset + scale * x;
+      };
+};
+
 // Function for shifting pitch
 function pitchShift (pitch) {
   const intervalChange = 30;
