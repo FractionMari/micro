@@ -57,7 +57,8 @@ function handleOrientation(event) {
     let pitchWheel = event.beta;
     //let crushWheel = event.gamma;
     let filterWheel = event.gamma;
-    filterWheel = Math.abs(filterWheel * 4);
+    filterWheel = filterWheel + 50;
+    filterWheel = Math.abs(filterWheel * 6);
     pitchWheel = pitchWheel + 180;
     //crushWheel = (crushWheel + 180) / 8;
 
