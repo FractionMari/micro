@@ -61,18 +61,7 @@ function handleOrientation(event) {
 
   }
 
-// A button for playback of music track
-document.querySelector("#button1").addEventListener('click', function() {
-synth.triggerAttack("C4");
 
-});
-    
-// stop button of the oscillator
-
-document.querySelector("#button2").addEventListener('click', function() {
-synth.triggerRelease();
-
-});
 
 if (
     DeviceMotionEvent &&
@@ -166,3 +155,13 @@ class LowPassFilterData {
   accl.start();
 
 
+// A button for playback of music track
+document.querySelector("#button1").addEventListener('click', function() {
+  synth.triggerAttack("C4");  
+  });
+      
+  // stop button of the oscillator
+  document.querySelector("#button2").addEventListener('click', function() {
+  synth.triggerRelease();
+  
+  });
