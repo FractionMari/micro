@@ -162,7 +162,7 @@ class LowPassFilterData {
 
 // A button for playback of music track
 document.querySelector("#button1").addEventListener('click', function() {
-  synth.triggerAttack("C4");  
+  synth.triggerAttack("C2");  
   });
       
   // stop button of the oscillator
