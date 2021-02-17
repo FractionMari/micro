@@ -196,22 +196,13 @@ class LowPassFilterData {
     
   };
 
-
   var fn = generateScaleFunction(0, 12, 0.5, 0);
   newAcc = fn(diffAcc);
   newAcc = (clamp(0, 0.5, newAcc));
 
-
-
-
-
 // more smooth change of volume:
-
   gainNode.gain.rampTo(newAcc, 0.2);
-
-
 }  
-
 
   accl.start();
 
