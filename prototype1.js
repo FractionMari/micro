@@ -134,7 +134,7 @@ class LowPassFilterData {
     let zFilter = filter.z;
     let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
-    let diffAcc = ((Math.abs(totAcc - totFilter)) * 10) + 10;
+    let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
 
       // With this function it won't go below a threshold 
   function clamp(min, max, val) {
