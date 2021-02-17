@@ -142,8 +142,8 @@ class LowPassFilterData {
   }
   //diffAcc = (clamp(0, 3, diffAcc));
 
- 
-/*     filter.update(accl); // Pass latest values through filter.
+/*  
+    filter.update(accl); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', accl.x );
     updateFieldIfNotNull('filter_x', filter.x );
 
@@ -155,8 +155,8 @@ class LowPassFilterData {
 
     updateFieldIfNotNull('total_acc', totAcc );
     updateFieldIfNotNull('total_filter', totFilter );
-    updateFieldIfNotNull('diff_acc', diffAcc );
-    updateFieldIfNotNull('volume_acc', newAcc ); */
+    updateFieldIfNotNull('diff_acc', diffAcc ); */
+    updateFieldIfNotNull('volume_acc', newAcc );
 
   //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
