@@ -56,7 +56,7 @@ function handleOrientation(event) {
     // Rotation to control oscillator pitch
     let pitchWheel = event.beta;
     //let crushWheel = event.gamma;
-    let filterWheel = event.gamma;
+    let filterWheel = event.gamma + 20;
     filterWheel = Math.abs(filterWheel * 4);
     pitchWheel = pitchWheel + 180;
     //crushWheel = (crushWheel + 180) / 8;
@@ -116,7 +116,7 @@ class LowPassFilterData {
   };
   
   // The accelerometer
-  const accl = new Accelerometer({ frequency: 10 });
+  const accl = new Accelerometer({ frequency: 20 });
                 
   // Isolate gravity with low-pass filter.
   const filter = new LowPassFilterData(accl);
