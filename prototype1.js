@@ -9,6 +9,21 @@ const autoFilter = new Tone.AutoWah().connect(gainNode);
 const synth = new Tone.AMSynth().connect(autoFilter);
 let newAcc;
 
+  // With this function the values won't go below a threshold 
+  function clamp(min, max, val) {
+    return Math.min(Math.max(min, +val), max);
+  }
+
+  //Scaling the incoming number
+   function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
+    var offset = newMin - prevMin,
+        scale = (newMax - newMin) / (prevMax - prevMin);
+    return function (x) {
+        return offset + scale * x;
+    };
+    
+  };
+// Function for shifting pitch
 function pitchShift (pitch) {
   const intervalChange = 30;
   const points = Math.floor(pitch / intervalChange);
@@ -74,15 +89,12 @@ window.addEventListener("deviceorientation", handleOrientation);
 
 
 // function for updating values for sensor data
-
 function updateFieldIfNotNull(fieldName, value, precision=2){
     if (value != null)
       document.getElementById(fieldName).innerHTML = value.toFixed(precision);
   }
 
 // LowPassFilterData(reading, bias)
-
-
 class LowPassFilterData {
   constructor(reading) {
     Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
@@ -129,20 +141,7 @@ class LowPassFilterData {
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
 
-  // With this function the values won't go below a threshold 
-  function clamp(min, max, val) {
-    return Math.min(Math.max(min, +val), max);
-  }
 
-  //Scaling the incoming number
-   function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
-    var offset = newMin - prevMin,
-        scale = (newMax - newMin) / (prevMax - prevMin);
-    return function (x) {
-        return offset + scale * x;
-    };
-    
-  };
 
   var fn = generateScaleFunction(0, 10, 0.5, 0);
   newAcc = fn(diffAcc);
