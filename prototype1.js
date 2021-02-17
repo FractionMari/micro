@@ -64,7 +64,7 @@ function handleOrientation(event) {
     // Rotation to control oscillator pitch
     let pitchWheel = event.beta;
     let filterWheel = event.gamma;
-    var filterScale = generateScaleFunction(0, 90, 10, 300);
+    let filterScale = generateScaleFunction(0, 90, 10, 300);
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
     //filterWheel = filterWheel + 50;
@@ -97,7 +97,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       document.getElementById(fieldName).innerHTML = value.toFixed(precision);
   }
 
-// LowPassFilterData(reading, bias)
+// LowPassFilterData(reading, bias) To be able to calcualte the difference between Accelerometer frames
 class LowPassFilterData {
   constructor(reading) {
     Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
@@ -146,7 +146,7 @@ class LowPassFilterData {
 
 
 
-  var fn = generateScaleFunction(0, 10, 0.5, 0);
+  var fn = generateScaleFunction(0, 3, 0.5, 0);
   newAcc = fn(diffAcc);
   newAcc = (clamp(0, 0.5, newAcc));
 
