@@ -3,20 +3,13 @@
 
 // 11. februar: including the Tone.js to improve sound quality
 
-//algoritme som lager tall imellom
-// Idé: bruke tutorial-koden om farsgrense til å lage skala på xaksen
-////////////
 
 const gainNode = new Tone.Gain().toMaster();
-//const freeverb = new Tone.Freeverb().toMaster();
-
-//const crusher = new Tone.BitCrusher().connect(gainNode);
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 const synth = new Tone.AMSynth().connect(autoFilter);
 let newAcc;
 
 function pitchShift (pitch) {
-  //const pitchLimit = 1;
   const intervalChange = 30;
   const points = Math.floor(pitch / intervalChange);
 
@@ -48,24 +41,22 @@ function pitchShift (pitch) {
 }
 
 function handleOrientation(event) {
-    // updateFieldIfNotNull('Orientation_b', pitchWheel);
+
     updateFieldIfNotNull('Orientation_b', event.beta);
     updateFieldIfNotNull('Orientation_g', event.gamma);
     updateFieldIfNotNull('Orientation_a', event.alpha);
 
     // Rotation to control oscillator pitch
     let pitchWheel = event.beta;
-    //let crushWheel = event.gamma;
     let filterWheel = event.gamma;
     filterWheel = filterWheel + 50;
     filterWheel = Math.abs(filterWheel * 6);
     pitchWheel = pitchWheel + 180;
-    //crushWheel = (crushWheel + 180) / 8;
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
     pitchShift(pitchWheel);
-    //crusher.bits = crushWheel;
+
     autoFilter.baseFrequency = filterWheel;
 
   }
@@ -102,6 +93,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
 // LowPassFilterData(reading, bias)
 
+
 class LowPassFilterData {
   constructor(reading) {
     Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
@@ -122,9 +114,6 @@ class LowPassFilterData {
 
   accl.onreading = () => {
 
-    // trying to avoid the "clicks" when changing volume
-    //volume.gain.setTargetAtTime(0, context.currentTime, 0.015)
-
     let xValue = accl.x;
     let yValue = accl.y;
     let zValue = accl.z;
@@ -135,13 +124,7 @@ class LowPassFilterData {
     let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
     let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
 
-      // With this function it won't go below a threshold 
-  function clamp(min, max, val) {
-    return Math.min(Math.max(min, +val), max);
-  }
-  //diffAcc = (clamp(0, 3, diffAcc));
 
- 
     filter.update(accl); // Pass latest values through filter.
     updateFieldIfNotNull('test_x', accl.x );
     updateFieldIfNotNull('filter_x', filter.x );
@@ -157,6 +140,11 @@ class LowPassFilterData {
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
 
+  // With this function the values won't go below a threshold 
+  function clamp(min, max, val) {
+    return Math.min(Math.max(min, +val), max);
+  }
+
   //Scaling the incoming number
    function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
     var offset = newMin - prevMin,
@@ -167,7 +155,7 @@ class LowPassFilterData {
     
   };
 
-  var fn = generateScaleFunction(0, 0.5, 0.5, 0);
+  var fn = generateScaleFunction(0, 100, 0.5, 0);
   newAcc = fn(diffAcc);
   newAcc = (clamp(0, 0.5, newAcc));
 
