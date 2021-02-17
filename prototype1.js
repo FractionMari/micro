@@ -64,8 +64,11 @@ function handleOrientation(event) {
     // Rotation to control oscillator pitch
     let pitchWheel = event.beta;
     let filterWheel = event.gamma;
-    filterWheel = filterWheel + 50;
-    filterWheel = Math.abs(filterWheel * 6);
+    var filterScale = generateScaleFunction(0, 90, 10, 300);
+    filterWheel = Math.abs(filterWheel);
+    filterWheel = filterScale(filterWheel);
+    //filterWheel = filterWheel + 50;
+    //filterWheel = Math.abs(filterWheel * 6);
     pitchWheel = pitchWheel + 180;
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
