@@ -9,7 +9,7 @@ const autoFilter = new Tone.AutoWah().connect(gainNode);
 //instead of a Synth, there is a sampler
 const synth = new Tone.Sampler({
 	"C2" : "/tink.mp3",
-}).connect(freeverb);
+}).connect(autoFilter);
 let newAcc;
 
 // With this function the values won't go below a threshold 
