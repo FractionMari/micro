@@ -38,7 +38,7 @@ function pitchShift (pitch) {
   const intervalChange = 180;
   const points = Math.floor(pitch / intervalChange);
 
-  if (points >= 2)
+  if (points >= 1)
   player.start(),
   player2.stop();
   else
