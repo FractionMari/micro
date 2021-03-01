@@ -27,7 +27,7 @@
   <p>Volume:</p>
   <input type="range" min="0" max="1" value="0.5" step="0.01" class="slider" id="volume">
   <p>Pitch:</p>
-  <input type="range" min="0" max="360" value="0.5" step="0.01" class="slider" id="pitch">
+  <input type="range" min="1" max="2" value="1" step="1" class="slider" id="pitch">
   <p>Crusher:</p>
   <input type="range" min="1" max="19" value="1" step="1" class="slider" id="crusher">
   <p>Freeverb:</p>
@@ -138,9 +138,12 @@ function pitchShift (pitch) {
 
 pitchslider.oninput = function() {
 
-    pitchShift(this.value);
-
-    console.log(this.value);
+if (this.value == 1)
+player.start(),
+player2.stop();
+else
+player2.start(),
+player.stop();
 }
 
 

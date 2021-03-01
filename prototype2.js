@@ -9,10 +9,10 @@ const autoFilter = new Tone.AutoWah().connect(gainNode);
 //instead of a Synth, there is a sampler
 
 const player = new Tone.Player("https://tonejs.github.io/audio/drum-samples/breakbeat.mp3").connect(autoFilter);
-//const player2 = new Tone.Player("https://tonejs.github.io/audio/drum-samples/handdrum-loop.mp3").connect(autoFilter);
+const player2 = new Tone.Player("https://tonejs.github.io/audio/drum-samples/handdrum-loop.mp3").connect(autoFilter);
 player.loop = true;
 player.autostart = true;
-//player2.loop = true;
+player2.loop = true;
 //player2.autostart = true;
 /* const synth = new Tone.Sampler({
 	"C2" : "tink.mp3",
@@ -39,9 +39,11 @@ function pitchShift (pitch) {
   const points = Math.floor(pitch / intervalChange);
 
   if (points >= 2)
-  player = new Tone.Player("https://tonejs.github.io/audio/drum-samples/handdrum-loop.mp3");
-  else if (points >= 1)
-  player = new Tone.Player("https://tonejs.github.io/audio/drum-samples/breakbeat.mp3");
+  player.start(),
+  player2.stop();
+  else
+  player2.start(),
+  player.stop();
     
 
       
