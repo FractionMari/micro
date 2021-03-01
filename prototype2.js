@@ -144,21 +144,6 @@ class LowPassFilterData {
   newAcc = fn(diffAcc);
   newAcc = (clamp(0, 0.5, newAcc));
 
-  document.getElementById("mute").addEventListener("click", function(){
-    gainNode.gain.rampTo(0, 0.2);
-    
-  if(this.className == 'is-playing'){
-    this.className = "";
-    this.innerHTML = "UNMUTE"
-    gainNode.gain.rampTo(0, 0.2);
-  }else{
-    this.className = "is-playing";
-    this.innerHTML = "MUTE";
-
-    gainNode.gain.rampTo(0.5, 0.2);
-
-  }}
-  );
 
 // more smooth change of volume:
   gainNode.gain.rampTo(newAcc, 0.2);
@@ -169,3 +154,20 @@ class LowPassFilterData {
 
   
 
+  document.getElementById("mute").addEventListener("click", function(){
+    player.stop(),
+    player2.stop();
+    
+  if(this.className == 'is-playing'){
+    this.className = "";
+    this.innerHTML = "UNMUTE"
+    player.stop(),
+    player2.stop();
+  }else{
+    this.className = "is-playing";
+    this.innerHTML = "MUTE";
+
+    player.start(),
+    player2.start();
+  }}
+  );
