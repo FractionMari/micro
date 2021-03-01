@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/tone@13.8.25/build/Tone.js"></script>
+    <div>
+        <div>
+          <input type="checkbox" />
+          <input type="checkbox" />
+          
+      
+        </div>
+        <div>
+          <input type="checkbox" />
+          <input type="checkbox" />
+      
+        </div>
+
+
+      
+      </div>
+<div>
+  <container>
+      <p>1</p>
+      <input type="range" min="0" max="1" value="0" step="1" class="slider" id="volume">
+      <input type="range" min="0" max="1" value="0" step="1" class="slider" id="volume3">
+</container>
+</div>
+<div> <container>
+     <input type="range" min="0" max="1" value="0" step="1" class="slider" id="volume2">
+      <input type="range" min="0" max="1" value="0" step="1" class="slider" id="volume4">
+    </container>
+    </div>
+      <script>
+          console.clear();
+
+// UPDATE: there is a problem in chrome with starting audio context
+//  before a user gesture. This fixes it.
+// thanks to this code: https://codepen.io/jakealbaugh/pen/qxjPMM/
+
+let volumeslider = document.getElementById("volume");
+let volumeslider2 = document.getElementById("volume2");
+let volumeslider3 = document.getElementById("volume3");
+let volumeslider4 = document.getElementById("volume4");
+
+
+
+
+const synths = [
+  new Tone.Sampler({
+	"C1" : "samples/001.wav"
+}),
+new Tone.Sampler({
+	"C2" : "samples/004.wav"
+}),
+  
+];
+
+/* synths[0].oscillator.type = 'triangle';
+synths[1].oscillator.type = 'sine'; */
+
+const gain = new Tone.Gain(0.6);
+gain.toMaster();
+
+synths.forEach(synth => synth.connect(gain));
+
+//const $rows = document.body.querySelectorAll('div > div'),
+notes = ['C2', 'E4'];
+
+
+let noteOn;
+let noteOn2;
+let noteOn3;
+let noteOn4;
+
+
+
+volumeslider.oninput = function() {    
+    noteOn = this.value;
+    //console.log(noteOn == 1);
+    //console.log(noteOn);
+}
+
+volumeslider2.oninput = function() {    
+    noteOn2 = this.value;
+    //console.log(noteOn2 == 1);
+    //console.log(noteOn2);
+}
+
+volumeslider3.oninput = function() {    
+    noteOn3 = this.value;
+    //console.log(noteOn3 == 1);
+    //console.log(noteOn3);
+}
+
+volumeslider4.oninput = function() {    
+    noteOn4 = this.value;
+    //console.log(noteOn4 == 1);
+    //console.log(noteOn4);
+}
+
+
+
+let index = 0;
+
+Tone.Transport.scheduleRepeat(repeat, '3n');
+Tone.Transport.start();
+
+function repeat(time) {
+  let step = index % 2;
+  for (let i = 0; i < 2; i++) {
+    let synth = synths[i];
+    if (noteOn == 1) synths[1].triggerAttackRelease(notes[0], '8n', time);
+    if (noteOn2 == 1) synths[0].triggerAttackRelease(notes[1], '8n', time);
+    if (noteOn3 == 1) synths[1].triggerAttackRelease(notes[0], '8n', time + 1);
+    if (noteOn4== 1) synths[0].triggerAttackRelease(notes[1], '8n', time + 1);
+  
+    
+        
+  }
+  index++;
+}
+
+      </script>
+    
+</body>
+</html>

@@ -29,14 +29,23 @@
   <p>Pitch:</p>
   <input type="range" min="0" max="360" value="0.5" step="0.01" class="slider" id="pitch">
   <p>Crusher:</p>
-  <input type="range" min="0" max="8" value="4" step="0.1" class="slider" id="crusher">
+  <input type="range" min="1" max="19" value="1" step="1" class="slider" id="crusher">
   <p>Freeverb:</p>
   <input type="range" min="0" max="1000" value="0.5" step="0.01" class="slider" id="freeverb">
+
+  <p><button style="display: block">Play/pause</button></p>
+
+
+  <script src="https://webaudioapi.com/static/js/shared.js">
+
+  </script>
+  
 
 </div>
 
 <script >
-        
+
+
 let volumeslider = document.getElementById("volume");
 let pitchslider = document.getElementById("pitch");
 let crushslider = document.getElementById("crusher");
@@ -46,9 +55,40 @@ const gainNode = new Tone.Gain().toMaster();
 
 //const crusher = new Tone.BitCrusher().connect(gainNode);
 const freeverb = new Tone.AutoWah().connect(gainNode);
+const player = new Tone.Player("https://tonejs.github.io/audio/drum-samples/breakbeat.mp3").connect(freeverb);
+const player2 = new Tone.Player("https://tonejs.github.io/audio/drum-samples/handdrum-loop.mp3").connect(freeverb);
+player.loop = true;
+player2.loop = true;
+//player.autostart = true;
 const synth = new Tone.Sampler({
-	"C2" : "/tink.mp3",
+	"C2" : "samples/001.wav",
+  "D2" : "samples/002.wav",
+  "E2" : "samples/003.wav",
+  "F2" : "samples/004.wav",
+  "G2" : "samples/005.wav",
+  "A2" : "samples/006.wav",
+  "B2" : "samples/007.wav",
 }).connect(freeverb);
+var timevalue = 1;
+
+crushslider.oninput = function() {
+  timevalue = (this.value);
+  console.log(this.value);
+  }
+
+
+const seq = new Tone.Sequence((time, note) => {
+
+
+	synth.triggerAttackRelease(note, 0.1, time);
+  console.log(time);
+	// subdivisions are given as subarrays
+
+
+}, ["C2", ["E1", "D1", "E1"], "G1", ["A1", "G#2"], "C#1"]).start(0);
+
+
+
 
 freeverbslider.oninput = function() {
 freeverb.baseFrequency = (this.value);
@@ -56,10 +96,6 @@ console.log(this.value);
 }
 
 
-crushslider.oninput = function() {
-crusher.bits = (this.value);
-console.log(this.value);
-}
 
 
 volumeslider.oninput = function() {
@@ -113,23 +149,24 @@ pitchslider.oninput = function() {
 //play a middle 'C' for the duration of an 8th note
 
 document.querySelector("#buttonC").addEventListener('click', function() {
-    synth.triggerAttack("C2");
+
+    player.start();
 });
 
 document.querySelector("#buttonD").addEventListener('click', function() {
-    synth.triggerRelease("C2");
+  player.stop();
 });
 
 document.querySelector("#buttonE").addEventListener('click', function() {
-    synth.triggerAttackRelease("E4", "8n");
+  player2.start();
 });
 
 document.querySelector("#buttonF").addEventListener('click', function() {
-    synth.triggerAttackRelease("F4", "8n");
+  Tone.Transport.start();
 });
 
 document.querySelector("#buttonG").addEventListener('click', function() {
-    synth.triggerAttackRelease("G4", "8n");
+  Tone.Transport.stop();
 });
 
 document.querySelector("#buttonA").addEventListener('click', function() {

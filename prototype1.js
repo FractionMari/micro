@@ -79,8 +79,6 @@ function handleOrientation(event) {
 
   }
 
-
-
 if (
     DeviceMotionEvent &&
     typeof DeviceMotionEvent.requestPermission === "function"
