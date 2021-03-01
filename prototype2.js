@@ -7,9 +7,16 @@
 const gainNode = new Tone.Gain().toMaster();
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 //instead of a Synth, there is a sampler
-const synth = new Tone.Sampler({
+
+const player = new Tone.Player("https://tonejs.github.io/audio/drum-samples/breakbeat.mp3").connect(autoFilter);
+//const player2 = new Tone.Player("https://tonejs.github.io/audio/drum-samples/handdrum-loop.mp3").connect(autoFilter);
+player.loop = true;
+player.autostart = true;
+//player2.loop = true;
+//player2.autostart = true;
+/* const synth = new Tone.Sampler({
 	"C2" : "tink.mp3",
-}).connect(autoFilter);
+}).connect(autoFilter); */
 let newAcc;
 
 // With this function the values won't go below a threshold 
