@@ -63,7 +63,7 @@ function handleOrientation(event) {
     filterWheel = filterScale(filterWheel);
     //filterWheel = filterWheel + 50;
     //filterWheel = Math.abs(filterWheel * 6);
-    //pitchWheel = pitchWheel + 180;
+    pitchWheel = pitchWheel + 180;
 
    // updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
