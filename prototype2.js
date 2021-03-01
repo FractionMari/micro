@@ -35,13 +35,13 @@ var offset = newMin - prevMin,
 
 // Function for shifting pitch
 function pitchShift (pitch) {
-  const intervalChange = 180;
-  const points = Math.floor(pitch / intervalChange);
+  //const intervalChange = 180;
+  //const points = Math.floor(pitch / intervalChange);
 
-  if (points == 1)
+  if (pitch == 180)
   player.start(),
   player2.stop();
-  else
+  else if (pitch == 90)
   player2.start(),
   player.stop();
     
