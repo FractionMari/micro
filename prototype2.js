@@ -38,7 +38,7 @@ function pitchShift (pitch) {
   const intervalChange = 180;
   const points = Math.floor(pitch / intervalChange);
 
-  if (points >= 1)
+  if (points >= 2)
   player.start(),
   player2.stop();
   else
@@ -144,17 +144,8 @@ class LowPassFilterData {
   newAcc = fn(diffAcc);
   newAcc = (clamp(0, 0.5, newAcc));
 
-// more smooth change of volume:
-  gainNode.gain.rampTo(newAcc, 0.2);
-}  
-
-  accl.start();
-
-
-  
-
   document.getElementById("mute").addEventListener("click", function(){
-    gainNode.gain.rampTo(0.5, 0.2);
+    gainNode.gain.rampTo(0, 0.2);
     
   if(this.className == 'is-playing'){
     this.className = "";
@@ -168,3 +159,13 @@ class LowPassFilterData {
 
   }}
   );
+
+// more smooth change of volume:
+  gainNode.gain.rampTo(newAcc, 0.2);
+}  
+
+  accl.start();
+
+
+  
+
