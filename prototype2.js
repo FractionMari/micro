@@ -151,13 +151,20 @@ class LowPassFilterData {
   accl.start();
 
 
-// A button for playback of music track
-document.querySelector("#button1").addEventListener('click', function() {
-  synth.triggerAttack("C2");  
-  });
-      
-  // stop button of the oscillator
-  document.querySelector("#button2").addEventListener('click', function() {
-  synth.triggerRelease("C2");
   
-  });
+
+  document.getElementById("mute").addEventListener("click", function(){
+    gainNode.gain.rampTo(0.5, 0.2);
+    
+  if(this.className == 'is-playing'){
+    this.className = "";
+    this.innerHTML = "UNMUTE"
+    gainNode.gain.rampTo(0, 0.2);
+  }else{
+    this.className = "is-playing";
+    this.innerHTML = "MUTE";
+
+    gainNode.gain.rampTo(0.5, 0.2);
+
+  }}
+  );
