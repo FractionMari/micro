@@ -31,7 +31,7 @@
   <p>Crusher:</p>
   <input type="range" min="1" max="19" value="1" step="1" class="slider" id="crusher">
   <p>Freeverb:</p>
-  <input type="range" min="0" max="1000" value="0.5" step="0.01" class="slider" id="freeverb">
+  <input type="range" min="10" max="1000" value="10" step="0.01" class="slider" id="freeverb">
 
   <p><button style="display: block">Play/pause</button></p>
 
@@ -65,12 +65,30 @@ pitchShift2.pitch = 0; // down one octave
 const freeverb = new Tone.AutoWah().connect(pitchShift2);
 
 // Players
+const kit = new Tone.Players({
+  "bass": "../loops/drums1_80bpm.wav",
+  "drums": "../loops/bass1_80bpm.wav" 
+}).connect(freeverb);
+kit.get("drums").autostart = true;
+kit.get("drums").loop = true;
+kit.get("drums").mute = true;
+kit.get("bass").autostart = true;
+kit.get("bass").loop = true;
+kit.get("bass").mute = true;
+
+
+
+
+/* 
 const player = new Tone.Player("../loops/drums1_80bpm.wav").connect(freeverb);
 const player2 = new Tone.Player("../loops/bass1_80bpm.wav").connect(freeverb);
 const player3 = new Tone.Player("../loops/arp_80bpm.wav").connect(freeverb);
-const player4 = new Tone.Player("../loops/bass2_80bpm.wav").connect(freeverb);
-player.loop = true;
-player2.loop = true;
+const player4 = new Tone.Player("../loops/bass2_80bpm.wav").connect(freeverb); */
+
+//players.loaded = true;
+//players.volume = 0.5;
+//players.mute = true;
+/* player2.loop = true;
 player3.loop = true;
 player4.loop = true;
 
@@ -82,7 +100,7 @@ player4.autostart = true;
 player.mute = true;
 player2.mute = true;
 player3.mute = true;
-player4.mute = true;
+player4.mute = true; */
 
 
 
@@ -175,20 +193,23 @@ pitchslider.oninput = function() {
 //play a middle 'C' for the duration of an 8th note
 
 document.querySelector("#buttonC").addEventListener('click', function() {
-
-  player.mute = false;
+  kit.get("drums").mute = false;
+  //players.mute = false;
 });
 
 document.querySelector("#buttonD").addEventListener('click', function() {
-  player.mute = true;
+  kit.get("drums").mute = true;
+  //players.mute = true;
 });
 
 document.querySelector("#buttonE").addEventListener('click', function() {
-  player2.mute = false;
+  kit.get("bass").mute = false;
+  //player2.mute = false;
 });
 
 document.querySelector("#buttonF").addEventListener('click', function() {
-  player2.mute = true;
+  kit.get("bass").mute = true;
+  //player2.mute = true;
 });
 
 document.querySelector("#buttonG").addEventListener('click', function() {

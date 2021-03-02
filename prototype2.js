@@ -10,15 +10,19 @@ const autoFilter = new Tone.AutoWah().connect(gainNode);
 
 //instead of a Synth, there is some loops
 // Players
+
+const players = new Tone.Players("")
 const player = new Tone.Player("loops/drums1_80bpm.wav").connect(autoFilter);
 const player2 = new Tone.Player("loops/bass1_80bpm.wav").connect(autoFilter);
 const player3 = new Tone.Player("loops/arp_80bpm.wav").connect(autoFilter);
 const player4 = new Tone.Player("loops/bass2_80bpm.wav").connect(autoFilter);
 
+
 player.loop = true;
 player2.loop = true;
 player3.loop = true;
 player4.loop = true;
+
 
 player.autostart = true;
 player2.autostart = true;
