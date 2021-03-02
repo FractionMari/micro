@@ -2,17 +2,18 @@
 // The oscillator version with new code + adding the Tone.js library.
 
 // 11. februar: including the Tone.js to improve sound quality
+//1. og 2. mars: creating a loop function
 
 
 const gainNode = new Tone.Gain().toMaster();
-const autoFilter = new Tone.AutoWah().connect(gainNode);
+//const autoFilter = new Tone.AutoWah().connect(gainNode);
 
 //instead of a Synth, there is some loops
 // Players
-const player = new Tone.Player("../loops/drums1_80bpm.wav").connect(autoFilter);
-const player2 = new Tone.Player("../loops/bass1_80bpm.wav").connect(autoFilter);
-const player3 = new Tone.Player("../loops/arp_80bpm.wav").connect(autoFilter);
-const player4 = new Tone.Player("../loops/bass2_80bpm.wav").connect(autoFilter);
+const player = new Tone.Player("../loops/drums1_80bpm.wav").connect(gainNode);
+const player2 = new Tone.Player("../loops/bass1_80bpm.wav").connect(gainNode);
+const player3 = new Tone.Player("../loops/arp_80bpm.wav").connect(gainNode);
+const player4 = new Tone.Player("../loops/bass2_80bpm.wav").connect(gainNode);
 
 player.loop = true;
 player2.loop = true;
@@ -46,20 +47,20 @@ var offset = newMin - prevMin,
 };
 
 // Function for shifting pitch
-function pitchShift (pitch) {
+/* function pitchShift (pitch) {
   //const intervalChange = 180;
   //const points = Math.floor(pitch / intervalChange);
 
-/*   if (pitch == 180)
+  if (pitch == 180)
   player.start(),
   player2.stop();
   else if (pitch == 190)
   player2.start(),
-  player.stop(); */
+  player.stop();
     
 
       
-}
+} */
 
 function handleOrientation(event) {
 
@@ -67,21 +68,21 @@ function handleOrientation(event) {
     updateFieldIfNotNull('Orientation_g', event.gamma);
     updateFieldIfNotNull('Orientation_a', event.alpha);
 
-    // Rotation to control oscillator pitch
-    let pitchWheel = event.beta;
+/*     // Rotation to control oscillator pitch
+    //let pitchWheel = event.beta;
     let filterWheel = event.gamma;
     let filterScale = generateScaleFunction(0, 90, 10, 300);
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
     //filterWheel = filterWheel + 50;
     //filterWheel = Math.abs(filterWheel * 6);
-    pitchWheel = pitchWheel + 180;
+    //pitchWheel = pitchWheel + 180;
 
    // updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
-    pitchShift(pitchWheel);
+   // pitchShift(pitchWheel);
 
-    autoFilter.baseFrequency = filterWheel;
+    autoFilter.baseFrequency = filterWheel; */
 
   }
 
@@ -149,7 +150,6 @@ class LowPassFilterData {
     updateFieldIfNotNull('volume_acc', newAcc );
 
 
-
   var fn = generateScaleFunction(0, 3, 0.5, 0);
   newAcc = fn(diffAcc);
   newAcc = (clamp(0, 0.5, newAcc));
@@ -157,6 +157,7 @@ class LowPassFilterData {
 
 // more smooth change of volume:
   gainNode.gain.rampTo(newAcc, 0.2);
+
 }  
 
   accl.start();
