@@ -10,8 +10,8 @@ const gainNode = new Tone.Gain().toMaster();
 
 //instead of a Synth, there is some loops
 // Players
-const player = new Tone.Player("../loops/drums1_80bpm.wav").connect(gainNode);
-const player2 = new Tone.Player("../loops/bass1_80bpm.wav").connect(gainNode);
+const player = new Tone.Player("/loops/drums1_80bpm.wav").connect(gainNode);
+const player2 = new Tone.Player("/loops/bass1_80bpm.wav").connect(gainNode);
 //const player3 = new Tone.Player("../loops/arp_80bpm.wav").connect(gainNode);
 //const player4 = new Tone.Player("../loops/bass2_80bpm.wav").connect(gainNode);
 
