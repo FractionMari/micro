@@ -6,29 +6,29 @@
 
 
 const gainNode = new Tone.Gain().toMaster();
-//const autoFilter = new Tone.AutoWah().connect(gainNode);
+const autoFilter = new Tone.AutoWah().connect(gainNode);
 
 //instead of a Synth, there is some loops
 // Players
-const player = new Tone.Player("/loops/drums1_80bpm.wav").connect(gainNode);
-const player2 = new Tone.Player("/loops/bass1_80bpm.wav").connect(gainNode);
-//const player3 = new Tone.Player("../loops/arp_80bpm.wav").connect(gainNode);
-//const player4 = new Tone.Player("../loops/bass2_80bpm.wav").connect(gainNode);
+const player = new Tone.Player("loops/drums1_80bpm.wav").connect(autoFilter);
+const player2 = new Tone.Player("loops/bass1_80bpm.wav").connect(autoFilter);
+const player3 = new Tone.Player("loops/arp_80bpm.wav").connect(autoFilter);
+const player4 = new Tone.Player("loops/bass2_80bpm.wav").connect(autoFilter);
 
 player.loop = true;
 player2.loop = true;
-//player3.loop = true;
-//player4.loop = true;
+player3.loop = true;
+player4.loop = true;
 
 player.autostart = true;
 player2.autostart = true;
-//player3.autostart = true;
-//player4.autostart = true;
+player3.autostart = true;
+player4.autostart = true;
 
 player.mute = true;
 player2.mute = true;
-//player3.mute = true;
-//player4.mute = true;
+player3.mute = true;
+player4.mute = true;
 
 let newAcc;
 
@@ -68,7 +68,7 @@ function handleOrientation(event) {
     updateFieldIfNotNull('Orientation_g', event.gamma);
     updateFieldIfNotNull('Orientation_a', event.alpha);
 
-/*     // Rotation to control oscillator pitch
+    // Rotation to control oscillator pitch
     //let pitchWheel = event.beta;
     let filterWheel = event.gamma;
     let filterScale = generateScaleFunction(0, 90, 10, 300);
@@ -82,7 +82,7 @@ function handleOrientation(event) {
     updateFieldIfNotNull('filterwheel', filterWheel);
    // pitchShift(pitchWheel);
 
-    autoFilter.baseFrequency = filterWheel; */
+    autoFilter.baseFrequency = filterWheel;
 
   }
 
@@ -199,7 +199,7 @@ player2.mute = false;
 
   }}
   );
-/* 
+
   document.getElementById("looper3").addEventListener("click", function(){
     player3.mute = false;
     
@@ -231,4 +231,4 @@ player2.mute = false;
     player4.mute = false;
 
   }}
-  ); */
+  );
