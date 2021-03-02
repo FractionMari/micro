@@ -8,8 +8,8 @@ const gainNode = new Tone.Gain().toMaster();
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 //instead of a Synth, there is a sampler
 
-const player = new Tone.Player("https://tonejs.github.io/audio/drum-samples/breakbeat.mp3").connect(autoFilter);
-const player2 = new Tone.Player("https://tonejs.github.io/audio/drum-samples/handdrum-loop.mp3").connect(autoFilter);
+const player = new Tone.Player("loops/bass180bpm.wav").connect(autoFilter);
+const player2 = new Tone.Player("loops/bass180bpm.wav").connect(autoFilter);
 player.loop = true;
 //player.autostart = true;
 player2.loop = true;
