@@ -46,20 +46,20 @@ var offset = newMin - prevMin,
 };
 
 // Function for shifting pitch
-/* function pitchShift (pitch) {
+function pitchShift (pitch) {
   //const intervalChange = 180;
   //const points = Math.floor(pitch / intervalChange);
 
-  if (pitch == 180)
+/*   if (pitch == 180)
   player.start(),
   player2.stop();
   else if (pitch == 190)
   player2.start(),
-  player.stop();
+  player.stop(); */
     
 
       
-} */
+}
 
 function handleOrientation(event) {
 
@@ -79,13 +79,11 @@ function handleOrientation(event) {
 
    // updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
-    //pitchShift(pitchWheel);
+    pitchShift(pitchWheel);
 
     autoFilter.baseFrequency = filterWheel;
 
   }
-
-
 
 if (
     DeviceMotionEvent &&
@@ -152,7 +150,7 @@ class LowPassFilterData {
 
 
 
-  var fn = generateScaleFunction(0, 5, 0.5, 0);
+  var fn = generateScaleFunction(0, 3, 0.5, 0);
   newAcc = fn(diffAcc);
   newAcc = (clamp(0, 0.5, newAcc));
 
