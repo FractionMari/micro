@@ -6,17 +6,29 @@
 
 const gainNode = new Tone.Gain().toMaster();
 const autoFilter = new Tone.AutoWah().connect(gainNode);
-//instead of a Synth, there is a sampler
 
-const player = new Tone.Player("loops/bass180bpm.wav").connect(autoFilter);
-const player2 = new Tone.Player("loops/drums180bpm.wav").connect(autoFilter);
+//instead of a Synth, there is some loops
+// Players
+const player = new Tone.Player("../loops/drums1_80bpm.wav").connect(freeverb);
+const player2 = new Tone.Player("../loops/bass1_80bpm.wav").connect(freeverb);
+const player3 = new Tone.Player("../loops/arp_80bpm.wav").connect(freeverb);
+const player4 = new Tone.Player("../loops/bass2_80bpm.wav").connect(freeverb);
+
 player.loop = true;
-//player.autostart = true;
 player2.loop = true;
-//player2.autostart = true;
-/* const synth = new Tone.Sampler({
-	"C2" : "tink.mp3",
-}).connect(autoFilter); */
+player3.loop = true;
+player4.loop = true;
+
+player.autostart = true;
+player2.autostart = true;
+player3.autostart = true;
+player4.autostart = true;
+
+player.mute = true;
+player2.mute = true;
+player3.mute = true;
+player4.mute = true;
+
 let newAcc;
 
 // With this function the values won't go below a threshold 
@@ -34,7 +46,7 @@ var offset = newMin - prevMin,
 };
 
 // Function for shifting pitch
-function pitchShift (pitch) {
+/* function pitchShift (pitch) {
   //const intervalChange = 180;
   //const points = Math.floor(pitch / intervalChange);
 
@@ -47,7 +59,7 @@ function pitchShift (pitch) {
     
 
       
-}
+} */
 
 function handleOrientation(event) {
 
@@ -67,7 +79,7 @@ function handleOrientation(event) {
 
    // updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
-    pitchShift(pitchWheel);
+    //pitchShift(pitchWheel);
 
     autoFilter.baseFrequency = filterWheel;
 
@@ -154,39 +166,70 @@ class LowPassFilterData {
 
   
 
-  document.getElementById("mute").addEventListener("click", function(){
-    player.stop();
-
+  document.getElementById("looper1").addEventListener("click", function(){
+    player.mute = false;
     
   if(this.className == 'is-playing'){
     this.className = "";
-    this.innerHTML = "UNMUTE"
-    player.stop();
+    this.innerHTML = "Loop 1 OFF"
+    player.mute = true;
 
   }else{
     this.className = "is-playing";
-    this.innerHTML = "MUTE";
+    this.innerHTML = "Loop 1 ON";
 
-    player.start();
+    player.mute = false;
 
   }}
   );
 
 
-  document.getElementById("mute2").addEventListener("click", function(){
-
-    player2.stop();
+  document.getElementById("looper2").addEventListener("click", function(){
+player2.mute = false;
     
   if(this.className == 'is-playing'){
     this.className = "";
-    this.innerHTML = "UNMUTE"
+    this.innerHTML = "Loop 2 OFF"
+    player2.mute = true;
 
-    player2.stop();
   }else{
     this.className = "is-playing";
-    this.innerHTML = "MUTE";
+    this.innerHTML = "Loop 2 ON";
 
+    player2.mute = false;
 
-    player2.start();
+  }}
+  );
+
+  document.getElementById("looper3").addEventListener("click", function(){
+    player3.mute = false;
+    
+  if(this.className == 'is-playing'){
+    this.className = "";
+    this.innerHTML = "Loop 3 OFF"
+    player3.mute = true;
+
+  }else{
+    this.className = "is-playing";
+    this.innerHTML = "Loop 3 ON";
+
+    player3.mute = false;
+
+  }}
+  );
+  document.getElementById("looper4").addEventListener("click", function(){
+    player4.mute = false;
+    
+  if(this.className == 'is-playing'){
+    this.className = "";
+    this.innerHTML = "Loop 4 OFF"
+    player4.mute = true;
+
+  }else{
+    this.className = "is-playing";
+    this.innerHTML = "Loop 4 ON";
+
+    player4.mute = false;
+
   }}
   );

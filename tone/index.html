@@ -27,7 +27,7 @@
   <p>Volume:</p>
   <input type="range" min="0" max="1" value="0.5" step="0.01" class="slider" id="volume">
   <p>Pitch:</p>
-  <input type="range" min="1" max="2" value="1" step="1" class="slider" id="pitch">
+  <input type="range" min="-10" max="10" value="0" step="1" class="slider" id="pitch">
   <p>Crusher:</p>
   <input type="range" min="1" max="19" value="1" step="1" class="slider" id="crusher">
   <p>Freeverb:</p>
@@ -53,13 +53,40 @@ let freeverbslider = document.getElementById("freeverb");
 
 const gainNode = new Tone.Gain().toMaster();
 
+// Pitchshift
+
+const pitchShift2 = new Tone.PitchShift().connect(gainNode);
+
+pitchShift2.pitch = 0; // down one octave
+
+
+
 //const crusher = new Tone.BitCrusher().connect(gainNode);
-const freeverb = new Tone.AutoWah().connect(gainNode);
-const player = new Tone.Player("https://tonejs.github.io/audio/drum-samples/breakbeat.mp3").connect(freeverb);
-const player2 = new Tone.Player("https://tonejs.github.io/audio/drum-samples/handdrum-loop.mp3").connect(freeverb);
+const freeverb = new Tone.AutoWah().connect(pitchShift2);
+
+// Players
+const player = new Tone.Player("../loops/drums1_80bpm.wav").connect(freeverb);
+const player2 = new Tone.Player("../loops/bass1_80bpm.wav").connect(freeverb);
+const player3 = new Tone.Player("../loops/arp_80bpm.wav").connect(freeverb);
+const player4 = new Tone.Player("../loops/bass2_80bpm.wav").connect(freeverb);
 player.loop = true;
 player2.loop = true;
-//player.autostart = true;
+player3.loop = true;
+player4.loop = true;
+
+player.autostart = true;
+player2.autostart = true;
+player3.autostart = true;
+player4.autostart = true;
+
+player.mute = true;
+player2.mute = true;
+player3.mute = true;
+player4.mute = true;
+
+
+
+
 const synth = new Tone.Sampler({
 	"C2" : "samples/001.wav",
   "D2" : "samples/002.wav",
@@ -80,12 +107,14 @@ crushslider.oninput = function() {
 const seq = new Tone.Sequence((time, note) => {
 
 
-	synth.triggerAttackRelease(note, 0.1, time);
+  player.start(time),
+	//synth.triggerAttackRelease(note, 0.1, time);
   console.log(time);
 	// subdivisions are given as subarrays
 
 
 }, ["C2", ["E1", "D1", "E1"], "G1", ["A1", "G#2"], "C#1"]).start(0);
+
 
 
 
@@ -104,7 +133,7 @@ volumeslider.oninput = function() {
     console.log(this.value);
 }
 
-function pitchShift (pitch) {
+/* function pitchShift (pitch) {
 
   const intervalChange = 45;
   const points = Math.floor(pitch / intervalChange);
@@ -134,16 +163,10 @@ function pitchShift (pitch) {
   else if (points >= 1)
     synth.frequency.value = "F2";
       
-}
+} */
 
 pitchslider.oninput = function() {
-
-if (this.value == 1)
-player.start(),
-player2.stop();
-else
-player2.start(),
-player.stop();
+  pitchShift2.pitch = this.value
 }
 
 
@@ -153,35 +176,39 @@ player.stop();
 
 document.querySelector("#buttonC").addEventListener('click', function() {
 
-    player.start();
+  player.mute = false;
 });
 
 document.querySelector("#buttonD").addEventListener('click', function() {
-  player.stop();
+  player.mute = true;
 });
 
 document.querySelector("#buttonE").addEventListener('click', function() {
-  player2.start();
+  player2.mute = false;
 });
 
 document.querySelector("#buttonF").addEventListener('click', function() {
-  Tone.Transport.start();
+  player2.mute = true;
 });
 
 document.querySelector("#buttonG").addEventListener('click', function() {
-  Tone.Transport.stop();
+  //Tone.Transport.stop();
+  player3.mute = false;
 });
 
 document.querySelector("#buttonA").addEventListener('click', function() {
-    synth.triggerAttackRelease("A4", "8n");
+    //synth.triggerAttackRelease("A4", "8n");
+    player3.mute = true;
 });
 
 document.querySelector("#buttonH").addEventListener('click', function() {
-    synth.triggerAttackRelease("B4", "8n");
+    //synth.triggerAttackRelease("B4", "8n");
+    player4.mute = false;
 });
 
 document.querySelector("#buttonC5").addEventListener('click', function() {
-    synth.triggerAttackRelease("C5", "8n");
+    //synth.triggerAttackRelease("C5", "8n");
+    player4.mute = true;
 });
 
             </script>
