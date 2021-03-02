@@ -155,19 +155,38 @@ class LowPassFilterData {
   
 
   document.getElementById("mute").addEventListener("click", function(){
-    player.stop(),
+    player.stop();
+
+    
+  if(this.className == 'is-playing'){
+    this.className = "";
+    this.innerHTML = "UNMUTE"
+    player.stop();
+
+  }else{
+    this.className = "is-playing";
+    this.innerHTML = "MUTE";
+
+    player.start();
+
+  }}
+  );
+
+
+  document.getElementById("mute2").addEventListener("click", function(){
+
     player2.stop();
     
   if(this.className == 'is-playing'){
     this.className = "";
     this.innerHTML = "UNMUTE"
-    player.stop(),
+
     player2.stop();
   }else{
     this.className = "is-playing";
     this.innerHTML = "MUTE";
 
-    player.start(),
+
     player2.start();
   }}
   );
