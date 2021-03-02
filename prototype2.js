@@ -41,7 +41,7 @@ function pitchShift (pitch) {
   if (pitch == 180)
   player.start(),
   player2.stop();
-  else if (pitch == 90)
+  else if (pitch == 190)
   player2.start(),
   player.stop();
     
