@@ -44,7 +44,7 @@
 </div>
 
 <script >
-
+// Dette er verd å sjekke ut: https://editor.p5js.org/asd0999/sketches/Bk5Hv3XK7
 
 let volumeslider = document.getElementById("volume");
 let pitchslider = document.getElementById("pitch");
@@ -71,8 +71,10 @@ const kit = new Tone.Players({
 }).connect(freeverb);
 kit.get("drums").autostart = true;
 kit.get("drums").loop = true;
+kit.get("drums").sync = true;
 kit.get("drums").mute = true;
 kit.get("bass").autostart = true;
+kit.get("bass").sync = true;
 kit.get("bass").loop = true;
 kit.get("bass").mute = true;
 
