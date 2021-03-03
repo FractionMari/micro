@@ -65,7 +65,12 @@ pitchShift2.pitch = 0; // down one octave
 const freeverb = new Tone.AutoWah().connect(pitchShift2);
 
 // Players
-const kit = new Tone.Players({
+
+
+
+
+
+/* const kit = new Tone.Players({
   "bass": "../loops/drums1_80bpm.wav",
   "drums": "../loops/bass1_80bpm.wav",
   "arp": "../loops/arp_80bpm.wav",
@@ -95,20 +100,42 @@ kit.get("arp").mute = true;
 
 kit.get("bass2").sync = true;
 kit.get("bass2").loop = true;
-kit.get("bass2").mute = true;
+kit.get("bass2").mute = true; */
 
 
 
-/* 
-const player = new Tone.Player("../loops/drums1_80bpm.wav").connect(freeverb);
-const player2 = new Tone.Player("../loops/bass1_80bpm.wav").connect(freeverb);
-const player3 = new Tone.Player("../loops/arp_80bpm.wav").connect(freeverb);
-const player4 = new Tone.Player("../loops/bass2_80bpm.wav").connect(freeverb); */
+
+//const player = new Tone.Player("../loops/drums1_80bpm.wav").connect(freeverb);
+
+//const player2 = new Tone.Player("../loops/bass1_80bpm.wav").connect(freeverb);
+//const player3 = new Tone.Player("../loops/arp_80bpm.wav").connect(freeverb);
+//const player4 = new Tone.Player("../loops/bass2_80bpm.wav").connect(freeverb);
+var pianoSamples = new Tone.Buffers({
+	"drums" : "../loops/drums1_80bpm.wav",
+	"bass" : "../loops/bass1_80bpm.wav",
+	"arp" : "../loops/arp_80bpm.wav",
+	"bass2" : "../loops/bass2_80bpm.wav"
+}, function(){
+	//play one of the samples when they all load
+	player.buffer = pianoSamples.get("drums");
+	player.start();
+  player2.buffer = pianoSamples.get("bass");
+	player2.start();
+  player3.buffer = pianoSamples.get("arp");
+	player3.start();
+  player4.buffer = pianoSamples.get("bass2");
+	player4.start();
+});
+const player = new Tone.Player().connect(freeverb);
+const player2 = new Tone.Player().connect(freeverb);
+const player3 = new Tone.Player().connect(freeverb);
+const player4 = new Tone.Player().connect(freeverb);
+
 
 //players.loaded = true;
 //players.volume = 0.5;
 //players.mute = true;
-/* player2.loop = true;
+player2.loop = true;
 player3.loop = true;
 player4.loop = true;
 
@@ -120,7 +147,7 @@ player4.autostart = true;
 player.mute = true;
 player2.mute = true;
 player3.mute = true;
-player4.mute = true; */
+player4.mute = true;
 
 
 
@@ -213,47 +240,47 @@ pitchslider.oninput = function() {
 //play a middle 'C' for the duration of an 8th note
 
 document.querySelector("#buttonC").addEventListener('click', function() {
-  kit.get("drums").mute = false;
-  //players.mute = false;
+  //kit.get("drums").mute = false;
+  player.mute = false;
 });
 
 document.querySelector("#buttonD").addEventListener('click', function() {
-  kit.get("drums").mute = true;
-  //players.mute = true;
+  //kit.get("drums").mute = true;
+  player.mute = true;
 });
 
 document.querySelector("#buttonE").addEventListener('click', function() {
-  kit.get("bass").mute = false;
-  //player2.mute = false;
+  //kit.get("bass").mute = false;
+  player2.mute = false;
 });
 
 document.querySelector("#buttonF").addEventListener('click', function() {
-  kit.get("bass").mute = true;
-  //player2.mute = true;
+  //kit.get("bass").mute = true;
+  player2.mute = true;
 });
 
 document.querySelector("#buttonG").addEventListener('click', function() {
   //Tone.Transport.stop();
-  kit.get("arp").mute = false;
-  //player3.mute = false;
+  //kit.get("arp").mute = false;
+  player3.mute = false;
 });
 
 document.querySelector("#buttonA").addEventListener('click', function() {
     //synth.triggerAttackRelease("A4", "8n");
-    kit.get("arp").mute = true;
-    //player3.mute = true;
+    //kit.get("arp").mute = true;
+    player3.mute = true;
 });
 
 document.querySelector("#buttonH").addEventListener('click', function() {
-    //synth.triggerAttackRelease("B4", "8n");
-    kit.get("bass2").mute = false;
-    //player4.mute = false;
+    ////synth.triggerAttackRelease("B4", "8n");
+    //kit.get("bass2").mute = false;
+    player4.mute = false;
 });
 
 document.querySelector("#buttonC5").addEventListener('click', function() {
     //synth.triggerAttackRelease("C5", "8n");
-    kit.get("bass2").mute = true;
-    //player4.mute = true;
+    //kit.get("bass2").mute = true;
+    player4.mute = true;
 });
 
             </script>
