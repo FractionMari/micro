@@ -67,7 +67,9 @@ const freeverb = new Tone.AutoWah().connect(pitchShift2);
 // Players
 const kit = new Tone.Players({
   "bass": "../loops/drums1_80bpm.wav",
-  "drums": "../loops/bass1_80bpm.wav" 
+  "drums": "../loops/bass1_80bpm.wav",
+  "arp": "../loops/arp_80bpm.wav",
+  "bass2": "../loops/bass2_80bpm.wav" 
 }).connect(freeverb);
 kit.get("drums").autostart = true;
 kit.get("drums").loop = true;
@@ -77,7 +79,14 @@ kit.get("bass").autostart = true;
 kit.get("bass").sync = true;
 kit.get("bass").loop = true;
 kit.get("bass").mute = true;
-
+kit.get("arp").autostart = true;
+kit.get("arp").sync = true;
+kit.get("arp").loop = true;
+kit.get("arp").mute = true;
+kit.get("bass2").autostart = true;
+kit.get("bass2").sync = true;
+kit.get("bass2").loop = true;
+kit.get("bass2").mute = true;
 
 
 
@@ -216,22 +225,26 @@ document.querySelector("#buttonF").addEventListener('click', function() {
 
 document.querySelector("#buttonG").addEventListener('click', function() {
   //Tone.Transport.stop();
-  player3.mute = false;
+  kit.get("arp").mute = false;
+  //player3.mute = false;
 });
 
 document.querySelector("#buttonA").addEventListener('click', function() {
     //synth.triggerAttackRelease("A4", "8n");
-    player3.mute = true;
+    kit.get("arp").mute = true;
+    //player3.mute = true;
 });
 
 document.querySelector("#buttonH").addEventListener('click', function() {
     //synth.triggerAttackRelease("B4", "8n");
-    player4.mute = false;
+    kit.get("bass2").mute = false;
+    //player4.mute = false;
 });
 
 document.querySelector("#buttonC5").addEventListener('click', function() {
     //synth.triggerAttackRelease("C5", "8n");
-    player4.mute = true;
+    kit.get("bass2").mute = true;
+    //player4.mute = true;
 });
 
             </script>
