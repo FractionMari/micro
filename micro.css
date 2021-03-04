@@ -83,9 +83,10 @@ a:hover {
 }
 #pitch {
     display: inline-block;
-    width:300 px;
-    height:300 px;
+    width:auto;
+    height:auto;
     border: 1px solid green;
+
 }
 
 
