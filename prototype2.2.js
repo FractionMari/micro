@@ -4,11 +4,26 @@
 // 11. februar: including the Tone.js to improve sound quality
 //1. og 2. mars: creating a loop function
 
+let pitchslider = document.getElementById("pitch");
 
 const gainNode = new Tone.Gain().toMaster();
-const autoFilter = new Tone.AutoWah().connect(gainNode);
+
+const pitchShift2 = new Tone.PitchShift().connect(gainNode);
+
+
+
+
+const autoFilter = new Tone.AutoWah().connect(pitchShift2);
 
 //instead of a Synth, there is some loops
+// Pitch variables
+pitchShift2.pitch = 0; // down one octave
+
+pitchslider.oninput = function() {
+    pitchShift2.pitch = this.value
+  }
+  
+
 // Players
 var playerBuffers = new Tone.Buffers({
 	"drums" : "loops/drums1_80bpm.wav",
