@@ -29,6 +29,19 @@ button {
     font-size: 24px;
     }
 
+.loopButtons {
+    background-color: #00000062;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    border-radius: 17px;
+    color: rgb(255, 0, 68) solid;
+    padding: 15px 32px;
+    text-align: center;
+    font-variant: small-caps;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    }
+
 
 a {
     color: hotpink;
