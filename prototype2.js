@@ -11,10 +11,10 @@ const autoFilter = new Tone.AutoWah().connect(gainNode);
 //instead of a Synth, there is some loops
 // Players
 var playerBuffers = new Tone.Buffers({
-	"drums" : "../loops/drums1_80bpm.wav",
-	"bass" : "../loops/bass1_80bpm.wav",
-	"arp" : "../loops/arp_80bpm.wav",
-	"bass2" : "../loops/bass2_80bpm.wav"
+	"drums" : "/loops/drums1_80bpm.wav",
+	"bass" : "/loops/bass1_80bpm.wav",
+	"arp" : "/loops/arp_80bpm.wav",
+	"bass2" : "/loops/bass2_80bpm.wav"
 }, function(){
 	//play one of the samples when they all load
 	player.buffer = playerBuffers.get("drums");
