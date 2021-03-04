@@ -75,18 +75,25 @@ a:hover {
     background-size: cover;
     }
 
+#container7 {
+
+    font-size: 2px;
+    color: #000000;
+    }
+
+
 #loops {
     display: inline-block;
     width:auto;
     height:auto;
-    border: 1px solid red;
+    
 }
 #pitch {
     display: inline-block;
     width:3000 px;
     height:30000 px;
 
-    border: 1px solid green;
+   
 
 }
 
