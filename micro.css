@@ -83,8 +83,9 @@ a:hover {
 }
 #pitch {
     display: inline-block;
-    width:auto;
-    height:auto;
+    width:3000 px;
+    height:30000 px;
+
     border: 1px solid green;
 
 }
@@ -95,11 +96,11 @@ a:hover {
 .vertical-heighest-first
 {
     cursor: pointer;
-    width: 300px !important;
+    width: 200px !important;
     -webkit-appearance: none;
     z-index: 200;
     width:50px;
-    height:30px;
+    height:20px;
     border-radius: 10px;
     background-color: rgb(68, 7, 38) ;
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4DDBFF), to(#00CCFF));
