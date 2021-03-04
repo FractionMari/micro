@@ -17,10 +17,10 @@ body {
     }
 
 button  {
-    background-color: #00000062;
+    background-color: #00000025;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     border-radius: 17px;
-    color: rgb(255, 0, 68) solid;
+    color: #ccde07;
     padding: 10px 20px;
     text-align: center;
     font-variant: small-caps;
