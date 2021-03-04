@@ -17,6 +17,7 @@ pitchShift2.pitch = 0; // down one octave
 
 pitchslider.oninput = function() {
     pitchShift2.pitch = this.value
+    console.log(this.value);
   }
   
 

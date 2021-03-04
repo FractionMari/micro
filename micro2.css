@@ -106,13 +106,13 @@ a:hover {
     max-height:200px;
     border: 1px rgba(0, 0, 0, 0) solid;
 }
-#pitch {
+#pitchBox {
     display: inline-block;
-    vertical-align:middle;
+    vertical-align:left;
     width:auto;
     max-width:140px;
     height:auto;
-    max-height:100px;
+    max-height:200px;
     border: 1px rgba(0, 0, 0, 0) solid;
 
    
@@ -125,7 +125,7 @@ a:hover {
 .vertical-heighest-first
 {
     cursor: pointer;
-    width: 250px !important;
+    width: 150px !important;
     -webkit-appearance: none;
     z-index: 200;
     width:50px;
@@ -157,8 +157,8 @@ a:hover {
 .vertical-heighest-first::-webkit-slider-thumb
 {
     -webkit-appearance: none;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-color: #555;
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4DDBFF), to(#00CCFF));
     background-image: -webkit-linear-gradient(right, #c8ff00,rgb(68, 7, 38));
