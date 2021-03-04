@@ -31,7 +31,7 @@
   <p>Crusher:</p>
   <input type="range" min="1" max="19" value="1" step="1" class="slider" id="crusher">
   <p>Freeverb:</p>
-  <input type="range" min="10" max="1000" value="10" step="0.01" class="slider" id="freeverb">
+  <input type="range" min="10" max="1000" value="10" step="0.01" class="slider" id="autoFilter">
 
   <p><button style="display: block">Play/pause</button></p>
 
@@ -49,7 +49,7 @@
 let volumeslider = document.getElementById("volume");
 let pitchslider = document.getElementById("pitch");
 let crushslider = document.getElementById("crusher");
-let freeverbslider = document.getElementById("freeverb");
+let autoFilterslider = document.getElementById("autoFilter");
 
 const gainNode = new Tone.Gain().toMaster();
 
@@ -62,7 +62,7 @@ pitchShift2.pitch = 0; // down one octave
 
 
 //const crusher = new Tone.BitCrusher().connect(gainNode);
-const freeverb = new Tone.AutoWah().connect(pitchShift2);
+const autoFilter = new Tone.AutoWah().connect(pitchShift2);
 
 // Players
 
@@ -75,7 +75,7 @@ const freeverb = new Tone.AutoWah().connect(pitchShift2);
   "drums": "../loops/bass1_80bpm.wav",
   "arp": "../loops/arp_80bpm.wav",
   "bass2": "../loops/bass2_80bpm.wav" 
-}).connect(freeverb);
+}).connect(autoFilter);
 
 window.addEventListener('load', (event) => {
   kit.get("drums").autostart = true;
@@ -105,11 +105,11 @@ kit.get("bass2").mute = true; */
 
 
 
-//const player = new Tone.Player("../loops/drums1_80bpm.wav").connect(freeverb);
+//const player = new Tone.Player("../loops/drums1_80bpm.wav").connect(autoFilter);
 
-//const player2 = new Tone.Player("../loops/bass1_80bpm.wav").connect(freeverb);
-//const player3 = new Tone.Player("../loops/arp_80bpm.wav").connect(freeverb);
-//const player4 = new Tone.Player("../loops/bass2_80bpm.wav").connect(freeverb);
+//const player2 = new Tone.Player("../loops/bass1_80bpm.wav").connect(autoFilter);
+//const player3 = new Tone.Player("../loops/arp_80bpm.wav").connect(autoFilter);
+//const player4 = new Tone.Player("../loops/bass2_80bpm.wav").connect(autoFilter);
 var pianoSamples = new Tone.Buffers({
 	"drums" : "../loops/drums1_80bpm.wav",
 	"bass" : "../loops/bass1_80bpm.wav",
@@ -126,10 +126,10 @@ var pianoSamples = new Tone.Buffers({
   player4.buffer = pianoSamples.get("bass2");
 	player4.start();
 });
-const player = new Tone.Player().connect(freeverb);
-const player2 = new Tone.Player().connect(freeverb);
-const player3 = new Tone.Player().connect(freeverb);
-const player4 = new Tone.Player().connect(freeverb);
+const player = new Tone.Player().connect(autoFilter);
+const player2 = new Tone.Player().connect(autoFilter);
+const player3 = new Tone.Player().connect(autoFilter);
+const player4 = new Tone.Player().connect(autoFilter);
 
 
 //players.loaded = true;
@@ -161,7 +161,7 @@ const synth = new Tone.Sampler({
   "G2" : "samples/005.wav",
   "A2" : "samples/006.wav",
   "B2" : "samples/007.wav",
-}).connect(freeverb);
+}).connect(autoFilter);
 var timevalue = 1;
 
 crushslider.oninput = function() {
@@ -185,8 +185,8 @@ const seq = new Tone.Sequence((time, note) => {
 
 
 
-freeverbslider.oninput = function() {
-freeverb.baseFrequency = (this.value);
+autoFilterslider.oninput = function() {
+autoFilter.baseFrequency = (this.value);
 console.log(this.value);
 }
 

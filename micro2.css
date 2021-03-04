@@ -29,9 +29,26 @@ button  {
     font-size: 12px;
     }
 
+button:hover {
+    background-color: #ccde0769;
+    
+    }
+
+.AMbuttons  {
+    background-color: #0000004d;
+    font-family: 'Rowdies';
+    border-radius: 17px;
+    color: #ccde07;
+    padding: 10px 20px;
+    text-align: center;
+    font-variant: small-caps;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    }
 
 a {
-    color: hotpink;
+    color: rgb(140, 12, 76);
     }
 
 a:hover {
@@ -46,7 +63,7 @@ a:hover {
     height: auto;
     background: rgb(0, 0, 0);
     padding: 20px;
-    border: 10px rgb(68, 7, 38) solid;
+    border: 20px rgba(68, 7, 38, 0.543) solid;
     background-image: url("bg7.jpg");
     }
 
@@ -70,7 +87,7 @@ a:hover {
     height: auto;
     background: rgb(0, 0, 0);
     padding: 20px;
-    border: 10px rgb(84, 117, 6) solid;
+    border: 20px rgb(84, 117, 6) solid;
     background-image: url("bg9.jpg");
     color: rgb(68, 7, 38) solid;;
     background-size: cover;
@@ -192,7 +209,7 @@ background-color: #555;
 
 
 .collapsible:hover {
-background-color: #555;
+background-color: #ccde0758;
 
 }
 

@@ -4,63 +4,82 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Micro App Prototype 1</title>
-    <link href="micro.css" rel="stylesheet">
+    <link href="micro2.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Rowdies' rel='stylesheet'>
 
 </head>
 
 <script src="https://unpkg.com/tone@13.8.25/build/Tone.js"></script>
 
 <body>
-    <div id="container5">
 
-    <h1>Micro App:</h1>
-    <h2>Prototype 1: AM Synth</h2>
-
-    <button type="button" id="button1">Play</button>
-    <button type="button" id="button2">Stop</button>
-
-    <p> How to use: </p>
-    <p>This app is to be used on a smart phone, at the moment, only Android is supported. </p>
-    <p>Press PLAY button to start the app.</p>
-    <p>The VOLUME will decrease when you move: </p>   Volume: <span id="volume_acc">0</span>
-    <p> To change pitch, you tilt your phone on the X axis: </p>
-    <li>Pitch Wheel <span id="pitchwheel">0</span><span>&deg;</span></li>
-    <p> To control the Wah-Wah Filter, you tilt your phone on the Y axis</p>
-    <li>Filter Wheel <span id="filterwheel">0</span><span>&deg;</span></li>
-
-    <h1>ENJOY!</h1>
-</div>
-<br><br>
+    <button type="button" class="collapsible" id="helpButton">?</button>
 
 
-<div id="container5">
-    <h2>Parameters:</h2>
-    <ul>
-      <p> Orientation parameters:</p>
-      <li>X-axis (&beta;): <span id="Orientation_b">0</span><span>&deg;</span></li>
-      <li>Y-axis (&gamma;): <span id="Orientation_g">0</span><span>&deg;</span></li>
-      <li>Z-axis (&alpha;): <span id="Orientation_a">0</span><span>&deg;</span></li>
+    <div class="content">
+      <p>How to use this app:
+          <div class="dots">
+    
+        <li> This app must be used on a phone/tablet</li>
+        <li> Press PLAY to start your AM synth </li>
+        <li> The volume decreases when you move your phone </li>
+        <li> Control a filter by moving your phone the Y axis </li>
+        <li> Control pitch by moving your phone on the X axis </li> </div>
+      </p>
+    </div> 
 
-      <p> Accelerometer parameters:</p>
-      <li>X-axis: <span id="test_x">0</span></li>
-      <li>X-axis with filter: <span id="filter_x">0</span></li>
-      <li>Y-axis: <span id="test_y">0</span></li>
-      <li>Y-axis with filter: <span id="filter_y">0</span></li>
-      <li>Z-axis: <span id="test_z">0</span></li>
-      <li>Z-axis with filter: <span id="filter_z">0</span></li>
-      <li>Total acc: <span id="total_acc">0</span></li>
-      <li>Total filter: <span id="total_filter">0</span></li>
-      <li>Difference: <span id="diff_acc">0</span></li>
-    </ul>
+    <div id="container">
 
+    <h2>Micro App: AM Synth</h2>
 
-</main>
+    <button type="button" id="button1" class="AMbuttons">Play</button>
+    <button type="button" id="button2" class="AMbuttons">Stop</button>
+
+    <div id="container7">
+
+      Volume: <span id="volume_acc">0</span>
+      Filter Wheel <span id="filterwheel">0</span><span>&deg;</span>
+      X-axis (&beta;): <span id="Orientation_b">0</span><span>&deg;</span>
+      Y-axis (&gamma;): <span id="Orientation_g">0</span><span>&deg;</span>
+      Z-axis (&alpha;): <span id="Orientation_a">0</span><span>&deg;</span>
+      X-axis: <span id="test_x">0</span>
+      X-axis with filter: <span id="filter_x">0</span>
+      Y-axis: <span id="test_y">0</span>
+      Y-axis with filter: <span id="filter_y">0</span>
+      Z-axis: <span id="test_z">0</span>
+      Z-axis with filter: <span id="filter_z">0</span>
+      Total acc: <span id="total_acc">0</span>
+      Total filter: <span id="total_filter">0</span>
+      Difference: <span id="diff_acc">0</span>
+      
+      </div>
+          </div>
+      
+      
+      
+      
+      </main>
+      <script>
+          var coll = document.getElementsByClassName("collapsible");
+          var i;
+          
+          for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var content = this.nextElementSibling;
+              if (content.style.display === "block") {
+                content.style.display = "none";
+              } else {
+                content.style.display = "block";
+              }
+            });
+          }
+          </script>
 
 <script src="prototype1.js"></script>
 
 <a href ="./prototype2.html">Link to Prototype 2</a>
 <a href ="./tone/index.html">Link to Tone JS testing page</a>
-<br>
 </div>
 </body>
 </html>
