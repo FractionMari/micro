@@ -4,11 +4,23 @@
 // 11. februar: including the Tone.js to improve sound quality
 //1. og 2. mars: creating a loop function
 
+let pitchslider = document.getElementById("pitch");
 
 const gainNode = new Tone.Gain().toMaster();
-const autoFilter = new Tone.AutoWah().connect(gainNode);
+
+const pitchShift2 = new Tone.PitchShift().connect(gainNode);
+const autoFilter = new Tone.AutoWah().connect(pitchShift2);
 
 //instead of a Synth, there is some loops
+// Pitch variables
+pitchShift2.pitch = 0; // down one octave
+
+pitchslider.oninput = function() {
+    pitchShift2.pitch = this.value
+    console.log(this.value);
+  }
+  
+
 // Players
 var playerBuffers = new Tone.Buffers({
 	"drums" : "loops/drums1_80bpm.wav",
@@ -187,12 +199,12 @@ class LowPassFilterData {
     
   if(this.className == 'is-playing'){
     this.className = "";
-    this.innerHTML = "Loop 1 OFF"
+    this.innerHTML = "1: OFF"
     player.mute = true;
 
   }else{
     this.className = "is-playing";
-    this.innerHTML = "Loop 1 ON";
+    this.innerHTML = "1: ON";
 
     player.mute = false;
 
@@ -205,12 +217,12 @@ player2.mute = false;
     
   if(this.className == 'is-playing'){
     this.className = "";
-    this.innerHTML = "Loop 2 OFF"
+    this.innerHTML = "2: OFF"
     player2.mute = true;
 
   }else{
     this.className = "is-playing";
-    this.innerHTML = "Loop 2 ON";
+    this.innerHTML = "2: ON";
 
     player2.mute = false;
 
@@ -222,12 +234,12 @@ player2.mute = false;
     
   if(this.className == 'is-playing'){
     this.className = "";
-    this.innerHTML = "Loop 3 OFF"
+    this.innerHTML = "3: OFF"
     player3.mute = true;
 
   }else{
     this.className = "is-playing";
-    this.innerHTML = "Loop 3 ON";
+    this.innerHTML = "3: ON";
 
     player3.mute = false;
 
@@ -238,12 +250,12 @@ player2.mute = false;
     
   if(this.className == 'is-playing'){
     this.className = "";
-    this.innerHTML = "Loop 4 OFF"
+    this.innerHTML = "4: OFF"
     player4.mute = true;
 
   }else{
     this.className = "is-playing";
-    this.innerHTML = "Loop 4 ON";
+    this.innerHTML = "4: ON";
 
     player4.mute = false;
 
