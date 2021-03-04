@@ -10,19 +10,31 @@ const autoFilter = new Tone.AutoWah().connect(gainNode);
 
 //instead of a Synth, there is some loops
 // Players
-
-const players = new Tone.Players("")
-const player = new Tone.Player("loops/drums1_80bpm.wav").connect(autoFilter);
-const player2 = new Tone.Player("loops/bass1_80bpm.wav").connect(autoFilter);
-const player3 = new Tone.Player("loops/arp_80bpm.wav").connect(autoFilter);
-const player4 = new Tone.Player("loops/bass2_80bpm.wav").connect(autoFilter);
-
+var playerBuffers = new Tone.Buffers({
+	"drums" : "../loops/drums1_80bpm.wav",
+	"bass" : "../loops/bass1_80bpm.wav",
+	"arp" : "../loops/arp_80bpm.wav",
+	"bass2" : "../loops/bass2_80bpm.wav"
+}, function(){
+	//play one of the samples when they all load
+	player.buffer = playerBuffers.get("drums");
+	player.start();
+  player2.buffer = playerBuffers.get("bass");
+	player2.start();
+  player3.buffer = playerBuffers.get("arp");
+	player3.start();
+  player4.buffer = playerBuffers.get("bass2");
+	player4.start();
+});
+const player = new Tone.Player().connect(freeverb);
+const player2 = new Tone.Player().connect(freeverb);
+const player3 = new Tone.Player().connect(freeverb);
+const player4 = new Tone.Player().connect(freeverb);
 
 player.loop = true;
 player2.loop = true;
 player3.loop = true;
 player4.loop = true;
-
 
 player.autostart = true;
 player2.autostart = true;
@@ -33,6 +45,7 @@ player.mute = true;
 player2.mute = true;
 player3.mute = true;
 player4.mute = true;
+
 
 let newAcc;
 
