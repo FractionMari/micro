@@ -34,12 +34,12 @@ button {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     border-radius: 17px;
     color: rgb(255, 0, 68) solid;
-    padding: 15px 32px;
+    padding: 10px 20px;
     text-align: center;
     font-variant: small-caps;
     text-decoration: none;
     display: inline-block;
-    font-size: 24px;
+    font-size: 12px;
     }
 
 
@@ -89,18 +89,18 @@ a:hover {
     background-size: cover;
     }
 
-    #container6 {
-        margin: 0 auto;
-        width: auto;
-        max-width:500px;
-        height: auto;
-        background: rgb(0, 0, 0);
-        padding: 20px;
-        border: 20px rgba(255, 0, 68, 0.42) solid;
-        background-image: url("bg9.jpg");
-        color: rgb(68, 7, 38) solid;;
-        background-size: cover;
-        }
+#container6 {
+    margin: 0 auto;
+    width: auto;
+    max-width:500px;
+    height: auto;
+    background: rgb(0, 0, 0);
+    padding: 20px;
+    border: 20px rgba(255, 0, 68, 0.42) solid;
+    background-image: url("bg9.jpg");
+    color: rgb(68, 7, 38) solid;;
+    background-size: cover;
+    }
 
 #container7 {
 
@@ -114,14 +114,18 @@ a:hover {
     display: inline-block;
     vertical-align:middle;
     width:auto;
+    max-width:140px;
     height:auto;
+    max-height:200px;
     border: 1px rgba(0, 0, 0, 0) solid;
 }
 #pitch {
     display: inline-block;
     vertical-align:middle;
     width:auto;
+    max-width:140px;
     height:auto;
+    max-height:100px;
     border: 1px rgba(0, 0, 0, 0) solid;
 
    
