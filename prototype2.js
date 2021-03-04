@@ -26,10 +26,10 @@ var playerBuffers = new Tone.Buffers({
   player4.buffer = playerBuffers.get("bass2");
 	player4.start();
 });
-const player = new Tone.Player().connect(freeverb);
-const player2 = new Tone.Player().connect(freeverb);
-const player3 = new Tone.Player().connect(freeverb);
-const player4 = new Tone.Player().connect(freeverb);
+const player = new Tone.Player().connect(autoFilter);
+const player2 = new Tone.Player().connect(autoFilter);
+const player3 = new Tone.Player().connect(autoFilter);
+const player4 = new Tone.Player().connect(autoFilter);
 
 player.loop = true;
 player2.loop = true;
