@@ -198,12 +198,12 @@ class LowPassFilterData {
     
   if(this.className == 'is-playing'){
     this.className = "";
-    this.innerHTML = "Loop 1 OFF"
+    this.innerHTML = "1: OFF"
     player.mute = true;
 
   }else{
     this.className = "is-playing";
-    this.innerHTML = "Loop 1 ON";
+    this.innerHTML = "1: ON";
 
     player.mute = false;
 
@@ -216,12 +216,12 @@ player2.mute = false;
     
   if(this.className == 'is-playing'){
     this.className = "";
-    this.innerHTML = "Loop 2 OFF"
+    this.innerHTML = "2: OFF"
     player2.mute = true;
 
   }else{
     this.className = "is-playing";
-    this.innerHTML = "Loop 2 ON";
+    this.innerHTML = "2: ON";
 
     player2.mute = false;
 
@@ -233,12 +233,12 @@ player2.mute = false;
     
   if(this.className == 'is-playing'){
     this.className = "";
-    this.innerHTML = "Loop 3 OFF"
+    this.innerHTML = "3: OFF"
     player3.mute = true;
 
   }else{
     this.className = "is-playing";
-    this.innerHTML = "Loop 3 ON";
+    this.innerHTML = "3: ON";
 
     player3.mute = false;
 
@@ -249,12 +249,12 @@ player2.mute = false;
     
   if(this.className == 'is-playing'){
     this.className = "";
-    this.innerHTML = "Loop 4 OFF"
+    this.innerHTML = "4: OFF"
     player4.mute = true;
 
   }else{
     this.className = "is-playing";
-    this.innerHTML = "Loop 4 ON";
+    this.innerHTML = "4: ON";
 
     player4.mute = false;
 
