@@ -86,16 +86,17 @@ a:hover {
 #loops {
     
     display: inline-block;
-    vertical-align:bottom;
+    vertical-align:middle;
     width:auto;
     height:auto;
-    
+    border: 10px rgb(84, 117, 6) solid;
 }
 #pitch {
     display: inline-block;
-    vertical-align:bottom;
+    vertical-align:middle;
     width:auto;
     height:auto;
+    border: 10px rgb(84, 117, 6) solid;
 
    
 
