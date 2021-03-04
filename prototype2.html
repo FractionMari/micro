@@ -11,7 +11,19 @@
 <script src="https://unpkg.com/tone@13.8.25/build/Tone.js"></script>
 
 <body>
+
+    <button type="button" class="collapsible">?</button>
+    <div class="content">
+      <p>How to use this app:
+        <li> Activite 1 to 4 different loops with buttons </li>
+        <li> The more you move your phone, the lower the volume </li>
+        <li> Control a filter by moving your phone </li>
+        <li> Control pitch with the slider </li>
+      </p>
+    </div>
+
     <div id="container6">
+
 
     <h2>Micro App: LOOPER</h2>
     <div id="pitchBox">
@@ -27,22 +39,6 @@
     <button id="looper4" class="loopButtons">4: OFF</button><br>
     </div>
     <div id="container7">
-
-<!-- 
-    <p>Parameters:</p>
-X-axis <span id="Orientation_b">0</span>
-Y-axis <span id="Orientation_g">0</span>
-Z-axis <span id="Orientation_a">0</span>
-X-axis: <span id="test_x">0</span>
-X-axis with filter: <span id="filter_x">0</span>
-Y-axis: <span id="test_y">0</span>
-Y-axis with filter: <span id="filter_y">0</span>
-Z-axis: <span id="test_z">0</span>
-Z-axis with filter: <span id="filter_z">0</span>
-Total filter: <span id="total_filter">0</span>
-Difference: <span id="diff_acc">0</span>
-Filter Wheel <span id="filterwheel">0</span><span>
-Volume: <span id="volume_acc">0</span> -->
 
 Volume: <span id="volume_acc">0</span>
 Filter Wheel <span id="filterwheel">0</span><span>&deg;</span>
@@ -63,8 +59,25 @@ Difference: <span id="diff_acc">0</span>
     </div>
 
 
-</main>
 
+
+</main>
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+    </script>
 <script src="prototype2.js"></script>
 
 
