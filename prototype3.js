@@ -99,7 +99,7 @@ function handleOrientation(event) {
     updateFieldIfNotNull('Orientation_a', event.alpha);
 
     // Rotation to control oscillator pitch
-    //let pitchWheel = event.beta;
+    let pitchWheel = event.beta;
     let filterWheel = event.gamma;
     let filterScale = generateScaleFunction(0, 90, 10, 300);
     filterWheel = Math.abs(filterWheel);
@@ -113,6 +113,7 @@ function handleOrientation(event) {
    // pitchShift(pitchWheel);
 
     autoFilter.baseFrequency = filterWheel;
+    pitchShift2.pitch = pitchWheel;
 
   }
 
@@ -186,11 +187,10 @@ class LowPassFilterData {
 
 
 // more smooth change of volume:
-  //gainNode.gain.rampTo(newAcc, 0.2);
-//pitch shift function:
+  gainNode.gain.rampTo(newAcc, 0.2);
 
 
-  pitchShift2.pitch = newAcc;
+
 
 }  
 
