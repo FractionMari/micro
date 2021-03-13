@@ -14,10 +14,11 @@ const autoFilter = new Tone.AutoWah().connect(pitchShift2);
 //instead of a Synth, there is some loops
 // Pitch variables
 pitchShift2.pitch = 0; // down one octave
+var pitchTest = 0;
 
 pitchslider.oninput = function() {
-    pitchShift2.pitch = this.value
-    console.log(this.value);
+  pitchTest = this.value
+    console.log(pitchTest);
   }
   
 
@@ -189,7 +190,7 @@ class LowPassFilterData {
 //pitch shift function:
 
 
-  pitchShift2.pitch = newAcc * pitchShift2.pitch;
+  pitchShift2.pitch = newAcc;
 
 }  
 
