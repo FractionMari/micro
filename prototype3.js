@@ -7,17 +7,17 @@
 let pitchslider = document.getElementById("pitch");
 
 const gainNode = new Tone.Gain().toMaster();
-const gain1 = new Tone.Gain().connect(pitchShift2);
-const gain2 = new Tone.Gain().connect(pitchShift2);
-const gain3 = new Tone.Gain().connect(pitchShift2);
-const gain4 = new Tone.Gain().connect(pitchShift2);
+const gain1 = new Tone.Gain().connect(gainNode);
+const gain2 = new Tone.Gain().connect(gainNode);
+const gain3 = new Tone.Gain().connect(gainNode);
+const gain4 = new Tone.Gain().connect(gainNode);
 
-const pitchShift2 = new Tone.PitchShift().connect(gainNode);
-const autoFilter = new Tone.AutoWah().connect(pitchShift2);
+//const pitchShift2 = new Tone.PitchShift().connect(gainNode);
+//const autoFilter = new Tone.AutoWah().connect(pitchShift2);
 
 //instead of a Synth, there is some loops
 // Pitch variables
-pitchShift2.pitch = 0; // down one octave
+///pitchShift2.pitch = 0; // down one octave
 var pitchTest = 0;
 
 pitchslider.oninput = function() {
