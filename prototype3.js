@@ -113,7 +113,7 @@ function handleOrientation(event) {
    // pitchShift(pitchWheel);
 
     //autoFilter.baseFrequency = filterWheel;
-    pitchShift2.pitch = pitchWheel;
+    //pitchShift2.pitch = pitchWheel;
 
   }
 
