@@ -200,12 +200,10 @@ class LowPassFilterData {
     while (true) {
       
   if (movValue > value)
-  input.gain.rampTo(newAcc, 0.2);
-  }
+  input.gain.rampTo(0, 0.2);
+  };
 
-
-
-}
+};
 
 standStill(newAcc, gain1, 0.8);
 standStill(newAcc, gain2, 0.6);
