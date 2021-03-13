@@ -182,7 +182,7 @@ class LowPassFilterData {
 
   var fn = generateScaleFunction(0, 3, 1, -5);
   newAcc = fn(diffAcc);
-  newAcc = (clamp(-10, 1, newAcc));
+  newAcc = (clamp(-5, 1, newAcc));
 
 
 // more smooth change of volume:
@@ -190,7 +190,7 @@ class LowPassFilterData {
 //pitch shift function:
 
 
-  pitchShift2.pitch = newAcc;
+  pitchShift2.pitch.rampTo(newAcc, 0.2);
 
 }  
 
