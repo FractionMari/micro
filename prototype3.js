@@ -4,7 +4,7 @@
 // 11. februar: including the Tone.js to improve sound quality
 //1. og 2. mars: creating a loop function
 
-let pitchslider = document.getElementById("pitch");
+//let pitchslider = document.getElementById("pitch");
 
 const gainNode = new Tone.Gain().toMaster();
 const gain1 = new Tone.Gain().connect(gainNode);
@@ -20,10 +20,10 @@ const gain4 = new Tone.Gain().connect(gainNode);
 ///pitchShift2.pitch = 0; // down one octave
 var pitchTest = 0;
 
-pitchslider.oninput = function() {
+/* pitchslider.oninput = function() {
   pitchTest = this.value
     console.log(pitchTest);
-  }
+  } */
   
 
 // Players
@@ -197,11 +197,8 @@ class LowPassFilterData {
 
   function standStill (movValue, input, value) {
 
-  if (movValue  > value)
+  if (movValue > value)
   input.gain.rampTo(newAcc, 0.2);
-
-  else 
-  gainNode.gain.rampTo(0.5, 0.2);
 }
 
 standStill(newAcc, gain1, 0.8);
