@@ -190,7 +190,7 @@ class LowPassFilterData {
 //pitch shift function:
 
 
-  pitchShift2.pitch.rampTo(newAcc, 0.2);
+  pitchShift2.pitch = newAcc;
 
 }  
 
