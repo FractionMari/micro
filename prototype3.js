@@ -25,14 +25,14 @@ var pitchTest = 0;
     console.log(pitchTest);
   } */
 
-  function standStill (movValue, input, value) {
+/*   function standStill (movValue, input, value) {
 
     for (;;) {
       if (movValue > value)
       input.gain.rampTo(0, 0.2);
     }
 
-  };
+  }; */
 
 // Players
 var playerBuffers = new Tone.Buffers({
@@ -202,10 +202,10 @@ class LowPassFilterData {
 //  gainNode.gain.rampTo(newAcc, 0.2);
 
 
-standStill(newAcc, gain1, 0.8);
+/* standStill(newAcc, gain1, 0.8);
 standStill(newAcc, gain2, 0.6);
 standStill(newAcc, gain3, 0.4);
-standStill(newAcc, gain4, 0.2);
+standStill(newAcc, gain4, 0.2); */
 
 }  
 
