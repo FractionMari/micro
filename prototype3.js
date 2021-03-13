@@ -7,6 +7,10 @@
 let pitchslider = document.getElementById("pitch");
 
 const gainNode = new Tone.Gain().toMaster();
+const gain1 = new Tone.Gain().connect(pitchShift2);
+const gain2 = new Tone.Gain().connect(pitchShift2);
+const gain3 = new Tone.Gain().connect(pitchShift2);
+const gain4 = new Tone.Gain().connect(pitchShift2);
 
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
 const autoFilter = new Tone.AutoWah().connect(pitchShift2);
@@ -39,10 +43,10 @@ var playerBuffers = new Tone.Buffers({
   player4.buffer = playerBuffers.get("bass2");
 	player4.start();
 });
-const player = new Tone.Player().connect(pitchShift2);
-const player2 = new Tone.Player().connect(pitchShift2);
-const player3 = new Tone.Player().connect(pitchShift2);
-const player4 = new Tone.Player().connect(pitchShift2);
+const player = new Tone.Player().connect(gain1);
+const player2 = new Tone.Player().connect(gain2);
+const player3 = new Tone.Player().connect(gain3);
+const player4 = new Tone.Player().connect(gain4);
 
 player.loop = true;
 player2.loop = true;
@@ -54,10 +58,10 @@ player2.autostart = true;
 player3.autostart = true;
 player4.autostart = true;
 
-player.mute = true;
+/* player.mute = true;
 player2.mute = true;
 player3.mute = true;
-player4.mute = true;
+player4.mute = true; */
 
 
 let newAcc;
@@ -194,14 +198,16 @@ class LowPassFilterData {
   function standStill (movValue, input, value) {
 
   if (movValue  > value)
-  input.mute = false;
+  input.gain.rampTo(newAcc, 0.2);
 
   else 
-  input.mute = true;
+  gainNode.gain.rampTo(0.5, 0.2);
 }
 
-standStill(newAcc, player, 0.8);
-standStill(newAcc, player3, 0.6);
+standStill(newAcc, gain1, 0.8);
+standStill(newAcc, gain2, 0.6);
+standStill(newAcc, gain3, 0.4);
+standStill(newAcc, gain4, 0.2);
 
 }  
 
@@ -212,17 +218,20 @@ standStill(newAcc, player3, 0.6);
 
   document.getElementById("looper1").addEventListener("click", function(){
     player.mute = false;
+    player.fadeIn = true;
     
   if(this.className == 'is-playing'){
     this.className = "";
     this.innerHTML = "1: OFF"
     player.mute = true;
+    player.fadeOut = true;
 
   }else{
     this.className = "is-playing";
     this.innerHTML = "1: ON";
-
     player.mute = false;
+
+    player.fadeIn = true;
 
   }}
   );
@@ -230,34 +239,40 @@ standStill(newAcc, player3, 0.6);
 
   document.getElementById("looper2").addEventListener("click", function(){
 player2.mute = false;
+player2.fadeIn = true;
     
   if(this.className == 'is-playing'){
     this.className = "";
     this.innerHTML = "2: OFF"
     player2.mute = true;
+    player2.fadeOut = true;
 
   }else{
     this.className = "is-playing";
     this.innerHTML = "2: ON";
 
     player2.mute = false;
+    player2.fadeIn = true;
 
   }}
   );
 
   document.getElementById("looper3").addEventListener("click", function(){
     player3.mute = false;
+    player3.fadeIn = true;
     
   if(this.className == 'is-playing'){
     this.className = "";
     this.innerHTML = "3: OFF"
-    player3.mute = true;
+    //player3.mute = true;
+    player3.fadeOut = true;
 
   }else{
     this.className = "is-playing";
     this.innerHTML = "3: ON";
 
-    player3.mute = false;
+    //player3.mute = false;
+    player3.fadeIn = true;
 
   }}
   );
