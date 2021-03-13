@@ -180,9 +180,9 @@ class LowPassFilterData {
     updateFieldIfNotNull('volume_acc', newAcc );
 
 
-  var fn = generateScaleFunction(0, 3, 0.5, 0);
+  var fn = generateScaleFunction(0, 3, 1, -10);
   newAcc = fn(diffAcc);
-  newAcc = (clamp(0, 0.5, newAcc));
+  newAcc = (clamp(-10, 1, newAcc));
 
 
 // more smooth change of volume:
