@@ -185,7 +185,11 @@ class LowPassFilterData {
 
 
 // more smooth change of volume:
-  gainNode.gain.rampTo(newAcc, 0.2);
+  //gainNode.gain.rampTo(newAcc, 0.2);
+//pitch shift function:
+
+
+  pitchShift2.pitch = newAcc * pitchShift2.pitch;
 
 }  
 
@@ -195,7 +199,7 @@ class LowPassFilterData {
   
 
   document.getElementById("looper1").addEventListener("click", function(){
-    
+    player.mute = false;
     
   if(this.className == 'is-playing'){
     this.className = "";
@@ -213,7 +217,7 @@ class LowPassFilterData {
 
 
   document.getElementById("looper2").addEventListener("click", function(){
-
+player2.mute = false;
     
   if(this.className == 'is-playing'){
     this.className = "";
@@ -230,7 +234,7 @@ class LowPassFilterData {
   );
 
   document.getElementById("looper3").addEventListener("click", function(){
-   
+    player3.mute = false;
     
   if(this.className == 'is-playing'){
     this.className = "";
@@ -246,7 +250,7 @@ class LowPassFilterData {
   }}
   );
   document.getElementById("looper4").addEventListener("click", function(){
-
+    player4.mute = false;
     
   if(this.className == 'is-playing'){
     this.className = "";
