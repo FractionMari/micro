@@ -195,27 +195,27 @@ class LowPassFilterData {
   //const intervalChange = 180;
   //const points = Math.floor(pitch / intervalChange);
 
-  if (movValue == 1)
+  if (movValue  > 0.8)
   player.mute = false,
   player2.mute = false,
   player3.mute = false,
   player4.mute = false;
-  else if (movValue < 1)
+  else if (movValue > 0.6)
   player.mute = false,
   player2.mute = false,
   player3.mute = false,
   player4.mute = true;
-  else if (movValue < 0.8)
+  else if (movValue > 0.4)
   player.mute = false,
   player2.mute = false,
   player3.mute = true,
   player4.mute = true;
-  else if (movValue < 0.6)
+  else if (movValue > 0.2)
   player.mute = false,
   player2.mute = true,
   player3.mute = true,
   player4.mute = true;
-  else (movValue < 0.4)
+  else 
   player.mute = true,
   player2.mute = true,
   player3.mute = true,
