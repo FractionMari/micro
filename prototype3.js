@@ -112,7 +112,7 @@ function handleOrientation(event) {
     updateFieldIfNotNull('filterwheel', filterWheel);
    // pitchShift(pitchWheel);
 
-    autoFilter.baseFrequency = filterWheel;
+    //autoFilter.baseFrequency = filterWheel;
     pitchShift2.pitch = pitchWheel;
 
   }
