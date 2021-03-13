@@ -181,16 +181,48 @@ class LowPassFilterData {
     updateFieldIfNotNull('volume_acc', newAcc );
 
 
-  var fn = generateScaleFunction(0, 3, 1, -1);
+  var fn = generateScaleFunction(0, 3, 1, 0);
   newAcc = fn(diffAcc);
-  newAcc = (clamp(-1, 1, newAcc));
+  newAcc = (clamp(0, 1, newAcc));
 
 
 // more smooth change of volume:
-  gainNode.gain.rampTo(newAcc, 0.2);
+//  gainNode.gain.rampTo(newAcc, 0.2);
 
 
 
+  function standStill (movValue) {
+  //const intervalChange = 180;
+  //const points = Math.floor(pitch / intervalChange);
+
+  if (movValue == 1)
+  player.mute = false,
+  player2.mute = false,
+  player3.mute = false,
+  player4.mute = false;
+  else if (movValue < 1)
+  player.mute = false,
+  player2.mute = false,
+  player3.mute = false,
+  player4.mute = true;
+  else if (movValue < 0.8)
+  player.mute = false,
+  player2.mute = false,
+  player3.mute = true,
+  player4.mute = true;
+  else if (movValue < 0.6)
+  player.mute = false,
+  player2.mute = true,
+  player3.mute = true,
+  player4.mute = true;
+  else (movValue < 0.4)
+  player.mute = true,
+  player2.mute = true,
+  player3.mute = true,
+  player4.mute = true;
+      
+}
+standStill(newAcc);
 
 }  
 
