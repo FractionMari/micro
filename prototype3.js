@@ -197,8 +197,14 @@ class LowPassFilterData {
 
   function standStill (movValue, input, value) {
 
+    while (true) {
+      
   if (movValue > value)
   input.gain.rampTo(newAcc, 0.2);
+  }
+
+
+
 }
 
 standStill(newAcc, gain1, 0.8);
