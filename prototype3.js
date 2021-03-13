@@ -11,6 +11,7 @@ const gain1 = new Tone.Gain().connect(gainNode);
 const gain2 = new Tone.Gain().connect(gainNode);
 const gain3 = new Tone.Gain().connect(gainNode);
 const gain4 = new Tone.Gain().connect(gainNode);
+gainNode.gain.value = 0.9;
 
 //const pitchShift2 = new Tone.PitchShift().connect(gainNode);
 //const autoFilter = new Tone.AutoWah().connect(pitchShift2);
