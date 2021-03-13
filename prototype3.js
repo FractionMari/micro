@@ -25,14 +25,6 @@ var pitchTest = 0;
     console.log(pitchTest);
   } */
 
-function standStill (movValue, input, value) {
-
-    for (var i = 0; i < 1000 ; i += 1) {
-      if (movValue > value)
-      input.gain.rampTo(0, 0.2);
-    }
-
-  }; 
 
 // Players
 var playerBuffers = new Tone.Buffers({
@@ -201,6 +193,14 @@ class LowPassFilterData {
 // more smooth change of volume:
 //  gainNode.gain.rampTo(newAcc, 0.2);
 
+function standStill (movValue, input, value) {
+
+  for (var i = 0; i < 1000 ; i += 1) {
+    if (movValue > value)
+    input.gain.rampTo(0, 0.2);
+  }
+
+}; 
 
 standStill(newAcc, gain1, 0.8);
 standStill(newAcc, gain2, 0.6);
