@@ -4,7 +4,17 @@
 // 11. februar: including the Tone.js to improve sound quality
 //1. og 2. mars: creating a loop function
 
+// testing out geolocation
+var geoSuccessHandler = function (position) { 
+  updateFieldIfNotNull('geolocation', position);
+};
+
+navigator.geolocation.getCurrentPosition(geoSuccessHandler);
+
+
 //let pitchslider = document.getElementById("pitch");
+
+
 
 const gainNode = new Tone.Gain().toMaster();
 const gain1 = new Tone.Gain().connect(gainNode);
