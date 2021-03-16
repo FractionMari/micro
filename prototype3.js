@@ -153,7 +153,7 @@ function handleOrientation(event) {
       else
        player.buffer = playerBuffers.get("2drums");
     
-      player.start();
+      
     
       player2.buffer = playerBuffers.get("bass");
       //player2.start();
@@ -166,7 +166,7 @@ function handleOrientation(event) {
     });
 
   }
-
+  player.start();
 if (
     DeviceMotionEvent &&
     typeof DeviceMotionEvent.requestPermission === "function"
