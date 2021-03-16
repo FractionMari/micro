@@ -11,7 +11,18 @@ var geoSuccessHandler = function (position) {
   console.log(position.coords.altitude)
 };
 
-navigator.geolocation.getCurrentPosition(geoSuccessHandler);
+var geoErrorHandler = function (error) { 
+  console.log(error);
+};
+
+
+var positionOptions = {
+  enableHighAccuracy: true,
+  timeout: 1000,
+  maximumAge: 500
+};
+
+navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, positionOptions);
 
 
 //let pitchslider = document.getElementById("pitch");
