@@ -164,9 +164,9 @@ function handleOrientation(event) {
       player5.buffer = playerBuffers.get("2piano");
       //player5.start();
     });
-
+    player.start();
   }
-  player.start();
+ 
 if (
     DeviceMotionEvent &&
     typeof DeviceMotionEvent.requestPermission === "function"
