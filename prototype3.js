@@ -6,8 +6,8 @@
 
 // testing out geolocation
 var geoSuccessHandler = function (position) { 
-  updateFieldIfNotNull('geolocation', position.coords.altitude);
-  updateFieldIfNotNull('longitude', position.coords.longitude);
+  updateFieldIfNotNull2('geolocation', position.coords.altitude);
+  updateFieldIfNotNull2('longitude', position.coords.longitude);
   console.log(position.coords.altitude)
 };
 
@@ -146,6 +146,11 @@ window.addEventListener("deviceorientation", handleOrientation);
 
 // function for updating values for sensor data
 function updateFieldIfNotNull(fieldName, value, precision=2){
+    if (value != null)
+      document.getElementById(fieldName).innerHTML = value.toFixed(precision);
+  }
+
+  function updateFieldIfNotNull2(fieldName, value, precision=10){
     if (value != null)
       document.getElementById(fieldName).innerHTML = value.toFixed(precision);
   }
