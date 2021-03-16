@@ -49,6 +49,32 @@ var pitchTest = 0;
     console.log(pitchTest);
   } */
 
+  var playerBuffers = new Tone.Buffers({
+    "drums" : "loops/drums1_80bpm.wav",
+    "bass" : "loops/bass1_80bpm.wav",
+    "arp" : "loops/arp_80bpm.wav",
+    "bass2" : "loops/bass2_80bpm.wav",
+    "2drums" : "loops/2drums1.wav",
+    "2bass" : "loops/2bass1.wav",
+    "2arp" : "loops/2arp.wav",
+    "2bass2" : "loops/2bass2.wav",
+    "2piano" : "loops/2piano.wav"
+  }, function(){
+    //play one of the samples when they all load
+  
+
+    player.buffer = playerBuffers.get("drums");
+    player.start();
+  
+    player2.buffer = playerBuffers.get("bass");
+    //player2.start();
+    player3.buffer = playerBuffers.get("arp");
+    //player3.start();
+    player4.buffer = playerBuffers.get("bass2");
+    //player4.start();
+    player5.buffer = playerBuffers.get("2piano");
+    //player5.start();
+  });
 
 // Players
 
@@ -127,46 +153,21 @@ function handleOrientation(event) {
     //filterWheel = filterWheel + 50;
     //filterWheel = Math.abs(filterWheel * 6);
     //pitchWheel = pitchWheel + 180;
-
+    if (filterwheel > 40)
+      player.buffer = playerBuffers.get("drums");
+    else
+     player.buffer = playerBuffers.get("2drums");
    // updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
    // pitchShift(pitchWheel);
 
     //autoFilter.baseFrequency = filterWheel;
     //pitchShift2.pitch = pitchWheel;
-
+    
     
   }
  
-  var playerBuffers = new Tone.Buffers({
-    "drums" : "loops/drums1_80bpm.wav",
-    "bass" : "loops/bass1_80bpm.wav",
-    "arp" : "loops/arp_80bpm.wav",
-    "bass2" : "loops/bass2_80bpm.wav",
-    "2drums" : "loops/2drums1.wav",
-    "2bass" : "loops/2bass1.wav",
-    "2arp" : "loops/2arp.wav",
-    "2bass2" : "loops/2bass2.wav",
-    "2piano" : "loops/2piano.wav"
-  }, function(){
-    //play one of the samples when they all load
-  
-    if (filterwheel > 40)
-      player.buffer = playerBuffers.get("drums");
-    else
-     player.buffer = playerBuffers.get("2drums");
-    player.start();
-    
-  
-    player2.buffer = playerBuffers.get("bass");
-    //player2.start();
-    player3.buffer = playerBuffers.get("arp");
-    //player3.start();
-    player4.buffer = playerBuffers.get("bass2");
-    //player4.start();
-    player5.buffer = playerBuffers.get("2piano");
-    //player5.start();
-  });
+
 
 if (
     DeviceMotionEvent &&
@@ -176,7 +177,6 @@ if (
     }
 
 window.addEventListener("deviceorientation", handleOrientation);
-
 
 // function for updating values for sensor data
 function updateFieldIfNotNull(fieldName, value, precision=2){
