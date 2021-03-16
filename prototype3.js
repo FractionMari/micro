@@ -6,7 +6,8 @@
 
 // testing out geolocation
 var geoSuccessHandler = function (position) { 
-  updateFieldIfNotNull('geolocation', position);
+  updateFieldIfNotNull('geolocation', position.coords.altitude);
+  console.log(position.coords.altitude)
 };
 
 navigator.geolocation.getCurrentPosition(geoSuccessHandler);
