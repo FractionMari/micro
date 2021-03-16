@@ -51,35 +51,7 @@ var pitchTest = 0;
 
 
 // Players
-var playerBuffers = new Tone.Buffers({
-	"drums" : "loops/drums1_80bpm.wav",
-	"bass" : "loops/bass1_80bpm.wav",
-	"arp" : "loops/arp_80bpm.wav",
-	"bass2" : "loops/bass2_80bpm.wav",
-  "2drums" : "loops/2drums1.wav",
-	"2bass" : "loops/2bass1.wav",
-	"2arp" : "loops/2arp.wav",
-	"2bass2" : "loops/2bass2.wav",
-  "2piano" : "loops/2piano.wav"
-}, function(){
-	//play one of the samples when they all load
 
-  if (filterwheel > 10)
-  	player.buffer = playerBuffers.get("drums");
-  else
-   player.buffer = playerBuffers.get("2drums");
-
-	player.start();
-
-  player2.buffer = playerBuffers.get("bass");
-	//player2.start();
-  player3.buffer = playerBuffers.get("arp");
-	//player3.start();
-  player4.buffer = playerBuffers.get("bass2");
-	//player4.start();
-  player5.buffer = playerBuffers.get("2piano");
-	//player5.start();
-});
 const player = new Tone.Player().connect(gain1);
 const player2 = new Tone.Player().connect(gain2);
 const player3 = new Tone.Player().connect(gain3);
@@ -162,6 +134,36 @@ function handleOrientation(event) {
 
     //autoFilter.baseFrequency = filterWheel;
     //pitchShift2.pitch = pitchWheel;
+
+    var playerBuffers = new Tone.Buffers({
+      "drums" : "loops/drums1_80bpm.wav",
+      "bass" : "loops/bass1_80bpm.wav",
+      "arp" : "loops/arp_80bpm.wav",
+      "bass2" : "loops/bass2_80bpm.wav",
+      "2drums" : "loops/2drums1.wav",
+      "2bass" : "loops/2bass1.wav",
+      "2arp" : "loops/2arp.wav",
+      "2bass2" : "loops/2bass2.wav",
+      "2piano" : "loops/2piano.wav"
+    }, function(){
+      //play one of the samples when they all load
+    
+      if (filterwheel > 40)
+        player.buffer = playerBuffers.get("drums");
+      else
+       player.buffer = playerBuffers.get("2drums");
+    
+      player.start();
+    
+      player2.buffer = playerBuffers.get("bass");
+      //player2.start();
+      player3.buffer = playerBuffers.get("arp");
+      //player3.start();
+      player4.buffer = playerBuffers.get("bass2");
+      //player4.start();
+      player5.buffer = playerBuffers.get("2piano");
+      //player5.start();
+    });
 
   }
 
