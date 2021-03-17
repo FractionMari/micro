@@ -37,7 +37,7 @@ function consoleInput( data ) {
         console.log( e.stack );
     }
 }
-console.log("Hey you agaerdfgn")
+console.log("Hey you a")
 
 
 let pitchslider = document.getElementById("pitch");
@@ -135,7 +135,7 @@ function handleOrientation(event) {
 
   }
 
-  result = handleOrientation.beta;
+  result = DeviceOrientationEvent.beta;
 console.log(result);
 
 
