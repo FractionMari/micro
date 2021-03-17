@@ -38,7 +38,7 @@ function consoleInput( data ) {
         console.log( e.stack );
     }
 }
-console.log("Hey again Thomas")
+console.log("Hey again Thomas2")
 
 
 let pitchslider = document.getElementById("pitch");
@@ -54,45 +54,55 @@ pitchShift2.pitch = 0; // down one octave
 
 var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
     // do something amazing
+    var playerBuffers = new Tone.Buffers({
+        "drums" : "loops/drums1_80bpm.wav",
+        "bass" : "loops/bass1_80bpm.wav",
+        "arp" : "loops/arp_80bpm.wav",
+        "bass2" : "loops/bass2_80bpm.wav",
+        "2drums" : "loops/2drums1.wav",
+        "2bass" : "loops/2bass1.wav",
+        "2arp" : "loops/2arp.wav",
+        "2bass2" : "loops/2bass2.wav",
+        "2piano" : "loops/2piano.wav"
+    }, function(){
+        //play one of the samples when they all load
+        if (frontToBack > 5)
+        player.buffer = playerBuffers.get("drums");
+        else 
+        player.buffer = playerBuffers.get("2drums");
+
+        player.start();
+      player2.buffer = playerBuffers.get("bass");
+        player2.start();
+      player3.buffer = playerBuffers.get("arp");
+        player3.start();
+      player4.buffer = playerBuffers.get("bass2");
+        player4.start();
+    });
+    const player = new Tone.Player().connect(autoFilter);
+    const player2 = new Tone.Player().connect(autoFilter);
+    const player3 = new Tone.Player().connect(autoFilter);
+    const player4 = new Tone.Player().connect(autoFilter);
+    
+    player.loop = true;
+    player2.loop = true;
+    player3.loop = true;
+    player4.loop = true;
+    
+    player.autostart = true;
+    player2.autostart = true;
+    player3.autostart = true;
+    player4.autostart = true;
+    
+    player.mute = true;
+    player2.mute = true;
+    player3.mute = true;
+    player4.mute = true;
     console.log(frontToBack);
 };
 
 // Players
-var playerBuffers = new Tone.Buffers({
-	"drums" : "loops/drums1_80bpm.wav",
-	"bass" : "loops/bass1_80bpm.wav",
-	"arp" : "loops/arp_80bpm.wav",
-	"bass2" : "loops/bass2_80bpm.wav"
-}, function(){
-	//play one of the samples when they all load
-	player.buffer = playerBuffers.get("drums");
-	player.start();
-  player2.buffer = playerBuffers.get("bass");
-	player2.start();
-  player3.buffer = playerBuffers.get("arp");
-	player3.start();
-  player4.buffer = playerBuffers.get("bass2");
-	player4.start();
-});
-const player = new Tone.Player().connect(autoFilter);
-const player2 = new Tone.Player().connect(autoFilter);
-const player3 = new Tone.Player().connect(autoFilter);
-const player4 = new Tone.Player().connect(autoFilter);
 
-player.loop = true;
-player2.loop = true;
-player3.loop = true;
-player4.loop = true;
-
-player.autostart = true;
-player2.autostart = true;
-player3.autostart = true;
-player4.autostart = true;
-
-player.mute = true;
-player2.mute = true;
-player3.mute = true;
-player4.mute = true;
 
 
 let newAcc;
