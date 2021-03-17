@@ -38,7 +38,7 @@ function consoleInput( data ) {
         console.log( e.stack );
     }
 }
-console.log("Hey Thomas")
+console.log("Hey again Thomas")
 
 
 let pitchslider = document.getElementById("pitch");
@@ -52,6 +52,10 @@ const autoFilter = new Tone.AutoWah().connect(pitchShift2);
 // Pitch variables
 pitchShift2.pitch = 0; // down one octave
 
+var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
+    // do something amazing
+    console.log(frontToBack);
+};
 
 // Players
 var playerBuffers = new Tone.Buffers({
@@ -139,19 +143,6 @@ function handleOrientation(event) {
     handleOrientationEvent(frontToBack, leftToRight, rotateDegrees);
 
   }
-/* 
-  let filterResult;
-  let result = document.getElementById("filterwheel");
-  result.oninput = function() {
-    filterResult = this.value
-    console.log(filterResult);
-  } */
-   //console.log(handleOrientation);
-   var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
-    // do something amazing
-    console.log(frontToBack);
-};
-
 
 
 
