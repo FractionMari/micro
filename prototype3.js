@@ -37,7 +37,7 @@ function consoleInput( data ) {
         console.log( e.stack );
     }
 }
-console.log("Hey you a")
+console.log("Hey you smart ass")
 
 
 let pitchslider = document.getElementById("pitch");
@@ -107,7 +107,7 @@ var offset = newMin - prevMin,
 };
 
 //var result = [];
-var result;
+
 function handleOrientation(event) {
 
     updateFieldIfNotNull('Orientation_b', event.beta);
@@ -134,9 +134,17 @@ function handleOrientation(event) {
 
 
   }
+  let filterResult;
+  let result = document.getElementById("filterwheel");
+  result.oninput = function() {
+    filterResult = this.value
+    console.log(filterResult);
+  }
+   
 
-  result = DeviceOrientationEvent.beta;
-console.log(result);
+
+
+
 
 
 if (
