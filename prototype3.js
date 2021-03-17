@@ -46,7 +46,7 @@ let pitchslider = document.getElementById("pitch");
 const gainNode = new Tone.Gain().toMaster();
 
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
-const autoFilter = new Tone.AutoWah().connect(pitchShift2);
+const autoFilter = new Tone.AutoWah().toMaster(); // connect(pitchShift2);
 
 //instead of a Synth, there is some loops
 // Pitch variables
