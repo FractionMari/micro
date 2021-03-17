@@ -61,7 +61,7 @@ function consoleInput( data ) {
         console.log( e.stack );
     }
 }
-console.log("Hello world again")
+console.log("Hey you world")
 
 
 const gainNode = new Tone.Gain().toMaster();
@@ -115,23 +115,7 @@ var playerBuffers;
  */
 // Players
 
-const player = new Tone.Player().connect(gain1);
-const player2 = new Tone.Player().connect(gain2);
-const player3 = new Tone.Player().connect(gain3);
-const player4 = new Tone.Player().connect(gain4);
-const player5 = new Tone.Player().connect(gain4);
 
-player.loop = true;
-player2.loop = true;
-player3.loop = true;
-player4.loop = true;
-player5.loop = true;
-
-player.autostart = true;
-player2.autostart = true;
-player3.autostart = true;
-player4.autostart = true;
-player5.autostart = true; 
 
 /* player.mute = true;
 player2.mute = true;
@@ -185,39 +169,55 @@ function handleOrientation(event) {
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
 
-
-
-
-
-  playerBuffers = new Tone.Buffers({
-    "drums" : "loops/drums1_80bpm.wav",
-    "bass" : "loops/bass1_80bpm.wav",
-    "arp" : "loops/arp_80bpm.wav",
-    "bass2" : "loops/bass2_80bpm.wav",
-    "2drums" : "loops/2drums1.wav",
-    "2bass" : "loops/2bass1.wav",
-    "2arp" : "loops/2arp.wav",
-    "2bass2" : "loops/2bass2.wav",
-    "2piano" : "loops/2piano.wav"
-  }, function(){
-    //play one of the samples when they all load
-  
-    if (filterwheel > 40)
-      player.buffer = playerBuffers.get("drums");
-    else
-      player.buffer = playerBuffers.get("drums2");
-    player.start();
-  
-    player2.buffer = playerBuffers.get("bass");
-    //player2.start();
-    player3.buffer = playerBuffers.get("arp");
-    //player3.start();
-    player4.buffer = playerBuffers.get("bass2");
-    //player4.start();
-    player5.buffer = playerBuffers.get("2piano");
-    //player5.start();
+    function getBuffers(playerPlay, BufferPlayer){
+      //play one of the samples when they all load
     
-  });
+      if (filterwheel > 40)
+        playerPlay.buffer = BufferPlayer.get("drums");
+      else
+        playerPlay.buffer = BufferPlayer.get("drums2");
+      
+    
+/*       player2.buffer = playerBuffers.get("bass");
+      //player2.start();
+      player3.buffer = playerBuffers.get("arp");
+      //player3.start();
+      player4.buffer = playerBuffers.get("bass2");
+      //player4.start();
+      player5.buffer = playerBuffers.get("2piano");
+      //player5.start(); */
+      
+    }
+    playerBuffers = new Tone.Buffers({
+      "drums" : "loops/drums1_80bpm.wav",
+      "bass" : "loops/bass1_80bpm.wav",
+      "arp" : "loops/arp_80bpm.wav",
+      "bass2" : "loops/bass2_80bpm.wav",
+      "2drums" : "loops/2drums1.wav",
+      "2bass" : "loops/2bass1.wav",
+      "2arp" : "loops/2arp.wav",
+      "2bass2" : "loops/2bass2.wav",
+      "2piano" : "loops/2piano.wav"
+    }, function getBuffers(player, BufferPlayer){});
+    
+    const player = new Tone.Player().connect(gain1);
+    const player2 = new Tone.Player().connect(gain2);
+    const player3 = new Tone.Player().connect(gain3);
+    const player4 = new Tone.Player().connect(gain4);
+    const player5 = new Tone.Player().connect(gain4);
+    
+    player.loop = true;
+    player2.loop = true;
+    player3.loop = true;
+    player4.loop = true;
+    player5.loop = true;
+    
+    player.autostart = true;
+    player2.autostart = true;
+    player3.autostart = true;
+    player4.autostart = true;
+    player5.autostart = true; 
+    player.start();
 
   console.log(filterWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
