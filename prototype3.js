@@ -28,6 +28,41 @@ navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, pos
 //let pitchslider = document.getElementById("pitch");
 
 
+/// output console log code
+
+// Reference to an output container, use 'pre' styling for JSON output
+var output = document.createElement('pre');
+document.body.appendChild(output);
+
+// Reference to native method(s)
+var oldLog = console.log;
+
+console.log = function( ...items ) {
+
+    // Call native method first
+    oldLog.apply(this,items);
+
+    // Use JSON to transform objects, all others display normally
+    items.forEach( (item,i)=>{
+        items[i] = (typeof item === 'object' ? JSON.stringify(item,null,4) : item);
+    });
+    output.innerHTML += items.join(' ') + '<br />';
+
+};
+
+// Y1ou could even allow Javascript input...
+function consoleInput( data ) {
+    // Print it to console as typed
+    
+    console.log( data + '<br />' );
+    try {
+        console.log( eval( data ) );
+    } catch (e) {
+        console.log( e.stack );
+    }
+}
+console.log("Hi")
+
 
 const gainNode = new Tone.Gain().toMaster();
 const gain1 = new Tone.Gain().connect(gainNode);
@@ -147,15 +182,16 @@ function handleOrientation(event) {
     let filterScale = generateScaleFunction(0, 90, 10, 300);
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
-/* 
+
     if (filterwheel > 40)
       player.buffer = playerBuffers.get("drums");
     else
- */
-    
-    
+
+    updateFieldIfNotNull('filterwheel', filterWheel);
+
+    console.log(filterWheel);
   }
-  updateFieldIfNotNull('filterwheel', filterWheel);
+ 
 
 
 if (
