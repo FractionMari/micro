@@ -85,6 +85,11 @@ var pitchTest = 0;
   } */
 
 var playerBuffers;
+const player = new Tone.Player().connect(gain1);
+const player2 = new Tone.Player().connect(gain2);
+const player3 = new Tone.Player().connect(gain3);
+const player4 = new Tone.Player().connect(gain4);
+const player5 = new Tone.Player().connect(gain4);
   /* 
   var playerBuffers = new Tone.Buffers({
     "drums" : "loops/drums1_80bpm.wav",
@@ -188,43 +193,39 @@ function handleOrientation(event) {
       //player5.start(); */
       
     }
-    playerBuffers = new Tone.Buffers({
-      "drums" : "loops/drums1_80bpm.wav",
-      "bass" : "loops/bass1_80bpm.wav",
-      "arp" : "loops/arp_80bpm.wav",
-      "bass2" : "loops/bass2_80bpm.wav",
-      "2drums" : "loops/2drums1.wav",
-      "2bass" : "loops/2bass1.wav",
-      "2arp" : "loops/2arp.wav",
-      "2bass2" : "loops/2bass2.wav",
-      "2piano" : "loops/2piano.wav"
-    }, function getBuffers(player, BufferPlayer){});
     
-    const player = new Tone.Player().connect(gain1);
-    const player2 = new Tone.Player().connect(gain2);
-    const player3 = new Tone.Player().connect(gain3);
-    const player4 = new Tone.Player().connect(gain4);
-    const player5 = new Tone.Player().connect(gain4);
-    
-    player.loop = true;
-    player2.loop = true;
-    player3.loop = true;
-    player4.loop = true;
-    player5.loop = true;
-    
-    player.autostart = true;
-    player2.autostart = true;
-    player3.autostart = true;
-    player4.autostart = true;
-    player5.autostart = true; 
-    player.start();
 
   console.log(filterWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
 
    
   }
- 
+  playerBuffers = new Tone.Buffers({
+    "drums" : "loops/drums1_80bpm.wav",
+    "bass" : "loops/bass1_80bpm.wav",
+    "arp" : "loops/arp_80bpm.wav",
+    "bass2" : "loops/bass2_80bpm.wav",
+    "2drums" : "loops/2drums1.wav",
+    "2bass" : "loops/2bass1.wav",
+    "2arp" : "loops/2arp.wav",
+    "2bass2" : "loops/2bass2.wav",
+    "2piano" : "loops/2piano.wav"
+  }, function getBuffers(player, BufferPlayer){});
+  
+
+  
+  player.loop = true;
+  player2.loop = true;
+  player3.loop = true;
+  player4.loop = true;
+  player5.loop = true;
+  
+  player.autostart = true;
+  player2.autostart = true;
+  player3.autostart = true;
+  player4.autostart = true;
+  player5.autostart = true; 
+  player.start();
 
 
 if (
