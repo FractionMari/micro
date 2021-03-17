@@ -61,7 +61,7 @@ function consoleInput( data ) {
         console.log( e.stack );
     }
 }
-console.log("Hi")
+console.log("Hello")
 
 
 const gainNode = new Tone.Gain().toMaster();
