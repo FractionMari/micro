@@ -168,9 +168,11 @@ function handleOrientation(event) {
 
 
     if (filterWheel  > 40)
-    player.mute = true;
+    player.mute = true,
+    player1_2.mute = false;
     else 
-    player.mute = false;
+    player.mute = false,
+    player1_2.mute = true;
 
     updateFieldIfNotNull('filterwheel', filterWheel);
     //console.log(filterWheel)
