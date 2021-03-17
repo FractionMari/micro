@@ -37,7 +37,7 @@ function consoleInput( data ) {
         console.log( e.stack );
     }
 }
-console.log("Hey you")
+console.log("Hey you agan")
 
 
 let pitchslider = document.getElementById("pitch");
@@ -106,8 +106,8 @@ var offset = newMin - prevMin,
       };
 };
 
-var result = [];
-
+//var result = [];
+var result;
 function handleOrientation(event) {
 
     updateFieldIfNotNull('Orientation_b', event.beta);
@@ -127,13 +127,18 @@ function handleOrientation(event) {
    // updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
    // pitchShift(pitchWheel);
+    //result.push(filterWheel);
+    
+    
+    return filterWheel;
 
-    autoFilter.baseFrequency = filterWheel;
-
-    result.push(filterWheel);
 
   }
+
+  result = handleOrientation();
 console.log(result);
+
+
 if (
     DeviceMotionEvent &&
     typeof DeviceMotionEvent.requestPermission === "function"
