@@ -7,6 +7,7 @@
 /// output console log code
 
 // Reference to an output container, use 'pre' styling for JSON output
+
 var output = document.createElement('pre');
 document.body.appendChild(output);
 
@@ -37,7 +38,7 @@ function consoleInput( data ) {
         console.log( e.stack );
     }
 }
-console.log("Hey you smart ass")
+console.log("Hey Thomas")
 
 
 let pitchslider = document.getElementById("pitch");
@@ -117,6 +118,7 @@ function handleOrientation(event) {
     // Rotation to control oscillator pitch
     //let pitchWheel = event.beta;
     let filterWheel = event.gamma;
+    test = filterWheel;
     let filterScale = generateScaleFunction(0, 90, 10, 300);
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
@@ -128,20 +130,27 @@ function handleOrientation(event) {
     updateFieldIfNotNull('filterwheel', filterWheel);
    // pitchShift(pitchWheel);
     //result.push(filterWheel);
-    
-    
-    //return filterWheel;
-
+    var rotateDegrees = event.alpha;
+    // gamma: left to right
+    var leftToRight = event.gamma;
+    // beta: front back motion
+    var frontToBack = event.beta;
+    //return event.beta;
+    handleOrientationEvent(frontToBack, leftToRight, rotateDegrees);
 
   }
+/* 
   let filterResult;
   let result = document.getElementById("filterwheel");
   result.oninput = function() {
     filterResult = this.value
     console.log(filterResult);
-  }
-   
-
+  } */
+   //console.log(handleOrientation);
+   var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
+    // do something amazing
+    console.log(frontToBack);
+};
 
 
 
