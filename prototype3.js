@@ -219,7 +219,7 @@ function handleOrientation(event) {
     
   });
 
-  console.log('filterwheel');
+  console.log(filterWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
 
    
