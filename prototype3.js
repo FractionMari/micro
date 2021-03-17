@@ -38,7 +38,7 @@ function consoleInput( data ) {
         console.log( e.stack );
     }
 }
-console.log("Hey again Thomas2")
+console.log("Hey again Thomas3")
 
 
 let pitchslider = document.getElementById("pitch");
@@ -141,6 +141,8 @@ function handleOrientation(event) {
     else 
     player.buffer = playerBuffers.get("2drums");
 
+    updateFieldIfNotNull('filterwheel', filterWheel);
+    console.log(filterWheel)
 
   }
 
