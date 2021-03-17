@@ -189,10 +189,10 @@ function handleOrientation(event) {
 
     updateFieldIfNotNull('filterwheel', filterWheel);
 
-    console.log(filterWheel);
+   
   }
  
-
+  console.log(filterWheel);
 
 if (
     DeviceMotionEvent &&
