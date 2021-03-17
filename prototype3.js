@@ -84,10 +84,6 @@ const player3 = new Tone.Player().connect(gain3);
 const player4 = new Tone.Player().connect(gain4);
 const player5 = new Tone.Player().connect(gain4);
 
-
-
-
-
 player.loop = true;
 player2.loop = true;
 player3.loop = true;
@@ -122,6 +118,7 @@ var offset = newMin - prevMin,
       };
 };
 
+
 // Function for shifting pitch
 /* function pitchShift (pitch) {
   //const intervalChange = 180;
@@ -137,7 +134,7 @@ var offset = newMin - prevMin,
 
       
 } */
-let filterWheel = 0;
+let filterWheel;
 function handleOrientation(event) {
 
     updateFieldIfNotNull('Orientation_b', event.beta);
@@ -145,28 +142,20 @@ function handleOrientation(event) {
     updateFieldIfNotNull('Orientation_a', event.alpha);
 
     // Rotation to control oscillator pitch
-    let pitchWheel = event.beta;
+
     filterWheel = event.gamma;
     let filterScale = generateScaleFunction(0, 90, 10, 300);
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
-    //filterWheel = filterWheel + 50;
-    //filterWheel = Math.abs(filterWheel * 6);
-    //pitchWheel = pitchWheel + 180;
+/* 
     if (filterwheel > 40)
       player.buffer = playerBuffers.get("drums");
     else
-     player.buffer = playerBuffers.get("2drums");
-   // updateFieldIfNotNull('pitchwheel', pitchWheel);
-    updateFieldIfNotNull('filterwheel', filterWheel);
-   // pitchShift(pitchWheel);
-
-    //autoFilter.baseFrequency = filterWheel;
-    //pitchShift2.pitch = pitchWheel;
+ */
     
     
   }
- 
+  updateFieldIfNotNull('filterwheel', filterWheel);
 
 
 if (
