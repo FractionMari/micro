@@ -94,11 +94,12 @@ var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
     player3.autostart = true;
     player4.autostart = true;
     
-    player.mute = true;
+/*     player.mute = true;
     player2.mute = true;
     player3.mute = true;
-    player4.mute = true;
-    console.log(frontToBack);
+    player4.mute = true; */
+    //console.log(frontToBack);
+    updateFieldIfNotNull('filterwheel', frontToBack);
 };
 
 // Players
@@ -141,7 +142,7 @@ function handleOrientation(event) {
     //pitchWheel = pitchWheel + 180;
 
    // updateFieldIfNotNull('pitchwheel', pitchWheel);
-    updateFieldIfNotNull('filterwheel', filterWheel);
+   // updateFieldIfNotNull('filterwheel', filterWheel);
    // pitchShift(pitchWheel);
     //result.push(filterWheel);
     var rotateDegrees = event.alpha;
