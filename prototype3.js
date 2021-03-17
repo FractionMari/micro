@@ -133,7 +133,7 @@ function handleOrientation(event) {
     result.push(filterWheel);
 
   }
-console.log(filterWheel);
+console.log(result);
 if (
     DeviceMotionEvent &&
     typeof DeviceMotionEvent.requestPermission === "function"
