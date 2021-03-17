@@ -61,7 +61,7 @@ function consoleInput( data ) {
         console.log( e.stack );
     }
 }
-console.log("Hello")
+console.log("Hello world")
 
 
 const gainNode = new Tone.Gain().toMaster();
@@ -192,7 +192,7 @@ function handleOrientation(event) {
    
   }
  
-  console.log(filterWheel);
+  console.log('filterwheel');
 
 if (
     DeviceMotionEvent &&
@@ -209,6 +209,10 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       document.getElementById(fieldName).innerHTML = value.toFixed(precision);
   }
 
+  function updateFieldIfNotNullJS(fieldName, value, precision=2){
+    if (value != null)
+      document.getElementById(fieldName) = value.toFixed(precision);
+  }
 
 
 // LowPassFilterData(reading, bias) To be able to calcualte the difference between Accelerometer frames
