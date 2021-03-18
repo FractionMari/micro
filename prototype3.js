@@ -166,7 +166,11 @@ function handleOrientation(event) {
     let filterScale = generateScaleFunction(0, 90, 10, 300);
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
-
+    if (betaWheel  < 20)
+    player.mute = false,
+    player2.mute = true,
+    player3.mute = true,
+    player4.mute = true;
 
     if (filterWheel  > 40)
     player.mute = true,
@@ -197,6 +201,7 @@ function handleOrientation(event) {
 
     player5_2.mute = true;
 
+ 
     updateFieldIfNotNull('filterwheel', filterWheel);
     updateFieldIfNotNull('betawheel', betaWheel);
 
