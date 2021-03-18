@@ -168,18 +168,14 @@ function handleOrientation(event) {
     filterWheel = filterScale(filterWheel);
 
 
-    if ((filterWheel  > 40) && (betawheel < 20))
 
-    player.mute = false,
-    player1_2.mute = false;
-
-    else if ((filterwheel >40) && (betawheel > 20))
-    player.mute = false,
+    if (betawheel < 20)
+    player.mute = true,
     player1_2.mute = true;
 
-    else  if ((filterwheel >40) && (betawheel < 20))
+    else if ((filterwheel > 40) && (betawheel > 20))
     player.mute = false,
-    player1_2.mute = false;
+    player1_2.mute = true;
 
     else
     player.mute = true,
