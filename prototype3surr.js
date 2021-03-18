@@ -212,8 +212,6 @@ function handleOrientation(event) {
     "2piano" : "loops/2piano.wav"
   }, function getBuffers(player, BufferPlayer){});
   
-
-  
   player.loop = true;
   player2.loop = true;
   player3.loop = true;
