@@ -38,7 +38,7 @@ function consoleInput( data ) {
         console.log( e.stack );
     }
 }
-console.log("Hei :)")
+console.log("Hei! :)")
 
 
 let pitchslider = document.getElementById("pitch");
@@ -173,7 +173,7 @@ function handleOrientation(event) {
     player.mute = true,
     player1_2.mute = true;
 
-    if ((filterwheel > 40) && (betaWheel > 20))
+    else if ((filterWheel > 40) && (betaWheel > 20))
     player.mute = false,
     player1_2.mute = true;
 
