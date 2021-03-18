@@ -167,9 +167,32 @@ function handleOrientation(event) {
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
 
+function loopActivate(players1, players2, value) {
 
+  if (betaWheel < value)
+  players1.mute = true,
+  players2.mute = true;
 
-    if (betaWheel < 20)
+  else if ((filterWheel > 40) && (betaWheel > value))
+  players1.mute = false,
+  players2.mute = true;
+
+  else
+  players1.mute = true,
+  players2.mute = false;
+
+};
+
+loopActivate(player, player1_2, 20);
+
+loopActivate(player2, player2_2, 40)
+
+loopActivate(player3, player3_2, 60)
+
+loopActivate(player4, player4_2, 80);
+
+loopActivate(undefined, player5_2, 100);
+/*     if (betaWheel < 20)
     player.mute = true,
     player1_2.mute = true;
 
@@ -179,20 +202,8 @@ function handleOrientation(event) {
 
     else
     player.mute = true,
-    player1_2.mute = false;
+    player1_2.mute = false; */
 
-// for second player
-    if (betaWheel < 40)
-    player2.mute = true,
-    player2_2.mute = true;
-
-    else if ((filterWheel > 40) && (betaWheel > 40))
-    player2.mute = false,
-    player2_2.mute = true;
-
-    else
-    player2.mute = true,
-    player2_2.mute = false;
 
 
 /*     player2.mute = true,
