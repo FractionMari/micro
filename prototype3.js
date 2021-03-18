@@ -191,7 +191,7 @@ loopActivate(player3, player3_2, 60)
 
 loopActivate(player4, player4_2, 80);
 
-loopActivate(undefined, player5_2, 100);
+//loopActivate(undefined, player5_2, 100);
 /*     if (betaWheel < 20)
     player.mute = true,
     player1_2.mute = true;
