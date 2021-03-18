@@ -56,6 +56,7 @@ const player = new Tone.Player().connect(autoFilter);
 const player2 = new Tone.Player().connect(autoFilter);
 const player3 = new Tone.Player().connect(autoFilter);
 const player4 = new Tone.Player().connect(autoFilter);
+const player5 = undefined; 
 const player1_2 = new Tone.Player().connect(autoFilter);
 const player2_2 = new Tone.Player().connect(autoFilter);
 const player3_2 = new Tone.Player().connect(autoFilter);
@@ -184,12 +185,10 @@ function loopActivate(players1, players2, value) {
 };
 
 loopActivate(player, player1_2, 20);
-
-loopActivate(player2, player2_2, 40)
-
-loopActivate(player3, player3_2, 60)
-
+loopActivate(player2, player2_2, 40);
+loopActivate(player3, player3_2, 60);
 loopActivate(player4, player4_2, 80);
+loopActivate(player5, player5_2, 80);
 
 //loopActivate(undefined, player5_2, 100);
 /*     if (betaWheel < 20)
@@ -201,6 +200,7 @@ loopActivate(player4, player4_2, 80);
     player1_2.mute = true;
 
     else
+
     player.mute = true,
     player1_2.mute = false; */
 
