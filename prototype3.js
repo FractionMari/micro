@@ -161,6 +161,7 @@ function handleOrientation(event) {
     // Rotation to control oscillator pitch
     //let pitchWheel = event.beta;
     let filterWheel = event.gamma;
+    let betaWheel = event.beta;
 
     let filterScale = generateScaleFunction(0, 90, 10, 300);
     filterWheel = Math.abs(filterWheel);
@@ -197,7 +198,7 @@ function handleOrientation(event) {
     player5_2.mute = true;
 
     updateFieldIfNotNull('filterwheel', filterWheel);
-    //console.log(filterWheel)
+    updateFieldIfNotNull('betawheel', betaWheel);
 
   }
 
