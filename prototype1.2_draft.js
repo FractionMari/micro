@@ -144,12 +144,11 @@ class LowPassFilterData {
 
 
 
-  var fn = generateScaleFunction(0, 3, 0.5, 0);
-  newAcc = fn(diffAcc);
-  newAcc = (clamp(0, 0.5, newAcc));
+
 
 // more smooth change of volume:
   gainNode.gain.rampTo(newAcc, 0.2);
+
 }  
 
   accl.start();
@@ -188,13 +187,16 @@ document.querySelector("#button1").addEventListener('click', function() {
     if(this.className == 'is-playing'){
       this.className = "";
       this.innerHTML = "ON"
+      var fn = generateScaleFunction(0, 3, 0.5, 0);
+      newAcc = fn(diffAcc);
       newAcc = (clamp(0, 0.5, newAcc));
   
     }else{
       this.className = "is-playing";
       this.innerHTML = "OFF";
-  
-      newAcc = (clamp(0.5, 0, newAcc));
+      var fn2 = generateScaleFunction(0, 3, 0, 0.5);
+      newAcc = fn2(diffAcc);
+      newAcc = (clamp(0, 0.5, newAcc));
   
     }}
     ); 
