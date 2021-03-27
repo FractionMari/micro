@@ -3,7 +3,7 @@
 
 // 11. februar: including the Tone.js to improve sound quality
 
-
+console.log("Hello world");
 const gainNode = new Tone.Gain().toMaster();
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 const synth = new Tone.AMSynth().connect(autoFilter);
