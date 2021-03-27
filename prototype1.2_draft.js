@@ -78,6 +78,7 @@ function handleOrientation(event) {
     pitchShift(pitchWheel);
 
     autoFilter.baseFrequency = filterWheel;
+    synth.harmonicity.value = pitchWheel;
 
   }
 
@@ -153,10 +154,10 @@ class LowPassFilterData {
     newAcc2 = (clamp(0, 0.5, newAcc2));
 
 if (inverse == false)
-gainNode.gain.rampTo(newAcc2, 0.1);
+gainNode.gain.rampTo(newAcc2, 0.2);
 else
 // more smooth change of volume:
-gainNode.gain.rampTo(newAcc, 0.1);
+gainNode.gain.rampTo(newAcc, 0.2);
 
 }  
 
