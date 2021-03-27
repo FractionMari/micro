@@ -9,6 +9,7 @@ const autoFilter = new Tone.AutoWah().connect(gainNode);
 const synth = new Tone.AMSynth().connect(autoFilter);
 let newAcc;
 let newAcc2;
+let inverse = false;
 
 // With this function the values won't go below a threshold 
 function clamp(min, max, val) {
@@ -151,29 +152,33 @@ class LowPassFilterData {
     newAcc2 = fn2(diffAcc);
     newAcc2 = (clamp(0, 0.5, newAcc2));
 
-
+if (inverse == false)
+gainNode.gain.rampTo(newAcc, 0.2);
+else
 // more smooth change of volume:
-document.getElementById("button2").addEventListener("click", function(){
-  
-      
-  if(this.className == 'is-playing'){
-    this.className = "";
-    this.innerHTML = "ON"
-    gainNode.gain.rampTo(newAcc, 0.2);
-
-  }else{
-    this.className = "is-playing";
-    this.innerHTML = "OFF";
-    gainNode.gain.rampTo(newAcc2, 0.2);
-
-  }}
-  ); 
+gainNode.gain.rampTo(newAcc2, 0.2);
 
 }  
 
   accl.start();
 
+  document.getElementById("button2").addEventListener("click", function(){
+  
+      
+    if(this.className == 'is-playing'){
+      this.className = "";
+      this.innerHTML = "ON"
+      inverse = true;
 
+
+  
+    }else{
+      this.className = "is-playing";
+      this.innerHTML = "OFF";
+      inverse = false;
+  
+    }}
+    ); 
 /* // A button for playback of music track
 document.querySelector("#button1").addEventListener('click', function() {
   synth.triggerAttack("C4");  
