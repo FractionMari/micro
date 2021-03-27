@@ -112,6 +112,12 @@ class LowPassFilterData {
     }
   };
   
+  function incrementEventCount(){
+    let counterElement = document.getElementById("num-observed-events")
+    let eventCount = parseInt(counterElement.innerHTML)
+    counterElement.innerHTML = eventCount + 1;
+  }
+  
   // The accelerometer
   const accl = new Accelerometer({ frequency: 10 });
                 
