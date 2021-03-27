@@ -117,7 +117,7 @@ class LowPassFilterData {
     let eventCount = parseInt(counterElement.innerHTML)
     counterElement.innerHTML = eventCount + 1;
   }
-  
+
   // The accelerometer
   const accl = new Accelerometer({ frequency: 10 });
                 
@@ -165,6 +165,7 @@ gainNode.gain.rampTo(newAcc2, 0.2);
 else
 // more smooth change of volume:
 gainNode.gain.rampTo(newAcc, 0.2);
+incrementEventCount();
 
 }  
 
