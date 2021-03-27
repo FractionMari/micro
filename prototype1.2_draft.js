@@ -171,30 +171,30 @@ document.querySelector("#button1").addEventListener('click', function() {
     
     if(this.className == 'is-playing'){
       this.className = "";
-      this.innerHTML = "SYNTH: OFF"
+      this.innerHTML = "Synth: OFF"
       synth.triggerRelease();
   
     }else{
       this.className = "is-playing";
-      this.innerHTML = "SYNTH: ON";
+      this.innerHTML = "Synth: ON";
       synth.triggerAttack("C4"); 
       
   
     }}
     );
-/*     document.getElementById("looper4").addEventListener("click", function(){
+     document.getElementById("button2").addEventListener("click", function(){
   
       
     if(this.className == 'is-playing'){
       this.className = "";
-      this.innerHTML = "4: OFF"
-      player4.mute = true;
+      this.innerHTML = "ON"
+      newAcc = (clamp(0, 0.5, newAcc));
   
     }else{
       this.className = "is-playing";
-      this.innerHTML = "4: ON";
+      this.innerHTML = "OFF";
   
-      player4.mute = false;
+      newAcc = (clamp(0.5, 0, newAcc));
   
     }}
-    ); */
+    ); 
