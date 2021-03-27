@@ -146,13 +146,13 @@ class LowPassFilterData {
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
 
-    var fn = generateScaleFunction(0, 2, 0.5, 0);
+    var fn = generateScaleFunction(0, 2, 0.3, 0);
     newAcc = fn(diffAcc);
-    newAcc = (clamp(0, 0.5, newAcc));
+    newAcc = (clamp(0, 0.3, newAcc));
 
-    var fn2 = generateScaleFunction(1, 2, 0, 0.5);
+    var fn2 = generateScaleFunction(1, 2, 0, 0.3);
     newAcc2 = fn2(diffAcc);
-    newAcc2 = (clamp(0, 0.5, newAcc2));
+    newAcc2 = (clamp(0, 0.3, newAcc2));
 
 if (inverse == false)
 gainNode.gain.rampTo(newAcc2, 0.2);
