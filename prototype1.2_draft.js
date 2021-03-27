@@ -6,7 +6,7 @@
 console.log("Hello world");
 const gainNode = new Tone.Gain().toMaster();
 const autoFilter = new Tone.AutoWah().connect(gainNode);
-const synth = new Tone.DuoSynth().connect(gainNode);
+let synth = new Tone.DuoSynth().connect(gainNode);
 let newAcc;
 let newAcc2;
 let inverse = true;
