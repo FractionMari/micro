@@ -76,9 +76,10 @@ function handleOrientation(event) {
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
     pitchShift(pitchWheel);
-
+    let harmonicity = pitchwheel / 180;
+    updateFieldIfNotNull('harmonicity', harmonicity);
     autoFilter.baseFrequency = filterWheel;
-    synth.harmonicity.value = pitchWheel;
+    synth.harmonicity.value = harmonicity;
 
   }
 
@@ -149,7 +150,7 @@ class LowPassFilterData {
     newAcc = fn(diffAcc);
     newAcc = (clamp(0, 0.5, newAcc));
 
-    var fn2 = generateScaleFunction(0, 2, 0, 0.5);
+    var fn2 = generateScaleFunction(1, 2, 0, 0.5);
     newAcc2 = fn2(diffAcc);
     newAcc2 = (clamp(0, 0.5, newAcc2));
 
