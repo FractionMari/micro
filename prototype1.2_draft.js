@@ -9,7 +9,7 @@ const autoFilter = new Tone.AutoWah().connect(gainNode);
 const synth = new Tone.AMSynth().connect(autoFilter);
 let newAcc;
 let newAcc2;
-let inverse = false;
+let inverse = true;
 
 // With this function the values won't go below a threshold 
 function clamp(min, max, val) {
@@ -144,11 +144,11 @@ class LowPassFilterData {
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
 
-    var fn = generateScaleFunction(0, 3, 0.5, 0);
+    var fn = generateScaleFunction(0, 4, 0.5, 0);
     newAcc = fn(diffAcc);
     newAcc = (clamp(0, 0.5, newAcc));
 
-    var fn2 = generateScaleFunction(0, 3, 0, 0.5);
+    var fn2 = generateScaleFunction(0, 4, 0, 0.5);
     newAcc2 = fn2(diffAcc);
     newAcc2 = (clamp(0, 0.5, newAcc2));
 
@@ -167,14 +167,14 @@ gainNode.gain.rampTo(newAcc2, 0.2);
       
     if(this.className == 'is-playing'){
       this.className = "";
-      this.innerHTML = "ON"
+      this.innerHTML = "Inverse: ON"
       inverse = true;
 
 
   
     }else{
       this.className = "is-playing";
-      this.innerHTML = "OFF";
+      this.innerHTML = "Inverse: OFF";
       inverse = false;
   
     }}
