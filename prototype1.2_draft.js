@@ -153,7 +153,21 @@ class LowPassFilterData {
 
 
 // more smooth change of volume:
+document.getElementById("button2").addEventListener("click", function(){
+  
+      
+  if(this.className == 'is-playing'){
+    this.className = "";
+    this.innerHTML = "ON"
+    gainNode.gain.rampTo(newAcc, 0.2);
 
+  }else{
+    this.className = "is-playing";
+    this.innerHTML = "OFF";
+    gainNode.gain.rampTo(newAcc2, 0.2);
+
+  }}
+  ); 
 
 }  
 
@@ -187,18 +201,3 @@ document.querySelector("#button1").addEventListener('click', function() {
   
     }}
     );
-     document.getElementById("button2").addEventListener("click", function(){
-  
-      
-    if(this.className == 'is-playing'){
-      this.className = "";
-      this.innerHTML = "ON"
-      gainNode.gain.rampTo(newAcc, 0.2);
-  
-    }else{
-      this.className = "is-playing";
-      this.innerHTML = "OFF";
-      gainNode.gain.rampTo(newAcc2, 0.2);
-  
-    }}
-    ); 
