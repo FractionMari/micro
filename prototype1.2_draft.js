@@ -155,7 +155,7 @@ class LowPassFilterData {
   accl.start();
 
 
-// A button for playback of music track
+/* // A button for playback of music track
 document.querySelector("#button1").addEventListener('click', function() {
   synth.triggerAttack("C4");  
   });
@@ -164,4 +164,37 @@ document.querySelector("#button1").addEventListener('click', function() {
   document.querySelector("#button2").addEventListener('click', function() {
   synth.triggerRelease();
   
-  });
+  }); */
+
+  document.getElementById("button1").addEventListener("click", function(){
+   
+    
+    if(this.className == 'is-playing'){
+      this.className = "";
+      this.innerHTML = "SYNTH: OFF"
+      synth.triggerRelease();
+  
+    }else{
+      this.className = "is-playing";
+      this.innerHTML = "SYNTH: ON";
+      synth.triggerAttack("C4"); 
+      
+  
+    }}
+    );
+/*     document.getElementById("looper4").addEventListener("click", function(){
+  
+      
+    if(this.className == 'is-playing'){
+      this.className = "";
+      this.innerHTML = "4: OFF"
+      player4.mute = true;
+  
+    }else{
+      this.className = "is-playing";
+      this.innerHTML = "4: ON";
+  
+      player4.mute = false;
+  
+    }}
+    ); */
