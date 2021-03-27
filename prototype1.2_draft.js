@@ -6,7 +6,7 @@
 console.log("Hello world");
 const gainNode = new Tone.Gain().toMaster();
 const autoFilter = new Tone.AutoWah().connect(gainNode);
-const synth = new Tone.FMSynth().connect(autoFilter);
+const synth = new Tone.DuoSynth().connect(autoFilter);
 let newAcc;
 let newAcc2;
 let inverse = true;
@@ -144,11 +144,11 @@ class LowPassFilterData {
     updateFieldIfNotNull('diff_acc', diffAcc );
     updateFieldIfNotNull('volume_acc', newAcc );
 
-    var fn = generateScaleFunction(0, 1, 0.5, 0);
+    var fn = generateScaleFunction(0, 2, 0.5, 0);
     newAcc = fn(diffAcc);
     newAcc = (clamp(0, 0.5, newAcc));
 
-    var fn2 = generateScaleFunction(0, 1, 0, 0.5);
+    var fn2 = generateScaleFunction(0, 2, 0, 0.5);
     newAcc2 = fn2(diffAcc);
     newAcc2 = (clamp(0, 0.5, newAcc2));
 
