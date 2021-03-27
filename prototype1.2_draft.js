@@ -6,7 +6,7 @@
 console.log("Hello world");
 const gainNode = new Tone.Gain().toMaster();
 const autoFilter = new Tone.AutoWah().connect(gainNode);
-const synth = new Tone.DuoSynth().connect(autoFilter);
+const synth = new Tone.DuoSynth().connect(gainNode);
 let newAcc;
 let newAcc2;
 let inverse = true;
@@ -78,7 +78,7 @@ function handleOrientation(event) {
     pitchShift(pitchWheel);
     let harmonicity = pitchWheel / 180;
     updateFieldIfNotNull('harmonicity', harmonicity);
-    autoFilter.baseFrequency = filterWheel;
+    //autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
 
   }
