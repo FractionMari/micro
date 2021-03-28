@@ -2,8 +2,18 @@
 // The oscillator version with new code + adding the Tone.js library.
 
 // 11. februar: including the Tone.js to improve sound quality
+//Getting access to accelerometer for iOs:
+function getAccel(){
+  DeviceMotionEvent.requestPermission().then(response => {
+      if (response == 'granted') {
+          console.log("accelerometer permission granted");
+          // Do stuff here
+      }
+  });
+}
 
-console.log("Hello world");
+// Tone.js parameters:
+
 const gainNode = new Tone.Gain().toMaster();
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 let synth = new Tone.DuoSynth().connect(gainNode);
