@@ -52,8 +52,9 @@ function getAccel(){
 
 const gainNode = new Tone.Gain().toMaster();
 const autoFilter = new Tone.AutoWah().connect(gainNode);
-//let synth = new Tone.FMSynth().connect(gainNode);
-let synth;
+const synth = new Tone.FMSynth().connect(gainNode);
+const synth2 = new Tone.DuoSynth().connect(gainNode);
+
 let newAcc;
 let newAcc2;
 let inverse = true;
@@ -166,10 +167,11 @@ class LowPassFilterData {
     let eventCount = parseInt(counterElement.innerHTML)
     counterElement.innerHTML = eventCount + 1;
     updateFieldIfNotNull('eventcount', eventCount );
-    if (eventCount < 100)
-    synth = new Tone.DuoSynth().connect(gainNode);
-    else
-    synth = new Tone.FMSynth().connect(gainNode);
+    if (eventCount > 100)
+    synth.triggerRelease(),
+    synth2.triggerAttack();
+
+
   }
 
 
@@ -262,6 +264,7 @@ document.querySelector("#button1").addEventListener('click', function() {
       this.className = "";
       this.innerHTML = "Synth: OFF"
       synth.triggerRelease();
+      synth2.triggerRelease();
   
     }else{
       this.className = "is-playing";
