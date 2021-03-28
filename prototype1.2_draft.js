@@ -73,7 +73,9 @@ var offset = newMin - prevMin,
       return offset + scale * x;
       };
 };
-
+// Scales
+var harmonicScale = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3"];
+var pentaScale = ["C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4"];
 // Function for shifting pitch
 function pitchShift (pitch, instrument) {
   const intervalChange = 30;
