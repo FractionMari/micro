@@ -75,34 +75,34 @@ var offset = newMin - prevMin,
 };
 
 // Function for shifting pitch
-function pitchShift (pitch) {
+function pitchShift (pitch, instrument) {
   const intervalChange = 30;
   const points = Math.floor(pitch / intervalChange);
 
   if (points >= 12)
-    synth.frequency.value = "C4";
+  instrument.frequency.value = "C4";
   else if (points >= 11)
-    synth.frequency.value = "B3";
+  instrument.frequency.value = "B3";
   else if (points >= 10)
-    synth.frequency.value = "A3";
+  instrument.frequency.value = "A3";
   else if (points >= 9)
-    synth.frequency.value = "G3";  
+  instrument.frequency.value = "G3";  
   else if (points >= 8)
-    synth.frequency.value = "F3";
+  instrument.frequency.value = "F3";
   else if (points >= 7)
-    synth.frequency.value = "E3";
+  instrument.frequency.value = "E3";
   else if (points >= 6)
-    synth.frequency.value = "D3";
+  instrument.frequency.value = "D3";
   else if (points >= 5)
-    synth.frequency.value = "C3";
+  instrument.frequency.value = "C3";
   else if (points >= 4)
-    synth.frequency.value = "B2";
+  instrument.frequency.value = "B2";
   else if (points >= 3)
-    synth.frequency.value = "A2";
+  instrument.frequency.value = "A2";
   else if (points >= 2)
-    synth.frequency.value = "G2"; 
+  instrument.frequency.value = "G2"; 
   else if (points >= 1)
-    synth.frequency.value = "F2";
+  instrument.frequency.value = "F2";
       
 }
 
@@ -124,7 +124,8 @@ function handleOrientation(event) {
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
-    pitchShift(pitchWheel);
+    pitchShift(pitchWheel, synth);
+    pitchShift(pitchWheel, synth2);
     let harmonicity = pitchWheel / 180;
     updateFieldIfNotNull('harmonicity', harmonicity);
     //autoFilter.baseFrequency = filterWheel;
@@ -168,7 +169,7 @@ class LowPassFilterData {
     let eventCount = parseInt(counterElement.innerHTML)
     counterElement.innerHTML = eventCount + 1;
     updateFieldIfNotNull('eventcount', eventCount );
-    if (eventCount > 100)
+    if (eventCount > 200)
     synth.triggerRelease(),
     synth2.triggerAttack("C4");
 
