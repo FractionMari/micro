@@ -126,7 +126,7 @@ function handleOrientation(event) {
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
-    pitchShift(pitchWheel, synth, harmonicScale);
+    pitchShift(pitchWheel, synth, pentaScale);
     pitchShift(pitchWheel, synth2, harmonicScale);
     let harmonicity = pitchWheel / 180;
     updateFieldIfNotNull('harmonicity', harmonicity);
@@ -173,7 +173,7 @@ class LowPassFilterData {
     updateFieldIfNotNull('eventcount', eventCount );
     if (eventCount > 200)
     synth.triggerRelease(),
-    synth2.triggerAttack("C4");
+    synth2.triggerAttack();
 
 
   }
