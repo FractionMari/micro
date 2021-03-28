@@ -118,9 +118,9 @@ class LowPassFilterData {
     let counterElement = document.getElementById("num-observed-events")
     let eventCount = parseInt(counterElement.innerHTML)
     counterElement.innerHTML = eventCount + 1;
-    updateFieldIfNotNull('eventcount', eventCount );
-  }
 
+  }
+  updateFieldIfNotNull('eventcount', eventCount );
   // The accelerometer
   const accl = new Accelerometer({ frequency: 10 });
                 
