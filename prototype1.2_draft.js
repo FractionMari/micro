@@ -81,7 +81,7 @@ function handleOrientation(event) {
     //autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
 
-    updateFieldIfNotNull('eventcount', eventCount );
+ 
 
   }
 
@@ -118,6 +118,7 @@ class LowPassFilterData {
     let counterElement = document.getElementById("num-observed-events")
     let eventCount = parseInt(counterElement.innerHTML)
     counterElement.innerHTML = eventCount + 1;
+    updateFieldIfNotNull('eventcount', eventCount );
   }
 
   // The accelerometer
