@@ -54,7 +54,7 @@ const gainNode = new Tone.Gain().toMaster();
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 const synth = new Tone.DuoSynth().connect(gainNode);
 const synth2 = new Tone.FMSynth().connect(gainNode);
-synth2.frequency.value = "A3";
+
 
 let newAcc;
 let newAcc2;
@@ -77,34 +77,34 @@ var offset = newMin - prevMin,
 var harmonicScale = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3"];
 var pentaScale = ["C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4"];
 // Function for shifting pitch
-function pitchShift (pitch, instrument) {
+function pitchShift (pitch, instrument, scale) {
   const intervalChange = 30;
   const points = Math.floor(pitch / intervalChange);
 
   if (points >= 12)
-  instrument.frequency.value = "C4";
+  instrument.frequency.value = scale[111];
   else if (points >= 11)
-  instrument.frequency.value = "B3";
+  instrument.frequency.value = scale[10];
   else if (points >= 10)
-  instrument.frequency.value = "A3";
+  instrument.frequency.value = scale[9];
   else if (points >= 9)
-  instrument.frequency.value = "G3";  
+  instrument.frequency.value = scale[8];  
   else if (points >= 8)
-  instrument.frequency.value = "F3";
+  instrument.frequency.value = scale[7];
   else if (points >= 7)
-  instrument.frequency.value = "E3";
+  instrument.frequency.value = scale[6];
   else if (points >= 6)
-  instrument.frequency.value = "D3";
+  instrument.frequency.value = scale[5];
   else if (points >= 5)
-  instrument.frequency.value = "C3";
+  instrument.frequency.value = scale[4];
   else if (points >= 4)
-  instrument.frequency.value = "B2";
+  instrument.frequency.value = scale[3];
   else if (points >= 3)
-  instrument.frequency.value = "A2";
+  instrument.frequency.value = scale[2];
   else if (points >= 2)
-  instrument.frequency.value = "G2"; 
+  instrument.frequency.value = scale[1]; 
   else if (points >= 1)
-  instrument.frequency.value = "F2";
+  instrument.frequency.value = scale[0];
       
 }
 
@@ -126,8 +126,8 @@ function handleOrientation(event) {
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
-    pitchShift(pitchWheel, synth);
-    pitchShift(pitchWheel, synth2);
+    pitchShift(pitchWheel, synth, harmonicScale);
+    pitchShift(pitchWheel, synth2, harmonicScale);
     let harmonicity = pitchWheel / 180;
     updateFieldIfNotNull('harmonicity', harmonicity);
     //autoFilter.baseFrequency = filterWheel;
