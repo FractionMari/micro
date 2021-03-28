@@ -125,7 +125,7 @@ function handleOrientation(event) {
     let harmonicity = pitchWheel / 180;
     updateFieldIfNotNull('harmonicity', harmonicity);
     //autoFilter.baseFrequency = filterWheel;
-    synth.harmonicity.value = harmonicity;
+    //synth.harmonicity.value = harmonicity;
 
  
 
