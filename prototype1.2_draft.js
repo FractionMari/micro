@@ -52,7 +52,8 @@ function getAccel(){
 
 const gainNode = new Tone.Gain().toMaster();
 const autoFilter = new Tone.AutoWah().connect(gainNode);
-let synth = new Tone.DuoSynth().connect(gainNode);
+//let synth = new Tone.FMSynth().connect(gainNode);
+let synth;
 let newAcc;
 let newAcc2;
 let inverse = true;
@@ -165,7 +166,9 @@ class LowPassFilterData {
     let eventCount = parseInt(counterElement.innerHTML)
     counterElement.innerHTML = eventCount + 1;
     updateFieldIfNotNull('eventcount', eventCount );
-    if (eventCount > 100)
+    if (eventCount < 100)
+    synth = new Tone.DuoSynth().connect(gainNode);
+    else
     synth = new Tone.FMSynth().connect(gainNode);
   }
 
