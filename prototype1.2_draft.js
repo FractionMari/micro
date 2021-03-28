@@ -164,12 +164,13 @@ class LowPassFilterData {
     let counterElement = document.getElementById("num-observed-events")
     let eventCount = parseInt(counterElement.innerHTML)
     counterElement.innerHTML = eventCount + 1;
-
-  }
-  updateFieldIfNotNull('eventcount', eventCount );
-  if (eventCount > 100)
+    updateFieldIfNotNull('eventcount', eventCount );
+    if (eventCount > 100)
     synth = new Tone.FMSynth().connect(gainNode);
-    
+  }
+
+
+
   // The accelerometer
   const accl = new Accelerometer({ frequency: 10 });
                 
