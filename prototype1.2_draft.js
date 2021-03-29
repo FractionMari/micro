@@ -82,7 +82,7 @@ function pitchShift (pitch, instrument, scale) {
   const points = Math.floor(pitch / intervalChange);
 
   if (points >= 12)
-  instrument.frequency.value = scale[111];
+  instrument.frequency.value = scale[11];
   else if (points >= 11)
   instrument.frequency.value = scale[10];
   else if (points >= 10)
@@ -126,8 +126,8 @@ function handleOrientation(event) {
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
-    pitchShift(pitchWheel, synth, pentaScale);
-    pitchShift(pitchWheel, synth2, harmonicScale);
+    //pitchShift(pitchWheel, synth, pentaScale);
+    //pitchShift(pitchWheel, synth2, harmonicScale);
     let harmonicity = pitchWheel / 180;
     updateFieldIfNotNull('harmonicity', harmonicity);
     //autoFilter.baseFrequency = filterWheel;
@@ -171,9 +171,15 @@ class LowPassFilterData {
     let eventCount = parseInt(counterElement.innerHTML)
     counterElement.innerHTML = eventCount + 1;
     updateFieldIfNotNull('eventcount', eventCount );
+
+    pitchShift(pitchWheel, synth, pentaScale);
+
     if (eventCount > 200)
+    pitchShift(pitchWheel, synth, harmonicScale);
+
+/*     if (eventCount > 200)
     synth.triggerRelease(),
-    synth2.triggerAttack();
+    synth2.triggerAttack(); */
 
 
   }
