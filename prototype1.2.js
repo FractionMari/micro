@@ -128,9 +128,6 @@ class LowPassFilterData {
 
 
 
-if (eventCount > 100)
-
-
   }
 
 
