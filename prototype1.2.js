@@ -2,52 +2,6 @@
 // The oscillator version with new code + adding the Tone.js library.
 
 
-/* /// output console log code
-
-// Reference to an output container, use 'pre' styling for JSON output
-
-var output = document.createElement('pre');
-document.body.appendChild(output);
-// Reference to native method(s)
-var oldLog = console.log;
-
-console.log = function( ...items ) {
-
-    // Call native method first
-    oldLog.apply(this,items);
-
-    // Use JSON to transform objects, all others display normally
-    items.forEach( (item,i)=>{
-        items[i] = (typeof item === 'object' ? JSON.stringify(item,null,4) : item);
-    });
-    output.innerHTML += items.join(' ') + '<br />';
-
-};
-
-// Y1ou could even allow Javascript input...
-function consoleInput( data ) {
-    // Print it to console as typed
-    
-    console.log( data + '<br />' );
-    try {
-        console.log( eval( data ) );
-    } catch (e) {
-        console.log( e.stack );
-    }
-}
-console.log("Hei igjen! :)")
-
-
-//Getting access to accelerometer for iOs:
-function getAccel(){
-  DeviceMotionEvent.requestPermission().then(response => {
-      if (response == 'granted') {
-          console.log("accelerometer permission granted");
-          // Do stuff here
-      }
-  });
-} */
-
 // Tone.js parameters:
 
 const gainNode = new Tone.Gain().toMaster();
@@ -251,16 +205,6 @@ incrementEventCount();
   
     }}
     ); 
-/* // A button for playback of music track
-document.querySelector("#button1").addEventListener('click', function() {
-  synth.triggerAttack("C4");  
-  });
-      
-  // stop button of the oscillator
-  document.querySelector("#button2").addEventListener('click', function() {
-  synth.triggerRelease();
-  
-  }); */
 
   document.getElementById("button1").addEventListener("click", function(){
    

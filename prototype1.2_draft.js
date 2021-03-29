@@ -175,7 +175,7 @@ class LowPassFilterData {
 
 
 if (eventCount > 100)
-
+autoFilter.frequency.value = filterWheel;
 
   }
 
