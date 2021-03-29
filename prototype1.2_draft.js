@@ -5,7 +5,7 @@
 /// output console log code
 
 // Reference to an output container, use 'pre' styling for JSON output
-
+let count100 = false;
 var output = document.createElement('pre');
 document.body.appendChild(output);
 // Reference to native method(s)
@@ -173,11 +173,11 @@ class LowPassFilterData {
     updateFieldIfNotNull('eventcount', eventCount );
 
 
-if (eventCount > 100)
+if (eventCount > 100 && count100 == false) {
 console.log("Hello");
-break;
+count100 = true;
+}
 
-autoFilter.start();
   }
 
 
