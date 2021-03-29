@@ -175,6 +175,7 @@ class LowPassFilterData {
 
 if (eventCount > 100)
 console.log("Hello");
+break;
 
 autoFilter.start();
   }
