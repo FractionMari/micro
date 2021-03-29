@@ -127,7 +127,6 @@ class LowPassFilterData {
     updateFieldIfNotNull('eventcount', eventCount );
 
 
-
   }
 
 

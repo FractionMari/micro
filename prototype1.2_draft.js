@@ -2,7 +2,7 @@
 // The oscillator version with new code + adding the Tone.js library.
 
 
-/* /// output console log code
+/// output console log code
 
 // Reference to an output container, use 'pre' styling for JSON output
 
@@ -46,7 +46,7 @@ function getAccel(){
           // Do stuff here
       }
   });
-} */
+}
 
 // Tone.js parameters:
 
@@ -173,8 +173,8 @@ class LowPassFilterData {
     updateFieldIfNotNull('eventcount', eventCount );
 
 
-
 if (eventCount > 100)
+console.log("Hello");
 
 autoFilter.start();
   }
