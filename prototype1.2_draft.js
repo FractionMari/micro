@@ -74,7 +74,7 @@ var offset = newMin - prevMin,
       };
 };
 // Scales
-var harmonicScale = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3"];
+var diatonicScale = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3"];
 var pentaScale = ["C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4"];
 // Function for shifting pitch
 function pitchShift (pitch, instrument, scale) {
@@ -126,8 +126,8 @@ function handleOrientation(event) {
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
-    //pitchShift(pitchWheel, synth, pentaScale);
-    //pitchShift(pitchWheel, synth2, harmonicScale);
+    pitchShift(pitchWheel, synth, pentaScale);
+    pitchShift(pitchWheel, synth2, diatonicScale);
     let harmonicity = pitchWheel / 180;
     updateFieldIfNotNull('harmonicity', harmonicity);
     //autoFilter.baseFrequency = filterWheel;
@@ -172,14 +172,10 @@ class LowPassFilterData {
     counterElement.innerHTML = eventCount + 1;
     updateFieldIfNotNull('eventcount', eventCount );
 
-    pitchShift(pitchWheel, synth, pentaScale);
 
-    if (eventCount > 200)
-    pitchShift(pitchWheel, synth, harmonicScale);
 
-/*     if (eventCount > 200)
-    synth.triggerRelease(),
-    synth2.triggerAttack(); */
+if (eventCount > 100)
+pentaScale = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3"];
 
 
   }
