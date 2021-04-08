@@ -13,7 +13,7 @@
 <body>
 <main role="main" class="container">
 
-<h1 align="left">Micro iOs test</h1>
+<h1 align="left">Micro iOs test 1</h1>
 
 <div class="p-3 mb-2 bg-secondary" id="demo-div">
 <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start the demo</a>
@@ -129,7 +129,7 @@ function handleMotion(event) {
   const accl = event.acceleration; 
 
   // LowPassFilterData(reading, bias) To be able to calcualte the difference between Accelerometer frames
-  class LowPassFilterData {
+/*   class LowPassFilterData {
   constructor(reading) {
     Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
   }
@@ -140,8 +140,9 @@ function handleMotion(event) {
       this.z = reading.z;
     }
   };
-  const filter = new LowPassFilterData(accl);
+  const filter = new LowPassFilterData(accl); */
   
+  const filter = event.acceleration[1]; 
   let xValue = accl.x;
   let yValue = accl.y;
   let zValue = accl.z;
