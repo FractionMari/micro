@@ -13,7 +13,7 @@
 <body>
 <main role="main" class="container">
 
-<h1 align="left">Micro iOs test 3</h1>
+<h1 align="left">Micro iOs test 4</h1>
 
 <div class="p-3 mb-2 bg-secondary" id="demo-div">
 <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start the demo</a>
@@ -131,7 +131,7 @@ function handleMotion(event) {
   const accl = event.acceleration; 
 
   // LowPassFilterData(reading, bias) To be able to calcualte the difference between Accelerometer frames
-/*   class LowPassFilterData {
+  class LowPassFilterData {
   constructor(reading) {
     Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
   }
@@ -142,21 +142,20 @@ function handleMotion(event) {
       this.z = reading.z;
     }
   };
-  const filter = new LowPassFilterData(accl); */
-  
-  const filter = event[1].acceleration; 
+  const filter = new LowPassFilterData(accl);
+
   let xValue = accl.x;
   let yValue = accl.y;
   let zValue = accl.z;
   let xFilter = filter.x;
-/*   let yFilter = filter.y;
+  let yFilter = filter.y;
   let zFilter = filter.z;
   let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
   let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
-  let diffAcc = (Math.abs(totAcc - totFilter)) * 10; */
+  let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
 
   updateFieldIfNotNull('test_x', accl.x );
-/*   updateFieldIfNotNull('filter_x', filter.x );
+  updateFieldIfNotNull('filter_x', filter.x );
 
   updateFieldIfNotNull('test_y', accl.y );
   updateFieldIfNotNull('filter_y', filter.y );
@@ -166,7 +165,7 @@ function handleMotion(event) {
 
   updateFieldIfNotNull('total_acc', totAcc );
   updateFieldIfNotNull('total_filter', totFilter );
-  updateFieldIfNotNull('diff_acc', diffAcc ); */
+  updateFieldIfNotNull('diff_acc', diffAcc );
 
 
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
