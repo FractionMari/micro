@@ -150,15 +150,13 @@ function handleMotion(event) {
 //setTimeout(() => {  console.log(accl.z); }, 20);
 
 
-function nextFrameFunction() {
+
     var nextFrame = [];
 
     setTimeout(() => {  nextFrame.push(accl.z); }, 20);
-    return nextFrame;
-};
 
-let nextFrames = nextFrameFunction();
-console.log(nextFrames);
+
+console.log(nextFrame);
 
 
   let xValue = accl.x;
