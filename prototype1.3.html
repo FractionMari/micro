@@ -55,6 +55,7 @@
 <li>Pitch Wheel <span id="pitchwheel">0</span><span>&deg;</span></li>
 <li>Filter Wheel <span id="filterwheel">0</span><span>&deg;</span></li>
 <li>Harmonicity <span id="harmonicity">0</span><span>&deg;</span></li>
+<li>X-axis: <span id="test_x">0</span></li>
 
 </div>
 
@@ -112,6 +113,12 @@ function updateFieldIfNotNull(fieldName, value, precision=10){
 }
 
 function handleMotion(event) {
+
+  const accl = event.acceleration; 
+  let xValue = accl.x;
+  updateFieldIfNotNull('test_x', accl.x );
+
+
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
   updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
   updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
@@ -157,6 +164,9 @@ demo_button.onclick = function(e) {
     is_running = true;
   }
 };
+
+
+
 
 // Audio variables:
 
