@@ -1,6 +1,18 @@
 // Functioning prototype 1: Tone.js 15. February
 // The oscillator version with new code + adding the Tone.js library.
 
+window.addEventListener('load', (event) => {
+   // Request permission for iOS 13+ devices
+   if (
+    DeviceMotionEvent &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+  ) {
+    DeviceMotionEvent.requestPermission();
+  }
+});
+
+
+
 
 // Tone.js parameters:
 
@@ -87,16 +99,11 @@ function handleOrientation(event) {
     //autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
 
- 
-
   }
 
-if (
-    DeviceMotionEvent &&
-    typeof DeviceMotionEvent.requestPermission === "function"
-    ) {
-    DeviceMotionEvent.requestPermission();
-    }
+
+
+
 
 window.addEventListener("deviceorientation", handleOrientation);
 
