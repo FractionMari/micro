@@ -121,8 +121,15 @@ function updateFieldIfNotNull(fieldName, value, precision=10){
     document.getElementById(fieldName).innerHTML = value.toFixed(precision);
 }
 
-// LowPassFilterData(reading, bias) To be able to calcualte the difference between Accelerometer frames
-class LowPassFilterData {
+
+
+
+function handleMotion(event) {
+
+  const accl = event.acceleration; 
+
+  // LowPassFilterData(reading, bias) To be able to calcualte the difference between Accelerometer frames
+  class LowPassFilterData {
   constructor(reading) {
     Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
   }
@@ -133,11 +140,6 @@ class LowPassFilterData {
       this.z = reading.z;
     }
   };
-
-
-function handleMotion(event) {
-
-  const accl = event.acceleration; 
   const filter = new LowPassFilterData(accl);
   
   let xValue = accl.x;
