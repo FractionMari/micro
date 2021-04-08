@@ -91,7 +91,6 @@ function handleOrientation(event) {
     //autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
 
- 
 
   }
 

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Micro iOs test</title>
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://tonejs.github.io/build/Tone.js"></script>
     <title>JavaScript Sensor Access Demo</title>
     <style>
       #demo-div {color: lightgrey; border-radius: 0.3rem;}
@@ -15,6 +16,7 @@
       #demo-div li {line-height: 21px;}
       #demo-div ul {margin-bottom: 0.66rem;}
     </style>
+    
 </head>
 <body>
 <main role="main" class="container">
@@ -63,6 +65,9 @@
 </ul>
 
 </div>
+
+<button id="button1">Synth: OFF</button><br>
+
 </main>
 <footer class="footer">
   <div class="container">
@@ -137,6 +142,27 @@ demo_button.onclick = function(e) {
   }
 };
 
+// Audio variables:
+
+const synth = new Tone.AMSynth().toDestination();
+
+
+document.getElementById("button1").addEventListener("click", function(){
+   
+    
+   if(this.className == 'is-playing'){
+     this.className = "";
+     this.innerHTML = "Synth: OFF"
+     synth.triggerRelease();
+ 
+   }else{
+     this.className = "is-playing";
+     this.innerHTML = "Synth: ON";
+     synth.triggerAttack("C4"); 
+     
+ 
+   }}
+   );
 
 </script>
 </body>
