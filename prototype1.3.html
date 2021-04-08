@@ -13,7 +13,7 @@
 <body>
 <main role="main" class="container">
 
-<h1 align="left">Micro iOs test 5</h1>
+<h1 align="left">Micro iOs test 6</h1>
 
 <div class="p-3 mb-2 bg-secondary" id="demo-div">
 <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start the demo</a>
@@ -119,7 +119,7 @@ function incrementEventCount(){
   counterElement.innerHTML = eventCount + 1;
 }
 
-function updateFieldIfNotNull(fieldName, value, precision=10){
+function updateFieldIfNotNull(fieldName, value, precision=2){
   if (value != null)
     document.getElementById(fieldName).innerHTML = value.toFixed(precision);
 }
@@ -145,8 +145,10 @@ function handleMotion(event) {
   };
   const filter = new LowPassFilterData(accl);
 
+
+
   let xValue = accl.x;
-  let xValue2 = accl.x - 0.1;
+  let xValue2;
   let yValue = accl.y;
   let zValue = accl.z;
   let xFilter = filter.x;
@@ -209,7 +211,7 @@ demo_button.onclick = function(e) {
     demo_button.classList.remove('btn-danger');
     is_running = false;
   }else{
-    window.addEventListener("devicemotion", handleMotion);
+    window.addEventListener("devicemotion", handleMotion({ frequency: 10 }));
     window.addEventListener("deviceorientation", handleOrientation);
     document.getElementById("start_demo").innerHTML = "Stop demo";
     demo_button.classList.remove('btn-success');
