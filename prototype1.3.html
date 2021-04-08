@@ -146,7 +146,7 @@ function handleMotion(event) {
   const filter = new LowPassFilterData(accl);
 
   let xValue = accl.x;
-  let xValue2 = accl;
+  let xValue2 = accl.x - 0.1;
   let yValue = accl.y;
   let zValue = accl.z;
   let xFilter = filter.x;
