@@ -148,17 +148,18 @@ function handleMotion(event) {
   //console.log(accl.z);
  // console.log("Hello");
 //setTimeout(() => {  console.log(accl.z); }, 20);
-var nextFrame = [];
+
 
 function nextFrameFunction() {
-    
+    var nextFrame = [];
     for (var i = 0; i < accl.z.length; i += 1) {
         setTimeout(() => {  nextFrame.push(accl.z); }, 20);
     }
     return nextFrame;
 };
 
-console.log(nextFrame);
+let nextFrames = nextFrameFunction();
+console.log(nextFrames);
 
 
   let xValue = accl.x;
