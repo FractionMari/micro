@@ -164,7 +164,7 @@ function handleMotion(event) {
 
   updateFieldIfNotNull('test_x', accl.x );
   setTimeout(() => {    updateFieldIfNotNull('test_x2', accl.x ); }, 20);
-  let xValue_prevFrame = document.getElementById('test_x2');
+  let xValue_prevFrame = document.getElementById('test_x');
   let diffAcc = xValue - xValue_prevFrame;
   console.log(xValue);
   console.log(xValue_prevFrame);
