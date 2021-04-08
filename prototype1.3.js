@@ -122,6 +122,8 @@ demo_button.onclick = function(e) {
     demo_button.classList.add('btn-danger');
     is_running = true;
   }
+
+  accl.start();
 };
 
 
@@ -207,7 +209,7 @@ incrementEventCount();
 
 }  
 
-  accl.start();
+  
 
   document.getElementById("button2").addEventListener("click", function(){
   
