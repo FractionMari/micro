@@ -211,7 +211,7 @@ demo_button.onclick = function(e) {
     demo_button.classList.remove('btn-danger');
     is_running = false;
   }else{
-    window.addEventListener("devicemotion", handleMotion({ frequency: 10 }));
+    window.addEventListener("devicemotion", handleMotion);
     window.addEventListener("deviceorientation", handleOrientation);
     document.getElementById("start_demo").innerHTML = "Stop demo";
     demo_button.classList.remove('btn-success');
