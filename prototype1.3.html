@@ -13,7 +13,7 @@
 <body>
 <main role="main" class="container">
 
-<h1 align="left">Micro iOs test 3</h1>
+<h1 align="left">Micro iOs test 4</h1>
 
 <div class="p-3 mb-2 bg-secondary" id="demo-div">
 <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start the demo</a>
@@ -152,7 +152,6 @@ setTimeout(() => {  console.log(accl.z); }, 20);
 
 
 
-
   let xValue = accl.x;
   let xValue2;
   let yValue = accl.y;
@@ -165,7 +164,8 @@ setTimeout(() => {  console.log(accl.z); }, 20);
   let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
 
   updateFieldIfNotNull('test_x', accl.x );
-  updateFieldIfNotNull('test_x2', xValue2 );
+  setTimeout(() => {    updateFieldIfNotNull('test_x2', accl.x ); }, 20);
+
 
   updateFieldIfNotNull('filter_x', filter.x );
 
