@@ -13,7 +13,7 @@
 <body>
 <main role="main" class="container">
 
-<h1 align="left">Micro iOs test 1</h1>
+<h1 align="left">Micro iOs test 2</h1>
 
 <div class="p-3 mb-2 bg-secondary" id="demo-div">
 <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start the demo</a>
@@ -76,7 +76,7 @@
 </footer>
 <script>
 
-// Functions for scaling:
+////////////////// Functions for scaling:
 
 // With this function the values won't go below a threshold 
 function clamp(min, max, val) {
@@ -91,7 +91,9 @@ var offset = newMin - prevMin,
       return offset + scale * x;
       };
 };
+////////////////////////////
 
+// orientation handling
 function handleOrientation(event) {
   updateFieldIfNotNull('Orientation_a', event.alpha);
   updateFieldIfNotNull('Orientation_b', event.beta);
@@ -142,7 +144,7 @@ function handleMotion(event) {
   };
   const filter = new LowPassFilterData(accl); */
   
-  const filter = event.acceleration[1]; 
+  const filter = event[1].acceleration; 
   let xValue = accl.x;
   let yValue = accl.y;
   let zValue = accl.z;
