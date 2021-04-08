@@ -56,6 +56,15 @@
 <li>Filter Wheel <span id="filterwheel">0</span><span>&deg;</span></li>
 <li>Harmonicity <span id="harmonicity">0</span><span>&deg;</span></li>
 <li>X-axis: <span id="test_x">0</span></li>
+<li>X-axis with filter: <span id="filter_x">0</span></li>
+<li>Y-axis: <span id="test_y">0</span></li>
+<li>Y-axis with filter: <span id="filter_y">0</span></li>
+<li>Z-axis: <span id="test_z">0</span></li>
+<li>Z-axis with filter: <span id="filter_z">0</span></li>
+<li>Total acc: <span id="total_acc">0</span></li>
+<li>Total filter: <span id="total_filter">0</span></li>
+<li>Difference: <span id="diff_acc">0</span></li>
+
 
 </div>
 
@@ -112,11 +121,47 @@ function updateFieldIfNotNull(fieldName, value, precision=10){
     document.getElementById(fieldName).innerHTML = value.toFixed(precision);
 }
 
+// LowPassFilterData(reading, bias) To be able to calcualte the difference between Accelerometer frames
+class LowPassFilterData {
+  constructor(reading) {
+    Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
+  }
+  
+    update(reading) {
+      this.x = reading.x;
+      this.y = reading.y;
+      this.z = reading.z;
+    }
+  };
+
+
 function handleMotion(event) {
 
   const accl = event.acceleration; 
+  const filter = new LowPassFilterData(accl);
+  
   let xValue = accl.x;
+  let yValue = accl.y;
+  let zValue = accl.z;
+  let xFilter = filter.x;
+  let yFilter = filter.y;
+  let zFilter = filter.z;
+  let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
+  let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
+  let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
+
   updateFieldIfNotNull('test_x', accl.x );
+  updateFieldIfNotNull('filter_x', filter.x );
+
+  updateFieldIfNotNull('test_y', accl.y );
+  updateFieldIfNotNull('filter_y', filter.y );
+
+  updateFieldIfNotNull('test_z', accl.z );
+  updateFieldIfNotNull('filter_z', filter.z );
+
+  updateFieldIfNotNull('total_acc', totAcc );
+  updateFieldIfNotNull('total_filter', totFilter );
+  updateFieldIfNotNull('diff_acc', diffAcc );
 
 
   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
