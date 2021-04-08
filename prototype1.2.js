@@ -1,16 +1,18 @@
 // Functioning prototype 1: Tone.js 15. February
 // The oscillator version with new code + adding the Tone.js library.
 
-window.addEventListener('load', (event) => {
-   // Request permission for iOS 13+ devices
-   if (
+let demo_button = document.getElementById("start_demo");
+demo_button.onclick = function(e) {
+  e.preventDefault();
+  
+  // Request permission for iOS 13+ devices
+  if (
     DeviceMotionEvent &&
     typeof DeviceMotionEvent.requestPermission === "function"
   ) {
     DeviceMotionEvent.requestPermission();
   }
-});
-
+};
 
 
 
