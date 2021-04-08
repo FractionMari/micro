@@ -152,9 +152,8 @@ function handleMotion(event) {
 
 function nextFrameFunction() {
     var nextFrame = [];
-    while (true) {
-        setTimeout(() => {  nextFrame.push(accl.z); }, 20);
-    }
+
+    setTimeout(() => {  nextFrame.push(accl.z); }, 20);
     return nextFrame;
 };
 
