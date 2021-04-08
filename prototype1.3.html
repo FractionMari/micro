@@ -5,17 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Micro iOs test</title>
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     <script src="https://tonejs.github.io/build/Tone.js"></script>
     <title>JavaScript Sensor Access Demo</title>
-    <style>
-      #demo-div {color: lightgrey; border-radius: 0.3rem;}
-      #demo-div span, #demo-div #num-observed-events {color: black;}
-      h1 {margin-top: 0.5rem;}
-      h4 {margin-top: 0.66rem; font-size:1.33rem;}
-      #demo-div li {line-height: 21px;}
-      #demo-div ul {margin-bottom: 0.66rem;}
-    </style>
     
 </head>
 <body>
@@ -64,6 +56,10 @@
   <li>Z-axis: <span id="Gyroscope_z">0</span><span>&deg;/s</span></li>
 </ul>
 
+<h4>Parameters from MICRO demo</h4>
+
+<li>Pitch Wheel <span id="pitchwheel">0</span><span>&deg;</span></li>
+<li>Filter Wheel <span id="filterwheel">0</span><span>&deg;</span></li>
 </div>
 
 <button id="button1">Synth: OFF</button><br>
@@ -77,10 +73,33 @@
 </footer>
 <script>
 
+// Functions for scaling:
+
+// With this function the values won't go below a threshold 
+function clamp(min, max, val) {
+  return Math.min(Math.max(min, +val), max);
+}
+
+//Scaling any incoming number
+function generateScaleFunction(prevMin, prevMax, newMin, newMax) {
+var offset = newMin - prevMin,
+    scale = (newMax - newMin) / (prevMax - prevMin);
+  return function (x) {
+      return offset + scale * x;
+      };
+};
+
 function handleOrientation(event) {
   updateFieldIfNotNull('Orientation_a', event.alpha);
   updateFieldIfNotNull('Orientation_b', event.beta);
   updateFieldIfNotNull('Orientation_g', event.gamma);
+
+  let pitchWheel = event.beta;
+  let filterWheel = event.gamma;
+
+  updateFieldIfNotNull('pitchwheel', pitchWheel);
+  updateFieldIfNotNull('filterwheel', filterWheel);
+
   incrementEventCount();
 }
 
