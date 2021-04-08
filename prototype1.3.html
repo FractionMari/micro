@@ -149,14 +149,20 @@ function handleMotion(event) {
  // console.log("Hello");
 setTimeout(() => {  console.log(accl.z); }, 20);
 
+var myVar;
 
+function myFunction() {
+  myVar = setTimeout(accl.z, 20);
+}
+
+console.log(myVar);
 
 
   let xValue = accl.x;
   let xValue2;
   let yValue = accl.y;
   let zValue = accl.z;
- // let xFilter = filter.x;
+  let xFilter = filter.x;
   let yFilter = filter.y;
   let zFilter = filter.z;
   let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
@@ -166,9 +172,8 @@ setTimeout(() => {  console.log(accl.z); }, 20);
   updateFieldIfNotNull('test_x', accl.x );
   setTimeout(() => {    updateFieldIfNotNull('test_x2', accl.x ); }, 20);
 
-  let diffAcc2 = 'test_x' - 'test_x2';
 
-  updateFieldIfNotNull('filter_x', diffAcc2 );
+  updateFieldIfNotNull('filter_x', filter.x );
 
   updateFieldIfNotNull('test_y', accl.y );
   updateFieldIfNotNull('filter_y', filter.y );
