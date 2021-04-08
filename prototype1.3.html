@@ -56,6 +56,7 @@
 <li>Filter Wheel <span id="filterwheel">0</span><span>&deg;</span></li>
 <li>Harmonicity <span id="harmonicity">0</span><span>&deg;</span></li>
 <li>X-axis: <span id="test_x">0</span></li>
+<li>X-axis 2 test: <span id="test_x2">0</span></li><br>
 <li>X-axis with filter: <span id="filter_x">0</span></li>
 <li>Y-axis: <span id="test_y">0</span></li>
 <li>Y-axis with filter: <span id="filter_y">0</span></li>
@@ -145,6 +146,7 @@ function handleMotion(event) {
   const filter = new LowPassFilterData(accl);
 
   let xValue = accl.x;
+  let xValue2 = accl.x[1];
   let yValue = accl.y;
   let zValue = accl.z;
   let xFilter = filter.x;
@@ -155,6 +157,8 @@ function handleMotion(event) {
   let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
 
   updateFieldIfNotNull('test_x', accl.x );
+  updateFieldIfNotNull('test_x2', xValue2 );
+
   updateFieldIfNotNull('filter_x', filter.x );
 
   updateFieldIfNotNull('test_y', accl.y );
