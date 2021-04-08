@@ -150,7 +150,7 @@ function handleMotion(event) {
 //setTimeout(() => {  console.log(accl.z); }, 20);
 
 
-function nextFrame() {
+function nextFrameFunction() {
     var nextFrame = [];
     for (var i = 0; i < accl.z.length; i += 1) {
         setTimeout(() => {  nextFrame.push(accl.z); }, 20);
