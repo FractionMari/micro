@@ -144,23 +144,15 @@ function handleMotion(event) {
     }
   };
   const filter = new LowPassFilterData(accl);
-  console.log(accl.z);
+ // console.log(accl.z);
   //console.log(accl.z);
  // console.log("Hello");
 //setTimeout(() => {  console.log(accl.z); }, 20);
 
 
 
-    var nextFrame = [];
-
-    nextFrame = setTimeout(() => {  nextFrame.push(accl.z); }, 20);
-
-
-console.log(nextFrame);
-
-
   let xValue = accl.x;
-  let xValue2;
+
   let yValue = accl.y;
   let zValue = accl.z;
   let xFilter = filter.x;
@@ -168,10 +160,14 @@ console.log(nextFrame);
   let zFilter = filter.z;
   let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
   let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
-  let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
+  //let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
 
   updateFieldIfNotNull('test_x', accl.x );
   setTimeout(() => {    updateFieldIfNotNull('test_x2', accl.x ); }, 20);
+  let xValue_prevFrame = document.getElementById('test_x2');
+  let diffAcc = xValue - xValue_prevFrame;
+  console.log(xValue);
+  console.log(xValue_prevFrame);
 
 
   updateFieldIfNotNull('filter_x', filter.x );
