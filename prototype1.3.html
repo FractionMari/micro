@@ -149,7 +149,9 @@ function handleMotion(event) {
  // console.log("Hello");
 //setTimeout(() => {  console.log(accl.z); }, 20);
 
-
+let xValue2;
+setTimeout(() => {  xValue2 = accl.z; }, 20);
+console.log(xValue2);
 
   let xValue = accl.x;
 
@@ -164,10 +166,10 @@ function handleMotion(event) {
 
   updateFieldIfNotNull('test_x', accl.x );
   setTimeout(() => {    updateFieldIfNotNull('test_x2', accl.x ); }, 20);
-  let xValue_prevFrame = document.getElementById('test_x');
-  let diffAcc = xValue - xValue_prevFrame;
-  console.log(xValue);
-  console.log(xValue_prevFrame);
+  //let xValue_prevFrame = document.getElementById('test_x');
+  //let diffAcc = xValue - xValue_prevFrame;
+  //console.log(xValue);
+  //console.log(xValue_prevFrame);
 
 
   updateFieldIfNotNull('filter_x', filter.x );
