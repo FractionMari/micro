@@ -3,12 +3,10 @@
 
 
 // Tone.js parameters:
-
 const gainNode = new Tone.Gain().toMaster();
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 const synth = new Tone.DuoSynth().connect(gainNode);
 const synth2 = new Tone.FMSynth().connect(gainNode);
-
 
 let newAcc;
 let newAcc2;
@@ -27,9 +25,11 @@ var offset = newMin - prevMin,
       return offset + scale * x;
       };
 };
+
 // Scales
 var diatonicScale = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3"];
 var pentaScale = ["C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4"];
+
 // Function for shifting pitch
 function pitchShift (pitch, instrument, scale) {
   const intervalChange = 30;
@@ -62,6 +62,10 @@ function pitchShift (pitch, instrument, scale) {
       
 }
 
+
+
+// Accelerometer parameters
+
 function handleOrientation(event) {
 
     updateFieldIfNotNull('Orientation_b', event.beta);
@@ -91,14 +95,35 @@ function handleOrientation(event) {
 
   }
 
-if (
+
+  let is_running = false;
+let demo_button = document.getElementById("start_demo");
+demo_button.onclick = function(e) {
+  e.preventDefault();
+  
+  // Request permission for iOS 13+ devices
+  if (
     DeviceMotionEvent &&
     typeof DeviceMotionEvent.requestPermission === "function"
-    ) {
+  ) {
     DeviceMotionEvent.requestPermission();
-    }
+  }
+  
+  if (is_running){
+    window.removeEventListener("deviceorientation", handleOrientation);
+    demo_button.innerHTML = "Start demo";
+    demo_button.classList.add('btn-success');
+    demo_button.classList.remove('btn-danger');
+    is_running = false;
+  }else{
+    window.addEventListener("deviceorientation", handleOrientation);
+    document.getElementById("start_demo").innerHTML = "Stop demo";
+    demo_button.classList.remove('btn-success');
+    demo_button.classList.add('btn-danger');
+    is_running = true;
+  }
+};
 
-window.addEventListener("deviceorientation", handleOrientation);
 
 
 // function for updating values for sensor data
