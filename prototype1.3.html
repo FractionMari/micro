@@ -54,6 +54,8 @@
 
 <li>Pitch Wheel <span id="pitchwheel">0</span><span>&deg;</span></li>
 <li>Filter Wheel <span id="filterwheel">0</span><span>&deg;</span></li>
+<li>Harmonicity <span id="harmonicity">0</span><span>&deg;</span></li>
+
 </div>
 
 <button id="button1">Synth: OFF</button><br>
@@ -90,6 +92,10 @@ function handleOrientation(event) {
 
   updateFieldIfNotNull('pitchwheel', pitchWheel);
   updateFieldIfNotNull('filterwheel', filterWheel);
+
+  let harmonicity = pitchWheel / 180;
+  updateFieldIfNotNull('harmonicity', harmonicity);
+  synth.harmonicity.value = harmonicity;
 
   incrementEventCount();
 }
