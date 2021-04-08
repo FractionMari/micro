@@ -13,7 +13,7 @@
 <body>
 <main role="main" class="container">
 
-<h1 align="left">Micro iOs test 8</h1>
+<h1 align="left">Micro iOs test 9</h1>
 
 <div class="p-3 mb-2 bg-secondary" id="demo-div">
 <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start the demo</a>
@@ -144,16 +144,22 @@ function handleMotion(event) {
     }
   };
   const filter = new LowPassFilterData(accl);
-  let xValue2;
   console.log(accl.z);
   //console.log(accl.z);
  // console.log("Hello");
-setTimeout(() => {  xValue2 = accl.z; }, 20);
+//setTimeout(() => {  console.log(accl.z); }, 20);
 
-console.log(xValue2);
+
+
+var a = accl.z;
+var b;
+setTimeout(function() {
+    b = a;
+}, (20));
+console.log(b);
 
   let xValue = accl.x;
- 
+  let xValue2;
   let yValue = accl.y;
   let zValue = accl.z;
   let xFilter = filter.x;
