@@ -124,6 +124,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     document.getElementById(fieldName).innerHTML = value.toFixed(precision);
 }
 
+// variables for differing between frames:
 let accXdiff = [];
 let accYdiff = [];
 let accZdiff = [];
@@ -147,21 +148,6 @@ let zFilter = accYdiff[i-2];
 console.log(xFilter);
 
 const accl = event.acceleration; 
-
-  // LowPassFilterData(reading, bias) To be able to calcualte the difference between Accelerometer frames
-  class LowPassFilterData {
-  constructor(reading) {
-    Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
-  }
-  
-    update(reading) {
-      this.x = reading.x;
-      this.y = reading.y;
-      this.z = reading.z;
-    }
-  };
-  const filter = new LowPassFilterData(accl);
-
 
   let xValue = event.acceleration.x; 
   let yValue = event.acceleration.y; 
@@ -199,6 +185,23 @@ const accl = event.acceleration;
   updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
   updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
   updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
+  
+  updateFieldIfNotNull('volume_acc', newAcc );
+
+var fn = generateScaleFunction(0, 2, 0.3, 0);
+newAcc = fn(diffAcc);
+newAcc = (clamp(0, 0.3, newAcc));
+
+var fn2 = generateScaleFunction(1, 2, 0, 0.3);
+newAcc2 = fn2(diffAcc);
+newAcc2 = (clamp(0, 0.3, newAcc2));
+
+if (inverse == false)
+gainNode.gain.rampTo(newAcc2, 0.2);
+else
+// more smooth change of volume:
+gainNode.gain.rampTo(newAcc, 0.2);
+  
   incrementEventCount();
 }
 

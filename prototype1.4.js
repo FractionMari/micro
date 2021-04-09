@@ -4,7 +4,7 @@
 
 // Tone.js parameters:
 
-const gainNode = new Tone.Gain().toMaster();
+const gainNode = new Tone.Gain().toDestination();
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 const synth = new Tone.DuoSynth().connect(gainNode);
 const synth2 = new Tone.FMSynth().connect(gainNode);
@@ -199,7 +199,7 @@ var i = 0;
 
     let is_running = false;
     let demo_button = document.getElementById("start_demo");
-    demo_button.onclick = function(e) {
+/*     demo_button.onclick = function(e) {
       e.preventDefault();
       
       // Request permission for iOS 13+ devices
@@ -226,7 +226,7 @@ var i = 0;
         is_running = true;
       }
     };
-    
+     */
 
 
   document.getElementById("button2").addEventListener("click", function(){
@@ -248,18 +248,43 @@ var i = 0;
     ); 
 
   document.getElementById("button1").addEventListener("click", function(){
+
+    e.preventDefault();
+      
+    // Request permission for iOS 13+ devices
+    if (
+      DeviceMotionEvent &&
+      typeof DeviceMotionEvent.requestPermission === "function"
+    ) {
+      DeviceMotionEvent.requestPermission();
+    }
+    
    
     
     if(this.className == 'is-playing'){
       this.className = "";
       this.innerHTML = "Synth: OFF"
       synth.triggerRelease();
-      synth2.triggerRelease();
+    //  synth2.triggerRelease();
+
+      window.removeEventListener("devicemotion", handleMotion);
+      window.removeEventListener("deviceorientation", handleOrientation);
+      demo_button.innerHTML = "Start demo";
+      demo_button.classList.add('btn-success');
+      demo_button.classList.remove('btn-danger');
+      is_running = false;
   
     }else{
       this.className = "is-playing";
       this.innerHTML = "Synth: ON";
       synth.triggerAttack("C4"); 
+
+      window.addEventListener("devicemotion", handleMotion);
+      window.addEventListener("deviceorientation", handleOrientation);
+      document.getElementById("start_demo").innerHTML = "Stop demo";
+      demo_button.classList.remove('btn-success');
+      demo_button.classList.add('btn-danger');
+      is_running = true;
       
   
     }}
