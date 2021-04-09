@@ -196,17 +196,19 @@ function handleMotion(event) {
   incrementEventCount();
 }
 
-setTimeout(() => {    
+ 
 function handleMotion2(event) {
 
+    setTimeout(() => {   
     const accl2 = event.acceleration; 
 
     updateFieldIfNotNull('test_x2', accl2.x);
 
     console.log(accl2.x);
   incrementEventCount();
-}
 }, 20);
+}
+
 
 let is_running = false;
 let demo_button = document.getElementById("start_demo");
