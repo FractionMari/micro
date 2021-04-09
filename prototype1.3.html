@@ -56,7 +56,7 @@
 <li>Filter Wheel <span id="filterwheel">0</span><span>&deg;</span></li>
 <li>Harmonicity <span id="harmonicity">0</span><span>&deg;</span></li>
 <li>X-axis: <span id="test_x">0</span></li>
-<li>X-axis 2 test: <span id="test_x2">0</span></li><br>
+
 <li>X-axis with filter: <span id="filter_x">0</span></li>
 <li>Y-axis: <span id="test_y">0</span></li>
 <li>Y-axis with filter: <span id="filter_y">0</span></li>
@@ -136,9 +136,13 @@ console.log(event.acceleration.x);
 
 
 accXdiff.push(event.acceleration.x);
-
-
 let xFilter = accXdiff[i-2];
+
+accYdiff.push(event.acceleration.y);
+let yFilter = accYdiff[i-2];
+
+accYdiff.push(event.acceleration.y);
+let zFilter = accYdiff[i-2];
 
 console.log(xFilter);
 
@@ -169,13 +173,13 @@ const accl = event.acceleration;
 
   updateFieldIfNotNull('test_x', accl.x );
 
-  updateFieldIfNotNull('filter_x', filter.x );
+  updateFieldIfNotNull('filter_x', xFilter);
 
   updateFieldIfNotNull('test_y', accl.y );
-  updateFieldIfNotNull('filter_y', filter.y );
+  updateFieldIfNotNull('filter_y', yFilter );
 
   updateFieldIfNotNull('test_z', accl.z );
-  updateFieldIfNotNull('filter_z', filter.z );
+  updateFieldIfNotNull('filter_z', zFilter );
 
   updateFieldIfNotNull('total_acc', totAcc );
   updateFieldIfNotNull('total_filter', totFilter );
