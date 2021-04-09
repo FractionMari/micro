@@ -147,7 +147,7 @@ function handleMotion(event) {
   //console.log(accl.z);
  // console.log("Hello");
 //setTimeout(() => {  console.log(accl.z); }, 20);
-  console.log(accl.x);
+  //console.log(accl.x);
 
   let xValue = accl.x;
   let yValue = accl.y;
@@ -198,15 +198,20 @@ function handleMotion(event) {
 
  
 function handleMotion2(event) {
+    const accl = event.acceleration; 
 
     setTimeout(() => {   
     const accl2 = event.acceleration; 
 
     updateFieldIfNotNull('test_x2', accl2.x);
 
-    console.log(accl2.x);
+    return accl2.x;
+
   incrementEventCount();
 }, 20);
+
+console.log(accl.x);
+console.log(setTimeout);
 }
 
 
