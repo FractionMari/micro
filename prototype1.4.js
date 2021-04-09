@@ -175,7 +175,7 @@ var i = 0;
 
 
 
-    var fn = generateScaleFunction(0, 4, 0.3, 0);
+    var fn = generateScaleFunction(0, 10, 0.3, 0);
     newAcc = fn(diffAcc);
     newAcc = (clamp(0, 0.3, newAcc));
     console.log(newAcc);
@@ -186,10 +186,10 @@ var i = 0;
     console.log(newAcc2);
     
     if (inverse == false)
-    gainNode.gain.rampTo(newAcc2, 0.2);
+    gainNode.gain.rampTo(newAcc2, 0.1);
     else
     // more smooth change of volume:
-    gainNode.gain.rampTo(newAcc, 0.2);
+    gainNode.gain.rampTo(newAcc, 0.1);
       
       incrementEventCount();
     }
