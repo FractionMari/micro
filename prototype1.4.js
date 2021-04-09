@@ -148,7 +148,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       updateFieldIfNotNull('total_filter', totFilter );
       updateFieldIfNotNull('diff_acc', diffAcc );
     
-    
+    /* 
       updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
       updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
       updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
@@ -161,7 +161,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     
       updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
       updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
-      updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
+      updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma); */
       
       updateFieldIfNotNull('volume_acc', newAcc );
     
