@@ -150,11 +150,10 @@ function handleMotion(event) {
 //setTimeout(() => {  console.log(accl.z); }, 20);
 
 
-setTimeout(() => { let xValue2 = accl.z; }, 20);
-console.log(xValue2);
+
 
   let xValue = accl.x;
-
+  console.log(xValue[-1]);
   let yValue = accl.y;
   let zValue = accl.z;
   let xFilter = filter.x;
