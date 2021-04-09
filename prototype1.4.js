@@ -103,9 +103,13 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     let eventCount = parseInt(counterElement.innerHTML)
     counterElement.innerHTML = eventCount + 1;
     updateFieldIfNotNull('eventcount', eventCount );
-
-
   }
+
+  // variables for differing between frames:
+let accXdiff = [];
+let accYdiff = [];
+let accZdiff = [];
+var i = 0;
 
   function handleMotion(event) {
 
