@@ -105,7 +105,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     updateFieldIfNotNull('eventcount', eventCount );
   }
 
-  // variables for differing between frames:
+
+// variables for differing between frames:
 let accXdiff = [];
 let accYdiff = [];
 let accZdiff = [];
