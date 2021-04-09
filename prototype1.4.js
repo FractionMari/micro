@@ -249,7 +249,7 @@ var i = 0;
 
   document.getElementById("button1").addEventListener("click", function(){
 
-    e.preventDefault();
+  //  e.preventDefault();
       
     // Request permission for iOS 13+ devices
     if (
