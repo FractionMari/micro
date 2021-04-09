@@ -175,7 +175,7 @@ var i = 0;
 
 
 
-    var fn = generateScaleFunction(0, 2, 0.3, 0);
+    var fn = generateScaleFunction(0, 4, 0.3, 0);
     newAcc = fn(diffAcc);
     newAcc = (clamp(0, 0.3, newAcc));
     console.log(newAcc);
@@ -269,9 +269,9 @@ var i = 0;
 
       window.removeEventListener("devicemotion", handleMotion);
       window.removeEventListener("deviceorientation", handleOrientation);
-      demo_button.innerHTML = "Start demo";
+/*       demo_button.innerHTML = "Start demo";
       demo_button.classList.add('btn-success');
-      demo_button.classList.remove('btn-danger');
+      demo_button.classList.remove('btn-danger'); */
       is_running = false;
   
     }else{
@@ -281,9 +281,9 @@ var i = 0;
 
       window.addEventListener("devicemotion", handleMotion);
       window.addEventListener("deviceorientation", handleOrientation);
-      document.getElementById("start_demo").innerHTML = "Stop demo";
+/*       document.getElementById("start_demo").innerHTML = "Stop demo";
       demo_button.classList.remove('btn-success');
-      demo_button.classList.add('btn-danger');
+      demo_button.classList.add('btn-danger'); */
       is_running = true;
       
   
