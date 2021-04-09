@@ -125,9 +125,12 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 }
 
 let myVar = [];
+var i = 0;
 
 function handleMotion(event) {
 
+    i += 1;
+    console.log(i);
     console.log(event.acceleration.x);
     console.log(typeof event.acceleration.x);
 
