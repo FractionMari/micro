@@ -125,7 +125,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 }
 
 let myVar = [];
-var i = 1;
+var i = 0;
 
 function handleMotion(event) {
 
@@ -136,7 +136,7 @@ function handleMotion(event) {
 
 
 myVar.push(event.acceleration.x);
-console.log(myVar[i-1]);
+console.log(myVar[i-2]);
 
   const accl = event.acceleration; 
 
