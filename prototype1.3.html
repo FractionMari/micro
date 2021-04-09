@@ -147,10 +147,9 @@ function handleMotion(event) {
   //console.log(accl.z);
  // console.log("Hello");
 //setTimeout(() => {  console.log(accl.z); }, 20);
+  console.log(typeof accl.x);
 
-  console.log(accl.data);
-
-
+  let xValue = accl.x;
   let yValue = accl.y;
   let zValue = accl.z;
   let xFilter = filter.x;
