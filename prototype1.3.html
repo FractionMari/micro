@@ -125,6 +125,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 }
 
 let accXdiff = [];
+let accYdiff = [];
+let accZdiff = [];
 var i = 0;
 
 function handleMotion(event) {
@@ -134,8 +136,11 @@ console.log(event.acceleration.x);
 
 
 accXdiff.push(event.acceleration.x);
-accXdiff = accXdiff[i-2];
-console.log(accXdiff);
+
+
+let xFilter = accXdiff[i-2];
+
+console.log(xFilter);
 
 const accl = event.acceleration; 
 
@@ -154,12 +159,10 @@ const accl = event.acceleration;
   const filter = new LowPassFilterData(accl);
 
 
-  let xValue = accl.x;
-  let yValue = accl.y;
-  let zValue = accl.z;
-  let xFilter = filter.x;
-  let yFilter = filter.y;
-  let zFilter = filter.z;
+  let xValue = event.acceleration.x; 
+  let yValue = event.acceleration.y; 
+  let zValue = event.acceleration.z;
+
   let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
   let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
   let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
