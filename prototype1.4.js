@@ -6,8 +6,8 @@
 
 const gainNode = new Tone.Gain().toDestination();
 const autoFilter = new Tone.AutoWah().connect(gainNode);
-const synth = new Tone.DuoSynth().connect(gainNode);
-const synth2 = new Tone.FMSynth().connect(gainNode);
+const synth = new Tone.DuoSynth().connect(autoFilter);
+const synth2 = new Tone.FMSynth().connect(autoFilter);
 
 let newAcc;
 let newAcc2;
@@ -85,7 +85,7 @@ function handleOrientation(event) {
     pitchShift(pitchWheel, synth2, diatonicScale);
     let harmonicity = pitchWheel / 180;
     updateFieldIfNotNull('harmonicity', harmonicity);
-    //autoFilter.baseFrequency = filterWheel;
+    autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
 
   }
