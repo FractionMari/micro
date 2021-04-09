@@ -90,6 +90,14 @@ function handleOrientation(event) {
 
   }
 
+
+function incrementEventCount(){
+let counterElement = document.getElementById("num-observed-events")
+let eventCount = parseInt(counterElement.innerHTML)
+counterElement.innerHTML = eventCount + 1;
+//  updateFieldIfNotNull('eventcount', eventCount );
+}
+
 // function for updating values for sensor data
 function updateFieldIfNotNull(fieldName, value, precision=2){
     if (value != null)
@@ -97,13 +105,6 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   }
 
 
-  
-  function incrementEventCount(){
-    let counterElement = document.getElementById("num-observed-events")
-    let eventCount = parseInt(counterElement.innerHTML)
-    counterElement.innerHTML = eventCount + 1;
-    updateFieldIfNotNull('eventcount', eventCount );
-  }
 
 
 // variables for differing between frames:
@@ -115,7 +116,7 @@ var i = 0;
   function handleMotion(event) {
 
     i += 1;
-    console.log(event.acceleration.x);
+    //console.log(event.acceleration.x);
     
     
     accXdiff.push(event.acceleration.x);
@@ -127,7 +128,7 @@ var i = 0;
     accYdiff.push(event.acceleration.y);
     let zFilter = accYdiff[i-2];
     
-    console.log(xFilter);
+   // console.log(xFilter);
     
     const accl = event.acceleration; 
     
@@ -173,10 +174,12 @@ var i = 0;
     var fn = generateScaleFunction(0, 2, 0.3, 0);
     newAcc = fn(diffAcc);
     newAcc = (clamp(0, 0.3, newAcc));
+    console.log(newAcc);
     
     var fn2 = generateScaleFunction(1, 2, 0, 0.3);
     newAcc2 = fn2(diffAcc);
     newAcc2 = (clamp(0, 0.3, newAcc2));
+    console.log(newAcc2);
     
     if (inverse == false)
     gainNode.gain.rampTo(newAcc2, 0.2);
