@@ -13,7 +13,7 @@
 <body>
 <main role="main" class="container">
 
-<h1 align="left">Micro iOs test 2</h1>
+<h1 align="left">Micro iOs test 3</h1>
 
 <div class="p-3 mb-2 bg-secondary" id="demo-div">
 <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start the demo</a>
@@ -125,6 +125,14 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 }
 
 
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
 
 
 function handleMotion(event) {
@@ -149,12 +157,11 @@ function handleMotion(event) {
  // console.log("Hello");
 //setTimeout(() => {  console.log(accl.z); }, 20);
 
-let xValue2 = [];
 
-setTimeout(() => {  xValue2.push(accl.x); }, 20);
 
   let xValue = accl.x;
-
+sleep(20);
+let xValue2 = accl.x;;
   console.log(xValue);
   console.log(xValue2);
 
