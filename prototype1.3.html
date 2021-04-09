@@ -124,14 +124,14 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     document.getElementById(fieldName).innerHTML = value.toFixed(precision);
 }
 
-
+let myVar = [];
 
 function handleMotion(event) {
 
     console.log(event.acceleration.x);
     console.log(typeof event.acceleration.x);
 
-let myVar = [];
+
 myVar.push(event.acceleration.x);
 console.log(myVar);
 
