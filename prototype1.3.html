@@ -128,6 +128,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
 function handleMotion(event) {
 
+    console.log(event);
+
   const accl = event.acceleration; 
 
   // LowPassFilterData(reading, bias) To be able to calcualte the difference between Accelerometer frames
@@ -195,22 +197,6 @@ function handleMotion(event) {
   updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
   incrementEventCount();
 }
-
- 
-function handleMotion2(event) {
-
-    const accl2 = event.acceleration; 
-    updateFieldIfNotNull('test_x2', accl2.x);
-    incrementEventCount();
-}
-
-
-var myVar = setInterval(handleMotion2(event), 20);
-
-
-
-
-console.log(handleMotion2(event));
 
 
 
