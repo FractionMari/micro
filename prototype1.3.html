@@ -125,15 +125,6 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 }
 
 
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
-
-
 
 function handleMotion(event) {
 
@@ -157,11 +148,21 @@ function handleMotion(event) {
  // console.log("Hello");
 //setTimeout(() => {  console.log(accl.z); }, 20);
 
+let xValue2;
+let xValue = accl.x;
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function delayedGreeting(variable) {
+  await sleep(20);
+  variable = accl.x;
+}
+
+delayedGreeting(xValue2);
 
 
-  let xValue = accl.x;
-  sleep(20);
-let xValue2 =  xValue;
+
   console.log(xValue);
   console.log(xValue2);
 
