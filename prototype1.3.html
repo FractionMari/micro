@@ -149,17 +149,19 @@ function handleMotion(event) {
 //setTimeout(() => {  console.log(accl.z); }, 20);
 
 let xValue2;
-let xValue = accl.x;
+let xValue;
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function delayedGreeting(variable) {
-  await sleep(20);
+async function delayedGreeting(variable, variable2) {
   variable = accl.x;
+  await sleep(20);
+  variable2 = accl.x;
 }
 
-delayedGreeting(xValue2);
+delayedGreeting(xValue, xValue2);
 
 
 
