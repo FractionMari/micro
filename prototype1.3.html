@@ -124,21 +124,20 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     document.getElementById(fieldName).innerHTML = value.toFixed(precision);
 }
 
-let myVar = [];
+let accXdiff = [];
 var i = 0;
 
 function handleMotion(event) {
 
-    i += 1;
-    console.log(i);
-    console.log(event.acceleration.x);
-    console.log(typeof event.acceleration.x);
+i += 1;
+console.log(event.acceleration.x);
 
 
-myVar.push(event.acceleration.x);
-console.log(myVar[i-2]);
+accXdiff.push(event.acceleration.x);
+accXdiff = accXdiff[i-2];
+console.log(accXdiff);
 
-  const accl = event.acceleration; 
+const accl = event.acceleration; 
 
   // LowPassFilterData(reading, bias) To be able to calcualte the difference between Accelerometer frames
   class LowPassFilterData {
@@ -153,11 +152,7 @@ console.log(myVar[i-2]);
     }
   };
   const filter = new LowPassFilterData(accl);
- // console.log(accl.z);
-  //console.log(accl.z);
- // console.log("Hello");
-//setTimeout(() => {  console.log(accl.z); }, 20);
-  //console.log(accl.x);
+
 
   let xValue = accl.x;
   let yValue = accl.y;
@@ -170,12 +165,6 @@ console.log(myVar[i-2]);
   let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
 
   updateFieldIfNotNull('test_x', accl.x );
-//  setTimeout(() => {    updateFieldIfNotNull('test_x2', accl.x ); }, 20);
-  //let xValue_prevFrame = document.getElementById('test_x');
-  //let diffAcc = xValue - xValue_prevFrame;
-  //console.log(xValue);
-  //console.log(xValue_prevFrame);
-
 
   updateFieldIfNotNull('filter_x', filter.x );
 
