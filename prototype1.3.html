@@ -147,7 +147,7 @@ function handleMotion(event) {
   //console.log(accl.z);
  // console.log("Hello");
 //setTimeout(() => {  console.log(accl.z); }, 20);
-  console.log(typeof accl.x);
+  console.log(accl.x);
 
   let xValue = accl.x;
   let yValue = accl.y;
@@ -160,7 +160,7 @@ function handleMotion(event) {
   let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
 
   updateFieldIfNotNull('test_x', accl.x );
-  setTimeout(() => {    updateFieldIfNotNull('test_x2', accl.x ); }, 20);
+//  setTimeout(() => {    updateFieldIfNotNull('test_x2', accl.x ); }, 20);
   //let xValue_prevFrame = document.getElementById('test_x');
   //let diffAcc = xValue - xValue_prevFrame;
   //console.log(xValue);
@@ -195,6 +195,17 @@ function handleMotion(event) {
   updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
   incrementEventCount();
 }
+setTimeout(() => {    
+function handleMotion(event) {
+
+    const accl2 = event.acceleration; 
+
+    updateFieldIfNotNull('test_x2', accl2.x);
+
+    console.log(accl2.x);
+  incrementEventCount();
+}
+}, 20);
 
 let is_running = false;
 let demo_button = document.getElementById("start_demo");
