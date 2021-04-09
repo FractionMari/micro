@@ -129,6 +129,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 function handleMotion(event) {
 
     console.log(event);
+    console.log(typeof event);
+
 
   const accl = event.acceleration; 
 
@@ -215,7 +217,6 @@ demo_button.onclick = function(e) {
   
   if (is_running){
     window.removeEventListener("devicemotion", handleMotion);
-    window.removeEventListener("devicemotion", handleMotion2);
     window.removeEventListener("deviceorientation", handleOrientation);
     demo_button.innerHTML = "Start demo";
     demo_button.classList.add('btn-success');
@@ -223,7 +224,6 @@ demo_button.onclick = function(e) {
     is_running = false;
   }else{
     window.addEventListener("devicemotion", handleMotion);
-    window.addEventListener("devicemotion", handleMotion2);
     window.addEventListener("deviceorientation", handleOrientation);
     document.getElementById("start_demo").innerHTML = "Stop demo";
     demo_button.classList.remove('btn-success');
