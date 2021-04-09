@@ -198,21 +198,20 @@ function handleMotion(event) {
 
  
 function handleMotion2(event) {
-    const accl = event.acceleration; 
 
-    setTimeout(() => {   
     const accl2 = event.acceleration; 
-
     updateFieldIfNotNull('test_x2', accl2.x);
-
-    return accl2.x;
-
-  incrementEventCount();
-}, 20);
-
-console.log(accl.x);
-console.log(setTimeout());
+    incrementEventCount();
 }
+
+
+var myVar = setInterval(handleMotion2(event), 20);
+
+
+
+
+console.log(handleMotion2(event));
+
 
 
 let is_running = false;
