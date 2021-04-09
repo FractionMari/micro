@@ -170,6 +170,7 @@ var i = 0;
       updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma); */
       
       updateFieldIfNotNull('volume_acc', newAcc );
+    console.log(diffAcc);
     
     var fn = generateScaleFunction(0, 2, 0.3, 0);
     newAcc = fn(diffAcc);
