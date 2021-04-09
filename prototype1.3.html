@@ -131,10 +131,9 @@ function handleMotion(event) {
     console.log(event.acceleration.x);
     console.log(typeof event.acceleration.x);
 
-    var d = new Date();
-  var n = d.getTime();
-  console.log(n);
-
+let myVar = [];
+myVar.push(event.acceleration.x);
+console.log(myVar);
 
   const accl = event.acceleration; 
 
