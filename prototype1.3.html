@@ -13,7 +13,7 @@
 <body>
 <main role="main" class="container">
 
-<h1 align="left">Micro iOs test 10</h1>
+<h1 align="left">Micro iOs test 1</h1>
 
 <div class="p-3 mb-2 bg-secondary" id="demo-div">
 <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start the demo</a>
@@ -155,7 +155,7 @@ xValue2.push(accl.x);
   let xValue = accl.x;
 
   console.log(xValue);
-  console.log(xValue2);
+  console.log(xValue2[-1]);
 
 
   let yValue = accl.y;
@@ -165,7 +165,7 @@ xValue2.push(accl.x);
   let zFilter = filter.z;
   let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
   let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
-  //let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
+  let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
 
   updateFieldIfNotNull('test_x', accl.x );
   setTimeout(() => {    updateFieldIfNotNull('test_x2', accl.x ); }, 20);
