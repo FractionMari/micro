@@ -128,8 +128,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
 function handleMotion(event) {
 
-    console.log(event.acceleration);
-    console.log(typeof event.acceleration);
+    console.log(event.acceleration.x);
+    console.log(typeof event.acceleration.x);
 
     var d = new Date();
   var n = d.getTime();
