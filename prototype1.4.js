@@ -11,7 +11,7 @@ const autoFilter = new Tone.AutoWah().connect(pingPong);
 
 
 const synth = new Tone.DuoSynth().connect(autoFilter);
-const synth2 = new Tone.FMSynth().connect(autoFilter);
+//const synth2 = new Tone.FMSynth().connect(autoFilter);
 const synth3 = new Tone.MembraneSynth().toDestination();
 
 
@@ -91,7 +91,7 @@ function handleOrientation(event) {
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
     pitchShift(pitchWheel, synth, pentaScale);
-    pitchShift(pitchWheel, synth2, diatonicScale);
+    //pitchShift(pitchWheel, synth2, diatonicScale);
     let harmonicity = pitchWheel / 180;
     updateFieldIfNotNull('harmonicity', harmonicity);
     autoFilter.baseFrequency = filterWheel;
@@ -185,7 +185,7 @@ var i = 0;
     console.log(diffAcc);
 
     if (diffAcc > 10)
-    synth.triggerAttackRelease("C2", "8n");
+    synth3.triggerAttackRelease("C2", "8n");
 
 
 
