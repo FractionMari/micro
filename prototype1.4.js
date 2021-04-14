@@ -103,8 +103,8 @@ function handleOrientation(event) {
 
     if (Math.abs(event.gamma) > 20)
       synth3.triggerAttackRelease();
-      console.log(filterWheel);
-      pitchShift(filterWheel, synth3, diatonicScale);
+      console.log(Math.abs(event.gamma));
+      pitchShift(Math.abs(event.gamma), synth3, diatonicScale);
 
 
   }
