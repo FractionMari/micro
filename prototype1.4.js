@@ -5,7 +5,11 @@
 // Tone.js parameters:
 
 const gainNode = new Tone.Gain().toDestination();
-const autoFilter = new Tone.AutoWah().connect(gainNode);
+const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
+
+const autoFilter = new Tone.AutoWah().connect(pingPong);
+
+
 const synth = new Tone.DuoSynth().connect(autoFilter);
 const synth2 = new Tone.FMSynth().connect(autoFilter);
 
@@ -87,6 +91,7 @@ function handleOrientation(event) {
     updateFieldIfNotNull('harmonicity', harmonicity);
     autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
+    pingPong.wet.value = event.alpha;
 
   }
 
