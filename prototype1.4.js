@@ -12,6 +12,8 @@ const autoFilter = new Tone.AutoWah().connect(pingPong);
 
 const synth = new Tone.DuoSynth().connect(autoFilter);
 const synth2 = new Tone.FMSynth().connect(autoFilter);
+const synth3 = new Tone.MembraneSynth().toDestination();
+
 
 const player = new Tone.Player("https://tonejs.github.io/audio/berklee/gong_1.mp3").toDestination();
 
@@ -183,7 +185,7 @@ var i = 0;
     console.log(diffAcc);
 
     if (diffAcc > 10)
-      player.autostart = true;
+    synth.triggerAttackRelease("C2", "8n");
 
 
 
