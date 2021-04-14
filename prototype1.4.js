@@ -13,6 +13,9 @@ const autoFilter = new Tone.AutoWah().connect(pingPong);
 const synth = new Tone.DuoSynth().connect(autoFilter);
 const synth2 = new Tone.FMSynth().connect(autoFilter);
 
+const player = new Tone.Player("https://tonejs.github.io/audio/berklee/gong_1.mp3").toDestination();
+
+
 let newAcc;
 let newAcc2;
 let inverse = true;
@@ -178,6 +181,9 @@ var i = 0;
       updateFieldIfNotNull('volume_acc', newAcc );
     //monitoring diffAcc
     console.log(diffAcc);
+
+    if (diffAcc > 10)
+      player.autostart = true;
 
 
 
