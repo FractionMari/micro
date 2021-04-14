@@ -184,7 +184,7 @@ var i = 0;
     //monitoring diffAcc
     console.log(diffAcc);
 
-    if (diffAcc > 10)
+    if (diffAcc > 20)
     synth3.triggerAttackRelease("C2", "8n");
 
 
