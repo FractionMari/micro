@@ -7,12 +7,12 @@
 const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 
-const autoFilter = new Tone.AutoWah().connect(pingPong);
+const autoFilter = new Tone.AutoWah().connect(gainNode);
 
 
 const synth = new Tone.DuoSynth().connect(autoFilter);
 //const synth2 = new Tone.FMSynth().connect(autoFilter);
-const synth3 = new Tone.MembraneSynth().toDestination();
+const synth3 = new Tone.MembraneSynth().connect(pingPong);
 
 
 const player = new Tone.Player("https://tonejs.github.io/audio/berklee/gong_1.mp3").toDestination();
@@ -96,8 +96,12 @@ function handleOrientation(event) {
     updateFieldIfNotNull('harmonicity', harmonicity);
     autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
-    pingPong.wet.value = event.alpha;
+    pingPong.wet.value = event.alpha / 10 ;
     //console.log(event.alpha);
+
+    if (Math.abs(event.gamma) > 20)
+      synth3.triggerAttackRelease("C2", "8n");
+
 
   }
 
@@ -182,10 +186,7 @@ var i = 0;
       
       updateFieldIfNotNull('volume_acc', newAcc );
     //monitoring diffAcc
-    console.log(diffAcc);
 
-    if (diffAcc > 20)
-    synth3.triggerAttackRelease("C2", "8n");
 
 
 
