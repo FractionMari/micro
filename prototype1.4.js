@@ -82,11 +82,13 @@ function handleOrientation(event) {
     let pitchWheel = event.beta;
     let filterWheel = event.gamma;
     let filterScale = generateScaleFunction(0, 90, 10, 300);
+
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
     //filterWheel = filterWheel + 50;
     //filterWheel = Math.abs(filterWheel * 6);
     pitchWheel = pitchWheel + 180;
+    alphaWheel = Math.abs(event.alpha);
 
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     updateFieldIfNotNull('filterwheel', filterWheel);
@@ -101,6 +103,7 @@ function handleOrientation(event) {
 
     if (Math.abs(event.gamma) > 20)
       synth3.triggerAttackRelease("C2", "8n");
+      pitchShift(alphaWheel, synth3, diatonicScale);
 
 
   }
