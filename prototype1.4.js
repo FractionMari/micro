@@ -99,7 +99,7 @@ function handleOrientation(event) {
     autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
     pingPong.wet.value = event.alpha / 360 ;
-    console.log(event.alpha / 360);
+    //console.log(event.alpha / 360);
 
     if (Math.abs(event.gamma) > 20)
       synth3.triggerAttackRelease();
