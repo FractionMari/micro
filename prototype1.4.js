@@ -105,7 +105,7 @@ function handleOrientation(event) {
 
   }
 
-
+/* 
 function incrementEventCount(){
 let counterElement = document.getElementById("num-observed-events")
 let eventCount = parseInt(counterElement.innerHTML)
@@ -119,7 +119,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       document.getElementById(fieldName).innerHTML = value.toFixed(precision);
   }
 
-
+ */
 
 
 // variables for differing between frames:
