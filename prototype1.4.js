@@ -145,7 +145,6 @@ var i = 0;
       let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
       let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
       let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
-      console.log(diffAcc);
     
       updateFieldIfNotNull('test_x', accl.x );
     
