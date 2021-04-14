@@ -102,7 +102,7 @@ function handleOrientation(event) {
     console.log(event.alpha / 360);
 
     if (Math.abs(event.gamma) > 20)
-      synth3.triggerAttackRelease("C2", "8n");
+      synth3.triggerAttackRelease();
       pitchShift(alphaWheel, synth3, diatonicScale);
 
 
@@ -209,7 +209,7 @@ var i = 0;
     // more smooth change of volume:
     gainNode.gain.rampTo(newAcc, 0.1);
       
-      incrementEventCount();
+      //incrementEventCount();
     }
     
 
