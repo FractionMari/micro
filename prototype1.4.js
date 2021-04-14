@@ -96,8 +96,8 @@ function handleOrientation(event) {
     updateFieldIfNotNull('harmonicity', harmonicity);
     autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
-    pingPong.wet.value = event.alpha / 10 ;
-    //console.log(event.alpha);
+    pingPong.wet.value = event.alpha / 360 ;
+    console.log(event.alpha / 360);
 
     if (Math.abs(event.gamma) > 20)
       synth3.triggerAttackRelease("C2", "8n");
