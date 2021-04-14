@@ -105,13 +105,13 @@ function handleOrientation(event) {
 
   }
 
-/* 
-function incrementEventCount(){
+
+/* function incrementEventCount(){
 let counterElement = document.getElementById("num-observed-events")
 let eventCount = parseInt(counterElement.innerHTML)
 counterElement.innerHTML = eventCount + 1;
 //  updateFieldIfNotNull('eventcount', eventCount );
-}
+} */
 
 // function for updating values for sensor data
 function updateFieldIfNotNull(fieldName, value, precision=2){
@@ -119,7 +119,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       document.getElementById(fieldName).innerHTML = value.toFixed(precision);
   }
 
- */
+
 
 
 // variables for differing between frames:
