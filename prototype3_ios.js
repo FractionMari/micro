@@ -24,7 +24,7 @@ function updateDB() {
 ////////// output console log code////////// 
 ////////// ////////// ////////// ////////// 
 // Reference to an output container, use 'pre' styling for JSON output
-
+/* 
 var output = document.createElement('pre');
 document.body.appendChild(output);
 
@@ -55,13 +55,13 @@ function consoleInput( data ) {
         console.log( e.stack );
     }
 }
-console.log("Testing :)")
+console.log("Testing :D") */
 
 
 
 // Tone.js parameters
 
-let pitchslider = document.getElementById("pitch");
+// let pitchslider = document.getElementById("pitch");
 
 const gainNode = new Tone.Gain().toMaster();
 
@@ -151,10 +151,6 @@ var playerBuffers = new Tone.Buffers({
 
 
 
-
-
-
-
 let newAcc;
 let newAcc2;
 let inverse = true;
@@ -221,42 +217,13 @@ loopActivate(player4, player4_2, 80);
   }
 
 
-
-
-/* if (
-    DeviceMotionEvent &&
-    typeof DeviceMotionEvent.requestPermission === "function"
-    ) {
-    DeviceMotionEvent.requestPermission();
-    }
-
-window.addEventListener("deviceorientation", handleOrientation); */
-
-
 // function for updating values for sensor data
 function updateFieldIfNotNull(fieldName, value, precision=2){
     if (value != null)
       document.getElementById(fieldName).innerHTML = value.toFixed(precision);
   }
 
-/* // LowPassFilterData(reading, bias) To be able to calcualte the difference between Accelerometer frames
-class LowPassFilterData {
-  constructor(reading) {
-    Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
-  }
-  
-    update(reading) {
-      this.x = reading.x;
-      this.y = reading.y;
-      this.z = reading.z;
-    }
-  };
-  
-  // The accelerometer
-  const accl = new Accelerometer({ frequency: 10 }); */
-                
-  // Isolate gravity with low-pass filter.
-/*   const filter = new LowPassFilterData(accl); */
+
 
 // variables for differing between frames:
 let accXdiff = [];
@@ -305,21 +272,6 @@ var i = 0;
       updateFieldIfNotNull('diff_acc', diffAcc );
       updateFieldIfNotNull('volume_acc', newAcc );
     
-    /* 
-      updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
-      updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
-      updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
-    
-      updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
-      updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
-      updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
-    
-      updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
-    
-      updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
-      updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
-      updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma); */
-
     //monitoring diffAcc
 
     var fn = generateScaleFunction(0, 10, 0.3, 0);
@@ -343,115 +295,4 @@ var i = 0;
       
       //incrementEventCount();
     }
- /*    
-  accl.onreading = () => {
-
-    let xValue = accl.x;
-    let yValue = accl.y;
-    let zValue = accl.z;
-    let xFilter = filter.x;
-    let yFilter = filter.y;
-    let zFilter = filter.z;
-    let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
-    let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
-    let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
-
-
-    filter.update(accl); // Pass latest values through filter.
-    updateFieldIfNotNull('test_x', accl.x );
-    updateFieldIfNotNull('filter_x', filter.x );
-
-    updateFieldIfNotNull('test_y', accl.y );
-    updateFieldIfNotNull('filter_y', filter.y );
-
-    updateFieldIfNotNull('test_z', accl.z );
-    updateFieldIfNotNull('filter_z', filter.z );
-
-    updateFieldIfNotNull('total_acc', totAcc );
-    updateFieldIfNotNull('total_filter', totFilter );
-    updateFieldIfNotNull('diff_acc', diffAcc );
-    updateFieldIfNotNull('volume_acc', newAcc );
-
-
-  var fn = generateScaleFunction(0, 3, 0.5, 0);
-  newAcc = fn(diffAcc);
-  newAcc = (clamp(0, 0.5, newAcc));
-
-
-// more smooth change of volume:
-  gainNode.gain.rampTo(newAcc, 0.2);
-
-}  
-
-  accl.start();
-
- */
-  
-
-//   document.getElementById("looper1").addEventListener("click", function(){
-    
-    
-//   if(this.className == 'is-playing'){
-//     this.className = "";
-//     this.innerHTML = "1: OFF"
-//     player.mute = true;
-
-//   }else{
-//     this.className = "is-playing";
-//     this.innerHTML = "1: ON";
-
-//     player.mute = false;
-
-//   }}
-//   );
-
-
-//   document.getElementById("looper2").addEventListener("click", function(){
-
-    
-//   if(this.className == 'is-playing'){
-//     this.className = "";
-//     this.innerHTML = "2: OFF"
-//     player2.mute = true;
-
-//   }else{
-//     this.className = "is-playing";
-//     this.innerHTML = "2: ON";
-
-//     player2.mute = false;
-
-//   }}
-//   );
-
-//   document.getElementById("looper3").addEventListener("click", function(){
-   
-    
-//   if(this.className == 'is-playing'){
-//     this.className = "";
-//     this.innerHTML = "3: OFF"
-//     player3.mute = true;
-
-//   }else{
-//     this.className = "is-playing";
-//     this.innerHTML = "3: ON";
-
-//     player3.mute = false;
-
-//   }}
-//   );
-//   document.getElementById("looper4").addEventListener("click", function(){
-
-    
-//   if(this.className == 'is-playing'){
-//     this.className = "";
-//     this.innerHTML = "4: OFF"
-//     player4.mute = true;
-
-//   }else{
-//     this.className = "is-playing";
-//     this.innerHTML = "4: ON";
-
-//     player4.mute = false;
-
-//   }}
-//   );
+ 
