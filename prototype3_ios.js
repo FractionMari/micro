@@ -1,6 +1,8 @@
 // Functioning prototype 1: Tone.js 15. February
 // The oscillator version with new code + adding the Tone.js library.
 
+const { Tone } = require("tone/build/esm/core/Tone");
+
 // 11. februar: including the Tone.js to improve sound quality
 //1. og 2. mars: creating a loop function
 //16. april: making it work for iOS
@@ -334,6 +336,7 @@ var i = 0;
     if(this.className == 'is-playing'){
       this.className = "";
       this.innerHTML = "Synth: OFF"
+      Tone.stop();
 
       window.removeEventListener("devicemotion", handleMotion);
       window.removeEventListener("deviceorientation", handleOrientation);
@@ -343,6 +346,7 @@ var i = 0;
     }else{
       this.className = "is-playing";
       this.innerHTML = "Synth: ON";
+      Tone.start();
 
 
       window.addEventListener("devicemotion", handleMotion);
