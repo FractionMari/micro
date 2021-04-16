@@ -7,7 +7,7 @@
 
 
 // load devicemoton request
-function updateDB() {
+/* function updateDB() {
     // Request permission for iOS 13+ devices
     if (
         DeviceMotionEvent &&
@@ -19,7 +19,7 @@ function updateDB() {
       window.addEventListener("devicemotion", handleMotion);
       window.addEventListener("deviceorientation", handleOrientation);
   }
-
+ */
 ////////// ////////// ////////// ////////// 
 ////////// output console log code////////// 
 ////////// ////////// ////////// ////////// 
@@ -284,15 +284,72 @@ var i = 0;
     newAcc2 = (clamp(0, 0.3, newAcc2));
     //console.log(newAcc2);
     
-/*     if (inverse == false)
+    if (inverse == false)
     gainNode.gain.rampTo(newAcc2, 0.1);
     else
     // more smooth change of volume:
-    gainNode.gain.rampTo(newAcc, 0.1); */
+    gainNode.gain.rampTo(newAcc, 0.1);
 
-    gainNode.gain.rampTo(newAcc, 0.1); 
-    console.log(newAcc);
+
       
       //incrementEventCount();
     }
  
+
+
+
+
+    let is_running = false;
+    let demo_button = document.getElementById("start_demo");
+
+
+  document.getElementById("button2").addEventListener("click", function(){
+  
+      
+    if(this.className == 'is-playing'){
+      this.className = "";
+      this.innerHTML = "Inverse: ON"
+      inverse = true;
+
+
+  
+    }else{
+      this.className = "is-playing";
+      this.innerHTML = "Inverse: OFF";
+      inverse = false;
+  
+    }}
+    ); 
+
+  document.getElementById("button1").addEventListener("click", function(){
+ 
+    // Request permission for iOS 13+ devices
+    if (
+      DeviceMotionEvent &&
+      typeof DeviceMotionEvent.requestPermission === "function"
+    ) {
+      DeviceMotionEvent.requestPermission();
+    }
+    
+    if(this.className == 'is-playing'){
+      this.className = "";
+      this.innerHTML = "Synth: OFF"
+
+      window.removeEventListener("devicemotion", handleMotion);
+      window.removeEventListener("deviceorientation", handleOrientation);
+
+      is_running = false;
+  
+    }else{
+      this.className = "is-playing";
+      this.innerHTML = "Synth: ON";
+
+
+      window.addEventListener("devicemotion", handleMotion);
+      window.addEventListener("deviceorientation", handleOrientation);
+
+      is_running = true;
+      
+  
+    }}
+    );
