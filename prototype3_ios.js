@@ -301,15 +301,15 @@ var i = 0;
 
 
 var playerBuffers = new Tone.Buffers({
-    "drums" : "loops/drums1_80bpm.wav",
-    "bass" : "loops/bass1_80bpm.wav",
-    "arp" : "loops/arp_80bpm.wav",
-    "bass2" : "loops/bass2_80bpm.wav",
-    "2drums" : "loops/2drums1.wav",
-    "2bass" : "loops/2bass1.wav",
-    "2arp" : "loops/2arp.wav",
-    "2bass2" : "loops/2bass2.wav",
-    "2piano" : "loops/2piano.wav"
+    "drums" : "loops/drums1_80bpm.mp3",
+    "bass" : "loops/bass1_80bpm.mp3",
+    "arp" : "loops/arp_80bpm.mp3",
+    "bass2" : "loops/bass2_80bpm.mp3",
+    "2drums" : "loops/2drums1.mp3",
+    "2bass" : "loops/2bass1.mp3",
+    "2arp" : "loops/2arp.mp3",
+    "2bass2" : "loops/2bass2.mp3",
+    "2piano" : "loops/2piano.mp3"
 }, function(){
     //play one of the samples when they all load
 
