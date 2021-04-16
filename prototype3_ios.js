@@ -374,70 +374,70 @@ var i = 0;
  */
   
 
-  document.getElementById("looper1").addEventListener("click", function(){
+//   document.getElementById("looper1").addEventListener("click", function(){
     
     
-  if(this.className == 'is-playing'){
-    this.className = "";
-    this.innerHTML = "1: OFF"
-    player.mute = true;
+//   if(this.className == 'is-playing'){
+//     this.className = "";
+//     this.innerHTML = "1: OFF"
+//     player.mute = true;
 
-  }else{
-    this.className = "is-playing";
-    this.innerHTML = "1: ON";
+//   }else{
+//     this.className = "is-playing";
+//     this.innerHTML = "1: ON";
 
-    player.mute = false;
+//     player.mute = false;
 
-  }}
-  );
+//   }}
+//   );
 
 
-  document.getElementById("looper2").addEventListener("click", function(){
+//   document.getElementById("looper2").addEventListener("click", function(){
 
     
-  if(this.className == 'is-playing'){
-    this.className = "";
-    this.innerHTML = "2: OFF"
-    player2.mute = true;
+//   if(this.className == 'is-playing'){
+//     this.className = "";
+//     this.innerHTML = "2: OFF"
+//     player2.mute = true;
 
-  }else{
-    this.className = "is-playing";
-    this.innerHTML = "2: ON";
+//   }else{
+//     this.className = "is-playing";
+//     this.innerHTML = "2: ON";
 
-    player2.mute = false;
+//     player2.mute = false;
 
-  }}
-  );
+//   }}
+//   );
 
-  document.getElementById("looper3").addEventListener("click", function(){
+//   document.getElementById("looper3").addEventListener("click", function(){
    
     
-  if(this.className == 'is-playing'){
-    this.className = "";
-    this.innerHTML = "3: OFF"
-    player3.mute = true;
+//   if(this.className == 'is-playing'){
+//     this.className = "";
+//     this.innerHTML = "3: OFF"
+//     player3.mute = true;
 
-  }else{
-    this.className = "is-playing";
-    this.innerHTML = "3: ON";
+//   }else{
+//     this.className = "is-playing";
+//     this.innerHTML = "3: ON";
 
-    player3.mute = false;
+//     player3.mute = false;
 
-  }}
-  );
-  document.getElementById("looper4").addEventListener("click", function(){
+//   }}
+//   );
+//   document.getElementById("looper4").addEventListener("click", function(){
 
     
-  if(this.className == 'is-playing'){
-    this.className = "";
-    this.innerHTML = "4: OFF"
-    player4.mute = true;
+//   if(this.className == 'is-playing'){
+//     this.className = "";
+//     this.innerHTML = "4: OFF"
+//     player4.mute = true;
 
-  }else{
-    this.className = "is-playing";
-    this.innerHTML = "4: ON";
+//   }else{
+//     this.className = "is-playing";
+//     this.innerHTML = "4: ON";
 
-    player4.mute = false;
+//     player4.mute = false;
 
-  }}
-  );
+//   }}
+//   );
