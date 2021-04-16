@@ -339,6 +339,7 @@ var i = 0;
     gainNode.gain.rampTo(newAcc, 0.1); */
 
     gainNode.gain.rampTo(newAcc, 0.1); 
+    console.log(newAcc);
       
       //incrementEventCount();
     }
