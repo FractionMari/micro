@@ -65,7 +65,7 @@ console.log("Testing :D") */
 
 // let pitchslider = document.getElementById("pitch");
 
-const gainNode = new Tone.Gain().toDestination();
+const gainNode = new Tone.Gain().toMaster();
 
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
 const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
