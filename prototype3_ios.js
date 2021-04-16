@@ -303,7 +303,6 @@ var i = 0;
       updateFieldIfNotNull('total_acc', totAcc );
       updateFieldIfNotNull('total_filter', totFilter );
       updateFieldIfNotNull('diff_acc', diffAcc );
-      updateFieldIfNotNull('diff_acc', diffAcc );
       updateFieldIfNotNull('volume_acc', newAcc );
     
     /* 
