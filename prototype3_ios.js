@@ -1,7 +1,7 @@
 // Functioning prototype 1: Tone.js 15. February
 // The oscillator version with new code + adding the Tone.js library.
 
-const { Tone } = require("tone/build/esm/core/Tone");
+
 
 // 11. februar: including the Tone.js to improve sound quality
 //1. og 2. mars: creating a loop function
