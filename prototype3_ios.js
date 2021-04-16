@@ -321,7 +321,7 @@ var i = 0;
       updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma); */
 
     //monitoring diffAcc
-
+/* 
     var fn = generateScaleFunction(0, 10, 0.3, 0);
     newAcc = fn(diffAcc);
     newAcc = (clamp(0, 0.3, newAcc));
@@ -336,7 +336,9 @@ var i = 0;
     gainNode.gain.rampTo(newAcc2, 0.1);
     else
     // more smooth change of volume:
-    gainNode.gain.rampTo(newAcc, 0.1);
+    gainNode.gain.rampTo(newAcc, 0.1); */
+
+    gainNode.gain.rampTo(newAcc, 0.1); 
       
       //incrementEventCount();
     }
