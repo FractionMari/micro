@@ -5,6 +5,21 @@
 //1. og 2. mars: creating a loop function
 //16. april: making it work for iOS
 
+
+// load devicemoton request
+function updateDB() {
+    // Request permission for iOS 13+ devices
+    if (
+        DeviceMotionEvent &&
+        typeof DeviceMotionEvent.requestPermission === "function"
+      ) {
+        DeviceMotionEvent.requestPermission();
+      }
+
+      window.addEventListener("devicemotion", handleMotion);
+      window.addEventListener("deviceorientation", handleOrientation);
+  }
+
 ////////// ////////// ////////// ////////// 
 ////////// output console log code////////// 
 ////////// ////////// ////////// ////////// 
