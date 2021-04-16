@@ -60,7 +60,7 @@ a:hover {
     background: rgb(0, 0, 0);
     padding: 20px;
     border: 10px rgb(68, 7, 38) solid;
-    background-image: url("bg7.jpg");
+    background-image: url("assets/bg7.jpg");
     }
 
 #container4 {
@@ -71,7 +71,7 @@ a:hover {
     background: rgb(0, 0, 0);
     padding: 20px;
     border: 10px rgb(84, 117, 6) solid;
-    background-image: url("bg8.jpg");
+    background-image: url("assets/bg8.jpg");
     color: rgb(68, 7, 38) solid;
     background-size: cover;
     }
@@ -84,7 +84,7 @@ a:hover {
     background: rgb(0, 0, 0);
     padding: 20px;
     border: 10px rgb(84, 117, 6) solid;
-    background-image: url("bg9.jpg");
+    background-image: url("assets/bg9.jpg");
     color: rgb(68, 7, 38) solid;;
     background-size: cover;
     }
@@ -97,7 +97,7 @@ a:hover {
     background: rgb(0, 0, 0);
     padding: 20px;
     border: 20px rgba(255, 0, 68, 0.42) solid;
-    background-image: url("bg9.jpg");
+    background-image: url("assets/bg9.jpg");
     color: rgb(68, 7, 38) solid;;
     background-size: cover;
     }
