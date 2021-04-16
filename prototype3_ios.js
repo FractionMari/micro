@@ -322,9 +322,6 @@ var i = 0;
 
     //monitoring diffAcc
 
-
-
-
     var fn = generateScaleFunction(0, 10, 0.3, 0);
     newAcc = fn(diffAcc);
     newAcc = (clamp(0, 0.3, newAcc));
