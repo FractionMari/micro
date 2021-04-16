@@ -117,41 +117,6 @@ player4_2.mute = true;
 player5_2.mute = true;
 
 
-var playerBuffers = new Tone.Buffers({
-    "drums" : "loops/drums1_80bpm.wav",
-    "bass" : "loops/bass1_80bpm.wav",
-    "arp" : "loops/arp_80bpm.wav",
-    "bass2" : "loops/bass2_80bpm.wav",
-    "2drums" : "loops/2drums1.wav",
-    "2bass" : "loops/2bass1.wav",
-    "2arp" : "loops/2arp.wav",
-    "2bass2" : "loops/2bass2.wav",
-    "2piano" : "loops/2piano.wav"
-}, function(){
-    //play one of the samples when they all load
-
-  player.buffer = playerBuffers.get("drums");
-    player.start();
-  player2.buffer = playerBuffers.get("bass");
-    player2.start();
-  player3.buffer = playerBuffers.get("arp");
-    player3.start();
-  player4.buffer = playerBuffers.get("bass2");
-    player4.start();
-
-  player1_2.buffer = playerBuffers.get("2drums");
-    player1_2.start();
-  player2_2.buffer = playerBuffers.get("2bass");
-    player2_2.start();
-  player3_2.buffer = playerBuffers.get("2arp");
-    player3_2.start();
-  player4_2.buffer = playerBuffers.get("2bass2");
-    player4_2.start();
-  player5_2.buffer = playerBuffers.get("2piano");
-    player5_2.start();
-});
-
-
 
 let newAcc;
 let newAcc2;
@@ -333,6 +298,42 @@ var i = 0;
       DeviceMotionEvent.requestPermission();
     }
     
+
+
+var playerBuffers = new Tone.Buffers({
+    "drums" : "loops/drums1_80bpm.wav",
+    "bass" : "loops/bass1_80bpm.wav",
+    "arp" : "loops/arp_80bpm.wav",
+    "bass2" : "loops/bass2_80bpm.wav",
+    "2drums" : "loops/2drums1.wav",
+    "2bass" : "loops/2bass1.wav",
+    "2arp" : "loops/2arp.wav",
+    "2bass2" : "loops/2bass2.wav",
+    "2piano" : "loops/2piano.wav"
+}, function(){
+    //play one of the samples when they all load
+
+  player.buffer = playerBuffers.get("drums");
+    player.start();
+  player2.buffer = playerBuffers.get("bass");
+    player2.start();
+  player3.buffer = playerBuffers.get("arp");
+    player3.start();
+  player4.buffer = playerBuffers.get("bass2");
+    player4.start();
+
+  player1_2.buffer = playerBuffers.get("2drums");
+    player1_2.start();
+  player2_2.buffer = playerBuffers.get("2bass");
+    player2_2.start();
+  player3_2.buffer = playerBuffers.get("2arp");
+    player3_2.start();
+  player4_2.buffer = playerBuffers.get("2bass2");
+    player4_2.start();
+  player5_2.buffer = playerBuffers.get("2piano");
+    player5_2.start();
+});
+
     if(this.className == 'is-playing'){
       this.className = "";
       this.innerHTML = "Synth: OFF"
