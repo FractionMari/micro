@@ -277,9 +277,8 @@ var playerBuffers = new Tone.Buffers({
       "2arp" : "loops/2RolegSong_orgel1.mp3",
       "2bass2" : "loops/2RolegSong_piano.mp3",
       "2piano" : "loops/2RolegSong_orgel2.mp3"
-  }); 
-  
-
+  }, 
+  function(){
       //play one of the samples when they all load
   
 
@@ -302,7 +301,7 @@ var playerBuffers = new Tone.Buffers({
     player4_2.start();
   player5_2.buffer = playerBuffers.get("2piano");
     player5_2.start();
-
+});
 
     if(this.className == 'is-playing'){
       this.className = "";
