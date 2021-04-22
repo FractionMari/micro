@@ -1,3 +1,9 @@
+// This prototype is an app for android and iOs phones, which uses
+// accelerometer and gyroscoe data to control a loop. 
+// The prototype was developed by Mari Lesteberg 
+// from Janury - June 2021, supported by RITMO / University of Oslo
+ß
+
 // Functioning prototype 1: Tone.js 15. February
 // The oscillator version with new code + adding the Tone.js library.
 
