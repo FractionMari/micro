@@ -8,58 +8,6 @@
 //16. april: making it work for iOS
 
 
-// load devicemoton request
-/* function updateDB() {
-    // Request permission for iOS 13+ devices
-    if (
-        DeviceMotionEvent &&
-        typeof DeviceMotionEvent.requestPermission === "function"
-      ) {
-        DeviceMotionEvent.requestPermission();
-      }
-
-      window.addEventListener("devicemotion", handleMotion);
-      window.addEventListener("deviceorientation", handleOrientation);
-  }
- */
-////////// ////////// ////////// ////////// 
-////////// output console log code////////// 
-////////// ////////// ////////// ////////// 
-// Reference to an output container, use 'pre' styling for JSON output
-/* 
-var output = document.createElement('pre');
-document.body.appendChild(output);
-
-// Reference to native method(s)
-var oldLog = console.log;
-
-console.log = function( ...items ) {
-
-    // Call native method first
-    oldLog.apply(this,items);
-
-    // Use JSON to transform objects, all others display normally
-    items.forEach( (item,i)=>{
-        items[i] = (typeof item === 'object' ? JSON.stringify(item,null,4) : item);
-    });
-    output.innerHTML += items.join(' ') + '<br />';
-
-};
-
-// Y1ou could even allow Javascript input...
-function consoleInput( data ) {
-    // Print it to console as typed
-    
-    console.log( data + '<br />' );
-    try {
-        console.log( eval( data ) );
-    } catch (e) {
-        console.log( e.stack );
-    }
-}
-console.log("Testing :D") */
-
-
 
 // Tone.js parameters
 
@@ -160,13 +108,13 @@ function loopActivate(players1, players2, value) {
   players1.mute = true,
   players2.mute = true;
 
-  else if ((filterWheel > 40) && (betaWheel > value))
-  players1.mute = false,
-  players2.mute = true;
+  else if ((filterWheel > 80) && (betaWheel > value))
+  players2.mute = false,
+  players1.mute = true;
 
   else
-  players1.mute = true,
-  players2.mute = false;
+  players2.mute = true,
+  players1.mute = false;
 
 };
 
