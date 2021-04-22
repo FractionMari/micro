@@ -2,7 +2,7 @@
 // accelerometer and gyroscoe data to control a loop. 
 // The prototype was developed by Mari Lesteberg 
 // from Janury - June 2021, supported by RITMO / University of Oslo
-ß
+
 
 // Functioning prototype 1: Tone.js 15. February
 // The oscillator version with new code + adding the Tone.js library.
@@ -253,7 +253,7 @@ var i = 0;
     }
     
 
-
+/* 
 var playerBuffers = new Tone.Buffers({
     "drums" : "loops/drums1_80bpm.mp3",
     "bass" : "loops/bass1_80bpm.mp3",
@@ -264,8 +264,22 @@ var playerBuffers = new Tone.Buffers({
     "2arp" : "loops/2arp.mp3",
     "2bass2" : "loops/2bass2.mp3",
     "2piano" : "loops/2piano.mp3"
-}, function(){
+}, function(){ */
     //play one of the samples when they all load
+
+    var playerBuffers = new Tone.Buffers({
+      "drums" : "loops/RolegSong_trommer.mp3",
+      "bass" : "loops/RolegSong_bass.mp3",
+      "arp" : "loops/RolegSong_orgel1.mp3",
+      "bass2" : "loops/RolegSong_piano.mp3",
+      "2drums" : "loops/2RolegSong_trommer.mp3",
+      "2bass" : "loops/2RolegSong_bass.mp3",
+      "2arp" : "loops/2RolegSong_orgel1.mp3",
+      "2bass2" : "loops/2RolegSong_piano.mp3",
+      "2piano" : "loops/2RolegSong_orgel2.mp3"
+  }, function(){
+      //play one of the samples when they all load
+  
 
   player.buffer = playerBuffers.get("drums");
     player.start();

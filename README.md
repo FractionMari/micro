@@ -7,9 +7,9 @@ In the micromotion apps, we use accelerometer and gyroscope sensor data from the
 
 The prototypes must be opened on android or iPhone to work, and can be reached from these two links: 
 
-* https://fractionmari.github.io/micro/
+* [prototype 1](https://fractionmari.github.io/micro/)
 
-* https://fractionmari.github.io/micro/prototype3.html
+* [prototype 2](https://fractionmari.github.io/micro/prototype3.html)
 
 ### Sverm
 
