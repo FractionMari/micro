@@ -260,28 +260,6 @@ var i = 0;
   });
 
 
-
-  document.getElementById("button2").addEventListener("click", function(){
-  
-      
-    if(this.className == 'is-playing'){
-      this.className = "";
-      this.innerHTML = "Inverse: ON"
-      inverse = true;
-
-
-  
-    }else{
-      this.className = "is-playing";
-      this.innerHTML = "Inverse: OFF";
-      inverse = false;
-  
-    }}
-    ); 
-
-
-
-
     document.getElementById("looper1").addEventListener("click", function(){
 
         // Request permission for iOS 13+ devices
@@ -426,185 +404,18 @@ var i = 0;
 
 
 
-
-//   document.getElementById("button1").addEventListener("click", function(){
- 
-//     // Request permission for iOS 13+ devices
-//     if (
-//       DeviceMotionEvent &&
-//       typeof DeviceMotionEvent.requestPermission === "function"
-//     ) {
-//       DeviceMotionEvent.requestPermission();
-//     }
-    
-
-// /* 
-// var playerBuffers = new Tone.Buffers({
-//     "drums" : "loops/drums1_80bpm.mp3",
-//     "bass" : "loops/bass1_80bpm.mp3",
-//     "arp" : "loops/arp_80bpm.mp3",
-//     "bass2" : "loops/bass2_80bpm.mp3",
-//     "2drums" : "loops/2drums1.mp3",
-//     "2bass" : "loops/2bass1.mp3",
-//     "2arp" : "loops/2arp.mp3",
-//     "2bass2" : "loops/2bass2.mp3",
-//     "2piano" : "loops/2piano.mp3"
-// }, function(){ */
-//     //play one of the samples when they all load
-
-
-
-
-// document.getElementById("looper1").addEventListener("click", function(){
-    
-    
-//   if (this.className == 'is-playing')
+  document.getElementById("button2").addEventListener("click", function(){
   
-//   {
-//     this.className = "is-playing2";
-//     this.innerHTML = "Loop 3 ON"
-//     var playerBuffers = new Tone.Buffers({
-//       "drums" : "loops/drums1_80bpm.mp3",
-//       "bass" : "loops/bass1_80bpm.mp3",
-//       "arp" : "loops/arp_80bpm.mp3",
-//       "bass2" : "loops/bass2_80bpm.mp3",
-//       "2drums" : "loops/2drums1.mp3",
-//       "2bass" : "loops/2bass1.mp3",
-//       "2arp" : "loops/2arp.mp3",
-//       "2bass2" : "loops/2bass2.mp3",
-//       "2piano" : "loops/2piano.mp3"
-//   }, function(){ 
-
-//     player.buffer = playerBuffers.get("drums");
-//     player.start();
-//   player2.buffer = playerBuffers.get("bass");
-//     player2.start();
-//   player3.buffer = playerBuffers.get("arp");
-//     player3.start();
-//   player4.buffer = playerBuffers.get("bass2");
-//     player4.start();
-
-//   player1_2.buffer = playerBuffers.get("2drums");
-//     player1_2.start();
-//   player2_2.buffer = playerBuffers.get("2bass");
-//     player2_2.start();
-//   player3_2.buffer = playerBuffers.get("2arp");
-//     player3_2.start();
-//   player4_2.buffer = playerBuffers.get("2bass2");
-//     player4_2.start();
-//   player5_2.buffer = playerBuffers.get("2piano");
-//     player5_2.start();
-// });
-
-//   }else if (this.className == 'is-playing2')
-  
-//   {
-//     this.className = "";
-//     this.innerHTML = "Loop 1 ON";
-
-//     var playerBuffers = new Tone.Buffers({
-//       "drums" : "loops/RolegSong_trommer.mp3",
-//       "bass" : "loops/RolegSong_bass.mp3",
-//       "arp" : "loops/RolegSong_orgel1.mp3",
-//       "bass2" : "loops/RolegSong_piano.mp3",
-//       "2drums" : "loops/2RolegSong_trommer.mp3",
-//       "2bass" : "loops/2RolegSong_bass.mp3",
-//       "2arp" : "loops/2RolegSong_orgel1.mp3",
-//       "2bass2" : "loops/2RolegSong_piano.mp3",
-//       "2piano" : "loops/2RolegSong_orgel2.mp3"
-//   }, 
-//   function(){
-//       //play one of the samples when they all load
-  
-
-//   player.buffer = playerBuffers.get("drums");
-//     player.start();
-//   player2.buffer = playerBuffers.get("bass");
-//     player2.start();
-//   player3.buffer = playerBuffers.get("arp");
-//     player3.start();
-//   player4.buffer = playerBuffers.get("bass2");
-//     player4.start();
-
-//   player1_2.buffer = playerBuffers.get("2drums");
-//     player1_2.start();
-//   player2_2.buffer = playerBuffers.get("2bass");
-//     player2_2.start();
-//   player3_2.buffer = playerBuffers.get("2arp");
-//     player3_2.start();
-//   player4_2.buffer = playerBuffers.get("2bass2");
-//     player4_2.start();
-//   player5_2.buffer = playerBuffers.get("2piano");
-//     player5_2.start();
-// });
-
-// }else{
-//     this.className = "is-playing";
-//     this.innerHTML = "Loop 2 ON";
-
-//     var playerBuffers = new Tone.Buffers({
-//       "drums" : "loops/jazzloop_drums.mp3",
-//       "bass" : "loops/jazzloop_bass.mp3",
-//       "arp" : "loops/jazzloop_piano.mp3",
-//       "bass2" : "loops/jazzloop_synth.mp3",
-//       "2drums" : "loops/2jazzloop_drums.mp3",
-//       "2bass" : "loops/2jazzloop_bass.mp3",
-//       "2arp" : "loops/2jazzloop_piano.mp3",
-//       "2bass2" : "loops/2jazzloop_synth.mp3",
-//       "2piano" : "loops/2jazzloop_cosmic.mp3"
-//   }, 
-//   function(){
-//       //play one of the samples when they all load
-  
-
-//   player.buffer = playerBuffers.get("drums");
-//     player.start();
-//   player2.buffer = playerBuffers.get("bass");
-//     player2.start();
-//   player3.buffer = playerBuffers.get("arp");
-//     player3.start();
-//   player4.buffer = playerBuffers.get("bass2");
-//     player4.start();
-
-//   player1_2.buffer = playerBuffers.get("2drums");
-//     player1_2.start();
-//   player2_2.buffer = playerBuffers.get("2bass");
-//     player2_2.start();
-//   player3_2.buffer = playerBuffers.get("2arp");
-//     player3_2.start();
-//   player4_2.buffer = playerBuffers.get("2bass2");
-//     player4_2.start();
-//   player5_2.buffer = playerBuffers.get("2piano");
-//     player5_2.start();
-// });
-
-//   }}
-//   );
-
-
-
-
-//     if(this.className == 'is-playing'){
-//       this.className = "";
-//       this.innerHTML = "Player: OFF"
-//       Tone.stop();
-
-//       window.removeEventListener("devicemotion", handleMotion);
-//       window.removeEventListener("deviceorientation", handleOrientation);
-
-//       is_running = false;
-  
-//     }else{
-//       this.className = "is-playing";
-//       this.innerHTML = "Player: ON";
-//       Tone.start();
-
-
-//       window.addEventListener("devicemotion", handleMotion);
-//       window.addEventListener("deviceorientation", handleOrientation);
-
-//       is_running = true;
       
+    if(this.className == 'is-playing'){
+      this.className = "";
+      this.innerHTML = "Inverse: ON"
+      inverse = true;
   
-//     }}
-//     );
+    }else{
+      this.className = "is-playing";
+      this.innerHTML = "Inverse: OFF";
+      inverse = false;
+  
+    }}
+    ); 
