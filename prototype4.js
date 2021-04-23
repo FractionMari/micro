@@ -223,7 +223,41 @@ var i = 0;
     let is_running = false;
     let demo_button = document.getElementById("start_demo");
 
-
+    var playerBuffers = new Tone.Buffers({
+        "drums" : "loops/RolegSong_trommer.mp3",
+        "bass" : "loops/RolegSong_bass.mp3",
+        "arp" : "loops/RolegSong_orgel1.mp3",
+        "bass2" : "loops/RolegSong_piano.mp3",
+        "2drums" : "loops/2RolegSong_trommer.mp3",
+        "2bass" : "loops/2RolegSong_bass.mp3",
+        "2arp" : "loops/2RolegSong_orgel1.mp3",
+        "2bass2" : "loops/2RolegSong_piano.mp3",
+        "2piano" : "loops/2RolegSong_orgel2.mp3"
+    }, 
+    function(){
+        //play one of the samples when they all load
+    
+  
+    player.buffer = playerBuffers.get("drums");
+      player.start();
+    player2.buffer = playerBuffers.get("bass");
+      player2.start();
+    player3.buffer = playerBuffers.get("arp");
+      player3.start();
+    player4.buffer = playerBuffers.get("bass2");
+      player4.start();
+  
+    player1_2.buffer = playerBuffers.get("2drums");
+      player1_2.start();
+    player2_2.buffer = playerBuffers.get("2bass");
+      player2_2.start();
+    player3_2.buffer = playerBuffers.get("2arp");
+      player3_2.start();
+    player4_2.buffer = playerBuffers.get("2bass2");
+      player4_2.start();
+    player5_2.buffer = playerBuffers.get("2piano");
+      player5_2.start();
+  });
   document.getElementById("button2").addEventListener("click", function(){
   
       
@@ -267,41 +301,7 @@ var playerBuffers = new Tone.Buffers({
 }, function(){ */
     //play one of the samples when they all load
 
-    var playerBuffers = new Tone.Buffers({
-        "drums" : "loops/RolegSong_trommer.mp3",
-        "bass" : "loops/RolegSong_bass.mp3",
-        "arp" : "loops/RolegSong_orgel1.mp3",
-        "bass2" : "loops/RolegSong_piano.mp3",
-        "2drums" : "loops/2RolegSong_trommer.mp3",
-        "2bass" : "loops/2RolegSong_bass.mp3",
-        "2arp" : "loops/2RolegSong_orgel1.mp3",
-        "2bass2" : "loops/2RolegSong_piano.mp3",
-        "2piano" : "loops/2RolegSong_orgel2.mp3"
-    }, 
-    function(){
-        //play one of the samples when they all load
-    
-  
-    player.buffer = playerBuffers.get("drums");
-      player.start();
-    player2.buffer = playerBuffers.get("bass");
-      player2.start();
-    player3.buffer = playerBuffers.get("arp");
-      player3.start();
-    player4.buffer = playerBuffers.get("bass2");
-      player4.start();
-  
-    player1_2.buffer = playerBuffers.get("2drums");
-      player1_2.start();
-    player2_2.buffer = playerBuffers.get("2bass");
-      player2_2.start();
-    player3_2.buffer = playerBuffers.get("2arp");
-      player3_2.start();
-    player4_2.buffer = playerBuffers.get("2bass2");
-      player4_2.start();
-    player5_2.buffer = playerBuffers.get("2piano");
-      player5_2.start();
-  });
+
 
 
 document.getElementById("looper1").addEventListener("click", function(){
