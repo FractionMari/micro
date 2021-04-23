@@ -362,11 +362,11 @@ document.getElementById("looper1").addEventListener("click", function(){
       "bass" : "loops/jazzloop_bass.mp3",
       "arp" : "loops/jazzloop_piano.mp3",
       "bass2" : "loops/jazzloop_synth.mp3",
-      "2drums" : "loops/2RolegSong_trommer.mp3",
-      "2bass" : "loops/2RolegSong_bass.mp3",
-      "2arp" : "loops/2RolegSong_orgel1.mp3",
-      "2bass2" : "loops/2RolegSong_piano.mp3",
-      "2piano" : "loops/2RolegSong_orgel2.mp3"
+      "2drums" : "loops/2jazzloop_drums.mp3",
+      "2bass" : "loops/2jazzloop_bass.mp3",
+      "2arp" : "loops/2jazzloop_piano.mp3",
+      "2bass2" : "loops/2jazzloop_synth.mp3",
+      "2piano" : "loops/2jazzloop_cosmic.mp3"
   }, 
   function(){
       //play one of the samples when they all load
