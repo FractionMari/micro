@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <title>Micro App Prototype 3</title>
+    <link href="micro2.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Rowdies' rel='stylesheet'>
+
+</head>
+
+<script src="https://tonejs.github.io/build/Tone.js"></script>
+
+<body>
+
+    <button type="button" class="collapsible" id="helpButton">?</button>
+
+
+    <div class="content">
+      <p>How to use this app:
+          <div class="dots">
+    
+        <li> This app must be used on a phone/tablet</li>
+        <li> Activate 1 to 4 different loops by tilting your phone</li>
+        <li> Press button to start. Press it again to switch between different loops</li>
+        <li> The volume decreases when you move your phone. Use the Inverse button to get an opposite effect. </li>
+</div>
+      </p>
+    </div> 
+
+    <div id="container3">
+    <h2>Micro App: protoype 4.2</h2>
+ 
+    <div id="loops">
+
+
+    <button id="looper1" class="loopButtons">PRESS to start</button><br>
+    <button id="button2">Inverse: ON</button><br>
+
+    QOM: <br>
+    <span id="qom">0</span>
+    Inverted QOM: <br>
+    <span id="inv_qom">0</span>
+    Short side tilt<br>
+    <span id="betawheel">0</span> <br>
+    Long side Tilt <br>
+    <span id="filterwheel">0</span>
+
+    </div>
+
+
+    
+    <div id="container7">
+
+
+
+X-axis (&beta;): <span id="Orientation_b">0</span><span>&deg;</span>
+Y-axis (&gamma;): <span id="Orientation_g">0</span><span>&deg;</span>
+Z-axis (&alpha;): <span id="Orientation_a">0</span><span>&deg;</span>
+X-axis: <span id="test_x">0</span>
+X-axis with filter: <span id="filter_x">0</span>
+Y-axis: <span id="test_y">0</span>
+Y-axis with filter: <span id="filter_y">0</span>
+Z-axis: <span id="test_z">0</span>
+Z-axis with filter: <span id="filter_z">0</span>
+Total acc: <span id="total_acc">0</span>
+Total filter: <span id="total_filter">0</span>
+Difference: <span id="diff_acc">0</span>
+
+</div>
+    </div>
+
+
+
+
+</main>
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+    </script>
+<script src="prototype3.js"></script>
+
+<a href ="./prototype4.html">Link to Prototype 4</a>
+
+
+</body>
+</html>

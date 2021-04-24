@@ -8,7 +8,6 @@
 // The oscillator version with new code + adding the Tone.js library.
 
 
-
 // 11. februar: including the Tone.js to improve sound quality
 //1. og 2. mars: creating a loop function
 //16. april: making it work for iOS
