@@ -1,47 +1,23 @@
+// This prototype is an app for android and iOs phones, which uses
+// accelerometer and gyroscoe data to control a loop. 
+// The prototype was developed by Mari Lesteberg 
+// from Janury - June 2021, supported by RITMO / University of Oslo
+
+
 // Functioning prototype 1: Tone.js 15. February
 // The oscillator version with new code + adding the Tone.js library.
 
+
+
 // 11. februar: including the Tone.js to improve sound quality
 //1. og 2. mars: creating a loop function
-
-/// output console log code
-
-// Reference to an output container, use 'pre' styling for JSON output
-
-var output = document.createElement('pre');
-document.body.appendChild(output);
-
-// Reference to native method(s)
-var oldLog = console.log;
-
-console.log = function( ...items ) {
-
-    // Call native method first
-    oldLog.apply(this,items);
-
-    // Use JSON to transform objects, all others display normally
-    items.forEach( (item,i)=>{
-        items[i] = (typeof item === 'object' ? JSON.stringify(item,null,4) : item);
-    });
-    output.innerHTML += items.join(' ') + '<br />';
-
-};
-
-// Y1ou could even allow Javascript input...
-function consoleInput( data ) {
-    // Print it to console as typed
-    
-    console.log( data + '<br />' );
-    try {
-        console.log( eval( data ) );
-    } catch (e) {
-        console.log( e.stack );
-    }
-}
-console.log("Hei igjen! :)")
+//16. april: making it work for iOS
 
 
-let pitchslider = document.getElementById("pitch");
+
+// Tone.js parameters
+
+// let pitchslider = document.getElementById("pitch");
 
 const gainNode = new Tone.Gain().toMaster();
 
@@ -51,7 +27,7 @@ const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShif
 //instead of a Synth, there is some loops
 // Pitch variables
 pitchShift2.pitch = 0; // down one octave
-
+// Players
 const player = new Tone.Player().connect(autoFilter);
 const player2 = new Tone.Player().connect(autoFilter);
 const player3 = new Tone.Player().connect(autoFilter);
@@ -95,47 +71,11 @@ player4_2.mute = true;
 player5_2.mute = true;
 
 
-var playerBuffers = new Tone.Buffers({
-    "drums" : "loops/drums1_80bpm.wav",
-    "bass" : "loops/bass1_80bpm.wav",
-    "arp" : "loops/arp_80bpm.wav",
-    "bass2" : "loops/bass2_80bpm.wav",
-    "2drums" : "loops/2drums1.wav",
-    "2bass" : "loops/2bass1.wav",
-    "2arp" : "loops/2arp.wav",
-    "2bass2" : "loops/2bass2.wav",
-    "2piano" : "loops/2piano.wav"
-}, function(){
-    //play one of the samples when they all load
-
-  player.buffer = playerBuffers.get("drums");
-    player.start();
-  player2.buffer = playerBuffers.get("bass");
-    player2.start();
-  player3.buffer = playerBuffers.get("arp");
-    player3.start();
-  player4.buffer = playerBuffers.get("bass2");
-    player4.start();
-
-  player1_2.buffer = playerBuffers.get("2drums");
-    player1_2.start();
-  player2_2.buffer = playerBuffers.get("2bass");
-    player2_2.start();
-  player3_2.buffer = playerBuffers.get("2arp");
-    player3_2.start();
-  player4_2.buffer = playerBuffers.get("2bass2");
-    player4_2.start();
-  player5_2.buffer = playerBuffers.get("2piano");
-    player5_2.start();
-});
-
-
-
-// Players
-
-
 
 let newAcc;
+let newAcc2;
+let inverse = true;
+
 
 // With this function the values won't go below a threshold 
 function clamp(min, max, val) {
@@ -174,13 +114,13 @@ function loopActivate(players1, players2, value) {
   players1.mute = true,
   players2.mute = true;
 
-  else if ((filterWheel > 40) && (betaWheel > value))
-  players1.mute = false,
-  players2.mute = true;
+  else if ((filterWheel > 80) && (betaWheel > value))
+  players2.mute = false,
+  players1.mute = true;
 
   else
-  players1.mute = true,
-  players2.mute = false;
+  players2.mute = true,
+  players1.mute = false;
 
 };
 
@@ -190,93 +130,12 @@ loopActivate(player3, player3_2, 60);
 loopActivate(player4, player4_2, 80);
 //loopActivate(player5, player5_2, 80);
 
-//loopActivate(undefined, player5_2, 100);
-/*     if (betaWheel < 20)
-    player.mute = true,
-    player1_2.mute = true;
 
-    else if ((filterWheel > 40) && (betaWheel > 20))
-    player.mute = false,
-    player1_2.mute = true;
-
-    else
-
-    player.mute = true,
-    player1_2.mute = false; */
-
-
-
-/*     player2.mute = true,
-    player2_2.mute = false,
-
-    player3.mute = true,
-    player3_2.mute = false,
-
-    player4.mute = true,
-    player4_2.mute = false,
-
-    player5_2.mute = false;
-    else 
-    player.mute = false,
-    player1_2.mute = true,
-
-    player2.mute = false,
-    player2_2.mute = true,
-
-    player3.mute = false,
-    player3_2.mute = true,
-
-    player4.mute = false,
-    player4_2.mute = true,
-
-    player5_2.mute = true; */
-/* 
-    if (filterWheel  > 40)
-    player.mute = true,
-    player1_2.mute = false,
-
-    player2.mute = true,
-    player2_2.mute = false,
-
-    player3.mute = true,
-    player3_2.mute = false,
-
-    player4.mute = true,
-    player4_2.mute = false,
-
-    player5_2.mute = false;
-    else 
-    player.mute = false,
-    player1_2.mute = true,
-
-    player2.mute = false,
-    player2_2.mute = true,
-
-    player3.mute = false,
-    player3_2.mute = true,
-
-    player4.mute = false,
-    player4_2.mute = true,
-
-    player5_2.mute = true;
- */
  
     updateFieldIfNotNull('filterwheel', filterWheel);
     updateFieldIfNotNull('betawheel', betaWheel);
 
   }
-
-
-
-
-if (
-    DeviceMotionEvent &&
-    typeof DeviceMotionEvent.requestPermission === "function"
-    ) {
-    DeviceMotionEvent.requestPermission();
-    }
-
-window.addEventListener("deviceorientation", handleOrientation);
 
 
 // function for updating values for sensor data
@@ -285,133 +144,278 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       document.getElementById(fieldName).innerHTML = value.toFixed(precision);
   }
 
-// LowPassFilterData(reading, bias) To be able to calcualte the difference between Accelerometer frames
-class LowPassFilterData {
-  constructor(reading) {
-    Object.assign(this, { x: reading.x, y: reading.y, z: reading.z });
-  }
-  
-    update(reading) {
-      this.x = reading.x;
-      this.y = reading.y;
-      this.z = reading.z;
+
+
+// variables for differing between frames:
+let accXdiff = [];
+let accYdiff = [];
+let accZdiff = [];
+var i = 0;
+
+  function handleMotion(event) {
+
+    i += 1;
+    //console.log(event.acceleration.x);
+    
+    
+    accXdiff.push(event.acceleration.x);
+    let xFilter = accXdiff[i-2];
+    
+    accYdiff.push(event.acceleration.y);
+    let yFilter = accYdiff[i-2];
+    
+    accYdiff.push(event.acceleration.y);
+    let zFilter = accYdiff[i-2];
+    
+   // console.log(xFilter);
+    
+    const accl = event.acceleration; 
+    
+      let xValue = event.acceleration.x; 
+      let yValue = event.acceleration.y; 
+      let zValue = event.acceleration.z;
+    
+      let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
+      let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
+      let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
+    
+      updateFieldIfNotNull('test_x', accl.x );
+      updateFieldIfNotNull('filter_x', xFilter);
+    
+      updateFieldIfNotNull('test_y', accl.y );
+      updateFieldIfNotNull('filter_y', yFilter );
+    
+      updateFieldIfNotNull('test_z', accl.z );
+      updateFieldIfNotNull('filter_z', zFilter );
+    
+      updateFieldIfNotNull('total_acc', totAcc );
+      updateFieldIfNotNull('total_filter', totFilter );
+      updateFieldIfNotNull('diff_acc', diffAcc );
+      updateFieldIfNotNull('volume_acc', newAcc );
+    
+    //monitoring diffAcc
+
+    var fn = generateScaleFunction(0, 10, 0.3, 0);
+    newAcc = fn(diffAcc);
+    newAcc = (clamp(0, 0.3, newAcc));
+    //console.log(newAcc);
+    
+    var fn2 = generateScaleFunction(1, 2, 0, 0.3);
+    newAcc2 = fn2(diffAcc);
+    newAcc2 = (clamp(0, 0.3, newAcc2));
+    //console.log(newAcc2);
+    
+    if (inverse == false)
+    gainNode.gain.rampTo(newAcc2, 0.1);
+    else
+    // more smooth change of volume:
+    gainNode.gain.rampTo(newAcc, 0.1);
+
+
+      
+      //incrementEventCount();
     }
-  };
+ 
+
+
+
+
+    let is_running = false;
+    let demo_button = document.getElementById("start_demo");
+
+    var playerBuffers = new Tone.Buffers({
+        "drums" : "loops/RolegSong_trommer.mp3",
+        "bass" : "loops/RolegSong_bass.mp3",
+        "arp" : "loops/RolegSong_orgel1.mp3",
+        "bass2" : "loops/RolegSong_piano.mp3",
+        "2drums" : "loops/2RolegSong_trommer.mp3",
+        "2bass" : "loops/2RolegSong_bass.mp3",
+        "2arp" : "loops/2RolegSong_orgel1.mp3",
+        "2bass2" : "loops/2RolegSong_piano.mp3",
+        "2piano" : "loops/2RolegSong_orgel2.mp3"
+    }, 
+    function(){
+        //play one of the samples when they all load
+    
   
-  // The accelerometer
-  const accl = new Accelerometer({ frequency: 10 });
-                
-  // Isolate gravity with low-pass filter.
-  const filter = new LowPassFilterData(accl);
-
-  accl.onreading = () => {
-
-    let xValue = accl.x;
-    let yValue = accl.y;
-    let zValue = accl.z;
-    let xFilter = filter.x;
-    let yFilter = filter.y;
-    let zFilter = filter.z;
-    let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
-    let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
-    let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
-
-
-    filter.update(accl); // Pass latest values through filter.
-    updateFieldIfNotNull('test_x', accl.x );
-    updateFieldIfNotNull('filter_x', filter.x );
-
-    updateFieldIfNotNull('test_y', accl.y );
-    updateFieldIfNotNull('filter_y', filter.y );
-
-    updateFieldIfNotNull('test_z', accl.z );
-    updateFieldIfNotNull('filter_z', filter.z );
-
-    updateFieldIfNotNull('total_acc', totAcc );
-    updateFieldIfNotNull('total_filter', totFilter );
-    updateFieldIfNotNull('diff_acc', diffAcc );
-    updateFieldIfNotNull('volume_acc', newAcc );
-
-
-  var fn = generateScaleFunction(0, 3, 0.5, 0);
-  newAcc = fn(diffAcc);
-  newAcc = (clamp(0, 0.5, newAcc));
-
-
-// more smooth change of volume:
-  gainNode.gain.rampTo(newAcc, 0.2);
-
-}  
-
-  accl.start();
-
-
+    player.buffer = playerBuffers.get("drums");
+      player.start();
+    player2.buffer = playerBuffers.get("bass");
+      player2.start();
+    player3.buffer = playerBuffers.get("arp");
+      player3.start();
+    player4.buffer = playerBuffers.get("bass2");
+      player4.start();
   
+    player1_2.buffer = playerBuffers.get("2drums");
+      player1_2.start();
+    player2_2.buffer = playerBuffers.get("2bass");
+      player2_2.start();
+    player3_2.buffer = playerBuffers.get("2arp");
+      player3_2.start();
+    player4_2.buffer = playerBuffers.get("2bass2");
+      player4_2.start();
+    player5_2.buffer = playerBuffers.get("2piano");
+      player5_2.start();
+  });
 
-  document.getElementById("looper1").addEventListener("click", function(){
+
+    document.getElementById("looper1").addEventListener("click", function(){
+
+        // Request permission for iOS 13+ devices
+        if (
+            DeviceMotionEvent &&
+            typeof DeviceMotionEvent.requestPermission === "function"
+          ) {
+            DeviceMotionEvent.requestPermission();
+          }
+
+          Tone.start();
+
+
+          window.addEventListener("devicemotion", handleMotion);
+          window.addEventListener("deviceorientation", handleOrientation);
     
+
+          
     
-  if(this.className == 'is-playing'){
-    this.className = "";
-    this.innerHTML = "1: OFF"
-    player.mute = true;
+        if (this.className == 'is-playing')
+        
+        {
+          this.className = "is-playing2";
+          this.innerHTML = "Loop 3 ON"
+          var playerBuffers = new Tone.Buffers({
+            "drums" : "loops/drums1_80bpm.mp3",
+            "bass" : "loops/bass1_80bpm.mp3",
+            "arp" : "loops/arp_80bpm.mp3",
+            "bass2" : "loops/bass2_80bpm.mp3",
+            "2drums" : "loops/2drums1.mp3",
+            "2bass" : "loops/2bass1.mp3",
+            "2arp" : "loops/2arp.mp3",
+            "2bass2" : "loops/2bass2.mp3",
+            "2piano" : "loops/2piano.mp3"
+        }, function(){ 
+      
+          player.buffer = playerBuffers.get("drums");
+          player.start();
+        player2.buffer = playerBuffers.get("bass");
+          player2.start();
+        player3.buffer = playerBuffers.get("arp");
+          player3.start();
+        player4.buffer = playerBuffers.get("bass2");
+          player4.start();
+      
+        player1_2.buffer = playerBuffers.get("2drums");
+          player1_2.start();
+        player2_2.buffer = playerBuffers.get("2bass");
+          player2_2.start();
+        player3_2.buffer = playerBuffers.get("2arp");
+          player3_2.start();
+        player4_2.buffer = playerBuffers.get("2bass2");
+          player4_2.start();
+        player5_2.buffer = playerBuffers.get("2piano");
+          player5_2.start();
+      });
+      
+        }else if (this.className == 'is-playing2')
+        
+        {
+          this.className = "";
+          this.innerHTML = "Loop 1 ON";
+      
+          var playerBuffers = new Tone.Buffers({
+            "drums" : "loops/RolegSong_trommer.mp3",
+            "bass" : "loops/RolegSong_bass.mp3",
+            "arp" : "loops/RolegSong_orgel1.mp3",
+            "bass2" : "loops/RolegSong_piano.mp3",
+            "2drums" : "loops/2RolegSong_trommer.mp3",
+            "2bass" : "loops/2RolegSong_bass.mp3",
+            "2arp" : "loops/2RolegSong_orgel1.mp3",
+            "2bass2" : "loops/2RolegSong_piano.mp3",
+            "2piano" : "loops/2RolegSong_orgel2.mp3"
+        }, 
+        function(){
+            //play one of the samples when they all load
+        
+      
+        player.buffer = playerBuffers.get("drums");
+          player.start();
+        player2.buffer = playerBuffers.get("bass");
+          player2.start();
+        player3.buffer = playerBuffers.get("arp");
+          player3.start();
+        player4.buffer = playerBuffers.get("bass2");
+          player4.start();
+      
+        player1_2.buffer = playerBuffers.get("2drums");
+          player1_2.start();
+        player2_2.buffer = playerBuffers.get("2bass");
+          player2_2.start();
+        player3_2.buffer = playerBuffers.get("2arp");
+          player3_2.start();
+        player4_2.buffer = playerBuffers.get("2bass2");
+          player4_2.start();
+        player5_2.buffer = playerBuffers.get("2piano");
+          player5_2.start();
+      });
+      
+      }else{
+          this.className = "is-playing";
+          this.innerHTML = "Loop 2 ON";
+      
+          var playerBuffers = new Tone.Buffers({
+            "drums" : "loops/jazzloop_drums.mp3",
+            "bass" : "loops/jazzloop_bass.mp3",
+            "arp" : "loops/jazzloop_piano.mp3",
+            "bass2" : "loops/jazzloop_synth.mp3",
+            "2drums" : "loops/2jazzloop_drums.mp3",
+            "2bass" : "loops/2jazzloop_bass.mp3",
+            "2arp" : "loops/2jazzloop_piano.mp3",
+            "2bass2" : "loops/2jazzloop_synth.mp3",
+            "2piano" : "loops/2jazzloop_cosmic.mp3"
+        }, 
+        function(){
+            //play one of the samples when they all load
+        
+      
+        player.buffer = playerBuffers.get("drums");
+          player.start();
+        player2.buffer = playerBuffers.get("bass");
+          player2.start();
+        player3.buffer = playerBuffers.get("arp");
+          player3.start();
+        player4.buffer = playerBuffers.get("bass2");
+          player4.start();
+      
+        player1_2.buffer = playerBuffers.get("2drums");
+          player1_2.start();
+        player2_2.buffer = playerBuffers.get("2bass");
+          player2_2.start();
+        player3_2.buffer = playerBuffers.get("2arp");
+          player3_2.start();
+        player4_2.buffer = playerBuffers.get("2bass2");
+          player4_2.start();
+        player5_2.buffer = playerBuffers.get("2piano");
+          player5_2.start();
+      });
+      
+        }}
+        );
 
-  }else{
-    this.className = "is-playing";
-    this.innerHTML = "1: ON";
-
-    player.mute = false;
-
-  }}
-  );
 
 
-  document.getElementById("looper2").addEventListener("click", function(){
-
-    
-  if(this.className == 'is-playing'){
-    this.className = "";
-    this.innerHTML = "2: OFF"
-    player2.mute = true;
-
-  }else{
-    this.className = "is-playing";
-    this.innerHTML = "2: ON";
-
-    player2.mute = false;
-
-  }}
-  );
-
-  document.getElementById("looper3").addEventListener("click", function(){
-   
-    
-  if(this.className == 'is-playing'){
-    this.className = "";
-    this.innerHTML = "3: OFF"
-    player3.mute = true;
-
-  }else{
-    this.className = "is-playing";
-    this.innerHTML = "3: ON";
-
-    player3.mute = false;
-
-  }}
-  );
-  document.getElementById("looper4").addEventListener("click", function(){
-
-    
-  if(this.className == 'is-playing'){
-    this.className = "";
-    this.innerHTML = "4: OFF"
-    player4.mute = true;
-
-  }else{
-    this.className = "is-playing";
-    this.innerHTML = "4: ON";
-
-    player4.mute = false;
-
-  }}
-  );
+  document.getElementById("button2").addEventListener("click", function(){
+  
+      
+    if(this.className == 'is-playing'){
+      this.className = "";
+      this.innerHTML = "Inverse: ON"
+      inverse = true;
+  
+    }else{
+      this.className = "is-playing";
+      this.innerHTML = "Inverse: OFF";
+      inverse = false;
+  
+    }}
+    ); 
