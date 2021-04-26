@@ -263,7 +263,19 @@ background-size: cover;
     height: auto;
 }
 
+#effectButton1 {
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    height: auto;
+}
 
+#effectButton2 {
+    position: absolute;
+    top: 120px;
+    right: 10px;
+    height: auto;
+}
 
 #numbers  {
 
