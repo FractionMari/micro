@@ -208,6 +208,13 @@ var i = 0;
     newAcc2 = (clamp(0, 0.3, newAcc2));
     //console.log(newAcc2);
     
+    // variables for a tempo change
+
+    var temposcaler = generateScaleFunction(0, 10, 10, 0);
+    var temposcale
+    temposcale = fn(diffAcc);
+    temposcale = (clamp(0, 1, temposcale));
+
     if (inverse == false)
     gainNode.gain.rampTo(newAcc2, 0.1),
     player.playbackRate = newAcc2,
@@ -226,16 +233,16 @@ var i = 0;
     else
     // more smooth change of volume:
     gainNode.gain.rampTo(newAcc, 0.1),
-    player.playbackRate = newAcc + 0.7,
-    player2.playbackRate = newAcc + 0.7,
-    player3.playbackRate = newAcc + 0.7,
-    player4.playbackRate = newAcc + 0.7,
-    player5.playbackRate = newAcc + 0.7,
-    player1_2.playbackRate = newAcc + 0.7,
-    player2_2.playbackRate = newAcc + 0.7,
-    player3_2.playbackRate = newAcc + 0.7,
-    player4_2.playbackRate = newAcc + 0.7,
-    player5_2.playbackRate = newAcc + 0.7;
+    player.playbackRate = temposcale,
+    player2.playbackRate = temposcale,
+    player3.playbackRate = temposcale,
+    player4.playbackRate = temposcale,
+    player5.playbackRate = temposcale,
+    player1_2.playbackRate = temposcale,
+    player2_2.playbackRate = temposcale,
+    player3_2.playbackRate = temposcale,
+    player4_2.playbackRate = temposcale,
+    player5_2.playbackRate = temposcale;
 
 
       

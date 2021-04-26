@@ -1,7 +1,7 @@
 body {
     margin: 20px;
     font-family: 'Rowdies';
-    font-size: 25px;
+    font-size: 30px;
     letter-spacing: 2px;
     word-spacing: 2px;
     color: #000000;
@@ -12,7 +12,7 @@ body {
     text-transform: none;
 	text-align: center;
     background-color: #0d6d00;
-    font-size: 120%;
+    font-size: 140%;
     color: #ccde07;
     }
 
@@ -88,10 +88,11 @@ a:hover {
     height: auto;
     background: rgb(0, 0, 0);
     padding: 20px;
-    border: 10px rgb(84, 117, 6) solid;
+    border: 1px rgb(84, 117, 6) solid;
 /*     background-image: url("assets/bg8.jpg"); */
     color: rgb(68, 7, 38) solid;
     background-size: cover;
+
     }
 
 #container4 {
@@ -261,3 +262,12 @@ background-size: cover;
     right: 10px;
     height: auto;
 }
+
+
+
+#numbers  {
+
+    font-size: 10px;
+
+    }
+    
