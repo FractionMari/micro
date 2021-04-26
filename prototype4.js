@@ -193,8 +193,8 @@ var i = 0;
       updateFieldIfNotNull('total_acc', totAcc );
       updateFieldIfNotNull('total_filter', totFilter );
       updateFieldIfNotNull('diff_acc', diffAcc );
-      updateFieldIfNotNull('qom', newAcc );
-      updateFieldIfNotNull('inv_qom', newAcc2 );
+      updateFieldIfNotNull('qom', diffAcc );
+      updateFieldIfNotNull('inv_qom', temposcale );
     
     //monitoring diffAcc
 
@@ -237,7 +237,7 @@ var i = 0;
     player2.playbackRate = temposcale,
     player3.playbackRate = temposcale,
     player4.playbackRate = temposcale,
-    player5.playbackRate = temposcale,
+   // player5.playbackRate = temposcale,
     player1_2.playbackRate = temposcale,
     player2_2.playbackRate = temposcale,
     player3_2.playbackRate = temposcale,
