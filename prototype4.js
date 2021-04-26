@@ -103,7 +103,7 @@ function handleOrientation(event) {
 
     // Rotation to control oscillator pitch
     //let pitchWheel = event.beta;
-    let filterWheel = event.alpha;
+    let filterWheel = event.gamma;
     let betaWheel = event.beta;
 
     let filterScale = generateScaleFunction(0, 90, 10, 300);
@@ -223,7 +223,7 @@ var i = 0;
 
 
     if (inverse == false)
-    gainNode.gain.rampTo(newAcc2, 0.1),
+    //gainNode.gain.rampTo(newAcc2, 0.1),
     player.playbackRate = temposcale2,
     player2.playbackRate = temposcale2,
     player3.playbackRate = temposcale2,
@@ -239,7 +239,7 @@ var i = 0;
 
     else
     // more smooth change of volume:
-    gainNode.gain.rampTo(newAcc, 0.1),
+    //gainNode.gain.rampTo(newAcc, 0.1),
     player.playbackRate = temposcale,
     player2.playbackRate = temposcale,
     player3.playbackRate = temposcale,
