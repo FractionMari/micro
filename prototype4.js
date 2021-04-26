@@ -225,16 +225,16 @@ var i = 0;
     else
     // more smooth change of volume:
     gainNode.gain.rampTo(newAcc, 0.1),
-    player.playbackRate = newAcc,
-    player2.playbackRate = newAcc,
-    player3.playbackRate = newAcc,
-    player4.playbackRate = newAcc,
-    player5.playbackRate = newAcc,
-    player1_2.playbackRate = newAcc,
-    player2_2.playbackRate = newAcc,
-    player3_2.playbackRate = newAcc,
-    player4_2.playbackRate = newAcc,
-    player5_2.playbackRate = newAcc;
+    player.playbackRate = newAcc + 0.7,
+    player2.playbackRate = newAcc + 0.7,
+    player3.playbackRate = newAcc + 0.7,
+    player4.playbackRate = newAcc + 0.7,
+    player5.playbackRate = newAcc + 0.7,
+    player1_2.playbackRate = newAcc + 0.7,
+    player2_2.playbackRate = newAcc + 0.7,
+    player3_2.playbackRate = newAcc + 0.7,
+    player4_2.playbackRate = newAcc + 0.7,
+    player5_2.playbackRate = newAcc + 0.7;
 
 
       
