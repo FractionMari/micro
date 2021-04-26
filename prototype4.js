@@ -103,7 +103,7 @@ function handleOrientation(event) {
 
     // Rotation to control oscillator pitch
     //let pitchWheel = event.beta;
-    let filterWheel = event.gamma;
+    let filterWheel = event.alpha;
     let betaWheel = event.beta;
 
     let filterScale = generateScaleFunction(0, 90, 10, 300);
@@ -210,7 +210,7 @@ var i = 0;
     
     // variables for a tempo change
 
-    var temposcaler = generateScaleFunction(0, 10, 1, 0);
+    var temposcaler = generateScaleFunction(0, 20, 1, 0);
     var temposcale
     temposcale = temposcaler(diffAcc);
     temposcale = (clamp(0, 1, temposcale));
