@@ -199,7 +199,7 @@ var i = 0;
 
     var fn = generateScaleFunction(0, 10, 10, 0);
     newAcc = fn(diffAcc);
-    newAcc = (clamp(0, 3, newAcc));
+    newAcc = (clamp(0, 10, newAcc));
     //console.log(newAcc);
     
     var fn2 = generateScaleFunction(1, 2, 0, 0.3);
