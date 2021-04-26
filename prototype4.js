@@ -212,7 +212,7 @@ var i = 0;
 
     var temposcaler = generateScaleFunction(0, 10, 1, 0);
     var temposcale
-    temposcale = fn(diffAcc);
+    temposcale = temposcaler(diffAcc);
     temposcale = (clamp(0, 1, temposcale));
 
     if (inverse == false)
@@ -221,7 +221,7 @@ var i = 0;
     player2.playbackRate = newAcc2,
     player3.playbackRate = newAcc2,
     player4.playbackRate = newAcc2,
-    player5.playbackRate = newAcc2,
+    //player5.playbackRate = newAcc2,
     player1_2.playbackRate = newAcc2,
     player2_2.playbackRate = newAcc2,
     player3_2.playbackRate = newAcc2,
