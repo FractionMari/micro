@@ -197,7 +197,7 @@ var i = 0;
     
     //monitoring diffAcc
 
-    var fn = generateScaleFunction(0, 10, 3, 0);
+    var fn = generateScaleFunction(0, 10, 10, 0);
     newAcc = fn(diffAcc);
     newAcc = (clamp(0, 3, newAcc));
     //console.log(newAcc);
@@ -249,10 +249,10 @@ var i = 0;
       
       };
       
-      loopActivate(player, 0.5);
-      loopActivate(player2, 1);
-      loopActivate(player3, 1.5);
-      loopActivate(player4, 2);
+      loopActivate(player, 2);
+      loopActivate(player2, 4);
+      loopActivate(player3, 6);
+      loopActivate(player4, 8);
 
       
       //incrementEventCount();
