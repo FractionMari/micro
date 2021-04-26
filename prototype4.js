@@ -215,18 +215,25 @@ var i = 0;
     temposcale = temposcaler(diffAcc);
     temposcale = (clamp(0, 1, temposcale));
 
+
+    var temposcale2
+    temposcale2 = (clamp(0, 1, diffAcc));
+
+
+
+
     if (inverse == false)
     gainNode.gain.rampTo(newAcc2, 0.1),
-    player.playbackRate = newAcc2,
-    player2.playbackRate = newAcc2,
-    player3.playbackRate = newAcc2,
-    player4.playbackRate = newAcc2,
-    //player5.playbackRate = newAcc2,
-    player1_2.playbackRate = newAcc2,
-    player2_2.playbackRate = newAcc2,
-    player3_2.playbackRate = newAcc2,
-    player4_2.playbackRate = newAcc2,
-    player5_2.playbackRate = newAcc2;
+    player.playbackRate = temposcale2,
+    player2.playbackRate = temposcale2,
+    player3.playbackRate = temposcale2,
+    player4.playbackRate = temposcale2,
+    //player5.playbackRate = temposcale2,
+    player1_2.playbackRate = temposcale2,
+    player2_2.playbackRate = temposcale2,
+    player3_2.playbackRate = temposcale2,
+    player4_2.playbackRate = temposcale2,
+    player5_2.playbackRate = temposcale2;
 
 
 
