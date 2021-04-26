@@ -193,7 +193,8 @@ var i = 0;
       updateFieldIfNotNull('total_acc', totAcc );
       updateFieldIfNotNull('total_filter', totFilter );
       updateFieldIfNotNull('diff_acc', diffAcc );
-      updateFieldIfNotNull('volume_acc', newAcc );
+      updateFieldIfNotNull('qom', newAcc );
+      updateFieldIfNotNull('inv_qom', newAcc2 );
     
     //monitoring diffAcc
 
