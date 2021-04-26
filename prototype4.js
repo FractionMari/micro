@@ -12,7 +12,8 @@
 //1. og 2. mars: creating a loop function
 //16. april: making it work for iOS
 // 24. april: In this version, instead of volume, the complexity of the loop 
-//will increase when you move the phone.
+//will increase when you move the phone. // This worked badly
+// 26. april. A version that changes speed when you move the phone.
 
 
 
@@ -109,7 +110,7 @@ function handleOrientation(event) {
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
 
-/* function loopActivate(players1, players2, value) {
+function loopActivate(players1, players2, value) {
 
   if (betaWheel < value)
   players1.mute = true,
@@ -129,7 +130,7 @@ loopActivate(player, player1_2, 20);
 loopActivate(player2, player2_2, 40);
 loopActivate(player3, player3_2, 60);
 loopActivate(player4, player4_2, 80);
-//loopActivate(player5, player5_2, 80); */
+//loopActivate(player5, player5_2, 80);
 
 
  
@@ -192,14 +193,13 @@ var i = 0;
       updateFieldIfNotNull('total_acc', totAcc );
       updateFieldIfNotNull('total_filter', totFilter );
       updateFieldIfNotNull('diff_acc', diffAcc );
-      updateFieldIfNotNull('qom', newAcc );
-      updateFieldIfNotNull('inv_qom', newAcc2 );
+      updateFieldIfNotNull('volume_acc', newAcc );
     
     //monitoring diffAcc
 
-    var fn = generateScaleFunction(0, 10, 10, 0);
+    var fn = generateScaleFunction(0, 10, 0.3, 0);
     newAcc = fn(diffAcc);
-    newAcc = (clamp(0, 10, newAcc));
+    newAcc = (clamp(0, 0.3, newAcc));
     //console.log(newAcc);
     
     var fn2 = generateScaleFunction(1, 2, 0, 0.3);
@@ -207,52 +207,35 @@ var i = 0;
     newAcc2 = (clamp(0, 0.3, newAcc2));
     //console.log(newAcc2);
     
-/*     if (inverse == false)
-    gainNode.gain.rampTo(newAcc2, 0.1);
+    if (inverse == false)
+    gainNode.gain.rampTo(newAcc2, 0.1),
+    player.playbackRate = newAcc2,
+    player2.playbackRate = newAcc2,
+    player3.playbackRate = newAcc2,
+    player4.playbackRate = newAcc2,
+    player5.playbackRate = newAcc2,
+    player1_2.playbackRate = newAcc2,
+    player2_2.playbackRate = newAcc2,
+    player3_2.playbackRate = newAcc2,
+    player4_2.playbackRate = newAcc2,
+    player5_2.playbackRate = newAcc2;
+
+
+
     else
     // more smooth change of volume:
-    gainNode.gain.rampTo(newAcc, 0.1); */
+    gainNode.gain.rampTo(newAcc, 0.1),
+    player.playbackRate = newAcc,
+    player2.playbackRate = newAcc,
+    player3.playbackRate = newAcc,
+    player4.playbackRate = newAcc,
+    player5.playbackRate = newAcc,
+    player1_2.playbackRate = newAcc,
+    player2_2.playbackRate = newAcc,
+    player3_2.playbackRate = newAcc,
+    player4_2.playbackRate = newAcc,
+    player5_2.playbackRate = newAcc;
 
-
-/*     function loopActivate(players1, players2, value) {
-
-        if (newAcc < value)
-        players1.mute = true,
-        players2.mute = true;
-      
-        else if ((filterWheel > 80) && (newAcc > value))
-        players2.mute = false,
-        players1.mute = true;
-      
-        else
-        players2.mute = true,
-        players1.mute = false;
-      
-      };
-      
-      loopActivate(player, player1_2, 0.1);
-      loopActivate(player2, player2_2, 0.15);
-      loopActivate(player3, player3_2, 0.2);
-      loopActivate(player4, player4_2, 0.25); */
-      //loopActivate(player5, player5_2, 80);
-      
-
-
-      function loopActivate(players1, value) {
-
-        if (newAcc < value)
-        players1.mute = true;
-
-      
-        else
-        players1.mute = false;
-      
-      };
-      
-      loopActivate(player, 2);
-      loopActivate(player2, 4);
-      loopActivate(player3, 6);
-      loopActivate(player4, 8);
 
       
       //incrementEventCount();
