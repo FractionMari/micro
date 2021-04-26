@@ -214,7 +214,7 @@ var i = 0;
     gainNode.gain.rampTo(newAcc, 0.1); */
 
 
-    function loopActivate(players1, players2, value) {
+/*     function loopActivate(players1, players2, value) {
 
         if (newAcc < value)
         players1.mute = true,
@@ -233,8 +233,27 @@ var i = 0;
       loopActivate(player, player1_2, 0.1);
       loopActivate(player2, player2_2, 0.15);
       loopActivate(player3, player3_2, 0.2);
-      loopActivate(player4, player4_2, 0.25);
+      loopActivate(player4, player4_2, 0.25); */
       //loopActivate(player5, player5_2, 80);
+      
+
+
+      function loopActivate(players1, value) {
+
+        if (newAcc < value)
+        players1.mute = true;
+
+      
+        else
+        players1.mute = false;
+      
+      };
+      
+      loopActivate(player, 0.1);
+      loopActivate(player2, 0.15);
+      loopActivate(player3, 0.2);
+      loopActivate(player4, 0.25);
+
       
       //incrementEventCount();
     }
