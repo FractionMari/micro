@@ -277,6 +277,13 @@ background-size: cover;
     height: auto;
 }
 
+#effectButton3 {
+    position: absolute;
+    top: 180px;
+    right: 10px;
+    height: auto;
+}
+
 #numbers  {
 
     font-size: 10px;

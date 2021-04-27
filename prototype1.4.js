@@ -7,6 +7,11 @@
 const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const tremolo = new Tone.Tremolo(9, 0.75).connect(gainNode);
+const phaser = new Tone.Phaser({
+	frequency: 15,
+	octaves: 5,
+	baseFrequency: 1000
+}).connect(gainNode);
 
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 
@@ -99,6 +104,7 @@ function handleOrientation(event) {
     updateFieldIfNotNull('harmonicity', harmonicity);
     autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
+    phaser.frequency = harmonicity;
     pingPong.wet.value = event.alpha / 360 ;
     //console.log(event.alpha / 360);
 
@@ -347,6 +353,26 @@ document.getElementById("effectButton2").addEventListener("click", function(){
     this.className = "is-playing";
     this.innerHTML = "ON"
     synth.connect(tremolo);
+
+
+
+}}
+); 
+
+document.getElementById("effectButton3").addEventListener("click", function(){
+
+  if (this.className == 'is-playing')
+    
+  {
+    this.className = "";
+    this.innerHTML = "OFF";
+    synth.disconnect(phaser);
+
+
+  }else{
+    this.className = "is-playing";
+    this.innerHTML = "ON"
+    synth.connect(phaser);
 
 
 
