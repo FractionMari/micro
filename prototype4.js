@@ -23,6 +23,12 @@
 
 const gainNode = new Tone.Gain().toMaster();
 
+const phaser = new Tone.Phaser({
+	frequency: 15,
+	octaves: 5,
+	baseFrequency: 1000
+}).connect(gainNode);
+
 const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
 const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
@@ -485,7 +491,7 @@ var i = 0;
 }else{
   this.className = "is-playing";
   this.innerHTML = "ON";
-  
+
   player.connect(pingPong);
   player2.connect(pingPong);
   player3.connect(pingPong);
@@ -547,3 +553,43 @@ var i = 0;
 
 // }}
 // ); 
+
+
+document.getElementById("effectButton2").addEventListener("click", function(){
+
+  if (this.className == 'is-playing')
+    
+  {
+    this.className = "";
+    this.innerHTML = "OFF"
+    player.disconnect(phaser);
+    player2.disconnect(phaser);
+    player3.disconnect(phaser);
+    player4.disconnect(phaser);
+    //player5.connect(phaser);
+    player1_2.disconnect(phaser);
+    player2_2.disconnect(phaser);
+    player3_2.disconnect(phaser);
+    player4_2.disconnect(phaser);
+    player5_2.disconnect(phaser);
+  
+
+
+}else{
+this.className = "is-playing";
+this.innerHTML = "ON";
+
+player.connect(phaser);
+player2.connect(phaser);
+player3.connect(phaser);
+player4.connect(phaser);
+//player5.connect(phaser);
+player1_2.connect(phaser);
+player2_2.connect(phaser);
+player3_2.connect(phaser);
+player4_2.connect(phaser);
+player5_2.connect(phaser);
+
+
+}}
+); 
