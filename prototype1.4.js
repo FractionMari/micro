@@ -310,20 +310,20 @@ var i = 0;
     );
 
 
-    document.getElementById("effectButton1").addEventListener("click", function(){
+document.getElementById("effectButton1").addEventListener("click", function(){
 
-      if (this.className == 'is-playing')
-        
-      {
-        this.className = "";
-        this.innerHTML = "ON"
+  if (this.className == 'is-playing')
+    
+  {
+    this.className = "";
+    this.innerHTML = "OFF";
+    synth.disconnect(pingPong);
 
 
-
-
-}else{
-  this.className = "is-playing";
-  this.innerHTML = "OFF";
+  }else{
+    this.className = "is-playing";
+    this.innerHTML = "ON"
+    synth.connect(pingPong);
 
 
 

@@ -468,44 +468,82 @@ var i = 0;
         
       {
         this.className = "";
-        this.innerHTML = "ON"
-/*         player.disconnect(autoFilter);
-        player2.disconnect(autoFilter);
-        player3.disconnect(autoFilter);
-        player4.disconnect(autoFilter);
-        //player5.disconnect(autoFilter);
-        player1_2.disconnect(autoFilter);
-        player2_2.disconnect(autoFilter);
-        player3_2.disconnect(autoFilter);
-        player4_2.disconnect(autoFilter);
-        player5_2.disconnect(autoFilter); */
-
-        player.connect(pingPong);
-        player2.connect(pingPong);
-        player3.connect(pingPong);
-        player4.connect(pingPong);
+        this.innerHTML = "OFF"
+        player.disconnect(pingPong);
+        player2.disconnect(pingPong);
+        player3.disconnect(pingPong);
+        player4.disconnect(pingPong);
         //player5.connect(pingPong);
-        player1_2.connect(pingPong);
-        player2_2.connect(pingPong);
-        player3_2.connect(pingPong);
-        player4_2.connect(pingPong);
-        player5_2.connect(pingPong);
+        player1_2.disconnect(pingPong);
+        player2_2.disconnect(pingPong);
+        player3_2.disconnect(pingPong);
+        player4_2.disconnect(pingPong);
+        player5_2.disconnect(pingPong);
+      
+
 
 }else{
   this.className = "is-playing";
-  this.innerHTML = "OFF";
-
-  player.disconnect(pingPong);
-  player2.disconnect(pingPong);
-  player3.disconnect(pingPong);
-  player4.disconnect(pingPong);
+  this.innerHTML = "ON";
+  
+  player.connect(pingPong);
+  player2.connect(pingPong);
+  player3.connect(pingPong);
+  player4.connect(pingPong);
   //player5.connect(pingPong);
-  player1_2.disconnect(pingPong);
-  player2_2.disconnect(pingPong);
-  player3_2.disconnect(pingPong);
-  player4_2.disconnect(pingPong);
-  player5_2.disconnect(pingPong);
+  player1_2.connect(pingPong);
+  player2_2.connect(pingPong);
+  player3_2.connect(pingPong);
+  player4_2.connect(pingPong);
+  player5_2.connect(pingPong);
 
 
 }}
 ); 
+// document.getElementById("effectButton2").addEventListener("click", function(){
+
+//   if (this.className == 'is-playing')
+    
+//   {
+//     this.className = "";
+//     this.innerHTML = "ON"
+// /*         player.disconnect(autoFilter);
+//     player2.disconnect(autoFilter);
+//     player3.disconnect(autoFilter);
+//     player4.disconnect(autoFilter);
+//     //player5.disconnect(autoFilter);
+//     player1_2.disconnect(autoFilter);
+//     player2_2.disconnect(autoFilter);
+//     player3_2.disconnect(autoFilter);
+//     player4_2.disconnect(autoFilter);
+//     player5_2.disconnect(autoFilter); */
+
+//     player.connect(reverb);
+//     player2.connect(reverb);
+//     player3.connect(reverb);
+//     player4.connect(reverb);
+//     //player5.connect(reverb);
+//     player1_2.connect(reverb);
+//     player2_2.connect(reverb);
+//     player3_2.connect(reverb);
+//     player4_2.connect(reverb);
+//     player5_2.connect(reverb);
+
+// }else{
+// this.className = "is-playing";
+// this.innerHTML = "OFF";
+
+// player.disconnect(reverb);
+// player2.disconnect(reverb);
+// player3.disconnect(reverb);
+// player4.disconnect(reverb);
+// //player5.connect(reverb);
+// player1_2.disconnect(reverb);
+// player2_2.disconnect(reverb);
+// player3_2.disconnect(reverb);
+// player4_2.disconnect(reverb);
+// player5_2.disconnect(reverb);
+
+
+// }}
+// ); 
