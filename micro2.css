@@ -88,7 +88,7 @@ a:hover {
     height: auto;
     background: rgb(0, 0, 0);
     padding: 20px;
-    border: 1px rgb(84, 117, 6) solid;
+    border: 20px rgba(21, 0, 254, 0.386) solid;
 /*     background-image: url("assets/bg8.jpg"); */
     color: rgb(68, 7, 38) solid;
     background-size: cover;
@@ -96,7 +96,7 @@ a:hover {
     }
 
 #container4 {
-    margin: 20;
+    margin: 0 auto;
     width: auto;
     max-width:500px;
     height: auto;

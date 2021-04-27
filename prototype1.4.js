@@ -6,6 +6,7 @@
 
 const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
+const tremolo = new Tone.Tremolo(9, 0.75).connect(gainNode);
 
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 
@@ -324,6 +325,28 @@ document.getElementById("effectButton1").addEventListener("click", function(){
     this.className = "is-playing";
     this.innerHTML = "ON"
     synth.connect(pingPong);
+
+
+
+}}
+); 
+
+
+
+document.getElementById("effectButton2").addEventListener("click", function(){
+
+  if (this.className == 'is-playing')
+    
+  {
+    this.className = "";
+    this.innerHTML = "OFF";
+    synth.disconnect(tremolo);
+
+
+  }else{
+    this.className = "is-playing";
+    this.innerHTML = "ON"
+    synth.connect(tremolo);
 
 
 
