@@ -12,7 +12,7 @@ const autoFilter = new Tone.AutoWah().connect(gainNode);
 
 const synth = new Tone.DuoSynth().connect(autoFilter);
 //const synth2 = new Tone.FMSynth().connect(autoFilter);
-const synth3 = new Tone.MembraneSynth().connect(pingPong);
+//const synth3 = new Tone.MembraneSynth().connect(pingPong);
 
 
 const player = new Tone.Player("https://tonejs.github.io/audio/berklee/gong_1.mp3").toDestination();
@@ -101,10 +101,10 @@ function handleOrientation(event) {
     pingPong.wet.value = event.alpha / 360 ;
     //console.log(event.alpha / 360);
 
-    if (Math.abs(event.gamma) > 20)
+/*     if (Math.abs(event.gamma) > 20)
       synth3.triggerAttackRelease();
       console.log(Math.abs(event.gamma));
-      pitchShift(Math.abs(event.gamma), synth3, diatonicScale);
+      pitchShift(Math.abs(event.gamma), synth3, diatonicScale); */
 
 
   }
@@ -308,3 +308,24 @@ var i = 0;
   
     }}
     );
+
+
+    document.getElementById("effectButton1").addEventListener("click", function(){
+
+      if (this.className == 'is-playing')
+        
+      {
+        this.className = "";
+        this.innerHTML = "ON"
+
+
+
+
+}else{
+  this.className = "is-playing";
+  this.innerHTML = "OFF";
+
+
+
+}}
+); 
