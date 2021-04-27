@@ -210,10 +210,10 @@ var i = 0;
     
     // variables for a tempo change
 
-    var temposcaler = generateScaleFunction(0, 20, 1, 0);
+    var temposcaler = generateScaleFunction(0, 20, 1, 0.5);
     var temposcale
     temposcale = temposcaler(diffAcc);
-    temposcale = (clamp(0, 1, temposcale));
+    temposcale = (clamp(0.5, 1, temposcale));
 
 
     var temposcale2
