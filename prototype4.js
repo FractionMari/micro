@@ -467,7 +467,7 @@ var i = 0;
       if (this.className == 'is-playing')
         
       {
-        this.className = "buttonT";
+        this.className = "";
         this.innerHTML = "ON"
 /*         player.disconnect(autoFilter);
         player2.disconnect(autoFilter);
@@ -509,51 +509,3 @@ var i = 0;
 
 }}
 ); 
-
-// document.getElementById("effectButton2").addEventListener("click", function(){
-
-//   if (this.className == 'is-playing')
-    
-//   {
-//     this.className = "";
-//     this.innerHTML = "ON"
-// /*         player.disconnect(autoFilter);
-//     player2.disconnect(autoFilter);
-//     player3.disconnect(autoFilter);
-//     player4.disconnect(autoFilter);
-//     //player5.disconnect(autoFilter);
-//     player1_2.disconnect(autoFilter);
-//     player2_2.disconnect(autoFilter);
-//     player3_2.disconnect(autoFilter);
-//     player4_2.disconnect(autoFilter);
-//     player5_2.disconnect(autoFilter); */
-
-//     player.connect(reverb);
-//     player2.connect(reverb);
-//     player3.connect(reverb);
-//     player4.connect(reverb);
-//     //player5.connect(reverb);
-//     player1_2.connect(reverb);
-//     player2_2.connect(reverb);
-//     player3_2.connect(reverb);
-//     player4_2.connect(reverb);
-//     player5_2.connect(reverb);
-
-// }else{
-// this.className = "is-playing";
-// this.innerHTML = "OFF";
-
-// player.disconnect(reverb);
-// player2.disconnect(reverb);
-// player3.disconnect(reverb);
-// player4.disconnect(reverb);
-// //player5.connect(reverb);
-// player1_2.disconnect(reverb);
-// player2_2.disconnect(reverb);
-// player3_2.disconnect(reverb);
-// player4_2.disconnect(reverb);
-// player5_2.disconnect(reverb);
-
-
-// }}
-// ); 
