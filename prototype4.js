@@ -201,7 +201,7 @@ var i = 0;
       updateFieldIfNotNull('total_filter', totFilter );
       updateFieldIfNotNull('diff_acc', diffAcc );
       updateFieldIfNotNull('qom', diffAcc );
-      updateFieldIfNotNull('inv_qom', temposcale );
+      updateFieldIfNotNull('inv_qom', temposcale2 );
     
     //monitoring diffAcc
 
