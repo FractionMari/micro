@@ -23,6 +23,7 @@
 
 const gainNode = new Tone.Gain().toMaster();
 
+const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
 const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
 
@@ -459,3 +460,52 @@ var i = 0;
   
     }}
     ); 
+
+
+    document.getElementById("effectButton1").addEventListener("click", function(){
+
+      if (this.className == 'is-playing')
+        
+      {
+        this.className = "";
+        this.innerHTML = "ON"
+/*         player.disconnect(autoFilter);
+        player2.disconnect(autoFilter);
+        player3.disconnect(autoFilter);
+        player4.disconnect(autoFilter);
+        //player5.disconnect(autoFilter);
+        player1_2.disconnect(autoFilter);
+        player2_2.disconnect(autoFilter);
+        player3_2.disconnect(autoFilter);
+        player4_2.disconnect(autoFilter);
+        player5_2.disconnect(autoFilter); */
+
+        player.connect(pingPong);
+        player2.connect(pingPong);
+        player3.connect(pingPong);
+        player4.connect(pingPong);
+        //player5.connect(pingPong);
+        player1_2.connect(pingPong);
+        player2_2.connect(pingPong);
+        player3_2.connect(pingPong);
+        player4_2.connect(pingPong);
+        player5_2.connect(pingPong);
+
+}else{
+  this.className = "is-playing";
+  this.innerHTML = "OFF";
+
+  player.disconnect(pingPong);
+  player2.disconnect(pingPong);
+  player3.disconnect(pingPong);
+  player4.disconnect(pingPong);
+  //player5.connect(pingPong);
+  player1_2.disconnect(pingPong);
+  player2_2.disconnect(pingPong);
+  player3_2.disconnect(pingPong);
+  player4_2.disconnect(pingPong);
+  player5_2.disconnect(pingPong);
+
+
+}}
+); 
