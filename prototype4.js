@@ -467,7 +467,7 @@ var i = 0;
       if (this.className == 'is-playing')
         
       {
-        this.className = "";
+        this.className = "buttonT";
         this.innerHTML = "ON"
 /*         player.disconnect(autoFilter);
         player2.disconnect(autoFilter);
