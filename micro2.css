@@ -142,7 +142,7 @@ a:hover {
 }
 #pitchBox {
     display: inline-block;
-    vertical-align:left;
+    vertical-align:middle;
     width:auto;
     max-width:140px;
     height:auto;
@@ -313,3 +313,20 @@ color: black;
 background-color: #4CAF50;
 color: white;
 }
+
+
+.buttonT {
+
+  }
+  
+  .buttonT:hover span {
+    display:none
+  }
+  
+  .buttonT:hover:before {
+    content:"Ping Pong Delay";
+  }
+  
+  .buttonT:hover {
+    background-color: green;
+  }
