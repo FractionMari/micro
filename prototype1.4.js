@@ -115,9 +115,15 @@ function handleOrientation(event) {
 
       // Animation code:
 
+      let xDotScale = generateScaleFunction(0, 180, 0, 80);
+      let xDotValues = xDotScale(event.beta);
+
+      let yDotScale = generateScaleFunction(-90, 90, 0, 100);
+      let yDotValues = yDotScale(event.alpha);
+
       var elem = document.getElementById("myAnimation");   
-          elem.style.top = event.alpha + 'px'; 
-          elem.style.left = event.beta + 'px'; 
+          elem.style.top = yDotValues + 'px'; 
+          elem.style.left = xDotValues + 'px'; 
 
 
 
