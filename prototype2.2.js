@@ -42,8 +42,7 @@ const handleAction = async () => {
   await sleep(3000);
   const audio = await recorder.stop();
   audio.play();
-  audio.loop = true;
-  //await sleep(3000);
+  await sleep(3000);
   actionButton.disabled = false;
 }
 
@@ -51,46 +50,73 @@ const handleAction = async () => {
 
 // Tone.js parameters:
 
-const gainNode = new Tone.Gain().toDestination();
-const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
-const tremolo = new Tone.Tremolo(9, 0.75).connect(gainNode);
+
+// let pitchslider = document.getElementById("pitch");
+
+const gainNode = new Tone.Gain().toMaster();
+
 const phaser = new Tone.Phaser({
 	frequency: 15,
 	octaves: 5,
 	baseFrequency: 1000
 }).connect(gainNode);
 
-const autoFilter = new Tone.AutoWah().connect(gainNode);
+const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
+const pitchShift2 = new Tone.PitchShift().connect(gainNode);
+const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
 
-
-const synth = new Tone.FMSynth().connect(autoFilter);
-//const synth2 = new Tone.FMSynth().connect(autoFilter);
-//const synth3 = new Tone.MembraneSynth().connect(pingPong);
-
-
+//instead of a Synth, there is some loops
+// Pitch variables
+pitchShift2.pitch = 0; // down one octave
+// Players
 const player = new Tone.Player().connect(autoFilter);
 const player2 = new Tone.Player().connect(autoFilter);
 const player3 = new Tone.Player().connect(autoFilter);
 const player4 = new Tone.Player().connect(autoFilter);
+const player5 = undefined; 
+const player1_2 = new Tone.Player().connect(autoFilter);
+const player2_2 = new Tone.Player().connect(autoFilter);
+const player3_2 = new Tone.Player().connect(autoFilter);
+const player4_2 = new Tone.Player().connect(autoFilter);
+const player5_2 = new Tone.Player().connect(autoFilter);
+
 
 player.loop = true;
 player2.loop = true;
 player3.loop = true;
 player4.loop = true;
+player1_2.loop = true;
+player2_2.loop = true;
+player3_2.loop = true;
+player4_2.loop = true;
+player5_2.loop = true;
 
 player.autostart = true;
 player2.autostart = true;
 player3.autostart = true;
 player4.autostart = true;
+player1_2.autostart = true;
+player2_2.autostart = true;
+player3_2.autostart = true;
+player4_2.autostart = true;
+player5_2.autostart = true;
 
 player.mute = true;
 player2.mute = true;
 player3.mute = true;
 player4.mute = true;
+player1_2.mute = true;
+player2_2.mute = true;
+player3_2.mute = true;
+player4_2.mute = true;
+player5_2.mute = true;
+
+
 
 let newAcc;
 let newAcc2;
 let inverse = true;
+
 
 // With this function the values won't go below a threshold 
 function clamp(min, max, val) {
@@ -105,43 +131,9 @@ var offset = newMin - prevMin,
       return offset + scale * x;
       };
 };
-// Scales
-var diatonicScale = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3"];
-var pentaScale = ["C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4"];
-// Function for shifting pitch
-function pitchShift (pitch, instrument, scale) {
-  const intervalChange = 30;
-  const points = Math.floor(pitch / intervalChange);
 
-  if (points >= 12)
-  instrument.frequency.value = scale[11];
-  else if (points >= 11)
-  instrument.frequency.value = scale[10];
-  else if (points >= 10)
-  instrument.frequency.value = scale[9];
-  else if (points >= 9)
-  instrument.frequency.value = scale[8];  
-  else if (points >= 8)
-  instrument.frequency.value = scale[7];
-  else if (points >= 7)
-  instrument.frequency.value = scale[6];
-  else if (points >= 6)
-  instrument.frequency.value = scale[5];
-  else if (points >= 5)
-  instrument.frequency.value = scale[4];
-  else if (points >= 4)
-  instrument.frequency.value = scale[3];
-  else if (points >= 3)
-  instrument.frequency.value = scale[2];
-  else if (points >= 2)
-  instrument.frequency.value = scale[1]; 
-  else if (points >= 1)
-  instrument.frequency.value = scale[0];
-      
-}
+//var result = [];
 
-
-// orientation handling
 function handleOrientation(event) {
 
     updateFieldIfNotNull('Orientation_b', event.beta);
@@ -149,64 +141,49 @@ function handleOrientation(event) {
     updateFieldIfNotNull('Orientation_a', event.alpha);
 
     // Rotation to control oscillator pitch
-    let pitchWheel = event.beta;
+    //let pitchWheel = event.beta;
     let filterWheel = event.gamma;
-    let filterScale = generateScaleFunction(0, 90, 10, 300);
+    let betaWheel = event.beta;
 
+    let filterScale = generateScaleFunction(0, 90, 10, 300);
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
-    //filterWheel = filterWheel + 50;
-    //filterWheel = Math.abs(filterWheel * 6);
-    pitchWheel = pitchWheel + 180;
-    alphaWheel = Math.abs(event.alpha);
 
-    updateFieldIfNotNull('pitchwheel', pitchWheel);
+function loopActivate(players1, players2, value) {
+
+  if (betaWheel < value)
+  players1.mute = true,
+  players2.mute = true;
+
+  else if ((filterWheel > 80) && (betaWheel > value))
+  players2.mute = false,
+  players1.mute = true;
+
+  else
+  players2.mute = true,
+  players1.mute = false;
+
+};
+
+loopActivate(player, player1_2, 20);
+loopActivate(player2, player2_2, 40);
+loopActivate(player3, player3_2, 60);
+loopActivate(player4, player4_2, 80);
+//loopActivate(player5, player5_2, 80);
+
+
+ 
     updateFieldIfNotNull('filterwheel', filterWheel);
-    pitchShift(pitchWheel, synth, pentaScale);
-    //pitchShift(pitchWheel, synth2, diatonicScale);
-    let harmonicity = pitchWheel / 180;
-    updateFieldIfNotNull('harmonicity', harmonicity);
-    autoFilter.baseFrequency = filterWheel;
-    synth.harmonicity.value = harmonicity;
-    phaser.frequency = harmonicity;
-    pingPong.wet.value = event.alpha / 360 ;
-    //console.log(event.alpha / 360);
-
-/*     if (Math.abs(event.gamma) > 20)
-      synth3.triggerAttackRelease();
-      console.log(Math.abs(event.gamma));
-      pitchShift(Math.abs(event.gamma), synth3, diatonicScale); */
-
-      // Animation code:
-
-      let xDotScale = generateScaleFunction(0, 180, 0, 80);
-      let xDotValues = xDotScale(event.beta);
-
-      let yDotScale = generateScaleFunction(-90, 90, 0, 100);
-      let yDotValues = yDotScale(event.alpha);
-
-      var elem = document.getElementById("myAnimation");   
-          elem.style.top = yDotValues + 'px'; 
-          elem.style.left = xDotValues + 'px'; 
-
-
+    updateFieldIfNotNull('betawheel', betaWheel);
 
   }
 
-
-/* function incrementEventCount(){
-let counterElement = document.getElementById("num-observed-events")
-let eventCount = parseInt(counterElement.innerHTML)
-counterElement.innerHTML = eventCount + 1;
-//  updateFieldIfNotNull('eventcount', eventCount );
-} */
 
 // function for updating values for sensor data
 function updateFieldIfNotNull(fieldName, value, precision=2){
     if (value != null)
       document.getElementById(fieldName).innerHTML = value.toFixed(precision);
   }
-
 
 
 
@@ -244,7 +221,6 @@ var i = 0;
       let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
     
       updateFieldIfNotNull('test_x', accl.x );
-    
       updateFieldIfNotNull('filter_x', xFilter);
     
       updateFieldIfNotNull('test_y', accl.y );
@@ -256,27 +232,9 @@ var i = 0;
       updateFieldIfNotNull('total_acc', totAcc );
       updateFieldIfNotNull('total_filter', totFilter );
       updateFieldIfNotNull('diff_acc', diffAcc );
-    
-    /* 
-      updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
-      updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
-      updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
-    
-      updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
-      updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
-      updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
-    
-      updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
-    
-      updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
-      updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
-      updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma); */
-      
       updateFieldIfNotNull('volume_acc', newAcc );
+    
     //monitoring diffAcc
-
-
-
 
     var fn = generateScaleFunction(0, 10, 0.3, 0);
     newAcc = fn(diffAcc);
@@ -293,43 +251,198 @@ var i = 0;
     else
     // more smooth change of volume:
     gainNode.gain.rampTo(newAcc, 0.1);
+
+
       
       //incrementEventCount();
     }
-    
+ 
+
 
 
 
     let is_running = false;
     let demo_button = document.getElementById("start_demo");
-/*     demo_button.onclick = function(e) {
-      e.preventDefault();
+
+    var playerBuffers = new Tone.Buffers({
+        "drums" : "audioUrl",
+        "bass" : "loops/RolegSong_bass.mp3",
+        "arp" : "loops/RolegSong_orgel1.mp3",
+        "bass2" : "loops/RolegSong_piano.mp3",
+        "2drums" : "loops/2RolegSong_trommer.mp3",
+        "2bass" : "loops/2RolegSong_bass.mp3",
+        "2arp" : "loops/2RolegSong_orgel1.mp3",
+        "2bass2" : "loops/2RolegSong_piano.mp3",
+        "2piano" : "loops/2RolegSong_orgel2.mp3"
+    }, 
+    function(){
+        //play one of the samples when they all load
+    
+  
+    player.buffer = playerBuffers.get("drums");
+      player.start();
+    player2.buffer = playerBuffers.get("bass");
+      player2.start();
+    player3.buffer = playerBuffers.get("arp");
+      player3.start();
+    player4.buffer = playerBuffers.get("bass2");
+      player4.start();
+  
+    player1_2.buffer = playerBuffers.get("2drums");
+      player1_2.start();
+    player2_2.buffer = playerBuffers.get("2bass");
+      player2_2.start();
+    player3_2.buffer = playerBuffers.get("2arp");
+      player3_2.start();
+    player4_2.buffer = playerBuffers.get("2bass2");
+      player4_2.start();
+    player5_2.buffer = playerBuffers.get("2piano");
+      player5_2.start();
+  });
+
+
+    document.getElementById("looper1").addEventListener("click", function(){
+
+        // Request permission for iOS 13+ devices
+        if (
+            DeviceMotionEvent &&
+            typeof DeviceMotionEvent.requestPermission === "function"
+          ) {
+            DeviceMotionEvent.requestPermission();
+          }
+
+          Tone.start();
+
+
+          window.addEventListener("devicemotion", handleMotion);
+          window.addEventListener("deviceorientation", handleOrientation);
+    
+
+          
+    
+        if (this.className == 'is-playing')
+        
+        {
+          this.className = "is-playing2";
+          this.innerHTML = "Loop 3 ON"
+          var playerBuffers = new Tone.Buffers({
+            "drums" : "loops/drums1_80bpm.mp3",
+            "bass" : "loops/bass1_80bpm.mp3",
+            "arp" : "loops/arp_80bpm.mp3",
+            "bass2" : "loops/bass2_80bpm.mp3",
+            "2drums" : "loops/2drums1.mp3",
+            "2bass" : "loops/2bass1.mp3",
+            "2arp" : "loops/2arp.mp3",
+            "2bass2" : "loops/2bass2.mp3",
+            "2piano" : "loops/2piano.mp3"
+        }, function(){ 
       
-      // Request permission for iOS 13+ devices
-      if (
-        DeviceMotionEvent &&
-        typeof DeviceMotionEvent.requestPermission === "function"
-      ) {
-        DeviceMotionEvent.requestPermission();
-      }
+          player.buffer = playerBuffers.get("drums");
+          player.start();
+        player2.buffer = playerBuffers.get("bass");
+          player2.start();
+        player3.buffer = playerBuffers.get("arp");
+          player3.start();
+        player4.buffer = playerBuffers.get("bass2");
+          player4.start();
       
-      if (is_running){
-        window.removeEventListener("devicemotion", handleMotion);
-        window.removeEventListener("deviceorientation", handleOrientation);
-        demo_button.innerHTML = "Start demo";
-        demo_button.classList.add('btn-success');
-        demo_button.classList.remove('btn-danger');
-        is_running = false;
+        player1_2.buffer = playerBuffers.get("2drums");
+          player1_2.start();
+        player2_2.buffer = playerBuffers.get("2bass");
+          player2_2.start();
+        player3_2.buffer = playerBuffers.get("2arp");
+          player3_2.start();
+        player4_2.buffer = playerBuffers.get("2bass2");
+          player4_2.start();
+        player5_2.buffer = playerBuffers.get("2piano");
+          player5_2.start();
+      });
+      
+        }else if (this.className == 'is-playing2')
+        
+        {
+          this.className = "";
+          this.innerHTML = "Loop 1 ON";
+      
+          var playerBuffers = new Tone.Buffers({
+            "drums" : "loops/RolegSong_trommer.mp3",
+            "bass" : "loops/RolegSong_bass.mp3",
+            "arp" : "loops/RolegSong_orgel1.mp3",
+            "bass2" : "loops/RolegSong_piano.mp3",
+            "2drums" : "loops/2RolegSong_trommer.mp3",
+            "2bass" : "loops/2RolegSong_bass.mp3",
+            "2arp" : "loops/2RolegSong_orgel1.mp3",
+            "2bass2" : "loops/2RolegSong_piano.mp3",
+            "2piano" : "loops/2RolegSong_orgel2.mp3"
+        }, 
+        function(){
+            //play one of the samples when they all load
+        
+      
+        player.buffer = playerBuffers.get("drums");
+          player.start();
+        player2.buffer = playerBuffers.get("bass");
+          player2.start();
+        player3.buffer = playerBuffers.get("arp");
+          player3.start();
+        player4.buffer = playerBuffers.get("bass2");
+          player4.start();
+      
+        player1_2.buffer = playerBuffers.get("2drums");
+          player1_2.start();
+        player2_2.buffer = playerBuffers.get("2bass");
+          player2_2.start();
+        player3_2.buffer = playerBuffers.get("2arp");
+          player3_2.start();
+        player4_2.buffer = playerBuffers.get("2bass2");
+          player4_2.start();
+        player5_2.buffer = playerBuffers.get("2piano");
+          player5_2.start();
+      });
+      
       }else{
-        window.addEventListener("devicemotion", handleMotion);
-        window.addEventListener("deviceorientation", handleOrientation);
-        document.getElementById("start_demo").innerHTML = "Stop demo";
-        demo_button.classList.remove('btn-success');
-        demo_button.classList.add('btn-danger');
-        is_running = true;
-      }
-    };
-     */
+          this.className = "is-playing";
+          this.innerHTML = "Loop 2 ON";
+      
+          var playerBuffers = new Tone.Buffers({
+            "drums" : "loops/jazzloop_drums.mp3",
+            "bass" : "loops/jazzloop_bass.mp3",
+            "arp" : "loops/jazzloop_piano.mp3",
+            "bass2" : "loops/jazzloop_synth.mp3",
+            "2drums" : "loops/2jazzloop_drums.mp3",
+            "2bass" : "loops/2jazzloop_bass.mp3",
+            "2arp" : "loops/2jazzloop_piano.mp3",
+            "2bass2" : "loops/2jazzloop_synth.mp3",
+            "2piano" : "loops/2jazzloop_cosmic.mp3"
+        }, 
+        function(){
+            //play one of the samples when they all load
+        
+      
+        player.buffer = playerBuffers.get("drums");
+          player.start();
+        player2.buffer = playerBuffers.get("bass");
+          player2.start();
+        player3.buffer = playerBuffers.get("arp");
+          player3.start();
+        player4.buffer = playerBuffers.get("bass2");
+          player4.start();
+      
+        player1_2.buffer = playerBuffers.get("2drums");
+          player1_2.start();
+        player2_2.buffer = playerBuffers.get("2bass");
+          player2_2.start();
+        player3_2.buffer = playerBuffers.get("2arp");
+          player3_2.start();
+        player4_2.buffer = playerBuffers.get("2bass2");
+          player4_2.start();
+        player5_2.buffer = playerBuffers.get("2piano");
+          player5_2.start();
+      });
+      
+        }}
+        );
+
 
 
   document.getElementById("button2").addEventListener("click", function(){
@@ -339,8 +452,6 @@ var i = 0;
       this.className = "";
       this.innerHTML = "Inverse: ON"
       inverse = true;
-
-
   
     }else{
       this.className = "is-playing";
@@ -350,65 +461,43 @@ var i = 0;
     }}
     ); 
 
-  document.getElementById("button1").addEventListener("click", function(){
 
-  //  e.preventDefault();
+
+
+    document.getElementById("effectButton1").addEventListener("click", function(){
+
+      if (this.className == 'is-playing')
+        
+      {
+        this.className = "";
+        this.innerHTML = "OFF"
+        player.disconnect(pingPong);
+        player2.disconnect(pingPong);
+        player3.disconnect(pingPong);
+        player4.disconnect(pingPong);
+        //player5.connect(pingPong);
+        player1_2.disconnect(pingPong);
+        player2_2.disconnect(pingPong);
+        player3_2.disconnect(pingPong);
+        player4_2.disconnect(pingPong);
+        player5_2.disconnect(pingPong);
       
-    // Request permission for iOS 13+ devices
-    if (
-      DeviceMotionEvent &&
-      typeof DeviceMotionEvent.requestPermission === "function"
-    ) {
-      DeviceMotionEvent.requestPermission();
-    }
-    
-   
-    
-    if(this.className == 'is-playing'){
-      this.className = "";
-      this.innerHTML = "Synth: OFF"
-      synth.triggerRelease();
-    //  synth2.triggerRelease();
-
-      window.removeEventListener("devicemotion", handleMotion);
-      window.removeEventListener("deviceorientation", handleOrientation);
-/*       demo_button.innerHTML = "Start demo";
-      demo_button.classList.add('btn-success');
-      demo_button.classList.remove('btn-danger'); */
-      is_running = false;
-  
-    }else{
-      this.className = "is-playing";
-      this.innerHTML = "Synth: ON";
-      synth.triggerAttack("C4"); 
-
-      window.addEventListener("devicemotion", handleMotion);
-      window.addEventListener("deviceorientation", handleOrientation);
-/*       document.getElementById("start_demo").innerHTML = "Stop demo";
-      demo_button.classList.remove('btn-success');
-      demo_button.classList.add('btn-danger'); */
-      is_running = true;
-      
-  
-    }}
-    );
 
 
-document.getElementById("effectButton1").addEventListener("click", function(){
+}else{
+  this.className = "is-playing";
+  this.innerHTML = "ON";
 
-  if (this.className == 'is-playing')
-    
-  {
-    this.className = "";
-    this.innerHTML = "OFF";
-    synth.disconnect(pingPong);
-
-
-  }else{
-    this.className = "is-playing";
-    this.innerHTML = "ON"
-    synth.connect(pingPong);
-
+  player.connect(pingPong);
+  player2.connect(pingPong);
+  player3.connect(pingPong);
+  player4.connect(pingPong);
+  //player5.connect(pingPong);
+  player1_2.connect(pingPong);
+  player2_2.connect(pingPong);
+  player3_2.connect(pingPong);
+  player4_2.connect(pingPong);
+  player5_2.connect(pingPong);
 
 
 }}
@@ -422,37 +511,35 @@ document.getElementById("effectButton2").addEventListener("click", function(){
     
   {
     this.className = "";
-    this.innerHTML = "OFF";
-    synth.disconnect(tremolo);
+    this.innerHTML = "OFF"
+    player.disconnect(phaser);
+    player2.disconnect(phaser);
+    player3.disconnect(phaser);
+    player4.disconnect(phaser);
+    //player5.connect(phaser);
+    player1_2.disconnect(phaser);
+    player2_2.disconnect(phaser);
+    player3_2.disconnect(phaser);
+    player4_2.disconnect(phaser);
+    player5_2.disconnect(phaser);
+  
 
 
-  }else{
-    this.className = "is-playing";
-    this.innerHTML = "ON"
-    synth.connect(tremolo);
+}else{
+this.className = "is-playing";
+this.innerHTML = "ON";
 
+player.connect(phaser);
+player2.connect(phaser);
+player3.connect(phaser);
+player4.connect(phaser);
+//player5.connect(phaser);
+player1_2.connect(phaser);
+player2_2.connect(phaser);
+player3_2.connect(phaser);
+player4_2.connect(phaser);
+player5_2.connect(phaser);
 
 
 }}
 ); 
-
-document.getElementById("effectButton3").addEventListener("click", function(){
-
-  if (this.className == 'is-playing')
-    
-  {
-    this.className = "";
-    this.innerHTML = "OFF";
-    synth.disconnect(phaser);
-
-
-  }else{
-    this.className = "is-playing";
-    this.innerHTML = "ON"
-    synth.connect(phaser);
-
-
-
-}}
-); 
-

@@ -37,7 +37,7 @@
 
     <div id="container">
 
-    <h2>Micro 2</h2>
+    <h2>Micro 2.2</h2>
 
 <!--     <button type="button" id="button1" class="AMbuttons">Play</button>
     <button type="button" id="button2" class="AMbuttons">Stop</button> -->
@@ -57,66 +57,68 @@
 <br>
 <button id="action" onclick="handleAction()">Start recording...</button>
 
-    <button id="button1">Synth: OFF</button>
+   
+    <div id="loops">
+      <button id="effectButton1">1</button>
+      <button id="effectButton2">2</button>
+
+
+    <button id="looper1" class="loopButtons">PRESS to start</button><br>
     <button id="button2">Inverse: ON</button><br>
+    <div id="numbers">
+    Volume: <br>
+    <span id="volume_acc">0</span>
+    Short side tilt<br>
+    <span id="betawheel">0</span> <br>
+    Long side Tilt <br>
+    <span id="filterwheel">0</span>
+</div>
+    </div>
 
-    <button id="effectButton1">1</button>
-    <button id="effectButton2">2</button>
-    <button id="effectButton3">3</button>
 
+    
     <div id="container7">
 
-      Volume: <span id="volume_acc">0</span>
-      Pitch Wheel <span id="pitchwheel">0</span><span>&deg;</span>
-      Filter Wheel <span id="filterwheel">0</span><span>&deg;</span>
 
-      Z-axis (&alpha;): <span id="Orientation_a">0</span><span>&deg;</span>
-        X-axis (&beta;): <span id="Orientation_b">0</span><span>&deg;</span>
-      Y-axis (&gamma;): <span id="Orientation_g">0</span><span>&deg;</span>
-      X-axis: <span id="test_x">0</span>
-      X-axis with filter: <span id="filter_x">0</span>
-      Y-axis: <span id="test_y">0</span>
-      Y-axis with filter: <span id="filter_y">0</span>
-      Z-axis: <span id="test_z">0</span>
-      Z-axis with filter: <span id="filter_z">0</span>
-      Total acc: <span id="total_acc">0</span>
-      Total filter: <span id="total_filter">0</span>
-      Difference: <span id="diff_acc">0</span>
-      Harmonicity <span id="harmonicity">0</span><span>&deg;</span>
-      Event count <span id="eventcount">0</span><span>&deg;</span>
-      
-      </div>
-          </div>
-      
-      
-      
-      
-      </main>
-      <script>
-          var coll = document.getElementsByClassName("collapsible");
-          var i;
-          
-          for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-              this.classList.toggle("active");
-              var content = this.nextElementSibling;
-              if (content.style.display === "block") {
-                content.style.display = "none";
-              } else {
-                content.style.display = "block";
-              }
-            });
-          }
-          </script>
 
+X-axis (&beta;): <span id="Orientation_b">0</span><span>&deg;</span>
+Y-axis (&gamma;): <span id="Orientation_g">0</span><span>&deg;</span>
+Z-axis (&alpha;): <span id="Orientation_a">0</span><span>&deg;</span>
+X-axis: <span id="test_x">0</span>
+X-axis with filter: <span id="filter_x">0</span>
+Y-axis: <span id="test_y">0</span>
+Y-axis with filter: <span id="filter_y">0</span>
+Z-axis: <span id="test_z">0</span>
+Z-axis with filter: <span id="filter_z">0</span>
+Total acc: <span id="total_acc">0</span>
+Total filter: <span id="total_filter">0</span>
+Difference: <span id="diff_acc">0</span>
+
+</div>
+    </div>
+
+
+
+
+</main>
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+    </script>
 <script src="prototype2.2.js"></script>
 
-<!-- <a href ="./prototype2.html">Link to Prototype 2</a> -->
 
-<!-- <a href ="./tone/index.html">Link to Tone JS testing page</a>
-<a href ="./prototype1.2.html">Link to Prototype 1.2 test</a>
-<a href ="./sixth_sense_demo.html">Link to sixth_sense_demo</a>
-<a href ="./prototype1.3.html">Link to iOS Test test</a> -->
-</div>
 </body>
 </html>
