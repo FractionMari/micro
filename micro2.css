@@ -11,7 +11,7 @@ body {
     font-variant: small-caps;
     text-transform: none;
 	text-align: center;
-    background-color: #0d6d00;
+    background-color: #000000;
     font-size: 140%;
     color: #ccde07;
     }
@@ -62,7 +62,7 @@ a:hover {
     width: auto;
     max-width:500px;
     height: auto;
-    background: rgb(0, 0, 0);
+    background: rgb(197, 95, 184);
     padding: 20px;
     border: 20px rgba(68, 7, 38, 0.543) solid;
 /*     background-image: url("assets/bg7.jpg"); */
@@ -73,7 +73,7 @@ a:hover {
     width: auto;
     max-width:500px;
     height: auto;
-    background: rgb(0, 0, 0);
+    background: rgb(197, 95, 184);
     padding: 20px;
     border: 20px rgba(255, 0, 68, 0.42) solid;
     /* background-image: url("assets/bg9.jpg"); */
@@ -86,7 +86,7 @@ a:hover {
     width: auto;
     max-width:500px;
     height: auto;
-    background: rgb(0, 0, 0);
+    background: rgb(197, 95, 184);
     padding: 20px;
     border: 20px rgba(21, 0, 254, 0.557) solid;
 /*     background-image: url("assets/bg8.jpg"); */
@@ -100,7 +100,7 @@ a:hover {
     width: auto;
     max-width:500px;
     height: auto;
-    background: rgb(0, 0, 0);
+    background: rgb(197, 95, 184);
     padding: 20px;
     border: 0px rgb(84, 117, 6) solid;
     /* background-image: url("assets/bg8.jpg"); */
@@ -113,7 +113,7 @@ a:hover {
     width: auto;
     max-width:500px;
     height: auto;
-    background: rgb(0, 0, 0);
+    background: rgb(197, 95, 184);
     padding: 20px;
     border: 20px rgb(84, 117, 6) solid;
 /*     background-image: url("assets/bg9.jpg"); */
@@ -317,14 +317,11 @@ color: black;
 }
 
 .topnav a.active {
-background-color: #4CAF50;
+background-color: rgb(197, 95, 184);
 color: white;
 }
 
 
-.buttonT {
-
-  }
   
   .buttonT:hover span {
     display:none
@@ -337,3 +334,46 @@ color: white;
   .buttonT:hover {
     background-color: green;
   }
+
+
+
+  #myContainer {
+    display: inline-block;
+
+    width:150px; 
+    height:110px;
+    margin: 0 auto; 
+    background: rgb(230, 247, 0); 
+    position:relative; 
+    top: 150px;
+    right: 40px;
+    border:5px solid black; 
+    border-radius: 10px; 
+    box-shadow: 0 5px 50px #3337
+  }
+
+  #microContainer {
+    display: inline-block;
+    position:relative; 
+    top: 0px;
+    right: 0px;
+
+    widows: 300px; 
+    height:200px;
+
+
+  }
+  #myAnimation {
+    width: 30px;
+    height: 30px;
+    bottom: 100px;
+    left: 30px;
+    border-radius: 50px;
+    background-color: red;
+    position: relative;
+
+  }
+
+  .img {
+    position: relative;
+}
