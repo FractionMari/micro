@@ -93,6 +93,9 @@ function handleOrientation(event) {
 
     let yDotScale = generateScaleFunction(-90, 90, 0, 100);
     let yDotValues = yDotScale(filterWheel);
+
+    updateFieldIfNotNull('x_dots', xDotValues);
+    updateFieldIfNotNull('y_dots', yDotValues);
     
     let filterScale = generateScaleFunction(0, 90, 10, 300);
 
