@@ -338,42 +338,39 @@ color: white;
 
 
   #myContainer {
-    display: inline-block;
 
-    width:150px; 
-    height:110px;
-    margin: 0 auto; 
+    width:130px; 
+    height:105px;
+    top: 25px;
+    left: 25px;
     background: rgb(230, 247, 0); 
-    position:relative; 
-    top: 150px;
-    right: 40px;
-    border:5px solid black; 
+    position:absolute; 
+
+    border:4px solid black; 
     border-radius: 10px; 
     box-shadow: 0 5px 50px #3337
   }
 
   #microContainer {
     display: inline-block;
-    position:relative; 
-    top: 0px;
-    right: 0px;
+    position: relative; 
+
 
     widows: 300px; 
     height:200px;
-
-
   }
   #myAnimation {
     width: 30px;
     height: 30px;
-    bottom: 100px;
-    left: 30px;
+    
     border-radius: 50px;
     background-color: red;
-    position: relative;
+    position:absolute; 
 
   }
 
   .img {
-    position: relative;
+    position:absolute; 
+    top: 0px;
+    left: 0px;
 }
