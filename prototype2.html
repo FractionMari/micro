@@ -18,7 +18,7 @@
     <a href="./prototype3.html">App 3</a>
     <a href="./prototype4.html">App 4</a>
   </div>
-    <button type="button" class="collapsible" id="helpButton">?</button>
+   <button type="button" class="collapsible" id="helpButton">?</button>
 
 
     <div class="content">
@@ -26,74 +26,97 @@
           <div class="dots">
     
         <li> This app must be used on a phone/tablet</li>
-        <li> Activate 1 to 4 different loops with buttons </li>
-        <li> The volume decreases when you move your phone </li>
-        <li> Control a filter by moving your phone </li>
-        <li> Control pitch with the slider </li> </div>
+        <li> Tap the SYNTH button to start </li>
+        <li> Inversed mapping makes the volume decrease when you move your phone </li>
+        <li> Control a filter by moving your phone the Y axis </li>
+        <li> Control pitch by moving your phone on the X axis </li> 
+        <li> Add more effects to the left ---></li>
+      </div>
       </p>
     </div> 
 
-    <h1>This page is under construction</h1>
-<!--     <div id="container2">
+    <div id="container">
+
+    <h2>Micro 2</h2>
+
+<!--     <button type="button" id="button1" class="AMbuttons">Play</button>
+    <button type="button" id="button2" class="AMbuttons">Stop</button> -->
+   <!--  <a id="start_demo" href="#" role="button">Start the demo</a><br> -->
 
 
 
-    <h2>Micro App: LOOPER</h2>
-    <div id="pitchBox">
-        <input type="range" min="-10" max="10" value="0" step="1" class="vertical-heighest-first" id="pitch">
-       
-    </div>
-        
-    <div id="loops">
+<div id="microContainer">
+<div id ="myContainer">
+<div id ="myAnimation">
+</div></div>
+<img class='img' src="assets/micro2.png" width="250">
+</img>
+    
+</div>
 
+<br>
+<button id="action" onclick="handleAction()">Start recording...</button>
 
-    <button id="looper1" class="loopButtons">1: OFF</button><br>
-    <button id="looper2" class="loopButtons">2: OFF</button><br>
-    <button id="looper3" class="loopButtons">3: OFF</button><br>
-    <button id="looper4" class="loopButtons">4: OFF</button><br>
-    </div> -->
+    <button id="button1">Synth: OFF</button>
+    <button id="button2">Inverse: ON</button><br>
+
+    <button id="effectButton1">1</button>
+    <button id="effectButton2">2</button>
+    <button id="effectButton3">3</button>
+
     <div id="container7">
 
-Volume: <span id="volume_acc">0</span>
-Filter Wheel <span id="filterwheel">0</span><span>&deg;</span>
-X-axis (&beta;): <span id="Orientation_b">0</span><span>&deg;</span>
-Y-axis (&gamma;): <span id="Orientation_g">0</span><span>&deg;</span>
-Z-axis (&alpha;): <span id="Orientation_a">0</span><span>&deg;</span>
-X-axis: <span id="test_x">0</span>
-X-axis with filter: <span id="filter_x">0</span>
-Y-axis: <span id="test_y">0</span>
-Y-axis with filter: <span id="filter_y">0</span>
-Z-axis: <span id="test_z">0</span>
-Z-axis with filter: <span id="filter_z">0</span>
-Total acc: <span id="total_acc">0</span>
-Total filter: <span id="total_filter">0</span>
-Difference: <span id="diff_acc">0</span>
+      Volume: <span id="volume_acc">0</span>
+      Pitch Wheel <span id="pitchwheel">0</span><span>&deg;</span>
+      Filter Wheel <span id="filterwheel">0</span><span>&deg;</span>
 
+      Z-axis (&alpha;): <span id="Orientation_a">0</span><span>&deg;</span>
+        X-axis (&beta;): <span id="Orientation_b">0</span><span>&deg;</span>
+      Y-axis (&gamma;): <span id="Orientation_g">0</span><span>&deg;</span>
+      X-axis: <span id="test_x">0</span>
+      X-axis with filter: <span id="filter_x">0</span>
+      Y-axis: <span id="test_y">0</span>
+      Y-axis with filter: <span id="filter_y">0</span>
+      Z-axis: <span id="test_z">0</span>
+      Z-axis with filter: <span id="filter_z">0</span>
+      Total acc: <span id="total_acc">0</span>
+      Total filter: <span id="total_filter">0</span>
+      Difference: <span id="diff_acc">0</span>
+      Harmonicity <span id="harmonicity">0</span><span>&deg;</span>
+      Event count <span id="eventcount">0</span><span>&deg;</span>
+      
+      </div>
+          </div>
+      
+      
+      
+      
+      </main>
+      <script>
+          var coll = document.getElementsByClassName("collapsible");
+          var i;
+          
+          for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var content = this.nextElementSibling;
+              if (content.style.display === "block") {
+                content.style.display = "none";
+              } else {
+                content.style.display = "block";
+              }
+            });
+          }
+          </script>
+
+<script src="prototype2.2.js"></script>
+
+<!-- <a href ="./prototype2.html">Link to Prototype 2</a> -->
+
+<!-- <a href ="./tone/index.html">Link to Tone JS testing page</a>
+<a href ="./prototype1.2.html">Link to Prototype 1.2 test</a>
+<a href ="./sixth_sense_demo.html">Link to sixth_sense_demo</a>
+<a href ="./prototype1.3.html">Link to iOS Test test</a> -->
 </div>
-    </div>
-
-
-
-
-</main>
-<script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-    
-    for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else {
-          content.style.display = "block";
-        }
-      });
-    }
-    </script>
-<script src="prototype2.js"></script>
-
-
 </body>
 </html>

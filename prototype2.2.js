@@ -1,6 +1,53 @@
 // Update on 9 April 2021:
 // This version contains a better code for differing between motion frames, and is working on both iOS and Android.
 
+// Update on 1. May 2021:
+// Ability to upload tracks
+
+const recordAudio = () =>
+  new Promise(async resolve => {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const mediaRecorder = new MediaRecorder(stream);
+    const audioChunks = [];
+
+    mediaRecorder.addEventListener("dataavailable", event => {
+      audioChunks.push(event.data);
+    });
+
+    const start = () => mediaRecorder.start();
+
+    const stop = () =>
+      new Promise(resolve => {
+        mediaRecorder.addEventListener("stop", () => {
+          const audioBlob = new Blob(audioChunks);
+          const audioUrl = URL.createObjectURL(audioBlob);
+          const audio = new Audio(audioUrl);
+          const play = () => audio.play();
+          resolve({ audioBlob, audioUrl, play });
+        });
+
+        mediaRecorder.stop();
+      });
+
+    resolve({ start, stop });
+  });
+
+const sleep = time => new Promise(resolve => setTimeout(resolve, time));
+
+const handleAction = async () => {
+  const recorder = await recordAudio();
+  const actionButton = document.getElementById('action');
+  actionButton.disabled = true;
+  recorder.start();
+  await sleep(3000);
+  const audio = await recorder.stop();
+  audio.play();
+  audio.loop = true;
+  //await sleep(3000);
+  actionButton.disabled = false;
+}
+
+
 
 // Tone.js parameters:
 
@@ -21,8 +68,25 @@ const synth = new Tone.FMSynth().connect(autoFilter);
 //const synth3 = new Tone.MembraneSynth().connect(pingPong);
 
 
-const player = new Tone.Player("https://tonejs.github.io/audio/berklee/gong_1.mp3").toDestination();
+const player = new Tone.Player().connect(autoFilter);
+const player2 = new Tone.Player().connect(autoFilter);
+const player3 = new Tone.Player().connect(autoFilter);
+const player4 = new Tone.Player().connect(autoFilter);
 
+player.loop = true;
+player2.loop = true;
+player3.loop = true;
+player4.loop = true;
+
+player.autostart = true;
+player2.autostart = true;
+player3.autostart = true;
+player4.autostart = true;
+
+player.mute = true;
+player2.mute = true;
+player3.mute = true;
+player4.mute = true;
 
 let newAcc;
 let newAcc2;
@@ -87,13 +151,6 @@ function handleOrientation(event) {
     // Rotation to control oscillator pitch
     let pitchWheel = event.beta;
     let filterWheel = event.gamma;
-
-    let xDotScale = generateScaleFunction(0, 180, 0, 80);
-    let xDotValues = xDotScale(pitchWheel);
-
-    let yDotScale = generateScaleFunction(-90, 90, 0, 100);
-    let yDotValues = yDotScale(filterWheel);
-    
     let filterScale = generateScaleFunction(0, 90, 10, 300);
 
     filterWheel = Math.abs(filterWheel);
@@ -122,7 +179,11 @@ function handleOrientation(event) {
 
       // Animation code:
 
+      let xDotScale = generateScaleFunction(0, 180, 0, 80);
+      let xDotValues = xDotScale(event.beta);
 
+      let yDotScale = generateScaleFunction(-90, 90, 0, 100);
+      let yDotValues = yDotScale(event.alpha);
 
       var elem = document.getElementById("myAnimation");   
           elem.style.top = yDotValues + 'px'; 
@@ -394,3 +455,4 @@ document.getElementById("effectButton3").addEventListener("click", function(){
 
 }}
 ); 
+
