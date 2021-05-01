@@ -128,8 +128,8 @@ function handleOrientation(event) {
 
 
       var elem = document.getElementById("myAnimation");   
-          elem.style.top = yDotValues + 'px'; 
-          elem.style.left = xDotValues + 'px'; 
+          elem.style.top = xDotValues + 'px'; 
+          elem.style.left = yDotValues + 'px'; 
 
 
 
