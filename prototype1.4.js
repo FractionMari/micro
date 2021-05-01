@@ -88,7 +88,7 @@ function handleOrientation(event) {
     let pitchWheel = event.beta;
     let filterWheel = event.gamma;
 
-    let xDotScale = generateScaleFunction(0, 180, 0, 80);
+    let xDotScale = generateScaleFunction(-180, 180, 0, 80);
     let xDotValues = xDotScale(pitchWheel);
 
     let yDotScale = generateScaleFunction(-90, 90, 0, 100);
