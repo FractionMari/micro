@@ -89,9 +89,9 @@ function handleOrientation(event) {
     let filterWheel = event.gamma;
 
 
-    let xDotValues = ((event.beta - 180) / 4.5);
+    let xDotValues = ((event.beta + 180) / 4.5);
  
-    let yDotValues = ((event.gamma - 90) / 1.8);
+    let yDotValues = ((event.gamma + 90) / 1.8);
   
 
     updateFieldIfNotNull('x_dots', xDotValues);
