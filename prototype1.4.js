@@ -104,7 +104,7 @@ function handleOrientation(event) {
     updateFieldIfNotNull('harmonicity', harmonicity);
     autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
-    phaser.frequency = harmonicity * 10;
+    phaser.frequency = harmonicity;
     pingPong.wet.value = event.alpha / 360 ;
     //console.log(event.alpha / 360);
 
@@ -114,27 +114,23 @@ function handleOrientation(event) {
       pitchShift(Math.abs(event.gamma), synth3, diatonicScale); */
 
       // Animation code:
-
-      var id = null;
-function myMove() {
-  var elem = document.getElementById("myAnimation");   
-  var pos = 0;
-  clearInterval(id);
-  id = setInterval(frame, 10);
-  function frame() {
-    if (pos == 350) {
+          var id = null;
+      function myMove() {
+      var elem = document.getElementById("myAnimation");   
+      var pos = 0;
       clearInterval(id);
-    } else {
-      pos++; 
-      elem.style.top = event.beta + 'px'; 
-      elem.style.left = event.gamma + 'px'; 
-    }
-  }
-}
+      id = setInterval(frame, 10);
+      function frame() {
+        if (pos == 350) {
+          clearInterval(id);
+        } else {
+          pos++; 
+          elem.style.top = event.alpha + 'px'; 
+          elem.style.left = event.beta + 'px'; 
+        }
+      }
+      }
 
-/*       var elem = document.getElementById("myAnimation");   
-        elem.style.top = event.beta + 'px'; 
-        elem.style.left = event.gamma + 'px';  */
 
   }
 
