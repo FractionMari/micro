@@ -116,9 +116,17 @@ function handleOrientation(event) {
       // Animation code:
 
       var elem = document.getElementById("myAnimation");   
-        elem.style.top = event.alpha + 'px'; 
-        elem.style.left = event.beta + 'px'; 
+/*         elem.style.top = event.alpha + 'px'; 
+        elem.style.left = event.beta + 'px';  */
 
+
+        var slider = document.getElementById("myRange");
+
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  elem.style.top =   this.value + 'px';
+}
 
 
   }
