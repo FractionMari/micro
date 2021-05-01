@@ -265,15 +265,22 @@ background-size: cover;
 
 #effectButton1 {
     position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
     top: 100px;
     right: 10px;
     height: auto;
 }
 
+
 #effectButton2 {
     position: absolute;
     top: 140px;
     right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
     height: auto;
 }
 
@@ -281,6 +288,9 @@ background-size: cover;
     position: absolute;
     top: 180px;
     right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
     height: auto;
 }
 
