@@ -16,7 +16,7 @@ const phaser = new Tone.Phaser({
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 
 
-const synth = new Tone.NoiseSynth().connect(autoFilter);
+const synth = new Tone.FMSynth().connect(autoFilter);
 //const synth2 = new Tone.FMSynth().connect(autoFilter);
 //const synth3 = new Tone.MembraneSynth().connect(pingPong);
 
