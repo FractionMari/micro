@@ -361,7 +361,7 @@ color: white;
   #myAnimation {
     width: 30px;
     height: 30px;
-    
+    position: absolute;
     border-radius: 50px;
     background-color: red;
     
