@@ -104,7 +104,7 @@ function handleOrientation(event) {
     updateFieldIfNotNull('harmonicity', harmonicity);
     autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
-    phaser.frequency = harmonicity;
+    phaser.frequency = harmonicity * 10;
     pingPong.wet.value = event.alpha / 360 ;
     //console.log(event.alpha / 360);
 
