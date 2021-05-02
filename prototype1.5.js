@@ -248,8 +248,7 @@ var i = 0;
       // Animation code:
 
 
-
-      var elem = document.getElementById("myAnimation");   
+ 
           elem.style.top = yDotValues + 'px'; 
           elem.style.left = xDotValues + 'px'; 
 
