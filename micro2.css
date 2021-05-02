@@ -375,6 +375,7 @@ color: white;
     position: absolute;
     border-radius: 50px;
     background-color: red;
+    opacity: 0;
     
 
   }

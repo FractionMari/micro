@@ -218,7 +218,8 @@ var i = 0;
     //monitoring diffAcc
 
 
-
+    var elem = document.getElementById("myAnimation");   
+    
 
     var fn = generateScaleFunction(0, 10, 0.3, 0);
     newAcc = fn(diffAcc);
@@ -231,10 +232,12 @@ var i = 0;
     //console.log(newAcc2);
     
     if (inverse == false)
-    gainNode.gain.rampTo(newAcc2, 0.1);
+    gainNode.gain.rampTo(newAcc2, 0.1),
+    elem.style.opacity = newAcc2;
     else
     // more smooth change of volume:
-    gainNode.gain.rampTo(newAcc, 0.1);
+    gainNode.gain.rampTo(newAcc, 0.1),
+    elem.style.opacity = newAcc;
       
       //incrementEventCount();
     }
