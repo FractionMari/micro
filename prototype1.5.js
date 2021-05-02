@@ -82,12 +82,12 @@ function pitchShift (pitch, instrument, scale) {
 
 
 // orientation handling
-function handleOrientation(event) {
+/* function handleOrientation(event) {
 
 
 
   }
-
+ */
 
 /* function incrementEventCount(){
 let counterElement = document.getElementById("num-observed-events")
@@ -331,7 +331,7 @@ var i = 0;
     //  synth2.triggerRelease();
 
       window.removeEventListener("devicemotion", handleMotion);
-      window.removeEventListener("deviceorientation", handleOrientation);
+    //   window.removeEventListener("deviceorientation", handleOrientation);
 /*       demo_button.innerHTML = "Start demo";
       demo_button.classList.add('btn-success');
       demo_button.classList.remove('btn-danger'); */
@@ -343,7 +343,7 @@ var i = 0;
       synth.triggerAttack("C4"); 
 
       window.addEventListener("devicemotion", handleMotion);
-      window.addEventListener("deviceorientation", handleOrientation);
+    //   window.addEventListener("deviceorientation", handleOrientation);
 /*       document.getElementById("start_demo").innerHTML = "Stop demo";
       demo_button.classList.remove('btn-success');
       demo_button.classList.add('btn-danger'); */
