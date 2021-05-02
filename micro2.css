@@ -388,6 +388,37 @@ color: white;
     left: 0px;
 
 }
+#microContainer2 {
+    display: inline-block;
+    position: relative; 
+
+    width: 300px; 
+    height: 200px;
+    z-index: 1;
+  }
+
+  #myContainer2 {
+
+    width:135px; 
+    height:70px;
+    top: 30px;
+    left: 30px;
+    background: rgba(231, 247, 0, 0.486); 
+    position:absolute; 
+
+    border:4px solid black; 
+    border-radius: 10px; 
+    box-shadow: 0 5px 50px #3337
+  }
+
+
+.img2 {
+    position:absolute; 
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+
+}
 
 #microContainer3 {
     display: inline-block;
@@ -402,7 +433,7 @@ color: white;
 
     width:130px; 
     height:80px;
-    top: 25px;
+    top: 45px;
     left: 25px;
     background: rgba(231, 247, 0, 0.486); 
     position:absolute; 
@@ -418,4 +449,5 @@ color: white;
     top: 0px;
     left: 0px;
     z-index: -1;
+
 }
