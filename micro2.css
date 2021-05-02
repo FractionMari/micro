@@ -268,16 +268,16 @@ background-size: cover;
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    top: 60px;
-    right: 10px;
+    top: 20px;
+    right: 60px;
     height: auto;
 }
 
 
 #effectButton2 {
     position: absolute;
-    top: 100px;
-    right: 10px;
+    top: 60px;
+    right: 60px;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -286,8 +286,8 @@ background-size: cover;
 
 #effectButton3 {
     position: absolute;
-    top: 140px;
-    right: 10px;
+    top: 100px;
+    right: 60px;
     width: 30px;
     height: 30px;
     border-radius: 50%;
