@@ -210,14 +210,14 @@ var i = 0;
 
 
 // multiplying with 4 to get values from 0-80
-    let yDotValues = ((pitchWheel+ 10) * 4);
+    let yDotValues = ((pitchWheel + 10) * 4);
 
     // multiplying with 5 to get values from 0-100
-    let xDotValues = ((filterWheel+ 10) * 10);
+    let xDotValues = ((filterWheel + 10) * 10);
   
 
-    updateFieldIfNotNull('x_dots', xDotValues);
-    updateFieldIfNotNull('y_dots', yDotValues);
+    updateFieldIfNotNull('x_dots', pitchWheel);
+    updateFieldIfNotNull('y_dots', filterWheel);
     
     let filterScale = generateScaleFunction(0, 90, 10, 300);
 
@@ -262,34 +262,7 @@ var i = 0;
 
     let is_running = false;
     let demo_button = document.getElementById("start_demo");
-/*     demo_button.onclick = function(e) {
-      e.preventDefault();
-      
-      // Request permission for iOS 13+ devices
-      if (
-        DeviceMotionEvent &&
-        typeof DeviceMotionEvent.requestPermission === "function"
-      ) {
-        DeviceMotionEvent.requestPermission();
-      }
-      
-      if (is_running){
-        window.removeEventListener("devicemotion", handleMotion);
-        window.removeEventListener("deviceorientation", handleOrientation);
-        demo_button.innerHTML = "Start demo";
-        demo_button.classList.add('btn-success');
-        demo_button.classList.remove('btn-danger');
-        is_running = false;
-      }else{
-        window.addEventListener("devicemotion", handleMotion);
-        window.addEventListener("deviceorientation", handleOrientation);
-        document.getElementById("start_demo").innerHTML = "Stop demo";
-        demo_button.classList.remove('btn-success');
-        demo_button.classList.add('btn-danger');
-        is_running = true;
-      }
-    };
-     */
+
 
 
   document.getElementById("button2").addEventListener("click", function(){
