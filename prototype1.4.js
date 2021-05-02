@@ -221,14 +221,14 @@ var i = 0;
     var elem = document.getElementById("myAnimation");   
     
 
-    var fn = generateScaleFunction(0, 10, 0.3, 0);
+    var fn = generateScaleFunction(0, 10, 0.9, 0);
     newAcc = fn(diffAcc);
-    newAcc = (clamp(0, 0.3, newAcc));
+    newAcc = (clamp(0, 0.9, newAcc));
     //console.log(newAcc);
     
-    var fn2 = generateScaleFunction(1, 2, 0, 0.3);
+    var fn2 = generateScaleFunction(1, 2, 0, 0.9);
     newAcc2 = fn2(diffAcc);
-    newAcc2 = (clamp(0, 0.3, newAcc2));
+    newAcc2 = (clamp(0, 0.9, newAcc2));
     //console.log(newAcc2);
     
     if (inverse == false)
