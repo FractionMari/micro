@@ -210,10 +210,10 @@ var i = 0;
 
 
 // multiplying with 4 to get values from 0-80
-    let yDotValues = ((event.accelerationIncludingGravity.y + 10) * 4);
+    let yDotValues = ((pitchWheel+ 10) * 4);
 
     // multiplying with 5 to get values from 0-100
-    let xDotValues = ((event.accelerationIncludingGravity.x + 10) * 10);
+    let xDotValues = ((filterWheel+ 10) * 10);
   
 
     updateFieldIfNotNull('x_dots', xDotValues);
