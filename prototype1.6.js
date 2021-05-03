@@ -105,6 +105,21 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 // Function for handling motion
   function handleMotion(event) {
 
+        // Updating values to HTML
+        updateFieldIfNotNull('test_x', xValue);
+        updateFieldIfNotNull('test_y', yValue);
+        updateFieldIfNotNull('test_z', zValue);
+        updateFieldIfNotNull('total_acc', totAcc );
+        updateFieldIfNotNull('volume_acc', newAcc );
+        updateFieldIfNotNull('filterwheel', filterWheel);
+        updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
+        updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
+        updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
+        updateFieldIfNotNull('x_dots', xDotValues);
+        updateFieldIfNotNull('y_dots', yDotValues);
+        updateFieldIfNotNull('pitchwheel', pitchWheel);
+        updateFieldIfNotNull('harmonicity', harmonicity);
+        
     let xValue = event.acceleration.x; 
     let yValue = event.acceleration.y; 
     let zValue = event.acceleration.z;
@@ -163,20 +178,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     pingPong.wet.value = xDotValues;
 
 
-    // Updating values to HTML
-    updateFieldIfNotNull('test_x', xValue);
-    updateFieldIfNotNull('test_y', yValue);
-    updateFieldIfNotNull('test_z', zValue);
-    updateFieldIfNotNull('total_acc', totAcc );
-    updateFieldIfNotNull('volume_acc', newAcc );
-    updateFieldIfNotNull('filterwheel', filterWheel);
-    updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
-    updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
-    updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
-    updateFieldIfNotNull('x_dots', xDotValues);
-    updateFieldIfNotNull('y_dots', yDotValues);
-    updateFieldIfNotNull('pitchwheel', pitchWheel);
-    updateFieldIfNotNull('harmonicity', harmonicity);
+
       
     }
     
