@@ -110,10 +110,10 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
 
 // variables for differing between frames:
-let accXdiff = [];
+/* let accXdiff = [];
 let accYdiff = [];
 let accZdiff = [];
-var i = 0;
+var i = 0; */
 
   function handleMotion(event) {
 
@@ -138,7 +138,7 @@ var i = 0;
       let yValue = event.acceleration.y; 
       let zValue = event.acceleration.z;
     
-      let totAcc = Math.abs(xValue) + Math.abs(yValue) + Math.abs(zValue);
+      let totAcc = (Math.abs(xValue) + Math.abs(yValue) + Math.abs(zValue));
       
 /*       let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
       let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
@@ -171,13 +171,13 @@ var i = 0;
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
     //console.log(newAcc);
-    
+
     updateFieldIfNotNull('volume_acc', newAcc );
 
     var fn2 = generateScaleFunction(11, 0.3, 0, 0.9);
     newAcc2 = fn2(totAcc);
     newAcc2 = (clamp(0, 0.9, newAcc2));
-    //console.log(newAcc2);
+    console.log(newAcc2);
     
     if (inverse == false)
     gainNode.gain.rampTo(newAcc2, 0.1),
@@ -187,15 +187,6 @@ var i = 0;
     gainNode.gain.rampTo(newAcc, 0.1),
     elem.style.opacity = newAcc;
        
-      //incrementEventCount();
-
-
-      //  moving things from handle orientation here
-/* 
-      updateFieldIfNotNull('Orientation_b', event.beta);
-      updateFieldIfNotNull('Orientation_g', event.gamma);
-      updateFieldIfNotNull('Orientation_a', event.alpha); */
-
 
 
           // Rotation to control oscillator pitch
