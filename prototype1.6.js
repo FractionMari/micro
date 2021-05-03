@@ -166,7 +166,7 @@ var i = 0; */
     var elem = document.getElementById("myAnimation");   
     
 
-   var fn = generateScaleFunction(0.3, 11, 0.9, 0);
+   var fn = generateScaleFunction(0.3, 4, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
     console.log(newAcc);
