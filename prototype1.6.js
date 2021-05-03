@@ -108,27 +108,24 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     let xValue = event.acceleration.x; 
     let yValue = event.acceleration.y; 
     let zValue = event.acceleration.z;
+    let filterWheel = event.accelerationIncludingGravity.x;
+    let pitchWheel = event.accelerationIncludingGravity.y;
     let totAcc = (Math.abs(xValue) + Math.abs(yValue) + Math.abs(zValue));
     let elem = document.getElementById("myAnimation");  
-
-
-       
-
-     
-    
-
-    let fn = generateScaleFunction(0.3, 5, 0.9, 0);
+    let fn = generateScaleFunction(0.3, 11, 0.9, 0);
     let fn2 = generateScaleFunction(11, 0.3, 0, 0.9);
+    let filterScale = generateScaleFunction(-10, 10, 10, 300);
+
+    // Scaling values for inverted volume-control
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
 
-    
-
-    
+    // Scaling values for non-inverted volume-control
     newAcc2 = fn2(totAcc);
     newAcc2 = (clamp(0, 0.9, newAcc2));
 
-    
+    // Switch between inverted and non-inverted volume-control, 
+    // and visual feedback indicated by the opacity of the element in GUI
     if (inverse == false)
     gainNode.gain.rampTo(newAcc2, 0.1),
     elem.style.opacity = newAcc2;
@@ -138,47 +135,28 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     elem.style.opacity = newAcc;
        
 
-
-          // Rotation to control oscillator pitch
-    let filterWheel = event.accelerationIncludingGravity.x;
-    let pitchWheel = event.accelerationIncludingGravity.y;
-
-      
-      
-
-      // The x and y axis have a range from -10  - 10
-
-
-
-
-
+    // The x and y axis have a range from -10  - 10
     // multiplying with 5 to get values from 0-100
     let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 5);
-// multiplying with 4 to get values from 0-80
+    // multiplying with 4 to get values from 0-80
     let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 4);
+
+    // Animation of element in GUI, corresponding with the movement of Y and X axis
     elem.style.top = yDotValues + 'px'; 
     elem.style.left = xDotValues + 'px'; 
 
 
-
-
-
-    
-    let filterScale = generateScaleFunction(-10, 10, 10, 300);
-
+    //Control fo filter effect on the X axis 
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
-    //filterWheel = filterWheel + 50;
-    //filterWheel = Math.abs(filterWheel * 6);
 
+    // Control of Pitch on the y axis
     // Will give a range from 0-20
     pitchWheel = (pitchWheel * -1) + 10;
-    
-
     pitchShift(pitchWheel, synth, pentaScale);
-    //pitchShift(pitchWheel, synth2, diatonicScale);
     let harmonicity = pitchWheel / 10;
-    
+   
+    // Values for the rest of the effects here
     autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
     phaser.frequency = harmonicity;
