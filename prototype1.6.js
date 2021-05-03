@@ -101,28 +101,12 @@ const points = pitch;
 }
 
 
-// orientation handling
-/* function handleOrientation(event) {
-
-
-
-  }
- */
-
-/* function incrementEventCount(){
-let counterElement = document.getElementById("num-observed-events")
-let eventCount = parseInt(counterElement.innerHTML)
-counterElement.innerHTML = eventCount + 1;
-//  updateFieldIfNotNull('eventcount', eventCount );
-} */
 
 // function for updating values for sensor data
 function updateFieldIfNotNull(fieldName, value, precision=2){
     if (value != null)
       document.getElementById(fieldName).innerHTML = value.toFixed(precision);
   }
-
-
 
 
 // variables for differing between frames:
@@ -133,7 +117,7 @@ var i = 0;
 
   function handleMotion(event) {
 
-    i += 1;
+/*     i += 1;
     //console.log(event.acceleration.x);
     
     
@@ -143,9 +127,9 @@ var i = 0;
     accYdiff.push(event.acceleration.y);
     let yFilter = accYdiff[i-2];
     
-    accYdiff.push(event.acceleration.y);
-    let zFilter = accYdiff[i-2];
-    
+    accZdiff.push(event.acceleration.z);
+    let zFilter = accZdiff[i-2];
+     */
    // console.log(xFilter);
     
     const accl = event.acceleration; 
@@ -183,13 +167,13 @@ var i = 0;
     var elem = document.getElementById("myAnimation");   
     
 
-/*     var fn = generateScaleFunction(0, 10, 0.9, 0);
-    newAcc = fn(diffAcc);
+   var fn = generateScaleFunction(0.3, 11, 0.9, 0);
+    newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
     //console.log(newAcc);
     
-    var fn2 = generateScaleFunction(1, 2, 0, 0.9);
-    newAcc2 = fn2(diffAcc);
+    var fn2 = generateScaleFunction(11, 0.3, 0, 0.9);
+    newAcc2 = fn2(totAcc);
     newAcc2 = (clamp(0, 0.9, newAcc2));
     //console.log(newAcc2);
     
@@ -200,7 +184,7 @@ var i = 0;
     // more smooth change of volume:
     gainNode.gain.rampTo(newAcc, 0.1),
     elem.style.opacity = newAcc;
-       */
+       
       //incrementEventCount();
 
 
