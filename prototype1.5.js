@@ -204,11 +204,16 @@ var i = 0;
     //   updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
 /*       updateFieldIfNotNull('x_dots', event.accelerationIncludingGravity.x);
       updateFieldIfNotNull('y_dots', event.accelerationIncludingGravity.y); */
-      updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
-    // Rotation to control oscillator pitch
+          // Rotation to control oscillator pitch
     let filterWheel = event.accelerationIncludingGravity.x;
     let pitchWheel = event.accelerationIncludingGravity.y;
+    
+      updateFieldIfNotNull('pitchwheel', pitchWheel);
+      updateFieldIfNotNull('filterwheel', filterWheel);
+      updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
+
+
 
     let xAccIncGrav = event.accelerationIncludingGravity.x;
     let yAccIncGrav = event.accelerationIncludingGravity.y;
@@ -233,8 +238,7 @@ var i = 0;
     pitchWheel = pitchWheel + 180;
     alphaWheel = Math.abs(event.alpha);
 
-    updateFieldIfNotNull('pitchwheel', pitchWheel);
-    updateFieldIfNotNull('filterwheel', filterWheel);
+
     pitchShift(pitchWheel, synth, pentaScale);
     //pitchShift(pitchWheel, synth2, diatonicScale);
     let harmonicity = pitchWheel / 180;
