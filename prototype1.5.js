@@ -140,8 +140,8 @@ var i = 0;
     accYdiff.push(event.acceleration.y);
     let yFilter = accYdiff[i-2];
     
-    accYdiff.push(event.acceleration.y);
-    let zFilter = accYdiff[i-2];
+    accZdiff.push(event.acceleration.z);
+    let zFilter = accZdiff[i-2];
     
    // console.log(xFilter);
     
