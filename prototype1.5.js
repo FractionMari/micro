@@ -202,6 +202,8 @@ var i = 0;
       updateFieldIfNotNull('Orientation_a', event.alpha); */
     //   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
     //   updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
+      updateFieldIfNotNull('x_dots', event.accelerationIncludingGravity.x);
+      updateFieldIfNotNull('y_dots', event.accelerationIncludingGravity.y);
       updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
     // Rotation to control oscillator pitch
@@ -220,8 +222,7 @@ var i = 0;
 
 
 
-    updateFieldIfNotNull('x_dots', event.accelerationIncludingGravity.x);
-    updateFieldIfNotNull('y_dots', event.accelerationIncludingGravity.y);
+
     
     let filterScale = generateScaleFunction(0, 90, 10, 300);
 
