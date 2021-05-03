@@ -124,6 +124,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
     updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
     updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
+    updateFieldIfNotNull('pitchwheel', pitchWheel);
+    updateFieldIfNotNull('harmonicity', harmonicity);
 
 
 /////////////// VOLUME VARIABLES ////////////////
@@ -148,22 +150,11 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     elem.style.opacity = newAcc;
        
 
-
-          // Rotation to control oscillator pitch
-
-
-      
-      
-
-      // The x and y axis have a range from -10  - 10
-
-
-
-
+    ///////// Red Dot Monitoring in GUI ///////
 
     // multiplying with 5 to get values from 0-100
     let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 5);
-// multiplying with 4 to get values from 0-80
+    // multiplying with 4 to get values from 0-80
     let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 4);
     elem.style.top = yDotValues + 'px'; 
     elem.style.left = xDotValues + 'px'; 
@@ -172,33 +163,25 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     updateFieldIfNotNull('y_dots', yDotValues);
 
 
+    /////// Variables for effects and pitch ///////
 
-    
-    let filterScale = generateScaleFunction(-10, 10, 10, 300);
-
+    // Filter
+    var filterScale = generateScaleFunction(-10, 10, 10, 300);
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
-    //filterWheel = filterWheel + 50;
-    //filterWheel = Math.abs(filterWheel * 6);
 
+    // Pitch
     // Will give a range from 0-20
     pitchWheel = (pitchWheel * -1) + 10;
-    updateFieldIfNotNull('pitchwheel', pitchWheel);
 
     pitchShift(pitchWheel, synth, pentaScale);
-    //pitchShift(pitchWheel, synth2, diatonicScale);
+
     let harmonicity = pitchWheel / 10;
-    updateFieldIfNotNull('harmonicity', harmonicity);
+
     autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
     phaser.frequency = harmonicity;
     pingPong.wet.value = xDotValues;
-    //console.log(event.alpha / 360);
-
-/*     if (Math.abs(event.gamma) > 20)
-      synth3.triggerAttackRelease();
-      console.log(Math.abs(event.gamma));
-      pitchShift(Math.abs(event.gamma), synth3, diatonicScale); */
 
       
     }
