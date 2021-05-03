@@ -145,14 +145,13 @@ var i = 0; */
       let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
      */
       updateFieldIfNotNull('test_x', accl.x );
-    
-      updateFieldIfNotNull('filter_x', xFilter);
+      //updateFieldIfNotNull('filter_x', xFilter);
     
       updateFieldIfNotNull('test_y', accl.y );
-      updateFieldIfNotNull('filter_y', yFilter );
+      //updateFieldIfNotNull('filter_y', yFilter );
     
       updateFieldIfNotNull('test_z', accl.z );
-      updateFieldIfNotNull('filter_z', zFilter );
+      //updateFieldIfNotNull('filter_z', zFilter );
     
       updateFieldIfNotNull('total_acc', totAcc );
 /*       updateFieldIfNotNull('total_filter', totFilter );
@@ -170,7 +169,7 @@ var i = 0; */
    var fn = generateScaleFunction(0.3, 11, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
-    //console.log(newAcc);
+    console.log(newAcc);
 
     updateFieldIfNotNull('volume_acc', newAcc );
 
