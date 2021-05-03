@@ -105,42 +105,40 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 // Function for handling motion
   function handleMotion(event) {
 
-        // Updating values to HTML
-        updateFieldIfNotNull('test_x', xValue);
-        updateFieldIfNotNull('test_y', yValue);
-        updateFieldIfNotNull('test_z', zValue);
-        updateFieldIfNotNull('total_acc', totAcc );
-        updateFieldIfNotNull('volume_acc', newAcc );
-        updateFieldIfNotNull('filterwheel', filterWheel);
-        updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
-        updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
-        updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
-        updateFieldIfNotNull('x_dots', xDotValues);
-        updateFieldIfNotNull('y_dots', yDotValues);
-        updateFieldIfNotNull('pitchwheel', pitchWheel);
-        updateFieldIfNotNull('harmonicity', harmonicity);
-        
+
+    const accl = event.acceleration; 
+    
     let xValue = event.acceleration.x; 
     let yValue = event.acceleration.y; 
     let zValue = event.acceleration.z;
-    let filterWheel = event.accelerationIncludingGravity.x;
-    let pitchWheel = event.accelerationIncludingGravity.y;
-    let totAcc = (Math.abs(xValue) + Math.abs(yValue) + Math.abs(zValue));
-    let elem = document.getElementById("myAnimation");  
-    let fn = generateScaleFunction(0.3, 11, 0.9, 0);
-    let fn2 = generateScaleFunction(11, 0.3, 0, 0.9);
-    let filterScale = generateScaleFunction(-10, 10, 10, 300);
 
-    // Scaling values for inverted volume-control
+    let totAcc = (Math.abs(xValue) + Math.abs(yValue) + Math.abs(zValue));
+    
+
+    updateFieldIfNotNull('test_x', accl.x );
+
+    updateFieldIfNotNull('test_y', accl.y );
+
+    updateFieldIfNotNull('test_z', accl.z );
+
+    updateFieldIfNotNull('total_acc', totAcc );
+
+       
+
+    let elem = document.getElementById("myAnimation");   
+    
+
+   var fn = generateScaleFunction(0.3, 1, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
 
-    // Scaling values for non-inverted volume-control
+    updateFieldIfNotNull('volume_acc', newAcc );
+
+    var fn2 = generateScaleFunction(11, 0.3, 0, 0.9);
     newAcc2 = fn2(totAcc);
     newAcc2 = (clamp(0, 0.9, newAcc2));
 
-    // Switch between inverted and non-inverted volume-control, 
-    // and visual feedback indicated by the opacity of the element in GUI
+    
     if (inverse == false)
     gainNode.gain.rampTo(newAcc2, 0.1),
     elem.style.opacity = newAcc2;
@@ -150,34 +148,60 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     elem.style.opacity = newAcc;
        
 
-    // The x and y axis have a range from -10  - 10
+
+          // Rotation to control oscillator pitch
+    let filterWheel = event.accelerationIncludingGravity.x;
+    let pitchWheel = event.accelerationIncludingGravity.y;
+
+      
+      updateFieldIfNotNull('filterwheel', filterWheel);
+
+      // The x and y axis have a range from -10  - 10
+      updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
+      updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
+      updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
+
+
+
+
     // multiplying with 5 to get values from 0-100
     let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 5);
-    // multiplying with 4 to get values from 0-80
+// multiplying with 4 to get values from 0-80
     let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 4);
-
-    // Animation of element in GUI, corresponding with the movement of Y and X axis
     elem.style.top = yDotValues + 'px'; 
     elem.style.left = xDotValues + 'px'; 
 
+    updateFieldIfNotNull('x_dots', xDotValues);
+    updateFieldIfNotNull('y_dots', yDotValues);
 
-    //Control fo filter effect on the X axis 
+
+
+    
+    let filterScale = generateScaleFunction(-10, 10, 10, 300);
+
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
+    //filterWheel = filterWheel + 50;
+    //filterWheel = Math.abs(filterWheel * 6);
 
-    // Control of Pitch on the y axis
     // Will give a range from 0-20
     pitchWheel = (pitchWheel * -1) + 10;
+    updateFieldIfNotNull('pitchwheel', pitchWheel);
+
     pitchShift(pitchWheel, synth, pentaScale);
+    //pitchShift(pitchWheel, synth2, diatonicScale);
     let harmonicity = pitchWheel / 10;
-   
-    // Values for the rest of the effects here
+    updateFieldIfNotNull('harmonicity', harmonicity);
     autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
     phaser.frequency = harmonicity;
     pingPong.wet.value = xDotValues;
+    //console.log(event.alpha / 360);
 
-
+/*     if (Math.abs(event.gamma) > 20)
+      synth3.triggerAttackRelease();
+      console.log(Math.abs(event.gamma));
+      pitchShift(Math.abs(event.gamma), synth3, diatonicScale); */
 
       
     }
