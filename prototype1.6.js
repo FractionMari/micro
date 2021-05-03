@@ -124,8 +124,6 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
     updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
     updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
-    updateFieldIfNotNull('pitchwheel', pitchWheel);
-    updateFieldIfNotNull('harmonicity', harmonicity);
 
 
 /////////////// VOLUME VARIABLES ////////////////
@@ -170,14 +168,15 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
 
-    // Pitch
+    // 
     // Will give a range from 0-20
     pitchWheel = (pitchWheel * -1) + 10;
-
+    updateFieldIfNotNull('pitchwheel', pitchWheel);
     pitchShift(pitchWheel, synth, pentaScale);
 
+    // Effects
     let harmonicity = pitchWheel / 10;
-
+    updateFieldIfNotNull('harmonicity', harmonicity);
     autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
     phaser.frequency = harmonicity;
