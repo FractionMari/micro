@@ -160,18 +160,20 @@ var i = 0;
      */
 
       
-      
+       
     //monitoring diffAcc
 
 
     var elem = document.getElementById("myAnimation");   
     
 
-   var fn = generateScaleFunction(0.3, 0.5, 0.9, 0);
+   var fn = generateScaleFunction(0.3, 11, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
     //console.log(newAcc);
+    
     updateFieldIfNotNull('volume_acc', newAcc );
+
     var fn2 = generateScaleFunction(11, 0.3, 0, 0.9);
     newAcc2 = fn2(totAcc);
     newAcc2 = (clamp(0, 0.9, newAcc2));
