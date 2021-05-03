@@ -21,7 +21,7 @@ const phaser = new Tone.Phaser({
 }).connect(gainNode);
 
 const autoFilter = new Tone.AutoWah().connect(gainNode);
-const synth = new Tone.DuoSynth().connect(autoFilter);
+const synth = new Tone.FMSynth().connect(autoFilter);
 
 
 let newAcc;
@@ -126,8 +126,6 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       updateFieldIfNotNull('total_acc', totAcc );
 
        
-    //monitoring diffAcc
-
 
     var elem = document.getElementById("myAnimation");   
     
