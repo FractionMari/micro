@@ -247,7 +247,7 @@ var i = 0;
     autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
     phaser.frequency = harmonicity;
-    pingPong.wet.value = event.alpha / 360 ;
+    pingPong.wet.value = xDotValues;
     //console.log(event.alpha / 360);
 
 /*     if (Math.abs(event.gamma) > 20)
