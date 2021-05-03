@@ -216,8 +216,8 @@ var i = 0;
     let xDotValues = ((filterWheel + 10) * 10);
   
 
-    updateFieldIfNotNull('x_dots', pitchWheel);
-    updateFieldIfNotNull('y_dots', filterWheel);
+    updateFieldIfNotNull('x_dots', event.accelerationIncludingGravity.x);
+    updateFieldIfNotNull('y_dots', event.accelerationIncludingGravity.y);
     
     let filterScale = generateScaleFunction(0, 90, 10, 300);
 
