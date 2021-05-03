@@ -200,17 +200,18 @@ var i = 0;
       updateFieldIfNotNull('Orientation_b', event.beta);
       updateFieldIfNotNull('Orientation_g', event.gamma);
       updateFieldIfNotNull('Orientation_a', event.alpha); */
-    //   updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
-    //   updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
+
 /*       updateFieldIfNotNull('x_dots', event.accelerationIncludingGravity.x);
       updateFieldIfNotNull('y_dots', event.accelerationIncludingGravity.y); */
 
           // Rotation to control oscillator pitch
     let filterWheel = event.accelerationIncludingGravity.x;
     let pitchWheel = event.accelerationIncludingGravity.y;
-    
+
       updateFieldIfNotNull('pitchwheel', pitchWheel);
       updateFieldIfNotNull('filterwheel', filterWheel);
+      updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
+      updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
       updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
 
