@@ -121,6 +121,9 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     updateFieldIfNotNull('total_acc', totAcc);
     updateFieldIfNotNull('volume_acc', newAcc);
     updateFieldIfNotNull('volume_acc2', newAcc2);
+    updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
+    updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
+    updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
 
 /////////////// VOLUME VARIABLES ////////////////
@@ -153,9 +156,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       
 
       // The x and y axis have a range from -10  - 10
-      updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
-      updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
-      updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
+
 
 
 
