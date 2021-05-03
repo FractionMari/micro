@@ -21,14 +21,7 @@ const phaser = new Tone.Phaser({
 }).connect(gainNode);
 
 const autoFilter = new Tone.AutoWah().connect(gainNode);
-
-
-const synth = new Tone.FMSynth().connect(autoFilter);
-//const synth2 = new Tone.FMSynth().connect(autoFilter);
-//const synth3 = new Tone.MembraneSynth().connect(pingPong);
-
-
-const player = new Tone.Player("https://tonejs.github.io/audio/berklee/gong_1.mp3").toDestination();
+const synth = new Tone.DuoSynth().connect(autoFilter);
 
 
 let newAcc;
@@ -50,7 +43,7 @@ var offset = newMin - prevMin,
 };
 // Scales
 var diatonicScale = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3"];
-var pentaScale = ["C1", "D1", "F1", "G1", "A1","C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4", "G4", "A4","C5", "D5", "F5"];
+var pentaScale = ["G1", "A1","C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4", "G4", "A4", "C5", "D5", "F5", "G5", "A5", "C6"];
 // Function for shifting pitch
 function pitchShift (pitch, instrument, scale) {
   // const intervalChange = 1;
@@ -109,28 +102,11 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   }
 
 
-// variables for differing between frames:
-/* let accXdiff = [];
-let accYdiff = [];
-let accZdiff = [];
-var i = 0; */
+
 
   function handleMotion(event) {
 
-/*     i += 1;
-    //console.log(event.acceleration.x);
-    
-    
-    accXdiff.push(event.acceleration.x);
-    let xFilter = accXdiff[i-2];
-    
-    accYdiff.push(event.acceleration.y);
-    let yFilter = accYdiff[i-2];
-    
-    accZdiff.push(event.acceleration.z);
-    let zFilter = accZdiff[i-2];
-     */
-   // console.log(xFilter);
+
     
     const accl = event.acceleration; 
     
@@ -140,25 +116,15 @@ var i = 0; */
     
       let totAcc = (Math.abs(xValue) + Math.abs(yValue) + Math.abs(zValue));
       
-/*       let totAcc = Math.sqrt((xValue ** 2) + (yValue ** 2) + (zValue ** 2));
-      let totFilter = Math.sqrt((xFilter ** 2) + (yFilter ** 2) + (zFilter ** 2));
-      let diffAcc = (Math.abs(totAcc - totFilter)) * 10;
-     */
-      updateFieldIfNotNull('test_x', accl.x );
-      //updateFieldIfNotNull('filter_x', xFilter);
-    
-      updateFieldIfNotNull('test_y', accl.y );
-      //updateFieldIfNotNull('filter_y', yFilter );
-    
-      updateFieldIfNotNull('test_z', accl.z );
-      //updateFieldIfNotNull('filter_z', zFilter );
-    
-      updateFieldIfNotNull('total_acc', totAcc );
-/*       updateFieldIfNotNull('total_filter', totFilter );
-      updateFieldIfNotNull('diff_acc', diffAcc );
-     */
 
-      
+      updateFieldIfNotNull('test_x', accl.x );
+
+      updateFieldIfNotNull('test_y', accl.y );
+
+      updateFieldIfNotNull('test_z', accl.z );
+
+      updateFieldIfNotNull('total_acc', totAcc );
+
        
     //monitoring diffAcc
 
@@ -166,17 +132,16 @@ var i = 0; */
     var elem = document.getElementById("myAnimation");   
     
 
-   var fn = generateScaleFunction(0.3, 4, 0.9, 0);
+   var fn = generateScaleFunction(0.3, 3, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
-    console.log(newAcc);
 
     updateFieldIfNotNull('volume_acc', newAcc );
 
     var fn2 = generateScaleFunction(11, 0.3, 0, 0.9);
     newAcc2 = fn2(totAcc);
     newAcc2 = (clamp(0, 0.9, newAcc2));
-    console.log(newAcc2);
+
     
     if (inverse == false)
     gainNode.gain.rampTo(newAcc2, 0.1),
