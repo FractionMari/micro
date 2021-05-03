@@ -41,9 +41,11 @@ var offset = newMin - prevMin,
       return offset + scale * x;
       };
 };
+
 // Scales
 var diatonicScale = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3"];
 var pentaScale = ["G1", "A1","C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4", "G4", "A4", "C5", "D5", "F5", "G5", "A5", "C6"];
+
 // Function for shifting pitch
 function pitchShift (pitch, instrument, scale) {
   // const intervalChange = 1;
@@ -94,43 +96,39 @@ const points = pitch;
 }
 
 
-
 // function for updating values for sensor data
 function updateFieldIfNotNull(fieldName, value, precision=2){
     if (value != null)
       document.getElementById(fieldName).innerHTML = value.toFixed(precision);
   }
 
-
-
-
+// Function for handling motion
   function handleMotion(event) {
 
 
-    
     const accl = event.acceleration; 
     
-      let xValue = event.acceleration.x; 
-      let yValue = event.acceleration.y; 
-      let zValue = event.acceleration.z;
+    let xValue = event.acceleration.x; 
+    let yValue = event.acceleration.y; 
+    let zValue = event.acceleration.z;
+
+    let totAcc = (Math.abs(xValue) + Math.abs(yValue) + Math.abs(zValue));
     
-      let totAcc = (Math.abs(xValue) + Math.abs(yValue) + Math.abs(zValue));
-      
 
-      updateFieldIfNotNull('test_x', accl.x );
+    updateFieldIfNotNull('test_x', accl.x );
 
-      updateFieldIfNotNull('test_y', accl.y );
+    updateFieldIfNotNull('test_y', accl.y );
 
-      updateFieldIfNotNull('test_z', accl.z );
+    updateFieldIfNotNull('test_z', accl.z );
 
-      updateFieldIfNotNull('total_acc', totAcc );
+    updateFieldIfNotNull('total_acc', totAcc );
 
        
 
     var elem = document.getElementById("myAnimation");   
     
 
-   var fn = generateScaleFunction(0.3, 3, 0.9, 0);
+   var fn = generateScaleFunction(0.3, 1, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
 
