@@ -160,7 +160,7 @@ var i = 0;
      */
 
       
-    //   updateFieldIfNotNull('volume_acc', newAcc );
+      
     //monitoring diffAcc
 
 
@@ -171,7 +171,7 @@ var i = 0;
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
     //console.log(newAcc);
-    
+    updateFieldIfNotNull('volume_acc', newAcc );
     var fn2 = generateScaleFunction(11, 0.3, 0, 0.9);
     newAcc2 = fn2(totAcc);
     newAcc2 = (clamp(0, 0.9, newAcc2));
