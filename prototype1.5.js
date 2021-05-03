@@ -47,13 +47,29 @@ var offset = newMin - prevMin,
 };
 // Scales
 var diatonicScale = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3"];
-var pentaScale = ["C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4"];
+var pentaScale = ["C1", "D1", "F1", "G1", "A1","C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4", "G4", "A4","C5", "D5", "F5"];
 // Function for shifting pitch
 function pitchShift (pitch, instrument, scale) {
   const intervalChange = 1;
   const points = Math.floor(pitch / intervalChange);
 
-  if (points >= 12)
+  if (points >= 20)
+  instrument.frequency.value = scale[19];
+  else if (points >= 19)
+  instrument.frequency.value = scale[18];
+  else if (points >= 18)
+  instrument.frequency.value = scale[17];
+  else if (points >= 17)
+  instrument.frequency.value = scale[16];
+  else if (points >= 16)
+  instrument.frequency.value = scale[15];
+  else if (points >= 15)
+  instrument.frequency.value = scale[14];
+  else if (points >= 14)
+  instrument.frequency.value = scale[13];
+  else if (points >= 13)
+  instrument.frequency.value = scale[12];
+  else if (points >= 12)
   instrument.frequency.value = scale[11];
   else if (points >= 11)
   instrument.frequency.value = scale[10];
@@ -207,7 +223,7 @@ var i = 0;
     let filterWheel = event.accelerationIncludingGravity.x;
     let pitchWheel = event.accelerationIncludingGravity.y;
 
-      updateFieldIfNotNull('pitchwheel', pitchWheel);
+      
       updateFieldIfNotNull('filterwheel', filterWheel);
 
       // The x and y axis have a range from -10  - 10
@@ -239,8 +255,8 @@ var i = 0;
     //filterWheel = Math.abs(filterWheel * 6);
 
     // Will give a range from 0-20
-    pitchWheel = pitchWheel + 10;
-
+    pitchWheel = (pitchWheel * -1) + 10;
+    updateFieldIfNotNull('pitchwheel', pitchWheel);
 
     pitchShift(pitchWheel, synth, pentaScale);
     //pitchShift(pitchWheel, synth2, diatonicScale);
