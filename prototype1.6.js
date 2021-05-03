@@ -10,7 +10,6 @@
 // Will try to use an easier way to detect QOM
 
 // Tone.js parameters:
-
 const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const tremolo = new Tone.Tremolo(9, 0.75).connect(gainNode);
@@ -19,14 +18,16 @@ const phaser = new Tone.Phaser({
 	octaves: 5,
 	baseFrequency: 1000
 }).connect(gainNode);
-
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 const synth = new Tone.FMSynth().connect(autoFilter);
 
-
+// Other Variables
 let newAcc;
 let newAcc2;
 let inverse = true;
+let is_running = false;
+let demo_button = document.getElementById("start_demo");
+
 
 // With this function the values won't go below a threshold 
 function clamp(min, max, val) {
@@ -125,8 +126,10 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
     updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
+    ///////////////////////////////////////////////
+    /////////////// VOLUME VARIABLES //////////////
+    ///////////////////////////////////////////////
 
-/////////////// VOLUME VARIABLES ////////////////
     // Scaling values for inverted volume-control
     var fn = generateScaleFunction(0.3, 11, 0.9, 0);
     newAcc = fn(totAcc);
@@ -147,8 +150,9 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     gainNode.gain.rampTo(newAcc, 0.1),
     elem.style.opacity = newAcc;
        
-
+    ////////////////////////////////////////////
     ///////// Red Dot Monitoring in GUI ///////
+    ///////////////////////////////////////////
 
     // multiplying with 5 to get values from 0-100
     let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 5);
@@ -160,15 +164,15 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     updateFieldIfNotNull('x_dots', xDotValues);
     updateFieldIfNotNull('y_dots', yDotValues);
 
-
+    ///////////////////////////////////////////////
     /////// Variables for effects and pitch ///////
-
+    ///////////////////////////////////////////////
     // Filter
     var filterScale = generateScaleFunction(-10, 10, 10, 300);
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
 
-    // 
+    // Pitch
     // Will give a range from 0-20
     pitchWheel = (pitchWheel * -1) + 10;
     updateFieldIfNotNull('pitchwheel', pitchWheel);
@@ -187,21 +191,13 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     
 
 
-
-    let is_running = false;
-    let demo_button = document.getElementById("start_demo");
-
-
-
+// Buttons and interaction with GUI
   document.getElementById("button2").addEventListener("click", function(){
   
-      
     if(this.className == 'is-playing'){
       this.className = "";
       this.innerHTML = "Inverse: ON"
       inverse = true;
-
-
   
     }else{
       this.className = "is-playing";
@@ -213,8 +209,6 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
   document.getElementById("button1").addEventListener("click", function(){
 
-  //  e.preventDefault();
-      
     // Request permission for iOS 13+ devices
     if (
       DeviceMotionEvent &&
@@ -223,19 +217,12 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       DeviceMotionEvent.requestPermission();
     }
     
-   
     
     if(this.className == 'is-playing'){
       this.className = "";
       this.innerHTML = "Synth: OFF"
       synth.triggerRelease();
-    //  synth2.triggerRelease();
-
       window.removeEventListener("devicemotion", handleMotion);
-    //   window.removeEventListener("deviceorientation", handleOrientation);
-/*       demo_button.innerHTML = "Start demo";
-      demo_button.classList.add('btn-success');
-      demo_button.classList.remove('btn-danger'); */
       is_running = false;
   
     }else{
@@ -244,12 +231,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       synth.triggerAttack("C4"); 
 
       window.addEventListener("devicemotion", handleMotion);
-    //   window.addEventListener("deviceorientation", handleOrientation);
-/*       document.getElementById("start_demo").innerHTML = "Stop demo";
-      demo_button.classList.remove('btn-success');
-      demo_button.classList.add('btn-danger'); */
-      is_running = true;
-      
+      is_running = true;    
   
     }}
     );
@@ -269,7 +251,6 @@ document.getElementById("effectButton1").addEventListener("click", function(){
     this.className = "is-playing";
     this.innerHTML = "ON"
     synth.connect(pingPong);
-
 
 
 }}
