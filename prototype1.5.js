@@ -201,8 +201,7 @@ var i = 0;
       updateFieldIfNotNull('Orientation_g', event.gamma);
       updateFieldIfNotNull('Orientation_a', event.alpha); */
 
-/*       updateFieldIfNotNull('x_dots', event.accelerationIncludingGravity.x);
-      updateFieldIfNotNull('y_dots', event.accelerationIncludingGravity.y); */
+
 
           // Rotation to control oscillator pitch
     let filterWheel = event.accelerationIncludingGravity.x;
@@ -216,16 +215,14 @@ var i = 0;
 
 
 
-    let xAccIncGrav = event.accelerationIncludingGravity.x;
-    let yAccIncGrav = event.accelerationIncludingGravity.y;
 
     // multiplying with 5 to get values from 0-100
-    let xDotValues = ((xAccIncGrav + 10) * 10);
+    let xDotValues = ((event.accelerationIncludingGravity.x + 10) * 10);
   
-
 // multiplying with 4 to get values from 0-80
-    let yDotValues = ((yAccIncGrav  + 10) * 4);
-
+    let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 4);
+    updateFieldIfNotNull('x_dots', xDotValues);
+      updateFieldIfNotNull('y_dots', yDotValues);
 
 
 
