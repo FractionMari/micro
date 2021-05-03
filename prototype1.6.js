@@ -105,36 +105,26 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 // Function for handling motion
   function handleMotion(event) {
 
-
-    const accl = event.acceleration; 
-    
     let xValue = event.acceleration.x; 
     let yValue = event.acceleration.y; 
     let zValue = event.acceleration.z;
-
     let totAcc = (Math.abs(xValue) + Math.abs(yValue) + Math.abs(zValue));
-    
+    let elem = document.getElementById("myAnimation");  
 
-    updateFieldIfNotNull('test_x', accl.x );
-
-    updateFieldIfNotNull('test_y', accl.y );
-
-    updateFieldIfNotNull('test_z', accl.z );
-
-    updateFieldIfNotNull('total_acc', totAcc );
 
        
 
-    var elem = document.getElementById("myAnimation");   
+     
     
 
-   var fn = generateScaleFunction(0.3, 1, 0.9, 0);
+    let fn = generateScaleFunction(0.3, 5, 0.9, 0);
+    let fn2 = generateScaleFunction(11, 0.3, 0, 0.9);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
 
-    updateFieldIfNotNull('volume_acc', newAcc );
+    
 
-    var fn2 = generateScaleFunction(11, 0.3, 0, 0.9);
+    
     newAcc2 = fn2(totAcc);
     newAcc2 = (clamp(0, 0.9, newAcc2));
 
@@ -154,12 +144,10 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     let pitchWheel = event.accelerationIncludingGravity.y;
 
       
-      updateFieldIfNotNull('filterwheel', filterWheel);
+      
 
       // The x and y axis have a range from -10  - 10
-      updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
-      updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
-      updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
+
 
 
 
@@ -171,8 +159,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     elem.style.top = yDotValues + 'px'; 
     elem.style.left = xDotValues + 'px'; 
 
-    updateFieldIfNotNull('x_dots', xDotValues);
-    updateFieldIfNotNull('y_dots', yDotValues);
+
 
 
 
@@ -186,23 +173,32 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
     // Will give a range from 0-20
     pitchWheel = (pitchWheel * -1) + 10;
-    updateFieldIfNotNull('pitchwheel', pitchWheel);
+    
 
     pitchShift(pitchWheel, synth, pentaScale);
     //pitchShift(pitchWheel, synth2, diatonicScale);
     let harmonicity = pitchWheel / 10;
-    updateFieldIfNotNull('harmonicity', harmonicity);
+    
     autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
     phaser.frequency = harmonicity;
     pingPong.wet.value = xDotValues;
-    //console.log(event.alpha / 360);
 
-/*     if (Math.abs(event.gamma) > 20)
-      synth3.triggerAttackRelease();
-      console.log(Math.abs(event.gamma));
-      pitchShift(Math.abs(event.gamma), synth3, diatonicScale); */
 
+    // Updating values to HTML
+    updateFieldIfNotNull('test_x', xValue);
+    updateFieldIfNotNull('test_y', yValue);
+    updateFieldIfNotNull('test_z', zValue);
+    updateFieldIfNotNull('total_acc', totAcc );
+    updateFieldIfNotNull('volume_acc', newAcc );
+    updateFieldIfNotNull('filterwheel', filterWheel);
+    updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
+    updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
+    updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
+    updateFieldIfNotNull('x_dots', xDotValues);
+    updateFieldIfNotNull('y_dots', yDotValues);
+    updateFieldIfNotNull('pitchwheel', pitchWheel);
+    updateFieldIfNotNull('harmonicity', harmonicity);
       
     }
     
