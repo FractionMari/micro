@@ -50,8 +50,9 @@ var diatonicScale = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3",
 var pentaScale = ["C1", "D1", "F1", "G1", "A1","C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4", "G4", "A4","C5", "D5", "F5"];
 // Function for shifting pitch
 function pitchShift (pitch, instrument, scale) {
-  const intervalChange = 1;
-  const points = Math.floor(pitch / intervalChange);
+  // const intervalChange = 1;
+//   const points = Math.floor(pitch / intervalChange);
+const points = pitch;
 
   if (points >= 20)
   instrument.frequency.value = scale[19];
@@ -260,7 +261,7 @@ var i = 0;
 
     pitchShift(pitchWheel, synth, pentaScale);
     //pitchShift(pitchWheel, synth2, diatonicScale);
-    let harmonicity = pitchWheel * 2;
+    let harmonicity = pitchWheel / 10;
     updateFieldIfNotNull('harmonicity', harmonicity);
     autoFilter.baseFrequency = filterWheel;
     synth.harmonicity.value = harmonicity;
