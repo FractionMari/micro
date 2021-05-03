@@ -209,6 +209,8 @@ var i = 0;
 
       updateFieldIfNotNull('pitchwheel', pitchWheel);
       updateFieldIfNotNull('filterwheel', filterWheel);
+
+      // The x and y axis have a range from -10  - 10
       updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
       updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
       updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
@@ -217,24 +219,25 @@ var i = 0;
 
 
     // multiplying with 5 to get values from 0-100
-    let xDotValues = ((event.accelerationIncludingGravity.x + 10) * 10);
-  
+    let xDotValues = ((event.accelerationIncludingGravity.x + 10) * 5);
 // multiplying with 4 to get values from 0-80
     let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 4);
+    elem.style.top = yDotValues + 'px'; 
+    elem.style.left = xDotValues + 'px'; 
+
     updateFieldIfNotNull('x_dots', xDotValues);
-      updateFieldIfNotNull('y_dots', yDotValues);
+    updateFieldIfNotNull('y_dots', yDotValues);
 
 
 
     
-    let filterScale = generateScaleFunction(0, 90, 10, 300);
+    let filterScale = generateScaleFunction(-10, 10, 10, 300);
 
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
     //filterWheel = filterWheel + 50;
     //filterWheel = Math.abs(filterWheel * 6);
     pitchWheel = pitchWheel + 180;
-    alphaWheel = Math.abs(event.alpha);
 
 
     pitchShift(pitchWheel, synth, pentaScale);
@@ -256,8 +259,7 @@ var i = 0;
 
 
  
-          elem.style.top = yDotValues + 'px'; 
-          elem.style.left = xDotValues + 'px'; 
+
 
 
 
