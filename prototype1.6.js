@@ -105,27 +105,22 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 // Function for handling motion
   function handleMotion(event) {
 
-
-    const accl = event.acceleration; 
-    
+    // variables
     let xValue = event.acceleration.x; 
     let yValue = event.acceleration.y; 
     let zValue = event.acceleration.z;
-
     let totAcc = (Math.abs(xValue) + Math.abs(yValue) + Math.abs(zValue));
+    let elem = document.getElementById("myAnimation"); 
     
-
-    updateFieldIfNotNull('test_x', accl.x );
-
-    updateFieldIfNotNull('test_y', accl.y );
-
-    updateFieldIfNotNull('test_z', accl.z );
-
-    updateFieldIfNotNull('total_acc', totAcc );
+    // Updating values to HTML
+    updateFieldIfNotNull('test_x', event.acceleration.x);
+    updateFieldIfNotNull('test_y', event.acceleration.y);
+    updateFieldIfNotNull('test_z', event.acceleration.z);
+    updateFieldIfNotNull('total_acc', totAcc);
 
        
 
-    let elem = document.getElementById("myAnimation");   
+      
     
 
    var fn = generateScaleFunction(0.3, 11, 0.9, 0);
