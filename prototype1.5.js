@@ -219,7 +219,7 @@ var i = 0;
 
 
     // multiplying with 5 to get values from 0-100
-    let xDotValues = ((event.accelerationIncludingGravity.x + 10) * 5);
+    let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 5);
 // multiplying with 4 to get values from 0-80
     let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 4);
     elem.style.top = yDotValues + 'px'; 
@@ -237,7 +237,7 @@ var i = 0;
     filterWheel = filterScale(filterWheel);
     //filterWheel = filterWheel + 50;
     //filterWheel = Math.abs(filterWheel * 6);
-    pitchWheel = pitchWheel + 180;
+    pitchWheel = pitchWheel + 10;
 
 
     pitchShift(pitchWheel, synth, pentaScale);
@@ -255,14 +255,7 @@ var i = 0;
       console.log(Math.abs(event.gamma));
       pitchShift(Math.abs(event.gamma), synth3, diatonicScale); */
 
-      // Animation code:
-
-
- 
-
-
-
-
+      
     }
     
 
