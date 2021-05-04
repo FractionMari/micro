@@ -172,7 +172,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
 
-    // Pitch
+    // Pitch and scale functions
     // Will give a range from 0-20
     pitchWheel = (pitchWheel * -1) + 10;
     updateFieldIfNotNull('pitchwheel', pitchWheel);
@@ -182,7 +182,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     let harmonicity = pitchWheel / 10;
     updateFieldIfNotNull('harmonicity', harmonicity);
     autoFilter.baseFrequency = filterWheel;
-    synth.harmonicity.value = harmonicity;
+    //synth.harmonicity.value = harmonicity;
     phaser.frequency = harmonicity;
     pingPong.wet.value = xDotValues;
 
