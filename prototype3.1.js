@@ -22,7 +22,6 @@
 const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const phaser = new Tone.Phaser().connect(gainNode);
-const autoFilter = new Tone.AutoWah().connect(gainNode);
 const synth = new Tone.FMSynth().connect(gainNode);
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
 const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
