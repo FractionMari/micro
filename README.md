@@ -5,7 +5,7 @@ More about the apps [here](https://www.uio.no/ritmo/english/projects/micro/subpr
 
 In the micromotion apps, we use accelerometer and gyroscope sensor data from the phone to detect tiny changes in movement. The user is supposed to hold the phone in his/her hand, and by doing different kinds of gesture, the user creates music in different kinds of ways.
 
-The prototypes must be opened on android or iPhone to work, and can be reached from these two links: 
+The prototypes are written in JavaScript/HTML/CSS and must be opened on android or iPhone to work, and can be reached from these two links: 
 
 * [prototype 1](https://fractionmari.github.io/micro/)
 
@@ -21,6 +21,14 @@ Made by Mari Lesteberg, after an idea by Alexander R. Jensenius, spring 2021
 ### Code
 
 #### Synth
+
+```javascript
+
+const synth = new Tone.FMSynth().connect(gainNode);
+```
+
+In the first prototype, we use a simple FM synth from the Tone.js library, but this can easily be replaced.
+
 #### Effects
 #### Visuals
 #### Accelerometer values
