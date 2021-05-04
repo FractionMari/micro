@@ -384,11 +384,19 @@ color: white;
     border-radius: 50px;
     background-color: red;
     opacity: 0;
-    
-    
 
   }
 
+  #myAnimation3 {
+    width: 10px;
+    height: 10px;
+
+    position: absolute;
+    border-radius: 50px;
+    background-color: red;
+    opacity: 0;
+
+  }
   .img {
     position:absolute; 
     top: 0px;

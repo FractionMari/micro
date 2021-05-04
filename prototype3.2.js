@@ -182,9 +182,9 @@ var i = 0;
     let yValue = event.acceleration.y; 
     let zValue = event.acceleration.z;
     let totAcc = (Math.abs(xValue) + Math.abs(yValue) + Math.abs(zValue));
-    let elem = document.getElementById("myAnimation"); 
+    let elem = document.getElementById("myAnimation3"); 
     let filterWheel = event.accelerationIncludingGravity.x;
-    let pitchWheel = event.accelerationIncludingGravity.y;
+    let loopWheel = event.accelerationIncludingGravity.y;
     //let zWheel = event.accelerationIncludingGravity.z;
     // Updating values to HTML
     updateFieldIfNotNull('test_x', event.acceleration.x);
@@ -195,8 +195,8 @@ var i = 0;
     updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
     updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
     
-    updateFieldIfNotNull('filterwheel', filterWheel);
-    updateFieldIfNotNull('pitchwheel', pitchWheel);
+    // scalin loopwheel from values -10 - +20 to values between 0 and 80
+    loopWheel = ((loopWheel + 10) / 4);
 
     ///////////////////////////////////////////////
     /////////////// VOLUME VARIABLES //////////////
@@ -252,11 +252,11 @@ var i = 0;
        
        function loopActivate(players1, players2, value) {
        
-         if (pitchWheel < value)
+         if (loopWheel < value)
          players1.mute = true,
          players2.mute = true;
        
-         else if ((xDotValues > 50) && (pitchWheel > value))
+         else if ((xDotValues > 56) && (loopWheel > value))
          players2.mute = false,
          players1.mute = true;
        
@@ -266,16 +266,16 @@ var i = 0;
        
        };
        
-       loopActivate(player, player1_2, 2);
-       loopActivate(player2, player2_2, 4);
-       loopActivate(player3, player3_2, 6);
-       loopActivate(player4, player4_2, 8);
+       loopActivate(player, player1_2, 20);
+       loopActivate(player2, player2_2, 40);
+       loopActivate(player3, player3_2, 60);
+       loopActivate(player4, player4_2, 80);
        //loopActivate(player5, player5_2, 80);
        
        
         
            updateFieldIfNotNull('filterwheel', filterWheel);
-           updateFieldIfNotNull('pitchwheel', pitchWheel);
+           updateFieldIfNotNull('pitchwheel', loopWheel);
     
 
         // Effects
