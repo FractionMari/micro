@@ -233,7 +233,7 @@ var i = 0;
     let demo_button = document.getElementById("start_demo");
 
     var playerBuffers = new Tone.Buffers({
-        "drums" : "audioUrl",
+        "drums" : "track1.src",
         "bass" : "loops/RolegSong_bass.mp3",
         "arp" : "loops/RolegSong_orgel1.mp3",
         "bass2" : "loops/RolegSong_piano.mp3",
