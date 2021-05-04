@@ -18,6 +18,15 @@ The apps are related to the micromotion Sverm instruments which were an artistic
 Made by Mari Lesteberg, after an idea by Alexander R. Jensenius, spring 2021
 
 
+### Code
+
+#### Synth
+#### Effects
+#### Visuals
+#### Accelerometer values
+#### Inverted mapping
+#### Scale
+
 ### Future ideas
 
 Future ideas for this app is to include a recording function, or a version that allows the user to upload own musical tracks.

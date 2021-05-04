@@ -231,8 +231,8 @@ var i = 0;
 
     // multiplying with 5 to get values from 0-100
     let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 5);
-    // multiplying with 4 to get values from 0-80
-    let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 4);
+    // multiplying with 4 to get values from 0-50
+    let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 2.5);
     elem.style.top = yDotValues + 'px'; 
     elem.style.left = xDotValues + 'px'; 
 
@@ -256,7 +256,7 @@ var i = 0;
          players1.mute = true,
          players2.mute = true;
        
-         else if ((filterWheel > 80) && (pitchWheel > value))
+         else if ((xDotValues > 50) && (pitchWheel > value))
          players2.mute = false,
          players1.mute = true;
        
