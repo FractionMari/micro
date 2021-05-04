@@ -268,32 +268,35 @@ background-size: cover;
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    top: 20px;
-    right: 60px;
+    top: 15px;
+    right: 70px;
     height: auto;
     display: flex;
     align-items: center;
+    font-size:7px;
 }
 
 
 #effectButton2 {
     position: absolute;
     top: 60px;
-    right: 60px;
+    right: 70px;
     width: 30px;
     height: 30px;
     border-radius: 50%;
     height: auto;
+    font-size:7px;
 }
 
 #effectButton3 {
     position: absolute;
-    top: 100px;
-    right: 60px;
+    top: 105px;
+    right: 70px;
     width: 30px;
     height: 30px;
     border-radius: 50%;
     height: auto;
+    font-size:7px;
 }
 
 
