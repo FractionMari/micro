@@ -13,7 +13,7 @@ The prototypes are written in JavaScript/HTML/CSS and must be opened on android 
 
 ### Sverm
 
-The apps are related to the micromotion Sverm instruments which were an artistic research project by Alexander R. Jensenius and Kari Anne Vadstensvik Bjerkestrand, investigating standstill and micromotion in the context of a dance performance.
+The apps are related to the micromotion [Sverm instruments](https://www.uio.no/ritmo/english/projects/completed-projects/sverm/) which were an artistic research project by Alexander R. Jensenius and Kari Anne Vadstensvik Bjerkestrand, investigating standstill and micromotion in the context of a dance performance.
 
 Made by Mari Lesteberg, after an idea by Alexander R. Jensenius, spring 2021
 
