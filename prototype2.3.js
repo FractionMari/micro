@@ -15,10 +15,8 @@ track1.crossOrigin = "Anonymous"; // to bypass cors for imgur image link
 
 track1.src = URL.createObjectURL(this.files[0]); // set src to blob url
 
-track1.onload = function() {
 
-    URL.revokeObjectURL(track1.src);  // no longer needed, free memory
-    // Tone.js parameters:
+// Tone.js parameters:
 
 
 // let pitchslider = document.getElementById("pitch");
@@ -235,7 +233,7 @@ var i = 0;
     let demo_button = document.getElementById("start_demo");
 
     var playerBuffers = new Tone.Buffers({
-        "drums" : "track1.src",
+        "drums" : "audioUrl",
         "bass" : "loops/RolegSong_bass.mp3",
         "arp" : "loops/RolegSong_orgel1.mp3",
         "bass2" : "loops/RolegSong_piano.mp3",
@@ -296,7 +294,7 @@ var i = 0;
           this.className = "is-playing2";
           this.innerHTML = "Loop 3 ON"
           var playerBuffers = new Tone.Buffers({
-            "drums" : "loops/drums1_80bpm.mp3",
+            "drums" : "track1.src",
             "bass" : "loops/bass1_80bpm.mp3",
             "arp" : "loops/arp_80bpm.mp3",
             "bass2" : "loops/bass2_80bpm.mp3",
@@ -513,9 +511,14 @@ player5_2.connect(phaser);
 
 }}
 ); 
+/* 
+track1.onload = function() {
+
+    URL.revokeObjectURL(track1.src);  // no longer needed, free memory
+    
 
     
    
 
 
-  }} } )});
+  } */} } )});
