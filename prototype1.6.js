@@ -12,7 +12,6 @@
 // Tone.js parameters:
 const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
-const cheby = new Tone.Chebyshev().connect(gainNode);
 const phaser = new Tone.Phaser().connect(gainNode);
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 const synth = new Tone.FMSynth().connect(autoFilter);
@@ -184,7 +183,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     phaser.octaves = (yDotValues / 10);
     pingPong.wet.value = xDotValues;
     tremolo.frequency = yDotValues;
-    cheby.wet.value = xDotValues;
+
 
       
     }
@@ -243,13 +242,13 @@ document.getElementById("effectButton1").addEventListener("click", function(){
     
   {
     this.className = "";
-    this.innerHTML = "OFF";
+    this.innerHTML = "FX1: OFF";
     synth.disconnect(pingPong);
 
 
   }else{
     this.className = "is-playing";
-    this.innerHTML = "ON"
+    this.innerHTML = "FX1: ON"
     synth.connect(pingPong);
 
 
@@ -264,14 +263,14 @@ document.getElementById("effectButton2").addEventListener("click", function(){
     
   {
     this.className = "";
-    this.innerHTML = "OFF";
-    synth.disconnect(cheby);
+    this.innerHTML = "FX2: OFF";
+    synth.disconnect(autoFilter);
 
 
   }else{
     this.className = "is-playing";
-    this.innerHTML = "ON"
-    synth.connect(cheby);
+    this.innerHTML = "FX2: ON"
+    synth.connect(autoFilter);
 
 
 
@@ -284,13 +283,13 @@ document.getElementById("effectButton3").addEventListener("click", function(){
     
   {
     this.className = "";
-    this.innerHTML = "OFF";
+    this.innerHTML = "FX3: OFF";
     synth.disconnect(phaser);
 
 
   }else{
     this.className = "is-playing";
-    this.innerHTML = "ON"
+    this.innerHTML = "FX3: ON"
     synth.connect(phaser);
 
 
@@ -304,14 +303,23 @@ document.getElementById("scaleButton1").addEventListener("click", function(){
     if (this.className == 'is-playing')
       
     {
-      this.className = "";
-      this.innerHTML = "OFF";
+      this.className = "is-playing2";
+      this.innerHTML = "Penta Scale";
       pentaScale = ["G1", "A1","C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4", "G4", "A4", "C5", "D5", "F5", "G5", "A5", "C6"];
   
+
+    }else if (this.className == 'is-playing2')
+        
+    {
+      this.className = "";
+      this.innerHTML = "whole note Scale";
+      pentaScale = ["C2", "D2", "E2", "Gb2", "Ab2", "Bb2", "C3", "D3", "Gb3", "Ab3", "Bb3", "C4", "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5", "E5", "Gb5", "Ab5", "Bb5", "C6"];
+
+
   
     }else{
       this.className = "is-playing";
-      this.innerHTML = "ON"
+      this.innerHTML = "Major Scale"
       pentaScale = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5", "D5", "E5", "F5"];
   
   
