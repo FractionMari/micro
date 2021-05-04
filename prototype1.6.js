@@ -175,9 +175,11 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     pitchShift(pitchWheel, synth, pentaScale);
 
     // Effects
-    let harmonicity = pitchWheel / 10;
-    updateFieldIfNotNull('harmonicity', harmonicity);
-    synth.harmonicity.value = harmonicity;
+    
+    
+    //let harmonicity = pitchWheel / 10;
+    //updateFieldIfNotNull('harmonicity', harmonicity);
+    //synth.harmonicity.value = harmonicity;
     phaser.baseFrequency = 100;
     phaser.frequency = xDotValues;
     phaser.octaves = (yDotValues / 10);

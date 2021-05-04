@@ -1,5 +1,7 @@
 console.clear();
 
+
+
 // UPDATE: there is a problem in chrome with starting audio context
 //  before a user gesture. This fixes it.
 var started = false;
@@ -22,7 +24,12 @@ document.documentElement.addEventListener('mousedown', () => {
   Tone.Transport.scheduleRepeat(time => {
     if (note === 0) recorder.start();
     if (note > notes.length) {
-      synth.triggerRelease(time)
+        document.getElementById("button1").addEventListener("click", function()
+        {synth.triggerAttack();
+        });
+        
+        synth.triggerRelease(time)
+
       recorder.stop();
       Tone.Transport.stop();
     } else synth.triggerAttack(notes[note], time);
@@ -39,45 +46,14 @@ document.documentElement.addEventListener('mousedown', () => {
 });
 
 
-const recordAudio = () =>
-  new Promise(async resolve => {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const mediaRecorder = new MediaRecorder(stream);
-    const audioChunks = [];
 
-    mediaRecorder.addEventListener("dataavailable", event => {
-      audioChunks.push(event.data);
-    });
 
-    const start = () => mediaRecorder.start();
+const synth = new Tone.AMSynth().toDestination();
 
-    const stop = () =>
-      new Promise(resolve => {
-        mediaRecorder.addEventListener("stop", () => {
-          const audioBlob = new Blob(audioChunks);
-          const audioUrl = URL.createObjectURL(audioBlob);
-          const audio = new Audio(audioUrl);
-          const play = () => audio.play();
-          resolve({ audioBlob, audioUrl, play });
-        });
+var slider = document.getElementById("myRange");
 
-        mediaRecorder.stop();
-      });
+slider.oninput = function() {
+  synth.frequency.value = this.value;
 
-    resolve({ start, stop });
-  });
-
-const sleep = time => new Promise(resolve => setTimeout(resolve, time));
-
-const handleAction = async () => {
-  const recorder = await recordAudio();
-  const actionButton = document.getElementById('action');
-  actionButton.disabled = true;
-  recorder.start();
-  await sleep(3000);
-  const audio = await recorder.stop();
-  audio.play();
-  await sleep(3000);
-  actionButton.disabled = false;
 }
 
