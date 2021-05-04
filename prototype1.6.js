@@ -12,7 +12,7 @@
 // Tone.js parameters:
 const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
-const tremolo = new Tone.Tremolo(9, 0.75).connect(gainNode);
+const cheby = new Tone.Chebyshev().connect(gainNode);
 const phaser = new Tone.Phaser().connect(gainNode);
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 const synth = new Tone.FMSynth().connect(autoFilter);
@@ -184,6 +184,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     phaser.octaves = (yDotValues / 10);
     pingPong.wet.value = xDotValues;
     tremolo.frequency = yDotValues;
+    cheby.wet.value = xDotValues;
 
       
     }
@@ -264,13 +265,13 @@ document.getElementById("effectButton2").addEventListener("click", function(){
   {
     this.className = "";
     this.innerHTML = "OFF";
-    synth.disconnect(tremolo);
+    synth.disconnect(cheby);
 
 
   }else{
     this.className = "is-playing";
     this.innerHTML = "ON"
-    synth.connect(tremolo);
+    synth.connect(cheby);
 
 
 
