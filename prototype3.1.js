@@ -192,13 +192,12 @@ var i = 0;
     updateFieldIfNotNull('test_y', event.acceleration.y);
     updateFieldIfNotNull('test_z', event.acceleration.z);
     updateFieldIfNotNull('total_acc', totAcc);
-    updateFieldIfNotNull('volume_acc', newAcc);
-    updateFieldIfNotNull('volume_acc2', newAcc2);
     updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
     updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
     updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
     
-
+    updateFieldIfNotNull('filterwheel', filterWheel);
+    updateFieldIfNotNull('pitchwheel', pitchWheel);
 
     ///////////////////////////////////////////////
     /////////////// VOLUME VARIABLES //////////////
@@ -224,6 +223,8 @@ var i = 0;
     gainNode.gain.rampTo(newAcc, 0.1),
     elem.style.opacity = newAcc;
 
+    updateFieldIfNotNull('volume_acc', newAcc);
+    updateFieldIfNotNull('volume_acc2', newAcc2);
      
     ////////////////////////////////////////////
     ///////// Red Dot Monitoring in GUI ///////
@@ -290,9 +291,7 @@ var i = 0;
         phaser.frequency = xDotValues;
         phaser.octaves = (yDotValues / 10);
         pingPong.wet.value = xDotValues;
-        tremolo.frequency = yDotValues;
         
-
 
     }
  
