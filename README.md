@@ -31,6 +31,22 @@ In the first prototype, we use a simple FM synth from the Tone.js library, but t
 
 #### Effects
 #### Visuals
+
+A red dot inside the micro wave oven gives the user a visual feedback on what is heard when the mobile phone is tilted. The position of the dot change when the mobile phone is tilted:
+
+```javascript
+    ////////////////////////////////////////////
+    ///////// Red Dot Monitoring in GUI ///////
+    ///////////////////////////////////////////
+
+    // multiplying with 5 to get values from 0-100
+    let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 5);
+    // multiplying with 4 to get values from 0-50
+    let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 2.5);
+    elem.style.top = yDotValues + 'px'; 
+    elem.style.left = xDotValues + 'px'; 
+```
+
 #### Accelerometer values
 #### Inverted mapping
 #### Scale
