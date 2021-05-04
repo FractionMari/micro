@@ -186,7 +186,7 @@ var i = 0;
     let elem = document.getElementById("myAnimation"); 
     let filterWheel = event.accelerationIncludingGravity.x;
     let pitchWheel = event.accelerationIncludingGravity.y;
-    let zWheel = event.accelerationIncludingGravity.z;
+    //let zWheel = event.accelerationIncludingGravity.z;
     // Updating values to HTML
     updateFieldIfNotNull('test_x', event.acceleration.x);
     updateFieldIfNotNull('test_y', event.acceleration.y);
@@ -250,8 +250,6 @@ var i = 0;
     filterWheel = filterScale(filterWheel);
     autoFilter.baseFrequency = filterWheel;
 
-
-    
        
        function loopActivate(players1, players2, value) {
        
@@ -344,12 +342,7 @@ var i = 0;
           }
 
           Tone.start();
-
-
           window.addEventListener("devicemotion", handleMotion);
-          window.addEventListener("deviceorientation", handleOrientation);
-    
-
           
     
         if (this.className == 'is-playing')
