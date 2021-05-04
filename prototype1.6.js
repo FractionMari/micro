@@ -181,7 +181,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     // Effects
     let harmonicity = pitchWheel / 10;
     updateFieldIfNotNull('harmonicity', harmonicity);
-    autoFilter.baseFrequency = filterWheel;
+    autoFilter.baseFrequency = filterWheel * 2;
     //synth.harmonicity.value = harmonicity;
     phaser.frequency = harmonicity;
     pingPong.wet.value = xDotValues;
