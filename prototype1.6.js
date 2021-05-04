@@ -14,9 +14,7 @@ const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const tremolo = new Tone.Tremolo(9, 0.75).connect(gainNode);
 const phaser = new Tone.Phaser({
-	frequency: 15,
-	octaves: 5,
-	baseFrequency: 1000
+	baseFrequency:100
 }).connect(gainNode);
 const autoFilter = new Tone.AutoWah().connect(gainNode);
 const synth = new Tone.FMSynth().connect(autoFilter);
@@ -183,7 +181,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     let harmonicity = pitchWheel / 10;
     updateFieldIfNotNull('harmonicity', harmonicity);
     //synth.harmonicity.value = harmonicity;
-    phaser.frequency = harmonicity;
+    phaser.frequency = xDotValues;
+    phaser.octaves = yDotValues / 8;
     pingPong.wet.value = xDotValues;
     tremolo.frequency = yDotValues;
 
@@ -298,3 +297,24 @@ document.getElementById("effectButton3").addEventListener("click", function(){
 
 }}
 ); 
+
+
+document.getElementById("scaleButton1").addEventListener("click", function(){
+
+    if (this.className == 'is-playing')
+      
+    {
+      this.className = "";
+      this.innerHTML = "OFF";
+      pentaScale = ["G1", "A1","C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4", "G4", "A4", "C5", "D5", "F5", "G5", "A5", "C6"];
+  
+  
+    }else{
+      this.className = "is-playing";
+      this.innerHTML = "ON"
+      pentaScale = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5", "D5", "E5", "F5"];
+  
+  
+  
+  }}
+  ); 
