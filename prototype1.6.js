@@ -126,7 +126,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     ///////////////////////////////////////////////
 
     // Scaling values for inverted volume-control
-    var fn = generateScaleFunction(0.3, 3, 0.9, 0);
+    var fn = generateScaleFunction(0.3, 2, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
 
@@ -226,7 +226,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     
     
     if(this.className == 'is-playing'){
-      this.className = "is-playing2";
+      this.className = "";
       this.innerHTML = "Synth: OFF"
       synth.triggerRelease();
       synth2.triggerRelease();
@@ -250,7 +250,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
 
 
-      this.className = "";
+      this.className = "is-playing2";
       this.innerHTML = "Synth 1: ON";
       //const synth = new Tone.AMSynth().connect(gainNode);
 
