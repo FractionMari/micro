@@ -52,34 +52,49 @@ function pitchShift (pitch, instrument, scale) {
 const points = pitch;
 
   if (points >= 20)
+  synth3.triggerAttack(scale[19]),
   instrument.frequency.value = scale[19];
   else if (points >= 19)
+  synth3.triggerAttack(scale[18]),
   instrument.frequency.value = scale[18];
   else if (points >= 18)
+  synth3.triggerAttack(scale[17]),
   instrument.frequency.value = scale[17];
   else if (points >= 17)
+  synth3.triggerAttack(scale[16]),
   instrument.frequency.value = scale[16];
   else if (points >= 16)
+  synth3.triggerAttack(scale[15]),
   instrument.frequency.value = scale[15];
   else if (points >= 15)
+  synth3.triggerAttack(scale[14]),
   instrument.frequency.value = scale[14];
   else if (points >= 14)
+  synth3.triggerAttack(scale[13]),
   instrument.frequency.value = scale[13];
   else if (points >= 13)
+  synth3.triggerAttack(scale[12]),
   instrument.frequency.value = scale[12];
   else if (points >= 12)
+  synth3.triggerAttack(scale[11]),
   instrument.frequency.value = scale[11];
   else if (points >= 11)
+  synth3.triggerAttack(scale[10]),
   instrument.frequency.value = scale[10];
   else if (points >= 10)
+  synth3.triggerAttack(scale[9]),
   instrument.frequency.value = scale[9];
   else if (points >= 9)
+  synth3.triggerAttack(scale[8]),
   instrument.frequency.value = scale[8];  
   else if (points >= 8)
+  synth3.triggerAttack(scale[7]),
   instrument.frequency.value = scale[7];
   else if (points >= 7)
+  synth3.triggerAttack(scale[6]),
   instrument.frequency.value = scale[6];
   else if (points >= 6)
+  synth3.triggerAttack(scale[5]),
   instrument.frequency.value = scale[5];
   else if (points >= 5)
   synth3.triggerAttack(scale[4]),
@@ -231,18 +246,46 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     }
     
     
-    if(this.className == 'is-playing'){
-      this.className = "is-playing3";
+    if(this.className == 'is-playing3'){
+      this.className = "is-playing";
       this.innerHTML = "Synth: OFF"
       synth.triggerRelease();
       synth2.triggerRelease();
+      synth3.disconnect(gainNode);
       window.removeEventListener("devicemotion", handleMotion);
       is_running = false;
 
-    }else if (this.className == 'is-playing3')
+    }else if (this.className == 'is-playing')
+    {
+
+      this.className = "is-playing2";
+      this.innerHTML = "Synth 1: ON";
+      //const synth = new Tone.AMSynth().connect(gainNode);
+  
+      synth3.disconnect(gainNode);
+      synth2.triggerRelease();
+      synth.triggerAttack("C4"); 
+      window.addEventListener("devicemotion", handleMotion);
+      is_running = true;    
+          
+
+    }else if (this.className == 'is-playing2')
         
     {
-      this.className = "is-playing2";
+
+      this.className = "";
+      this.innerHTML = "Synth 2: ON";
+      //const synth = new Tone.FMSynth().connect(gainNode);
+      synth3.disconnect(gainNode);
+      synth.triggerRelease();
+      synth2.triggerAttack("C4"); 
+      window.addEventListener("devicemotion", handleMotion);
+      is_running = true;  
+    
+  
+    }else{
+
+      this.className = "is-playing3";
       this.innerHTML = "Synth 3: ON";
       //const synth = new Tone.AMSynth().connect(gainNode);
 
@@ -253,29 +296,10 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       window.addEventListener("devicemotion", handleMotion);
       is_running = true;    
 
-    }else if (this.className == 'is-playing2')
-        
-    {
-      this.className = "";
-      this.innerHTML = "Synth 1: ON";
-      //const synth = new Tone.AMSynth().connect(gainNode);
 
 
-      synth2.triggerRelease();
-      synth.triggerAttack("C4"); 
-      window.addEventListener("devicemotion", handleMotion);
-      is_running = true;    
-    
   
-    }else{
-      this.className = "is-playing";
-      this.innerHTML = "Synth 2: ON";
-      //const synth = new Tone.FMSynth().connect(gainNode);
-      synth.triggerRelease();
-      synth2.triggerAttack("C4"); 
-      window.addEventListener("devicemotion", handleMotion);
-      is_running = true;  
-  
+
     }}
     );
 
