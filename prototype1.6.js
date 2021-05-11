@@ -235,7 +235,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     {
       this.className = "";
       this.innerHTML = "Synth 2: ON";
-      const synth = new Tone.AMSynth();
+      const synth = new Tone.AMSynth().connect(gainNode);
 
     
 
@@ -247,8 +247,9 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     }else{
       this.className = "is-playing";
       this.innerHTML = "Synth 1: ON";
-      const synth = new Tone.FMSynth();
+      const synth = new Tone.FMSynth().connect(gainNode);
       synth.triggerAttack("C4"); 
+      
 
       window.addEventListener("devicemotion", handleMotion);
       is_running = true;    
