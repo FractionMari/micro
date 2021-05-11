@@ -15,6 +15,7 @@ const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const phaser = new Tone.Phaser().connect(gainNode);
 const autoWah = new Tone.AutoWah(50, 6, -30).connect(gainNode);
 const synth = new Tone.FMSynth().connect(gainNode);
+const synth2 = new Tone.AMSynth().connect(gainNode);
 
 // Other Variables
 let newAcc;
@@ -176,6 +177,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     pitchWheel = (pitchWheel * -1) + 10;
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     pitchShift(pitchWheel, synth, pentaScale);
+    pitchShift(pitchWheel, synth2, pentaScale);
 
     // Effects
     
@@ -235,7 +237,9 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     {
       this.className = "";
       this.innerHTML = "Synth 2: ON";
-      const synth = new Tone.AMSynth().connect(gainNode);
+      //const synth = new Tone.AMSynth().connect(gainNode);
+      synth.triggerRelease();
+      synth2.triggerAttack("C4"); 
 
     
 
@@ -247,7 +251,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     }else{
       this.className = "is-playing";
       this.innerHTML = "Synth 1: ON";
-      const synth = new Tone.FMSynth().connect(gainNode);
+      //const synth = new Tone.FMSynth().connect(gainNode);
+      synth2.triggerRelease();
       synth.triggerAttack("C4"); 
       
 
@@ -266,12 +271,14 @@ document.getElementById("effectButton1").addEventListener("click", function(){
     this.className = "";
     this.innerHTML = "FX1: OFF";
     synth.disconnect(pingPong);
+    synth2.disconnect(pingPong);
 
 
   }else{
     this.className = "is-playing";
     this.innerHTML = "FX1: ON"
     synth.connect(pingPong);
+    synth2.connect(pingPong);
 
 
 }}
@@ -287,12 +294,14 @@ document.getElementById("effectButton2").addEventListener("click", function(){
     this.className = "";
     this.innerHTML = "FX2: OFF";
     synth.disconnect(autoWah);
+    synth2.disconnect(autoWah);
 
 
   }else{
     this.className = "is-playing";
     this.innerHTML = "FX2: ON"
     synth.connect(autoWah);
+    synth2.connect(autoWah);
 
 
 
@@ -307,12 +316,14 @@ document.getElementById("effectButton3").addEventListener("click", function(){
     this.className = "";
     this.innerHTML = "FX3: OFF";
     synth.disconnect(phaser);
+    synth2.disconnect(phaser);
 
 
   }else{
     this.className = "is-playing";
     this.innerHTML = "FX3: ON"
     synth.connect(phaser);
+    synth2.connect(phaser);
 
 
 
