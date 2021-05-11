@@ -116,8 +116,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     updateFieldIfNotNull('test_y', event.acceleration.y);
     updateFieldIfNotNull('test_z', event.acceleration.z);
     updateFieldIfNotNull('total_acc', totAcc);
-    updateFieldIfNotNull('volume_acc', newAcc);
-    updateFieldIfNotNull('volume_acc2', newAcc2);
+
     updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
     updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
     updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
@@ -127,7 +126,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     ///////////////////////////////////////////////
 
     // Scaling values for inverted volume-control
-    var fn = generateScaleFunction(0.3, 11, 0.9, 0);
+    var fn = generateScaleFunction(0.3, 5, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
 
@@ -136,6 +135,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     newAcc2 = fn2(totAcc);
     newAcc2 = (clamp(0, 0.9, newAcc2));
 
+    updateFieldIfNotNull('volume_acc', newAcc);
+    updateFieldIfNotNull('volume_acc2', newAcc2);
     // Switch between inverted and non-inverted volume-control, 
     // and visual feedback indicated by the opacity of the element in GUI
     if (inverse == false)
