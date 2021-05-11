@@ -15,7 +15,7 @@ const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const phaser = new Tone.Phaser().connect(gainNode);
 const autoWah = new Tone.AutoWah(50, 6, -30).connect(gainNode);
 const synth = new Tone.FMSynth().connect(gainNode);
-const synth2 = new Tone.AMSynth().connect(gainNode);
+const synth2 = new Tone.DuoSynth().connect(gainNode);
 
 // Other Variables
 let newAcc;
@@ -182,9 +182,9 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     // Effects
     
     
-    //let harmonicity = pitchWheel / 10;
-    //updateFieldIfNotNull('harmonicity', harmonicity);
-    //synth.harmonicity.value = harmonicity;
+    let harmonicity = pitchWheel / 10;
+    updateFieldIfNotNull('harmonicity', harmonicity);
+    synth2.harmonicity.value = harmonicity;
     phaser.baseFrequency = 100;
     phaser.frequency = xDotValues;
     phaser.octaves = (yDotValues / 10);
@@ -228,6 +228,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       this.className = "is-playing2";
       this.innerHTML = "Synth: OFF"
       synth.triggerRelease();
+      synth2.triggerRelease();
       window.removeEventListener("devicemotion", handleMotion);
       is_running = false;
 
