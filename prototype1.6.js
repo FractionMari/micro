@@ -232,15 +232,27 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     
     
     if(this.className == 'is-playing'){
-      this.className = "is-playing2";
+      this.className = "is-playing3";
       this.innerHTML = "Synth: OFF"
       synth.triggerRelease();
       synth2.triggerRelease();
-      synth3.connect(gainNode);
       window.removeEventListener("devicemotion", handleMotion);
       is_running = false;
 
-  
+    }else if (this.className == 'is-playing3')
+        
+    {
+      this.className = "is-playing2";
+      this.innerHTML = "Synth 3: ON";
+      //const synth = new Tone.AMSynth().connect(gainNode);
+
+      synth.triggerRelease();
+      synth2.triggerRelease();
+      synth3.connect(gainNode);
+
+      window.addEventListener("devicemotion", handleMotion);
+      is_running = true;    
+
     }else if (this.className == 'is-playing2')
         
     {
