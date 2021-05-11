@@ -236,24 +236,24 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         
     {
       this.className = "";
-      this.innerHTML = "Synth 2: ON";
+      this.innerHTML = "Synth 1: ON";
       //const synth = new Tone.AMSynth().connect(gainNode);
-      synth.triggerRelease();
-      synth2.triggerAttack("C4"); 
+
+
+      synth2.triggerRelease();
+      synth.triggerAttack("C4"); 
       window.addEventListener("devicemotion", handleMotion);
-      is_running = true;  
+      is_running = true;    
     
   
     }else{
       this.className = "is-playing";
-      this.innerHTML = "Synth 1: ON";
+      this.innerHTML = "Synth 2: ON";
       //const synth = new Tone.FMSynth().connect(gainNode);
-      synth2.triggerRelease();
-      synth.triggerAttack("C4"); 
-      
-
+      synth.triggerRelease();
+      synth2.triggerAttack("C4"); 
       window.addEventListener("devicemotion", handleMotion);
-      is_running = true;    
+      is_running = true;  
   
     }}
     );
