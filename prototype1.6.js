@@ -166,9 +166,10 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 /*     var filterScale = generateScaleFunction(-10, 10, 0, 100);
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel); */
-    filterWheel = ((filterWheel + 10) * 20);
+    filterWheel = filterWheel + 10;
     updateFieldIfNotNull('filterwheel', filterWheel);
-    autoWah.baseFrequency = filterWheel;
+    //autoWah.baseFrequency = filterWheel;
+    autoWah.octaves = filterWheel;
 
     // Pitch and scale functions
     // Will give a range from 0-20
