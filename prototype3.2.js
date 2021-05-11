@@ -229,10 +229,14 @@ var i = 0;
     ///////// Red Dot Monitoring in GUI ///////
     ///////////////////////////////////////////
 
-    // multiplying with 5 to get values from 0-100
+/*     // multiplying with 5 to get values from 0-100
     let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 5);
     // multiplying with 4 to get values from 0-50
-    let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 2.5);
+    let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 2.5); */
+        // multiplying with 5 to get values from 0-120
+        let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 6);
+        // multiplying with 4 to get values from 0-60
+        let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 3);
     elem.style.top = yDotValues + 'px'; 
     elem.style.left = xDotValues + 'px'; 
 
