@@ -13,7 +13,7 @@
 const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const phaser = new Tone.Phaser().connect(gainNode);
-const autoFilter = new Tone.AutoWah().connect(gainNode);
+const autoWah = new Tone.AutoWah(50, 6, -30).connect(gainNode);
 const synth = new Tone.FMSynth().connect(gainNode);
 
 // Other Variables
@@ -166,7 +166,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     var filterScale = generateScaleFunction(-10, 10, 10, 300);
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
-    autoFilter.baseFrequency = filterWheel;
+    autoWah.baseFrequency = filterWheel;
 
     // Pitch and scale functions
     // Will give a range from 0-20
@@ -266,13 +266,13 @@ document.getElementById("effectButton2").addEventListener("click", function(){
   {
     this.className = "";
     this.innerHTML = "FX2: OFF";
-    synth.disconnect(autoFilter);
+    synth.disconnect(autoWah);
 
 
   }else{
     this.className = "is-playing";
     this.innerHTML = "FX2: ON"
-    synth.connect(autoFilter);
+    synth.connect(autoWah);
 
 
 
