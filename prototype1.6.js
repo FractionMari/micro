@@ -16,6 +16,8 @@ const phaser = new Tone.Phaser().connect(gainNode);
 const autoWah = new Tone.AutoWah(50, 6, -30).connect(gainNode);
 const synth = new Tone.FMSynth().connect(gainNode);
 const synth2 = new Tone.DuoSynth().connect(gainNode);
+const synth3 = new Tone.PluckSynth();
+
 
 // Other Variables
 let newAcc;
@@ -80,15 +82,20 @@ const points = pitch;
   else if (points >= 6)
   instrument.frequency.value = scale[5];
   else if (points >= 5)
+  synth3.triggerAttack(scale[4]),
   instrument.frequency.value = scale[4];
   else if (points >= 4)
+  synth3.triggerAttack(scale[3]),
   instrument.frequency.value = scale[3];
   else if (points >= 3)
+  synth3.triggerAttack(scale[2]),
   instrument.frequency.value = scale[2];
   else if (points >= 2)
+  synth3.triggerAttack(scale[1]),
   instrument.frequency.value = scale[1]; 
   else if (points >= 1)
-  instrument.frequency.value = scale[0];
+  instrument.frequency.value = scale[0],
+  synth3.triggerAttack(scale[0]);
       
 }
 
@@ -229,6 +236,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       this.innerHTML = "Synth: OFF"
       synth.triggerRelease();
       synth2.triggerRelease();
+      synth3.connect(gainNode);
       window.removeEventListener("devicemotion", handleMotion);
       is_running = false;
 
