@@ -91,7 +91,7 @@ const points = pitch;
   else if (points >= 2)
   instrument.frequency.value = scale[1]; 
   else if (points >= 1)
-  instrument.frequency.value = scale[0],
+  instrument.frequency.value = scale[0];
       
 }
 
