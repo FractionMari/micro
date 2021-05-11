@@ -16,9 +16,6 @@ const phaser = new Tone.Phaser().connect(gainNode);
 const autoWah = new Tone.AutoWah(50, 6, -30).connect(gainNode);
 const synth = new Tone.FMSynth().connect(gainNode);
 const synth2 = new Tone.DuoSynth().connect(gainNode);
-const synth3 = new Tone.PWMOscillator(60, 0.3).connect(gainNode);
-const synth4 = new Tone.Oscillator(440, "sine").connect(gainNode);
-
 
 // Other Variables
 let newAcc;
@@ -181,8 +178,6 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     pitchShift(pitchWheel, synth, pentaScale);
     pitchShift(pitchWheel, synth2, pentaScale);
-    pitchShift(pitchWheel, synth3, pentaScale);
-    pitchShift(pitchWheel, synth4, pentaScale);
 
     // Effects
     
@@ -229,85 +224,38 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     }
     
     
-    if(this.className == 'is-playing4'){
-      this.className = "is-playing";
+    if(this.className == 'is-playing'){
+      this.className = "is-playing2";
       this.innerHTML = "Synth: OFF"
       synth.triggerRelease();
       synth2.triggerRelease();
-      synth3.triggerRelease();
-      synth4.triggerRelease();
-      
       window.removeEventListener("devicemotion", handleMotion);
       is_running = false;
 
-    }else if (this.className == 'is-playing')
-    {
-
-      this.className = "is-playing2";
-      this.innerHTML = "Synth 1: ON";
-      //const synth = new Tone.AMSynth().connect(gainNode);
   
-      
-      synth2.triggerRelease();
-      synth3.triggerRelease();
-      synth4.triggerRelease();
-      synth.triggerAttack("C4"); 
-      window.addEventListener("devicemotion", handleMotion);
-      is_running = true;    
-          
-
     }else if (this.className == 'is-playing2')
         
     {
+      this.className = "";
+      this.innerHTML = "Synth 1: ON";
+      //const synth = new Tone.AMSynth().connect(gainNode);
 
-      this.className = "is-playing3";
+
+      synth2.triggerRelease();
+      synth.triggerAttack("C4"); 
+      window.addEventListener("devicemotion", handleMotion);
+      is_running = true;    
+    
+  
+    }else{
+      this.className = "is-playing";
       this.innerHTML = "Synth 2: ON";
       //const synth = new Tone.FMSynth().connect(gainNode);
-      
-      synth3.triggerRelease();
-      synth4.triggerRelease();
       synth.triggerRelease();
       synth2.triggerAttack("C4"); 
       window.addEventListener("devicemotion", handleMotion);
       is_running = true;  
-    
   
-    }else if (this.className == 'is-playing3')
-        
-    {
-
-      this.className = "";
-      this.innerHTML = "Synth 3: ON";
-      //const synth = new Tone.FMSynth().connect(gainNode);
-      
-      synth.triggerRelease();
-      synth2.triggerRelease();
-      synth4.triggerRelease();
-      synth3.triggerAttack("C4"); 
-      window.addEventListener("devicemotion", handleMotion);
-      is_running = true;  
-    
-  
-    }
-    
-    else{
-
-      this.className = "is-playing4";
-      this.innerHTML = "Synth 4: ON";
-      //const synth = new Tone.AMSynth().connect(gainNode);
-
-      synth.triggerRelease();
-      synth2.triggerRelease();
-      synth3.triggerRelease();
-      synth4.triggerAttack("C4"); 
-
-      window.addEventListener("devicemotion", handleMotion);
-      is_running = true;    
-
-
-
-  
-
     }}
     );
 
@@ -321,8 +269,6 @@ document.getElementById("effectButton1").addEventListener("click", function(){
     this.innerHTML = "FX1: OFF";
     synth.disconnect(pingPong);
     synth2.disconnect(pingPong);
-    synth3.disconnect(pingPong);
-    synth4.disconnect(pingPong);
 
 
   }else{
@@ -330,8 +276,6 @@ document.getElementById("effectButton1").addEventListener("click", function(){
     this.innerHTML = "FX1: ON"
     synth.connect(pingPong);
     synth2.connect(pingPong);
-    synth3.connect(pingPong);
-    synth4.connect(pingPong);
 
 
 }}
@@ -348,8 +292,6 @@ document.getElementById("effectButton2").addEventListener("click", function(){
     this.innerHTML = "FX2: OFF";
     synth.disconnect(autoWah);
     synth2.disconnect(autoWah);
-    synth3.disconnect(autoWah);
-    synth4.disconnect(autoWah);
 
 
   }else{
@@ -357,8 +299,6 @@ document.getElementById("effectButton2").addEventListener("click", function(){
     this.innerHTML = "FX2: ON"
     synth.connect(autoWah);
     synth2.connect(autoWah);
-    synth3.connect(autoWah);
-    synth4.connect(autoWah);
 
 
 
@@ -374,8 +314,6 @@ document.getElementById("effectButton3").addEventListener("click", function(){
     this.innerHTML = "FX3: OFF";
     synth.disconnect(phaser);
     synth2.disconnect(phaser);
-    synth3.disconnect(phaser);
-    synth4.disconnect(phaser);
 
 
   }else{
@@ -383,8 +321,6 @@ document.getElementById("effectButton3").addEventListener("click", function(){
     this.innerHTML = "FX3: ON"
     synth.connect(phaser);
     synth2.connect(phaser);
-    synth3.connect(phaser);
-    synth4.connect(phaser);
 
 
 
