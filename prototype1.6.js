@@ -223,15 +223,31 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     
     
     if(this.className == 'is-playing'){
-      this.className = "";
+      this.className = "is-playing2";
       this.innerHTML = "Synth: OFF"
       synth.triggerRelease();
       window.removeEventListener("devicemotion", handleMotion);
       is_running = false;
+
+  
+    }else if (this.className == 'is-playing2')
+        
+    {
+      this.className = "";
+      this.innerHTML = "Synth 2: ON";
+      const synth = new Tone.AMSynth();
+
+    
+
+    
+  
+
+
   
     }else{
       this.className = "is-playing";
-      this.innerHTML = "Synth: ON";
+      this.innerHTML = "Synth 1: ON";
+      const synth = new Tone.FMSynth();
       synth.triggerAttack("C4"); 
 
       window.addEventListener("devicemotion", handleMotion);
