@@ -163,9 +163,10 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     /////// Variables for effects and pitch ///////
     ///////////////////////////////////////////////
     // Filter
-    var filterScale = generateScaleFunction(-10, 10, 0, 100);
+/*     var filterScale = generateScaleFunction(-10, 10, 0, 100);
     filterWheel = Math.abs(filterWheel);
-    filterWheel = filterScale(filterWheel);
+    filterWheel = filterScale(filterWheel); */
+    filterWheel = (filterWheel + 10);
     updateFieldIfNotNull('filterwheel', filterWheel);
     autoWah.baseFrequency = filterWheel;
 
