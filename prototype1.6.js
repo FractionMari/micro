@@ -240,13 +240,9 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       //const synth = new Tone.AMSynth().connect(gainNode);
       synth.triggerRelease();
       synth2.triggerAttack("C4"); 
-
+      window.addEventListener("devicemotion", handleMotion);
+      is_running = true;  
     
-
-    
-  
-
-
   
     }else{
       this.className = "is-playing";
