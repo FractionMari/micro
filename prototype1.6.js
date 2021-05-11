@@ -16,7 +16,8 @@ const phaser = new Tone.Phaser().connect(gainNode);
 const autoWah = new Tone.AutoWah(50, 6, -30).connect(gainNode);
 const synth = new Tone.FMSynth().connect(gainNode);
 const synth2 = new Tone.DuoSynth().connect(gainNode);
-const synth3 = new Tone.PluckSynth();
+const synth3 = new Tone.PWMOscillator(60, 0.3).connect(gainNode);
+const synth4 = new Tone.Oscillator(440, "sine").connect(gainNode);
 
 
 // Other Variables
@@ -52,65 +53,45 @@ function pitchShift (pitch, instrument, scale) {
 const points = pitch;
 
   if (points >= 20)
-  synth3.triggerAttack(scale[19]),
   instrument.frequency.value = scale[19];
   else if (points >= 19)
-  synth3.triggerAttack(scale[18]),
   instrument.frequency.value = scale[18];
   else if (points >= 18)
-  synth3.triggerAttack(scale[17]),
   instrument.frequency.value = scale[17];
   else if (points >= 17)
-  synth3.triggerAttack(scale[16]),
   instrument.frequency.value = scale[16];
   else if (points >= 16)
-  synth3.triggerAttack(scale[15]),
   instrument.frequency.value = scale[15];
   else if (points >= 15)
-  synth3.triggerAttack(scale[14]),
   instrument.frequency.value = scale[14];
   else if (points >= 14)
-  synth3.triggerAttack(scale[13]),
   instrument.frequency.value = scale[13];
   else if (points >= 13)
-  synth3.triggerAttack(scale[12]),
   instrument.frequency.value = scale[12];
   else if (points >= 12)
-  synth3.triggerAttack(scale[11]),
   instrument.frequency.value = scale[11];
   else if (points >= 11)
-  synth3.triggerAttack(scale[10]),
   instrument.frequency.value = scale[10];
   else if (points >= 10)
-  synth3.triggerAttack(scale[9]),
   instrument.frequency.value = scale[9];
   else if (points >= 9)
-  synth3.triggerAttack(scale[8]),
   instrument.frequency.value = scale[8];  
   else if (points >= 8)
-  synth3.triggerAttack(scale[7]),
   instrument.frequency.value = scale[7];
   else if (points >= 7)
-  synth3.triggerAttack(scale[6]),
   instrument.frequency.value = scale[6];
   else if (points >= 6)
-  synth3.triggerAttack(scale[5]),
   instrument.frequency.value = scale[5];
   else if (points >= 5)
-  synth3.triggerAttack(scale[4]),
   instrument.frequency.value = scale[4];
   else if (points >= 4)
-  synth3.triggerAttack(scale[3]),
   instrument.frequency.value = scale[3];
   else if (points >= 3)
-  synth3.triggerAttack(scale[2]),
   instrument.frequency.value = scale[2];
   else if (points >= 2)
-  synth3.triggerAttack(scale[1]),
   instrument.frequency.value = scale[1]; 
   else if (points >= 1)
   instrument.frequency.value = scale[0],
-  synth3.triggerAttack(scale[0]);
       
 }
 
@@ -200,6 +181,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     updateFieldIfNotNull('pitchwheel', pitchWheel);
     pitchShift(pitchWheel, synth, pentaScale);
     pitchShift(pitchWheel, synth2, pentaScale);
+    pitchShift(pitchWheel, synth3, pentaScale);
+    pitchShift(pitchWheel, synth4, pentaScale);
 
     // Effects
     
@@ -246,12 +229,14 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     }
     
     
-    if(this.className == 'is-playing3'){
+    if(this.className == 'is-playing4'){
       this.className = "is-playing";
       this.innerHTML = "Synth: OFF"
       synth.triggerRelease();
       synth2.triggerRelease();
-      synth3.disconnect(gainNode);
+      synth3.triggerRelease();
+      synth4.triggerRelease();
+      
       window.removeEventListener("devicemotion", handleMotion);
       is_running = false;
 
@@ -262,8 +247,10 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       this.innerHTML = "Synth 1: ON";
       //const synth = new Tone.AMSynth().connect(gainNode);
   
-      synth3.disconnect(gainNode);
+      
       synth2.triggerRelease();
+      synth3.triggerRelease();
+      synth4.triggerRelease();
       synth.triggerAttack("C4"); 
       window.addEventListener("devicemotion", handleMotion);
       is_running = true;    
@@ -273,25 +260,46 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         
     {
 
-      this.className = "";
+      this.className = "is-playing3";
       this.innerHTML = "Synth 2: ON";
       //const synth = new Tone.FMSynth().connect(gainNode);
-      synth3.disconnect(gainNode);
+      
+      synth3.triggerRelease();
+      synth4.triggerRelease();
       synth.triggerRelease();
       synth2.triggerAttack("C4"); 
       window.addEventListener("devicemotion", handleMotion);
       is_running = true;  
     
   
-    }else{
+    }else if (this.className == 'is-playing3')
+        
+    {
 
-      this.className = "is-playing3";
+      this.className = "";
       this.innerHTML = "Synth 3: ON";
+      //const synth = new Tone.FMSynth().connect(gainNode);
+      
+      synth.triggerRelease();
+      synth2.triggerRelease();
+      synth4.triggerRelease();
+      synth3.triggerAttack("C4"); 
+      window.addEventListener("devicemotion", handleMotion);
+      is_running = true;  
+    
+  
+    }
+    
+    else{
+
+      this.className = "is-playing4";
+      this.innerHTML = "Synth 4: ON";
       //const synth = new Tone.AMSynth().connect(gainNode);
 
       synth.triggerRelease();
       synth2.triggerRelease();
-      synth3.connect(gainNode);
+      synth3.triggerRelease();
+      synth4.triggerAttack("C4"); 
 
       window.addEventListener("devicemotion", handleMotion);
       is_running = true;    
@@ -313,6 +321,8 @@ document.getElementById("effectButton1").addEventListener("click", function(){
     this.innerHTML = "FX1: OFF";
     synth.disconnect(pingPong);
     synth2.disconnect(pingPong);
+    synth3.disconnect(pingPong);
+    synth4.disconnect(pingPong);
 
 
   }else{
@@ -320,6 +330,8 @@ document.getElementById("effectButton1").addEventListener("click", function(){
     this.innerHTML = "FX1: ON"
     synth.connect(pingPong);
     synth2.connect(pingPong);
+    synth3.connect(pingPong);
+    synth4.connect(pingPong);
 
 
 }}
@@ -336,6 +348,8 @@ document.getElementById("effectButton2").addEventListener("click", function(){
     this.innerHTML = "FX2: OFF";
     synth.disconnect(autoWah);
     synth2.disconnect(autoWah);
+    synth3.disconnect(autoWah);
+    synth4.disconnect(autoWah);
 
 
   }else{
@@ -343,6 +357,8 @@ document.getElementById("effectButton2").addEventListener("click", function(){
     this.innerHTML = "FX2: ON"
     synth.connect(autoWah);
     synth2.connect(autoWah);
+    synth3.connect(autoWah);
+    synth4.connect(autoWah);
 
 
 
@@ -358,6 +374,8 @@ document.getElementById("effectButton3").addEventListener("click", function(){
     this.innerHTML = "FX3: OFF";
     synth.disconnect(phaser);
     synth2.disconnect(phaser);
+    synth3.disconnect(phaser);
+    synth4.disconnect(phaser);
 
 
   }else{
@@ -365,6 +383,8 @@ document.getElementById("effectButton3").addEventListener("click", function(){
     this.innerHTML = "FX3: ON"
     synth.connect(phaser);
     synth2.connect(phaser);
+    synth3.connect(phaser);
+    synth4.connect(phaser);
 
 
 
