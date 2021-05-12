@@ -23,7 +23,7 @@ const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay().connect(gainNode);
 const phaser = new Tone.Phaser().connect(pingPong);
 const synth = new Tone.FMSynth().connect(phaser);
-const synth2 = new Tone.DuoSynth().connect(phaser);
+const synth2 = new Tone.AMSynth().connect(phaser);
 const synth3 = new Tone.PluckSynth().connect(phaser);
 
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
@@ -202,10 +202,10 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         //let harmonicity = pitchWheel / 10;
         //updateFieldIfNotNull('harmonicity', harmonicity);
         //synth.harmonicity.value = harmonicity;
-        phaser.baseFrequency = 100;
-        phaser.frequency = xDotValues;
+        phaser.baseFrequency.value = 100;
+        phaser.frequency.value = xDotValues;
         phaser.octaves = (yDotValues / 10);
-        pingPong.feedback = (xDotValues / 200);
+        pingPong.feedback.value = (xDotValues / 200);
         
 
     }
