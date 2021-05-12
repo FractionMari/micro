@@ -23,6 +23,7 @@ const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const phaser = new Tone.Phaser().connect(pingPong);
 const synth = new Tone.FMSynth().connect(phaser);
+const synth2 = new Tone.AMSynth().connect(phaser);
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
 const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
 
@@ -32,7 +33,7 @@ let newAcc2;
 let inverse = true;
 let is_running = false;
 let demo_button = document.getElementById("start_demo");
-Tone.Transport.bpm.value = 20;
+Tone.Transport.bpm.value = 10;
 
 
 
@@ -110,7 +111,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     var fn = generateScaleFunction(0.3, 11, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
-    let tempo = newAcc * 100;
+    let tempo = newAcc * 50;
 
     // Scaling values for non-inverted volume-control
     var fn2 = generateScaleFunction(0.3, 11, 0, 0.9);
@@ -192,7 +193,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         phaser.baseFrequency = 100;
         phaser.frequency = xDotValues;
         phaser.octaves = (yDotValues / 10);
-        pingPong.wet.value = xDotValues;
+        pingPong.wet.value = (xDotValues / 10);
         
 
     }
@@ -219,7 +220,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       // start/stop the oscllator every quarter note
       
       Tone.Transport.start();
-      // ramp the bpm to 120 over 10 seconds
+
       
 
   });
