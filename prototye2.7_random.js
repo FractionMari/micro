@@ -24,6 +24,8 @@ const pingPong = new Tone.PingPongDelay().connect(gainNode);
 const phaser = new Tone.Phaser().connect(pingPong);
 const synth = new Tone.FMSynth().connect(phaser);
 const synth2 = new Tone.DuoSynth().connect(phaser);
+const synth3 = new Tone.PluckSynth().connect(phaser);
+
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
 const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
 
@@ -44,6 +46,7 @@ Tone.Transport.bpm.value = 10;
 
   let randomArray = [];
   let randomArray2 = [];
+  let randomArray3 = [];
 
   document.getElementById("random").addEventListener("click", function() {
     for (var i = 0; i < 100; i += 1) {
@@ -55,9 +58,13 @@ Tone.Transport.bpm.value = 10;
 
 
         const randomNote2 = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
-
        let random2 = freq(randomNote2());
        randomArray2.push(random2);
+
+       const randomNote3 = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
+       let random3 = freq(randomNote3());
+       randomArray3.push(random3);
+  
   
   };
     
@@ -248,6 +255,31 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   // start/stop the oscllator every quarter note
   
   Tone.Transport.start();
+
+});
+
+
+document.getElementById("synth3").addEventListener("click", function() {
+
+  // Request permission for iOS 13+ devices
+  if (
+    DeviceMotionEvent &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+  ) {
+    DeviceMotionEvent.requestPermission();
+  }
+
+  Tone.start();
+  window.addEventListener("devicemotion", handleMotion);
+
+  const seq3 = new Tone.Sequence((time, note) => {
+    synth3.triggerAttack(note, 0.1, time);
+    // subdivisions are given as subarrays
+}, randomArray3).start(0);
+
+// start/stop the oscllator every quarter note
+
+Tone.Transport.start();
 
 });
 
