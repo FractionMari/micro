@@ -231,9 +231,32 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       
       Tone.Transport.start();
 
-      
-
   });
+
+  document.getElementById("synth2").addEventListener("click", function() {
+
+    // Request permission for iOS 13+ devices
+    if (
+      DeviceMotionEvent &&
+      typeof DeviceMotionEvent.requestPermission === "function"
+    ) {
+      DeviceMotionEvent.requestPermission();
+    }
+
+    Tone.start();
+    window.addEventListener("devicemotion", handleMotion);
+
+    const seq2 = new Tone.Sequence((time, note) => {
+      synth2.triggerAttackRelease(note, 0.1, time);
+      // subdivisions are given as subarrays
+  }, randomArray2).start(0);
+  
+  // start/stop the oscllator every quarter note
+  
+  Tone.Transport.start();
+
+});
+
 
 
 
@@ -293,14 +316,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       this.innerHTML = "Inverse: OFF";
       inverse = false;
 
-      const seq2 = new Tone.Sequence((time, note) => {
-        synth2.triggerAttackRelease(note, 0.1, time);
-        // subdivisions are given as subarrays
-    }, randomArray2).start(0);
-    
-    // start/stop the oscllator every quarter note
-    
-    Tone.Transport.start();
+
   
     }}
     ); 
