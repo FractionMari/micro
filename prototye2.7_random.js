@@ -116,7 +116,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     var fn = generateScaleFunction(0.3, 11, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
-    let tempo = Math.floor[newAcc * 50];
+    let tempo = Math.floor(newAcc * 50);
 
     // Scaling values for non-inverted volume-control
     var fn2 = generateScaleFunction(0.3, 11, 0, 0.9);
