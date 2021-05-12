@@ -32,7 +32,7 @@ let newAcc2;
 let inverse = true;
 let is_running = false;
 let demo_button = document.getElementById("start_demo");
-let player;
+
 
 
   // Random tone generator 
@@ -157,7 +157,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     autoFilter.baseFrequency = filterWheel;
 
        
-       function loopActivate(players1, players2, value) {
+/*        function loopActivate(players1, players2, value) {
        
          if (yDotValues < value)
          players1.mute = true,
@@ -171,7 +171,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
          players2.mute = true,
          players1.mute = false;
        
-       };
+       }; */
        
        
        
@@ -281,7 +281,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       {
         this.className = "";
         this.innerHTML = "OFF"
-        player.disconnect(pingPong);
+
 
       
 
@@ -290,7 +290,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   this.className = "is-playing";
   this.innerHTML = "ON";
 
-  player.connect(pingPong);
+
 
 
 
@@ -306,7 +306,7 @@ document.getElementById("effectButton2").addEventListener("click", function(){
   {
     this.className = "";
     this.innerHTML = "OFF"
-    player.disconnect(phaser);
+
 
   
 
@@ -315,7 +315,7 @@ document.getElementById("effectButton2").addEventListener("click", function(){
 this.className = "is-playing";
 this.innerHTML = "ON";
 
-player.connect(phaser);
+
 
 
 
