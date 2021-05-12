@@ -196,6 +196,17 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
  
 
     document.getElementById("looper1").addEventListener("click", function() {
+
+      // Request permission for iOS 13+ devices
+      if (
+        DeviceMotionEvent &&
+        typeof DeviceMotionEvent.requestPermission === "function"
+      ) {
+        DeviceMotionEvent.requestPermission();
+      }
+
+      Tone.start();
+      window.addEventListener("devicemotion", handleMotion);
 	
       const seq = new Tone.Sequence((time, note) => {
           synth.triggerAttackRelease(note, 0.1, time);
