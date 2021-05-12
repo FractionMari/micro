@@ -32,6 +32,7 @@ let newAcc2;
 let inverse = true;
 let is_running = false;
 let demo_button = document.getElementById("start_demo");
+Tone.Transport.bpm.value = 20;
 
 
 
@@ -109,6 +110,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     var fn = generateScaleFunction(0.3, 11, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
+    let tempo = newAcc * 100;
 
     // Scaling values for non-inverted volume-control
     var fn2 = generateScaleFunction(0.3, 11, 0, 0.9);
@@ -123,6 +125,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     else
     // more smooth change of volume:
     gainNode.gain.rampTo(newAcc, 0.1),
+    Tone.Transport.bpm.rampTo(tempo, 1),
     elem.style.opacity = newAcc;
 
     updateFieldIfNotNull('volume_acc', newAcc);
@@ -212,12 +215,12 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
           synth.triggerAttackRelease(note, 0.1, time);
           // subdivisions are given as subarrays
       }, randomArray).start(0);
-      Tone.Transport.bpm.value = 20;
+      
       // start/stop the oscllator every quarter note
       
       Tone.Transport.start();
       // ramp the bpm to 120 over 10 seconds
-      Tone.Transport.bpm.rampTo(120, 20);
+      
 
   });
 
