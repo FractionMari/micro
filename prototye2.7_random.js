@@ -52,15 +52,12 @@ Tone.Transport.bpm.value = 10;
 
         let random = freq(randomNote());
         randomArray.push(random);
-    
-    };
 
-    for (var i = 0; i < 100; i += 1) {
 
-      const randomNote2 = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
+        const randomNote2 = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
 
-      let random2 = freq(randomNote2());
-      randomArray2.push(random2);
+       let random2 = freq(randomNote2());
+       randomArray2.push(random2);
   
   };
     Tone.start();
@@ -87,9 +84,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   }
 
 
-
   function handleMotion(event) {
-
 
     
 // variables for rotation, GUI monitoring and volume control
@@ -219,7 +214,6 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         DeviceMotionEvent.requestPermission();
       }
 
-      Tone.start();
       window.addEventListener("devicemotion", handleMotion);
 	
       const seq = new Tone.Sequence((time, note) => {
