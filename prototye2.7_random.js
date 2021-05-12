@@ -113,7 +113,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     ///////////////////////////////////////////////
 
     // Scaling values for inverted volume-control
-    var fn = generateScaleFunction(0.3, 11, 0.9, 0);
+    var fn = generateScaleFunction(0.3, 3, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
     let tempo = Math.floor(newAcc * 50);
@@ -213,7 +213,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       ) {
         DeviceMotionEvent.requestPermission();
       }
-
+      Tone.start();
       window.addEventListener("devicemotion", handleMotion);
 	
       const seq = new Tone.Sequence((time, note) => {
