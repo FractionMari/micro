@@ -203,7 +203,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         phaser.baseFrequency = 100;
         phaser.frequency = xDotValues;
         phaser.octaves = (yDotValues / 10);
-        pingPong.feedback = (xDotValues / 20);
+        pingPong.feedback = (xDotValues / 200);
         
 
     }
