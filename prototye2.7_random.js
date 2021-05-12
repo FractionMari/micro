@@ -23,7 +23,7 @@ const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const phaser = new Tone.Phaser().connect(pingPong);
 const synth = new Tone.FMSynth().connect(phaser);
-const synth2 = new Tone.AMSynth().connect(phaser);
+const synth2 = new Tone.DuoSynth().connect(phaser);
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
 const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
 
@@ -60,7 +60,7 @@ Tone.Transport.bpm.value = 10;
        randomArray2.push(random2);
   
   };
-    Tone.start();
+    
 });
 
 // With this function the values won't go below a threshold 
@@ -327,15 +327,9 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         this.innerHTML = "OFF"
 
 
-      
-
-
 }else{
   this.className = "is-playing";
   this.innerHTML = "ON";
-
-
-
 
 
 }}
@@ -350,10 +344,6 @@ document.getElementById("effectButton2").addEventListener("click", function(){
   {
     this.className = "";
     this.innerHTML = "OFF"
-
-
-  
-
 
 }else{
 this.className = "is-playing";
