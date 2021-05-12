@@ -43,6 +43,7 @@ Tone.Transport.bpm.value = 10;
   const notes = [ -15, -14, -13, -12, -11, -10, -9, -8, -7,  -6, -5, -4, -3 ,-2, -1, 1, 2, 3, 4, 5, 6, 7, 8, 9]; // Close to your 100, 400, 1600 and 6300
 
   let randomArray = [];
+  let randomArray2 = [];
 
   document.getElementById("random").addEventListener("click", function() {
     for (var i = 0; i < 100; i += 1) {
@@ -53,6 +54,15 @@ Tone.Transport.bpm.value = 10;
         randomArray.push(random);
     
     };
+
+    for (var i = 0; i < 100; i += 1) {
+
+      const randomNote = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
+
+      let random2 = freq(randomNote());
+      randomArray2.push(random2);
+  
+  };
     Tone.start();
 });
 
@@ -111,7 +121,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     var fn = generateScaleFunction(0.3, 11, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
-    let tempo = newAcc * 50;
+    let tempo = Math.floor[newAcc * 50];
 
     // Scaling values for non-inverted volume-control
     var fn2 = generateScaleFunction(0.3, 11, 0, 0.9);
@@ -126,7 +136,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     else
     // more smooth change of volume:
     gainNode.gain.rampTo(newAcc, 0.1),
-    Tone.Transport.bpm.rampTo(tempo, 1),
+    Tone.Transport.bpm.rampTo(tempo, 0.5),
     elem.style.opacity = newAcc;
 
     updateFieldIfNotNull('volume_acc', newAcc);
@@ -282,6 +292,15 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       this.className = "is-playing";
       this.innerHTML = "Inverse: OFF";
       inverse = false;
+
+      const seq2 = new Tone.Sequence((time, note) => {
+        synth2.triggerAttackRelease(note, 0.1, time);
+        // subdivisions are given as subarrays
+    }, randomArray2).start(0);
+    
+    // start/stop the oscllator every quarter note
+    
+    Tone.Transport.start();
   
     }}
     ); 
