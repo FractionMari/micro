@@ -20,7 +20,7 @@
 
 // Tone.js parameters:
 const gainNode = new Tone.Gain().toDestination();
-const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
+const pingPong = new Tone.PingPongDelay().connect(gainNode);
 const phaser = new Tone.Phaser().connect(pingPong);
 const synth = new Tone.FMSynth().connect(phaser);
 const synth2 = new Tone.DuoSynth().connect(phaser);
@@ -217,7 +217,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       window.addEventListener("devicemotion", handleMotion);
 	
       const seq = new Tone.Sequence((time, note) => {
-          synth.triggerAttackRelease(note, 0.1, time);
+          synth.triggerAttackRelease(note, 0.4, time);
           // subdivisions are given as subarrays
       }, randomArray).start(0);
       
