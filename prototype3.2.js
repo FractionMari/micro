@@ -26,6 +26,7 @@ const synth = new Tone.FMSynth().connect(gainNode);
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
 const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
 
+
 // Other Variables
 let newAcc;
 let newAcc2;
@@ -288,8 +289,8 @@ var i = 0;
         //let harmonicity = pitchWheel / 10;
         //updateFieldIfNotNull('harmonicity', harmonicity);
         //synth.harmonicity.value = harmonicity;
-        phaser.baseFrequency = 100;
-        phaser.frequency = xDotValues;
+        phaser.baseFrequency.value = 100;
+        phaser.frequency.value = xDotValues;
         phaser.octaves = (yDotValues / 10);
         pingPong.wet.value = xDotValues;
         
