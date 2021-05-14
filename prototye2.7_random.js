@@ -129,15 +129,17 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     var fn2 = generateScaleFunction(0.3, 11, 0, 0.9);
     newAcc2 = fn2(totAcc);
     newAcc2 = (clamp(0, 0.9, newAcc2));
+    let tempo2 = Math.floor(newAcc2 * 50);
 
     // Switch between inverted and non-inverted volume-control, 
     // and visual feedback indicated by the opacity of the element in GUI
     if (inverse == false)
-    gainNode.gain.rampTo(newAcc2, 0.1),
+    //gainNode.gain.rampTo(newAcc2, 0.1),
+    Tone.Transport.bpm.rampTo(tempo2, 0.5),
     elem.style.opacity = newAcc2;
     else
     // more smooth change of volume:
-    gainNode.gain.rampTo(newAcc, 0.1),
+    //gainNode.gain.rampTo(newAcc, 0.1),
     Tone.Transport.bpm.rampTo(tempo, 0.5),
     elem.style.opacity = newAcc;
 
@@ -273,7 +275,7 @@ document.getElementById("synth3").addEventListener("click", function() {
   window.addEventListener("devicemotion", handleMotion);
 
   const seq3 = new Tone.Sequence((time, note) => {
-    synth3.triggerAttack(note, 0.1, time);
+    synth3.triggerAttackRelease(note, 0.1, time);
     // subdivisions are given as subarrays
 }, randomArray3).start(0);
 
