@@ -144,13 +144,13 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     var fn = generateScaleFunction(0.3, 3, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
-    let tempo = Math.floor(newAcc * 100);
+    let tempo = Math.floor(newAcc * 50);
 
     // Scaling values for non-inverted volume-control
     var fn2 = generateScaleFunction(0.3, 11, 0, 0.9);
     newAcc2 = fn2(totAcc);
     newAcc2 = (clamp(0, 0.9, newAcc2));
-    let tempo2 = Math.floor(newAcc2 * 50);
+    let tempo2 = Math.floor(newAcc2 * 100);
 
     // Switch between inverted and non-inverted volume-control, 
     // and visual feedback indicated by the opacity of the element in GUI
