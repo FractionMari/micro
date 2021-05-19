@@ -47,8 +47,29 @@ Tone.Transport.bpm.value = 10;
   let randomArray = [];
   let randomArray2 = [];
   let randomArray3 = [];
+  function myFunction() {
+    for (var i = 0; i < 100; i += 1) {
 
-  document.getElementById("random").addEventListener("click", function() {
+      const randomNote = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
+  
+      let random = freq(randomNote());
+      randomArray.push(random);
+  
+  
+      const randomNote2 = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
+     let random2 = freq(randomNote2());
+     randomArray2.push(random2);
+  
+     const randomNote3 = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
+     let random3 = freq(randomNote3());
+     randomArray3.push(random3);
+  
+  
+  };
+  }
+
+
+/*   document.getElementById("random").addEventListener("click", function() {
     for (var i = 0; i < 100; i += 1) {
 
         const randomNote = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
@@ -68,7 +89,7 @@ Tone.Transport.bpm.value = 10;
   
   };
     
-});
+}); */
 
 // With this function the values won't go below a threshold 
 function clamp(min, max, val) {
@@ -351,7 +372,7 @@ Tone.Transport.start();
 
 
 
-
+/* 
     document.getElementById("effectButton1").addEventListener("click", function(){
 
       if (this.className == 'is-playing')
@@ -389,7 +410,7 @@ this.innerHTML = "ON";
 
 }}
 ); 
-
+ */
 ///////////////////////////////////////////////////////////////////////////
 ///////////// Code for dividing canvas into different sections  /////////////
 ///////////////////////////////////////////////////////////////////////////
