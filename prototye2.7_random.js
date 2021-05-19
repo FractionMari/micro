@@ -23,7 +23,7 @@ const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay().connect(gainNode);
 const phaser = new Tone.Phaser().connect(pingPong);
 const synth = new Tone.FMSynth().connect(phaser);
-const synth2 = new Tone.AMSynth().connect(phaser);
+const synth2 = new Tone.FMSynth().connect(phaser);
 const synth3 = new Tone.PluckSynth().connect(phaser);
 
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
@@ -47,7 +47,7 @@ Tone.Transport.bpm.value = 10;
   let randomArray = [];
   let randomArray2 = [];
   let randomArray3 = [];
-  function myFunction() {
+  function createRandomness() {
     for (var i = 0; i < 100; i += 1) {
 
       const randomNote = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
@@ -144,7 +144,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     var fn = generateScaleFunction(0.3, 3, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
-    let tempo = Math.floor(newAcc * 50);
+    let tempo = Math.floor(newAcc * 100);
 
     // Scaling values for non-inverted volume-control
     var fn2 = generateScaleFunction(0.3, 11, 0, 0.9);
