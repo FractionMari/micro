@@ -423,7 +423,7 @@ this.innerHTML = "ON";
 ///////////// Code for dividing canvas into different sections  /////////////
 ///////////////////////////////////////////////////////////////////////////
 
-var c = document.getElementById("myContainer3");
+/* var c = document.getElementById("myContainer3");
 var ctx = c.getContext("2d");
 var ctx2 = c.getContext("2d");
 var ctx3 = c.getContext("2d");
@@ -459,3 +459,4 @@ ctx6.beginPath();
 ctx6.moveTo(0, 20);
 ctx6.lineTo(150, 20);
 ctx6.stroke();
+ */
