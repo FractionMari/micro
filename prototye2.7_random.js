@@ -63,6 +63,14 @@ Tone.Transport.bpm.value = 10;
      const randomNote3 = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
      let random3 = freq(randomNote3());
      randomArray3.push(random3);
+
+       // Request permission for iOS 13+ devices
+  if (
+    DeviceMotionEvent &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+  ) {
+    DeviceMotionEvent.requestPermission();
+  }
   
   
   };
@@ -236,13 +244,13 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
     document.getElementById("looper1").addEventListener("click", function() {
 
-      // Request permission for iOS 13+ devices
+/*       // Request permission for iOS 13+ devices
       if (
         DeviceMotionEvent &&
         typeof DeviceMotionEvent.requestPermission === "function"
       ) {
         DeviceMotionEvent.requestPermission();
-      }
+      } */
       Tone.start();
       window.addEventListener("devicemotion", handleMotion);
 	
@@ -259,13 +267,13 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
   document.getElementById("synth2").addEventListener("click", function() {
 
-    // Request permission for iOS 13+ devices
+/*     // Request permission for iOS 13+ devices
     if (
       DeviceMotionEvent &&
       typeof DeviceMotionEvent.requestPermission === "function"
     ) {
       DeviceMotionEvent.requestPermission();
-    }
+    } */
 
     Tone.start();
     window.addEventListener("devicemotion", handleMotion);
@@ -284,13 +292,13 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
 document.getElementById("synth3").addEventListener("click", function() {
 
-  // Request permission for iOS 13+ devices
+/*   // Request permission for iOS 13+ devices
   if (
     DeviceMotionEvent &&
     typeof DeviceMotionEvent.requestPermission === "function"
   ) {
     DeviceMotionEvent.requestPermission();
-  }
+  } */
 
   Tone.start();
   window.addEventListener("devicemotion", handleMotion);
