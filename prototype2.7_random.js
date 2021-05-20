@@ -205,25 +205,6 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     filterWheel = filterScale(filterWheel);
     autoFilter.baseFrequency = filterWheel;
 
-       
-/*        function loopActivate(players1, players2, value) {
-       
-         if (yDotValues < value)
-         players1.mute = true,
-         players2.mute = true;
-       
-         else if ((xDotValues > 50) && (yDotValues > value))
-         players2.mute = false,
-         players1.mute = true;
-       
-         else
-         players2.mute = true,
-         players1.mute = false;
-       
-       }; */
-       
-       
-       
         
            updateFieldIfNotNull('filterwheel', filterWheel);
            updateFieldIfNotNull('pitchwheel', pitchWheel);
@@ -247,13 +228,6 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
     document.getElementById("looper1").addEventListener("click", function() {
 
-/*       // Request permission for iOS 13+ devices
-      if (
-        DeviceMotionEvent &&
-        typeof DeviceMotionEvent.requestPermission === "function"
-      ) {
-        DeviceMotionEvent.requestPermission();
-      } */
       Tone.start();
       window.addEventListener("devicemotion", handleMotion);
 	
@@ -269,14 +243,6 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   });
 
   document.getElementById("synth2").addEventListener("click", function() {
-
-/*     // Request permission for iOS 13+ devices
-    if (
-      DeviceMotionEvent &&
-      typeof DeviceMotionEvent.requestPermission === "function"
-    ) {
-      DeviceMotionEvent.requestPermission();
-    } */
 
     Tone.start();
     window.addEventListener("devicemotion", handleMotion);
