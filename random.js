@@ -1,10 +1,9 @@
 
 const synth = new Tone.Synth().toDestination();
 
-// Random tone generator 
-    /* Function to calculate frequency of a note starting at A4 and stepping semi tones*/    
+    // Random tone generator 
     const freq = note => 2 ** (note / 12) * 440; // 440 is the frequency of A4
- // the bitwise Or does the same as Math.floor
+    // the bitwise Or does the same as Math.floor
     const notes = [ -15, -14, -13, -12, -11, -10, -9, -8, -7,  -6, -5, -4, -3 ,-2, -1, 1, 2, 3, 4, 5, 6, 7, 8, 9]; // Close to your 100, 400, 1600 and 6300
 
     let randomArray = [];
