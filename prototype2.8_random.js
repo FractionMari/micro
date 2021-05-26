@@ -75,32 +75,13 @@ Tone.Transport.bpm.value = 10;
     DeviceMotionEvent.requestPermission();
   }
   
+  window.addEventListener("devicemotion", handleMotion);
   
   };
   }
 
 
-/*   document.getElementById("random").addEventListener("click", function() {
-    for (var i = 0; i < 100; i += 1) {
 
-        const randomNote = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
-
-        let random = freq(randomNote());
-        randomArray.push(random);
-
-
-        const randomNote2 = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
-       let random2 = freq(randomNote2());
-       randomArray2.push(random2);
-
-       const randomNote3 = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
-       let random3 = freq(randomNote3());
-       randomArray3.push(random3);
-  
-  
-  };
-    
-}); */
 
 // With this function the values won't go below a threshold 
 function clamp(min, max, val) {
@@ -262,13 +243,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
 document.getElementById("synth3").addEventListener("click", function() {
 
-/*   // Request permission for iOS 13+ devices
-  if (
-    DeviceMotionEvent &&
-    typeof DeviceMotionEvent.requestPermission === "function"
-  ) {
-    DeviceMotionEvent.requestPermission();
-  } */
+
 
   Tone.start();
   window.addEventListener("devicemotion", handleMotion);
@@ -286,48 +261,6 @@ Tone.Transport.start();
 
 
 
-
-/* 
-
-    document.getElementById("looper1").addEventListener("click", function(){
-
-        // Request permission for iOS 13+ devices
-        if (
-            DeviceMotionEvent &&
-            typeof DeviceMotionEvent.requestPermission === "function"
-          ) {
-            DeviceMotionEvent.requestPermission();
-          }
-
-          Tone.start();
-          window.addEventListener("devicemotion", handleMotion);
-          
-    
-        if (this.className == 'is-playing')
-        
-        {
-          this.className = "is-playing2";
-          this.innerHTML = "Loop 3 ON"
-          
-      
-        }else if (this.className == 'is-playing2')
-        
-        {
-          this.className = "";
-          this.innerHTML = "Loop 1 ON";
-      
-          
-      
-      }else{
-          this.className = "is-playing";
-          this.innerHTML = "Loop 2 ON";
-          
-      
-         
-      
-        }}
-        );
- */
 
 
   document.getElementById("button2").addEventListener("click", function(){
@@ -348,85 +281,3 @@ Tone.Transport.start();
     }}
     ); 
 
-
-
-/* 
-    document.getElementById("effectButton1").addEventListener("click", function(){
-
-      if (this.className == 'is-playing')
-        
-      {
-        this.className = "";
-        this.innerHTML = "OFF"
-
-
-}else{
-  this.className = "is-playing";
-  this.innerHTML = "ON";
-
-
-}}
-); 
-
-
-
-document.getElementById("effectButton2").addEventListener("click", function(){
-
-  if (this.className == 'is-playing')
-    
-  {
-    this.className = "";
-    this.innerHTML = "OFF"
-
-}else{
-this.className = "is-playing";
-this.innerHTML = "ON";
-
-
-
-
-
-}}
-); 
- */
-///////////////////////////////////////////////////////////////////////////
-///////////// Code for dividing canvas into different sections  /////////////
-///////////////////////////////////////////////////////////////////////////
-
-/* var c = document.getElementById("myContainer3");
-var ctx = c.getContext("2d");
-var ctx2 = c.getContext("2d");
-var ctx3 = c.getContext("2d");
-
-var ctx4 = c.getContext("2d");
-var ctx5 = c.getContext("2d");
-var ctx6 = c.getContext("2d");
-
-ctx.beginPath();
-ctx.moveTo(32.5, 0);
-ctx.lineTo(32.5, 150);
-ctx.stroke();
-ctx2.beginPath();
-ctx2.moveTo(65, 0);
-ctx2.lineTo(65, 150);
-ctx2.stroke();
-ctx3.beginPath();
-ctx3.moveTo(97.5, 0);
-ctx3.lineTo(97.5, 150);
-ctx3.stroke();
-
-ctx4.beginPath();
-ctx4.moveTo(0, 60);
-ctx4.lineTo(150, 60);
-ctx4.stroke();
-
-ctx5.beginPath();
-ctx5.moveTo(0, 40);
-ctx5.lineTo(150, 40);
-ctx5.stroke();
-
-ctx6.beginPath();
-ctx6.moveTo(0, 20);
-ctx6.lineTo(150, 20);
-ctx6.stroke();
- */
