@@ -74,7 +74,7 @@ Tone.Transport.bpm.value = 10;
   ) {
     DeviceMotionEvent.requestPermission();
   }
-  window.addEventListener("devicemotion", handleMotion);
+
   
   };
   }
