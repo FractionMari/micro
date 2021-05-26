@@ -13,14 +13,14 @@ body {
 	text-align: center;
     background-color: #000000;
     font-size: 140%;
-    color: #ccde07;
+    color: #ffffff;
     }
 
 button  {
-    background-color: #00000060;
+    background-color: #333;
     font-family: 'Rowdies';
     border-radius: 17px;
-    color: #ccde07;
+    color: #ffffff;
     padding: 10px 20px;
 
     height: 50px;
@@ -31,7 +31,7 @@ button  {
     }
 
 button:hover {
-    background-color:  rgb(197, 95, 184);
+    background-color:  rgba(0, 0, 0, 0.452);
     
     }
 
@@ -64,7 +64,7 @@ a:hover {
     height: auto;
     background: rgb(197, 95, 184);
     padding: 20px;
-    border: 20px rgba(68, 7, 38, 0.543) solid;
+    border: 20px rgb(0, 0, 0) solid;
 /*     background-image: url("assets/bg7.jpg"); */
     }
 
@@ -88,7 +88,7 @@ a:hover {
     height: auto;
     background: rgb(197, 95, 184);
     padding: 20px;
-    border: 20px rgba(21, 0, 254, 0.557) solid;
+    border: 20px rgb(0, 0, 0) solid;
 /*     background-image: url("assets/bg8.jpg"); */
     color: rgb(68, 7, 38) solid;
     background-size: cover;
@@ -205,8 +205,8 @@ a:hover {
 
 
 .collapsible {
-    background-color: rgba(68, 7, 38, 0.68);
-    color: rgb(255, 247, 0);
+    background-color:#333;
+    color: rgb(255, 255, 255);
     cursor: pointer;
     padding: 5px;
     width: 50px;
@@ -224,7 +224,7 @@ background-color: #555;
 
 
 .collapsible:hover {
-background-color: #ccde0758;
+background-color: #00000058;
 
 }
 
@@ -233,7 +233,7 @@ padding: 18px;
 display: none;
 float: inline-end;
 overflow: hidden;
-color:rgb(255, 247, 0);
+color:rgb(255, 255, 255);
 font-size: 17px;
 font-variant: normal;
 text-align: center;
@@ -246,7 +246,6 @@ background: rgb(0, 0, 0);
 padding: 20px;
 border: 10px rgba(0, 0, 0, 0) solid;
 
-color: rgb(68, 7, 38) solid;
 background-size: cover;
 }
 
