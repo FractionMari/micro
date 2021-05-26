@@ -31,11 +31,6 @@ const synth3 = new Tone.PluckSynth().connect(phaser);
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
 const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
 
-const seq = new Tone.Sequence((time, note) => {
-    synth.triggerAttackRelease(note, 0.1, time);
-    // subdivisions are given as subarrays
-}, randomArray).start(0);
-
 gainNode.gain.value = 0.5;
 
 // Other Variables
@@ -82,16 +77,18 @@ Tone.Transport.bpm.value = 10;
   }
   Tone.start();
   window.addEventListener("devicemotion", handleMotion);
-  
-Tone.Transport.start();
-seq.mute = true;
 
-  
-  
+Tone.Transport.start();
+
+
+
   };
   }
 
-
+  const seq = new Tone.Sequence((time, note) => {
+    synth.triggerAttackRelease(note, 0.1, time);
+    // subdivisions are given as subarrays
+}, randomArray).start(0);
 
 
 
