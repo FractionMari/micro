@@ -262,6 +262,14 @@ background-size: cover;
     height: auto;
 }
 
+#github-img {
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    height: auto;
+}
+
+
 #effectButton1 {
     position: absolute;
     width: 30px;

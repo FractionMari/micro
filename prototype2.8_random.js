@@ -75,7 +75,6 @@ Tone.Transport.bpm.value = 10;
     DeviceMotionEvent.requestPermission();
   }
   
-  window.addEventListener("devicemotion", handleMotion);
   
   };
   }
@@ -218,12 +217,21 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
           // subdivisions are given as subarrays
       }, randomArray).start(0);
       
+      const seq2 = new Tone.Sequence((time, note) => {
+        synth2.triggerAttackRelease(note, 0.1, time);
+        // subdivisions are given as subarrays
+    }, randomArray2).start(0);
+
+    const seq3 = new Tone.Sequence((time, note) => {
+        synth3.triggerAttackRelease(note, 0.1, time);
+        // subdivisions are given as subarrays
+    }, randomArray3).start(0);
       // start/stop the oscllator every quarter note
       
       Tone.Transport.start();
 
   });
-
+/* 
   document.getElementById("synth2").addEventListener("click", function() {
 
     Tone.start();
@@ -260,7 +268,7 @@ Tone.Transport.start();
 });
 
 
-
+ */
 
 
   document.getElementById("button2").addEventListener("click", function(){
