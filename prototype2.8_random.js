@@ -207,14 +207,16 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     const seq = new Tone.Sequence((time, note) => {
         synth.triggerAttackRelease(note, 0.1, time);
         // subdivisions are given as subarrays
-    }, randomArray);
+    }, randomArray).start(0);
+
+    seq.mute = true;
 
     document.getElementById("looper1").addEventListener("click", function() {
 
       Tone.start();
       window.addEventListener("devicemotion", handleMotion);
 	
-      seq.start(0);
+      seq.mute = false;
       
       // start/stop the oscllator every quarter note
       
@@ -224,6 +226,18 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
 
   document.getElementById("synth2").addEventListener("click", function() {
+
+    Tone.start();
+    window.addEventListener("devicemotion", handleMotion);
+    seq.mute = true;
+  
+  // start/stop the oscllator every quarter note
+  
+  Tone.Transport.start();
+
+});
+
+/*   document.getElementById("synth2").addEventListener("click", function() {
 
     Tone.start();
     window.addEventListener("devicemotion", handleMotion);
@@ -237,7 +251,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   
   Tone.Transport.start();
 
-});
+}); */
 
 
   document.getElementById("synth2").addEventListener("click", function() {
