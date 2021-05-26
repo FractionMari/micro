@@ -17,7 +17,6 @@
 
 // 26. may:
 // activate/deactivate random loops when tilting
-// Tone.js parameters
 
  
 // Tone.js parameters:
@@ -75,17 +74,10 @@ Tone.Transport.bpm.value = 10;
   ) {
     DeviceMotionEvent.requestPermission();
   }
-  Tone.start();
-  window.addEventListener("devicemotion", handleMotion);
-
-Tone.Transport.start();
-
+  
+  
   };
   }
-
-
-
-
 
 
 // With this function the values won't go below a threshold 
@@ -168,7 +160,10 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     ///////// Red Dot Monitoring in GUI ///////
     ///////////////////////////////////////////
 
-
+/*     // multiplying with 5 to get values from 0-100
+    let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 5);
+    // multiplying with 4 to get values from 0-50
+    let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 2.5); */
         // multiplying with 6 to get values from 0-120
         let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 6);
         // multiplying with 3 to get values from 0-60
@@ -189,24 +184,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     filterWheel = filterScale(filterWheel);
     autoFilter.baseFrequency = filterWheel;
 
-    const seq = new Tone.Sequence((time, note) => {
-        synth.triggerAttackRelease(note, 0.1, time);
-        // subdivisions are given as subarrays
-    }, randomArray).start(0);
-    
-    // Activate loops when tilting
-
-
-       
-        if (yDotValues < 30)
-        seq.mute = false;
-      
-        else
-        seq.mute = true;
-      
-   
-      
-
+        
            updateFieldIfNotNull('filterwheel', filterWheel);
            updateFieldIfNotNull('pitchwheel', pitchWheel);
     
@@ -226,22 +204,24 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         
     }
  
-/* 
+    const seq = new Tone.Sequence((time, note) => {
+        synth.triggerAttackRelease(note, 0.1, time);
+        // subdivisions are given as subarrays
+    }, randomArray);
+
     document.getElementById("looper1").addEventListener("click", function() {
 
       Tone.start();
       window.addEventListener("devicemotion", handleMotion);
 	
-      const seq = new Tone.Sequence((time, note) => {
-          synth.triggerAttackRelease(note, 0.1, time);
-          // subdivisions are given as subarrays
-      }, randomArray).start(0);
+      seq.start(0);
       
       // start/stop the oscllator every quarter note
       
       Tone.Transport.start();
 
-  }); */
+  });
+
 
   document.getElementById("synth2").addEventListener("click", function() {
 
@@ -255,20 +235,31 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   
   // start/stop the oscllator every quarter note
   
- // Tone.Transport.start();
+  Tone.Transport.start();
+
+});
+
+
+  document.getElementById("synth2").addEventListener("click", function() {
+
+    Tone.start();
+    window.addEventListener("devicemotion", handleMotion);
+
+    const seq2 = new Tone.Sequence((time, note) => {
+      synth2.triggerAttackRelease(note, 0.1, time);
+      // subdivisions are given as subarrays
+  }, randomArray2).start(0);
+  
+  // start/stop the oscllator every quarter note
+  
+  Tone.Transport.start();
 
 });
 
 
 document.getElementById("synth3").addEventListener("click", function() {
 
-/*   // Request permission for iOS 13+ devices
-  if (
-    DeviceMotionEvent &&
-    typeof DeviceMotionEvent.requestPermission === "function"
-  ) {
-    DeviceMotionEvent.requestPermission();
-  } */
+
 
   Tone.start();
   window.addEventListener("devicemotion", handleMotion);
@@ -283,6 +274,7 @@ document.getElementById("synth3").addEventListener("click", function() {
 Tone.Transport.start();
 
 });
+
 
 
 
