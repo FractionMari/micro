@@ -31,6 +31,11 @@ const synth3 = new Tone.PluckSynth().connect(phaser);
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
 const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
 
+const seq = new Tone.Sequence((time, note) => {
+    synth.triggerAttackRelease(note, 0.1, time);
+    // subdivisions are given as subarrays
+}, randomArray).start(0);
+
 gainNode.gain.value = 0.5;
 
 // Other Variables
@@ -77,10 +82,9 @@ Tone.Transport.bpm.value = 10;
   }
   Tone.start();
   window.addEventListener("devicemotion", handleMotion);
-  const seq = new Tone.Sequence((time, note) => {
-    synth.triggerAttackRelease(note, 0.1, time);
-    // subdivisions are given as subarrays
-}, randomArray).start(0);
+  
+Tone.Transport.start();
+seq.mute = true;
 
   
   
@@ -90,7 +94,7 @@ Tone.Transport.bpm.value = 10;
 
 
 
-seq.mute = true;
+
 
 // With this function the values won't go below a threshold 
 function clamp(min, max, val) {
