@@ -75,6 +75,8 @@ Tone.Transport.bpm.value = 10;
   ) {
     DeviceMotionEvent.requestPermission();
   }
+
+  window.addEventListener("devicemotion", handleMotion);
   
   Tone.start();
   Tone.Transport.start();
