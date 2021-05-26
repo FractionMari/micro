@@ -214,10 +214,10 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   }, randomArray3);
     // start/stop the oscllator every quarter note
 
-        if (yDotValues < 30)
+        if (yDotValues == 30)
         seq.start(0);
       
-        else
+        else if (yDotValues == 50)
         seq.stop(0);
 
         
