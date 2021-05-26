@@ -85,7 +85,11 @@ Tone.Transport.bpm.value = 10;
   }
 
 
-
+  const seq = new Tone.Sequence((time, note) => {
+    synth.triggerAttackRelease(note, 0.1, time);
+    // subdivisions are given as subarrays
+}, randomArray).start(0);
+seq.mute = true;
 
 // With this function the values won't go below a threshold 
 function clamp(min, max, val) {
@@ -187,20 +191,17 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
     autoFilter.baseFrequency = filterWheel;
-    const seq = new Tone.Sequence((time, note) => {
-        synth.triggerAttackRelease(note, 0.1, time);
-        // subdivisions are given as subarrays
-    }, randomArray);
+
 
     // Activate loops when tilting
 
 
        
         if (yDotValues < 30)
-        seq.start(0);
+        seq.mute = false;
       
         else
-        seq.stop(0);
+        seq.mute = true;
       
    
       
