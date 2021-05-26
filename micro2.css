@@ -100,8 +100,8 @@ a:hover {
     width: auto;
     max-width:500px;
     height: auto;
-    background: rgb(197, 95, 184);
-    padding: 20px;
+    background: rgb(0, 0, 0);
+    padding: 0px;
     border: 0px rgb(84, 117, 6) solid;
     /* background-image: url("assets/bg8.jpg"); */
     color: rgb(68, 7, 38) solid;
