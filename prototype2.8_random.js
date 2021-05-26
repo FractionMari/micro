@@ -198,10 +198,10 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         
 
         if (yDotValues < 30)
-        seq.mute = true;
+        seq.start(0);
       
         else
-        seq.mute = false;
+        seq.stop(0);
 
         
     }
