@@ -74,11 +74,33 @@ Tone.Transport.bpm.value = 10;
   ) {
     DeviceMotionEvent.requestPermission();
   }
-
+  
   
   };
   }
 
+
+/*   document.getElementById("random").addEventListener("click", function() {
+    for (var i = 0; i < 100; i += 1) {
+
+        const randomNote = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
+
+        let random = freq(randomNote());
+        randomArray.push(random);
+
+
+        const randomNote2 = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
+       let random2 = freq(randomNote2());
+       randomArray2.push(random2);
+
+       const randomNote3 = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
+       let random3 = freq(randomNote3());
+       randomArray3.push(random3);
+  
+  
+  };
+    
+}); */
 
 // With this function the values won't go below a threshold 
 function clamp(min, max, val) {
@@ -164,9 +186,9 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 5);
     // multiplying with 4 to get values from 0-50
     let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 2.5); */
-        // multiplying with 6 to get values from 0-120
+        // multiplying with 5 to get values from 0-120
         let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 6);
-        // multiplying with 3 to get values from 0-60
+        // multiplying with 4 to get values from 0-60
         let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 3);
     elem.style.top = yDotValues + 'px'; 
     elem.style.left = xDotValues + 'px'; 
@@ -201,91 +223,111 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         pingPong.feedback.value = (xDotValues / 200);
         
 
-
-/*         if (yDotValues < 30)
-        Tone.start(),
-        window.addEventListener("devicemotion", handleMotion),
-        seq.mute = false,
-        Tone.Transport.start();
-    
-      
-        else
-        players2.mute = true,
-        players1.mute = false; */
-
         
     }
  
-/*     const seq = new Tone.Sequence((time, note) => {
-        synth.triggerAttackRelease(note, 0.1, time);
-        // subdivisions are given as subarrays
-    }, randomArray).start(0);
-
-    seq.mute = true; */
-
 
     document.getElementById("looper1").addEventListener("click", function() {
 
-        Tone.start();
-        window.addEventListener("devicemotion", handleMotion);
-      
-        const seq = new Tone.Sequence((time, note) => {
-            synth.triggerAttackRelease(note, 0.1, time);
-            // subdivisions are given as subarrays
-        }, randomArray).start(0);
-        
-        // start/stop the oscllator every quarter note
-        
-        Tone.Transport.start();
-  
-    });
-  
-    document.getElementById("synth2").addEventListener("click", function() {
-  
       Tone.start();
       window.addEventListener("devicemotion", handleMotion);
-  
-      const seq2 = new Tone.Sequence((time, note) => {
-        synth2.triggerAttackRelease(note, 0.1, time);
-        // subdivisions are given as subarrays
-    }, randomArray2).start(0);
-    
-    // start/stop the oscllator every quarter note
-    
-    Tone.Transport.start();
-  
+	
+      const seq = new Tone.Sequence((time, note) => {
+          synth.triggerAttackRelease(note, 0.1, time);
+          // subdivisions are given as subarrays
+      }, randomArray).start(0);
+      
+      // start/stop the oscllator every quarter note
+      
+      Tone.Transport.start();
+
   });
-  
-  
-  document.getElementById("synth3").addEventListener("click", function() {
-  
-  /*   // Request permission for iOS 13+ devices
-    if (
-      DeviceMotionEvent &&
-      typeof DeviceMotionEvent.requestPermission === "function"
-    ) {
-      DeviceMotionEvent.requestPermission();
-    } */
-  
+
+  document.getElementById("synth2").addEventListener("click", function() {
+
     Tone.start();
     window.addEventListener("devicemotion", handleMotion);
-  
-    const seq3 = new Tone.Sequence((time, note) => {
-      synth3.triggerAttackRelease(note, 0.1, time);
+
+    const seq2 = new Tone.Sequence((time, note) => {
+      synth2.triggerAttackRelease(note, 0.1, time);
       // subdivisions are given as subarrays
-  }, randomArray3).start(0);
+  }, randomArray2).start(0);
   
   // start/stop the oscllator every quarter note
   
   Tone.Transport.start();
-  
-  });
-  
-  
-  
-  
+
+});
 
 
+document.getElementById("synth3").addEventListener("click", function() {
+
+/*   // Request permission for iOS 13+ devices
+  if (
+    DeviceMotionEvent &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+  ) {
+    DeviceMotionEvent.requestPermission();
+  } */
+
+  Tone.start();
+  window.addEventListener("devicemotion", handleMotion);
+
+  const seq3 = new Tone.Sequence((time, note) => {
+    synth3.triggerAttackRelease(note, 0.1, time);
+    // subdivisions are given as subarrays
+}, randomArray3).start(0);
+
+// start/stop the oscllator every quarter note
+
+Tone.Transport.start();
+
+});
+
+
+
+
+/* 
+
+    document.getElementById("looper1").addEventListener("click", function(){
+
+        // Request permission for iOS 13+ devices
+        if (
+            DeviceMotionEvent &&
+            typeof DeviceMotionEvent.requestPermission === "function"
+          ) {
+            DeviceMotionEvent.requestPermission();
+          }
+
+          Tone.start();
+          window.addEventListener("devicemotion", handleMotion);
+          
+    
+        if (this.className == 'is-playing')
+        
+        {
+          this.className = "is-playing2";
+          this.innerHTML = "Loop 3 ON"
+          
+      
+        }else if (this.className == 'is-playing2')
+        
+        {
+          this.className = "";
+          this.innerHTML = "Loop 1 ON";
+      
+          
+      
+      }else{
+          this.className = "is-playing";
+          this.innerHTML = "Loop 2 ON";
+          
+      
+         
+      
+        }}
+        );
+ */
 
 
   document.getElementById("button2").addEventListener("click", function(){
@@ -307,3 +349,84 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     ); 
 
 
+
+/* 
+    document.getElementById("effectButton1").addEventListener("click", function(){
+
+      if (this.className == 'is-playing')
+        
+      {
+        this.className = "";
+        this.innerHTML = "OFF"
+
+
+}else{
+  this.className = "is-playing";
+  this.innerHTML = "ON";
+
+
+}}
+); 
+
+
+
+document.getElementById("effectButton2").addEventListener("click", function(){
+
+  if (this.className == 'is-playing')
+    
+  {
+    this.className = "";
+    this.innerHTML = "OFF"
+
+}else{
+this.className = "is-playing";
+this.innerHTML = "ON";
+
+
+
+
+
+}}
+); 
+ */
+///////////////////////////////////////////////////////////////////////////
+///////////// Code for dividing canvas into different sections  /////////////
+///////////////////////////////////////////////////////////////////////////
+
+/* var c = document.getElementById("myContainer3");
+var ctx = c.getContext("2d");
+var ctx2 = c.getContext("2d");
+var ctx3 = c.getContext("2d");
+
+var ctx4 = c.getContext("2d");
+var ctx5 = c.getContext("2d");
+var ctx6 = c.getContext("2d");
+
+ctx.beginPath();
+ctx.moveTo(32.5, 0);
+ctx.lineTo(32.5, 150);
+ctx.stroke();
+ctx2.beginPath();
+ctx2.moveTo(65, 0);
+ctx2.lineTo(65, 150);
+ctx2.stroke();
+ctx3.beginPath();
+ctx3.moveTo(97.5, 0);
+ctx3.lineTo(97.5, 150);
+ctx3.stroke();
+
+ctx4.beginPath();
+ctx4.moveTo(0, 60);
+ctx4.lineTo(150, 60);
+ctx4.stroke();
+
+ctx5.beginPath();
+ctx5.moveTo(0, 40);
+ctx5.lineTo(150, 40);
+ctx5.stroke();
+
+ctx6.beginPath();
+ctx6.moveTo(0, 20);
+ctx6.lineTo(150, 20);
+ctx6.stroke();
+ */
