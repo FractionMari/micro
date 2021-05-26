@@ -80,15 +80,10 @@ Tone.Transport.bpm.value = 10;
 
 Tone.Transport.start();
 
-
-
   };
   }
 
-  const seq = new Tone.Sequence((time, note) => {
-    synth.triggerAttackRelease(note, 0.1, time);
-    // subdivisions are given as subarrays
-}, randomArray).start(0);
+
 
 
 
@@ -194,7 +189,11 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     filterWheel = filterScale(filterWheel);
     autoFilter.baseFrequency = filterWheel;
 
-
+    const seq = new Tone.Sequence((time, note) => {
+        synth.triggerAttackRelease(note, 0.1, time);
+        // subdivisions are given as subarrays
+    }, randomArray).start(0);
+    
     // Activate loops when tilting
 
 
