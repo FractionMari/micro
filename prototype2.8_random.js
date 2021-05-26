@@ -197,6 +197,12 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         pingPong.feedback.value = (xDotValues / 200);
         
 
+        if (yDotValues < 30)
+        seq.mute = true;
+      
+        else
+        seq.mute = false;
+
         
     }
  
@@ -217,20 +223,20 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       const seq = new Tone.Sequence((time, note) => {
           synth.triggerAttackRelease(note, 0.1, time);
           // subdivisions are given as subarrays
-      }, randomArray).start(0);
-      seq.mute = true;
+      }, randomArray);
+
       
       const seq2 = new Tone.Sequence((time, note) => {
         synth2.triggerAttackRelease(note, 0.1, time);
         // subdivisions are given as subarrays
-    }, randomArray2).start(0);
-    seq2.mute = true;
+    }, randomArray2);
+
     const seq3 = new Tone.Sequence((time, note) => {
         synth3.triggerAttackRelease(note, 0.1, time);
         // subdivisions are given as subarrays
-    }, randomArray3).start(0);
+    }, randomArray3);
       // start/stop the oscllator every quarter note
-      seq3.mute = true;
+
       Tone.Transport.start();
 
   });
