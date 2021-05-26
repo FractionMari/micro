@@ -75,20 +75,21 @@ Tone.Transport.bpm.value = 10;
   ) {
     DeviceMotionEvent.requestPermission();
   }
-
-  window.addEventListener("devicemotion", handleMotion);
-  
   Tone.start();
-  Tone.Transport.start();
+  window.addEventListener("devicemotion", handleMotion);
+  const seq = new Tone.Sequence((time, note) => {
+    synth.triggerAttackRelease(note, 0.1, time);
+    // subdivisions are given as subarrays
+}, randomArray).start(0);
+
+  
   
   };
   }
 
 
-  const seq = new Tone.Sequence((time, note) => {
-    synth.triggerAttackRelease(note, 0.1, time);
-    // subdivisions are given as subarrays
-}, randomArray).start(0);
+
+
 seq.mute = true;
 
 // With this function the values won't go below a threshold 
@@ -254,7 +255,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   
   // start/stop the oscllator every quarter note
   
-  Tone.Transport.start();
+ // Tone.Transport.start();
 
 });
 
