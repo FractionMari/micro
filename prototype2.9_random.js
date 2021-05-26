@@ -78,12 +78,28 @@ Tone.Transport.bpm.value = 10;
     // subdivisions are given as subarrays
 }, randomArray).start(0); */
 
+/* const seq2 = new Tone.Sequence((time, note) => {
+    synth2.triggerAttackRelease(note, 0.1, time);
+    // subdivisions are given as subarrays
+}, randomArray2).start(0); */
+
+
 var pattern = new Tone.Pattern(function(time, note){
 	synth.triggerAttackRelease(note, 0.5);
 }, randomArray);
+var pattern2 = new Tone.Pattern(function(time, note){
+	synth2.triggerAttackRelease(note, 0.5);
+}, randomArray2);
+var pattern3 = new Tone.Pattern(function(time, note){
+	synth3.triggerAttackRelease(note, 0.5);
+}, randomArray3);
 
 pattern.start();
+pattern2.start();
+pattern3.start();
 pattern.mute = true;
+pattern2.mute = true;
+pattern3.mute = true;
 
 
 // With this function the values won't go below a threshold 
@@ -170,9 +186,9 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 5);
     // multiplying with 4 to get values from 0-50
     let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 2.5); */
-        // multiplying with 5 to get values from 0-120
+        // multiplying with 6 to get values from 0-120
         let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 6);
-        // multiplying with 4 to get values from 0-60
+        // multiplying with 3 to get values from 0-60
         let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 3);
     elem.style.top = yDotValues + 'px'; 
     elem.style.left = xDotValues + 'px'; 
@@ -206,11 +222,21 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         phaser.octaves = (yDotValues / 10);
         pingPong.feedback.value = (xDotValues / 200);
         
-        if (yDotValues > 30)
-        pattern.mute = false;
+        if (yDotValues < 20)
+        pattern.mute = false,
+        pattern2.mute = true,
+        pattern3.mute = false;
+
+        else if (yDotValues < 40)
+        pattern.mute = true,
+        pattern2.mute = false,
+        pattern3.mute = false;
+
       
         else 
-        pattern.mute = true;
+        pattern.mute = false,
+        pattern2.mute = true,
+        pattern3.mute = true;
         
     }
  
@@ -234,7 +260,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
   });
 
-  document.getElementById("synth2").addEventListener("click", function() {
+/*   document.getElementById("synth2").addEventListener("click", function() {
 
     Tone.start();
     window.addEventListener("devicemotion", handleMotion);
@@ -249,9 +275,9 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   Tone.Transport.start();
 
 });
+ */
 
-
-document.getElementById("synth3").addEventListener("click", function() {
+/* document.getElementById("synth3").addEventListener("click", function() {
 
 /*   // Request permission for iOS 13+ devices
   if (
@@ -260,7 +286,7 @@ document.getElementById("synth3").addEventListener("click", function() {
   ) {
     DeviceMotionEvent.requestPermission();
   } */
-
+/* 
   Tone.start();
   window.addEventListener("devicemotion", handleMotion);
 
@@ -276,8 +302,8 @@ Tone.Transport.start();
 });
 
 
-
-
+ */
+ 
 
   document.getElementById("button2").addEventListener("click", function(){
   
