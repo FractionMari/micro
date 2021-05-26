@@ -83,6 +83,8 @@ var pattern = new Tone.Pattern(function(time, note){
 }, randomArray);
 
 pattern.start();
+pattern.mute = true;
+
 
 // With this function the values won't go below a threshold 
 function clamp(min, max, val) {
