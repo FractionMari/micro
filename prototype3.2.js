@@ -353,7 +353,7 @@ var i = 0;
         
         {
           this.className = "is-playing2";
-          this.innerHTML = "Loop 3 ON"
+          this.innerHTML = "Loop 2 ON"
           var playerBuffers = new Tone.Buffers({
             "drums" : "loops/drums1_80bpm.mp3",
             "bass" : "loops/bass1_80bpm.mp3",
@@ -390,8 +390,8 @@ var i = 0;
         }else if (this.className == 'is-playing2')
         
         {
-          this.className = "";
-          this.innerHTML = "Loop 1 ON";
+          this.className = "is-playing3";
+          this.innerHTML = "Loop 2 ON";
       
           var playerBuffers = new Tone.Buffers({
             "drums" : "loops/RolegSong_trommer.mp3",
@@ -429,9 +429,37 @@ var i = 0;
           player5_2.start();
       });
       
+    }else if (this.className == 'is-playing3')
+        
+    {
+      this.className = "";
+      this.innerHTML = "Loops: OFF";
+  
+
+      player.stop();
+
+      player2.stop();
+
+      player3.stop();
+
+      player4.stop();
+  
+
+      player1_2.stop();
+
+      player2_2.stop();
+
+      player3_2.stop();
+
+      player4_2.stop();
+
+      player5_2.stop();
+
+
+
       }else{
           this.className = "is-playing";
-          this.innerHTML = "Loop 2 ON";
+          this.innerHTML = "Loop 1 ON";
       
           var playerBuffers = new Tone.Buffers({
             "drums" : "loops/jazzloop_drums.mp3",
