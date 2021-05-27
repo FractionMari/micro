@@ -7,7 +7,7 @@ In the micromotion apps, we use accelerometer and gyroscope sensor data from the
 
 The prototypes are written in JavaScript/HTML/CSS and must be opened on android or iPhone to work, and can be reached from this link: 
 
-* (https://fractionmari.github.io/micro/)
+* https://fractionmari.github.io/micro/
 
 
 ### Sverm
