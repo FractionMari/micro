@@ -271,10 +271,10 @@ var i = 0;
        
        };
        
-       loopActivate(player, player1_2, 11);
-       loopActivate(player2, player2_2, 30);
-       loopActivate(player3, player3_2, 50);
-       loopActivate(player4, player4_2, 60);
+       loopActivate(player, player1_2, 0);
+       loopActivate(player2, player2_2, 10);
+       loopActivate(player3, player3_2, 30);
+       loopActivate(player4, player4_2, 50);
        //loopActivate(player5, player5_2, 80);
        
        
