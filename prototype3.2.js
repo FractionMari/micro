@@ -24,7 +24,7 @@ const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const phaser = new Tone.Phaser().connect(gainNode);
 const synth = new Tone.FMSynth().connect(gainNode);
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
-const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
+const autoFilter = new Tone.autoFilter().connect(gainNode); // connect(pitchShift2);
 
 
 // Other Variables
@@ -252,7 +252,7 @@ var i = 0;
     var filterScale = generateScaleFunction(-10, 10, 10, 300);
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
-    autoFilter.baseFrequency = filterWheel;
+    autoFilter.baseFrequency.value = filterWheel;
 
        
        function loopActivate(players1, players2, value) {
@@ -499,7 +499,7 @@ var i = 0;
         
       {
         this.className = "";
-        this.innerHTML = "OFF"
+        this.innerHTML = "FX1: OFF"
         player.disconnect(pingPong);
         player2.disconnect(pingPong);
         player3.disconnect(pingPong);
@@ -515,7 +515,7 @@ var i = 0;
 
 }else{
   this.className = "is-playing";
-  this.innerHTML = "ON";
+  this.innerHTML = "FX1: ON";
 
   player.connect(pingPong);
   player2.connect(pingPong);
@@ -540,7 +540,7 @@ document.getElementById("effectButton2").addEventListener("click", function(){
     
   {
     this.className = "";
-    this.innerHTML = "OFF"
+    this.innerHTML = "FX2: OFF"
     player.disconnect(phaser);
     player2.disconnect(phaser);
     player3.disconnect(phaser);
@@ -556,7 +556,7 @@ document.getElementById("effectButton2").addEventListener("click", function(){
 
 }else{
 this.className = "is-playing";
-this.innerHTML = "ON";
+this.innerHTML = "FX2: ON";
 
 player.connect(phaser);
 player2.connect(phaser);
