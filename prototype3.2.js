@@ -38,16 +38,16 @@ let demo_button = document.getElementById("start_demo");
 pitchShift2.pitch = 0; // down one octave
 
 // Players
-const player = new Tone.Player().connect(autoFilter);
-const player2 = new Tone.Player().connect(autoFilter);
-const player3 = new Tone.Player().connect(autoFilter);
-const player4 = new Tone.Player().connect(autoFilter);
+const player = new Tone.Player().connect(gainNode);
+const player2 = new Tone.Player().connect(gainNode);
+const player3 = new Tone.Player().connect(gainNode);
+const player4 = new Tone.Player().connect(gainNode);
 const player5 = undefined; 
-const player1_2 = new Tone.Player().connect(autoFilter);
-const player2_2 = new Tone.Player().connect(autoFilter);
-const player3_2 = new Tone.Player().connect(autoFilter);
-const player4_2 = new Tone.Player().connect(autoFilter);
-const player5_2 = new Tone.Player().connect(autoFilter);
+const player1_2 = new Tone.Player().connect(gainNode);
+const player2_2 = new Tone.Player().connect(gainNode);
+const player3_2 = new Tone.Player().connect(gainNode);
+const player4_2 = new Tone.Player().connect(gainNode);
+const player5_2 = new Tone.Player().connect(gainNode);
 
 
 player.loop = true;
