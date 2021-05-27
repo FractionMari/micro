@@ -391,7 +391,7 @@ var i = 0;
         
         {
           this.className = "is-playing3";
-          this.innerHTML = "Loop 2 ON";
+          this.innerHTML = "Loop 3 ON";
       
           var playerBuffers = new Tone.Buffers({
             "drums" : "loops/RolegSong_trommer.mp3",
@@ -437,22 +437,14 @@ var i = 0;
   
 
       player.stop();
-
       player2.stop();
-
       player3.stop();
-
       player4.stop();
   
-
       player1_2.stop();
-
       player2_2.stop();
-
       player3_2.stop();
-
       player4_2.stop();
-
       player5_2.stop();
 
 
