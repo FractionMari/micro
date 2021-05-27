@@ -95,53 +95,7 @@ var offset = newMin - prevMin,
       };
 };
 
-//var result = [];
-/* 
-function handleOrientation(event) {
 
-    updateFieldIfNotNull('Orientation_b', event.beta);
-    updateFieldIfNotNull('Orientation_g', event.gamma);
-    updateFieldIfNotNull('Orientation_a', event.alpha);
-
-    // Rotation to control oscillator pitch
-    //let pitchWheel = event.beta;
-    let filterWheel = event.gamma;
-    let betaWheel = event.beta;
-
-    let filterScale = generateScaleFunction(0, 90, 10, 300);
-    filterWheel = Math.abs(filterWheel);
-    filterWheel = filterScale(filterWheel);
-
-function loopActivate(players1, players2, value) {
-
-  if (betaWheel < value)
-  players1.mute = true,
-  players2.mute = true;
-
-  else if ((filterWheel > 80) && (betaWheel > value))
-  players2.mute = false,
-  players1.mute = true;
-
-  else
-  players2.mute = true,
-  players1.mute = false;
-
-};
-
-loopActivate(player, player1_2, 20);
-loopActivate(player2, player2_2, 40);
-loopActivate(player3, player3_2, 60);
-loopActivate(player4, player4_2, 80);
-//loopActivate(player5, player5_2, 80);
-
-
- 
-    updateFieldIfNotNull('filterwheel', filterWheel);
-    updateFieldIfNotNull('betawheel', betaWheel);
-
-  }
-
- */
 // function for updating values for sensor data
 function updateFieldIfNotNull(fieldName, value, precision=2){
     if (value != null)
@@ -150,32 +104,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
 
 
-/* // variables for differing between frames:
-let accXdiff = [];
-let accYdiff = [];
-let accZdiff = [];
-var i = 0;
- */
+
   function handleMotion(event) {
-/* 
-    i += 1;
-    //console.log(event.acceleration.x);
-    
-    
-    accXdiff.push(event.acceleration.x);
-    let xFilter = accXdiff[i-2];
-    
-    accYdiff.push(event.acceleration.y);
-    let yFilter = accYdiff[i-2];
-    
-    accYdiff.push(event.acceleration.y);
-    let zFilter = accYdiff[i-2];
-    
-   // console.log(xFilter);
-    
-    const accl = event.acceleration;  */
-
-
 
     
 // variables for rotation, GUI monitoring and volume control
@@ -230,10 +160,7 @@ var i = 0;
     ///////// Red Dot Monitoring in GUI ///////
     ///////////////////////////////////////////
 
-/*     // multiplying with 5 to get values from 0-100
-    let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 5);
-    // multiplying with 4 to get values from 0-50
-    let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 2.5); */
+
         // multiplying with 5 to get values from 0-120
         let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 6);
         // multiplying with 4 to get values from 0-60
@@ -285,10 +212,6 @@ var i = 0;
 
         // Effects
         
-        
-        //let harmonicity = pitchWheel / 10;
-        //updateFieldIfNotNull('harmonicity', harmonicity);
-        //synth.harmonicity.value = harmonicity;
         phaser.baseFrequency.value = 100;
         phaser.frequency.value = xDotValues;
         phaser.octaves = (yDotValues / 10);

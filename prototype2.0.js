@@ -37,7 +37,7 @@ let newAcc2;
 let inverse = true;
 let is_running = false;
 let demo_button = document.getElementById("start_demo");
-Tone.Transport.bpm.value = 20;
+Tone.Transport.bpm.value = 40;
 
 
 
@@ -70,18 +70,6 @@ Tone.Transport.bpm.value = 20;
 
   };
   }
-
-
-/* 
-  const seq = new Tone.Sequence((time, note) => {
-    synth.triggerAttackRelease(note, 0.1, time);
-    // subdivisions are given as subarrays
-}, randomArray).start(0); */
-
-/* const seq2 = new Tone.Sequence((time, note) => {
-    synth2.triggerAttackRelease(note, 0.1, time);
-    // subdivisions are given as subarrays
-}, randomArray2).start(0); */
 
 
 var pattern = new Tone.Pattern(function(time, note){
@@ -241,31 +229,6 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         else if (yDotValues > 45)
         pattern3.mute = true;
 
-
-
-
-/* 
-       
-       function loopActivate(players1, value, value2) {
-       
-        if (yDotValues < value)
-        players1.mute = true,
-        players2.mute = true;
-      
-        else if ((xDotValues > value2) && (yDotValues > value))
-        players1.mute = true;
-      
-        else
-        players2.mute = true,
-        players1.mute = false;
-      
-      };
-      
-      loopActivate(player, player1_2, 11);
-      loopActivate(player2, player2_2, 30);
-      loopActivate(player3, player3_2, 50);
-      loopActivate(player4, player4_2, 60);
-      //loopActivate(player5, player5_2, 80); */
         
     }
  
@@ -289,50 +252,6 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
   });
 
-/*   document.getElementById("synth2").addEventListener("click", function() {
-
-    Tone.start();
-    window.addEventListener("devicemotion", handleMotion);
-
-    const seq2 = new Tone.Sequence((time, note) => {
-      synth2.triggerAttackRelease(note, 0.1, time);
-      // subdivisions are given as subarrays
-  }, randomArray2).start(0);
-  
-  // start/stop the oscllator every quarter note
-  
-  Tone.Transport.start();
-
-});
- */
-
-/* document.getElementById("synth3").addEventListener("click", function() {
-
-/*   // Request permission for iOS 13+ devices
-  if (
-    DeviceMotionEvent &&
-    typeof DeviceMotionEvent.requestPermission === "function"
-  ) {
-    DeviceMotionEvent.requestPermission();
-  } */
-/* 
-  Tone.start();
-  window.addEventListener("devicemotion", handleMotion);
-
-  const seq3 = new Tone.Sequence((time, note) => {
-    synth3.triggerAttackRelease(note, 0.1, time);
-    // subdivisions are given as subarrays
-}, randomArray3).start(0);
-
-// start/stop the oscllator every quarter note
-
-Tone.Transport.start();
-
-});
-
-
- */
- 
 
   document.getElementById("button2").addEventListener("click", function(){
   
