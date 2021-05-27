@@ -3,7 +3,7 @@
 More about the apps [here](https://www.uio.no/ritmo/english/projects/micro/subprojects/apps/)
 
 
-In the micromotion apps, we use accelerometer and gyroscope sensor data from the phone to detect tiny changes in movement. The user is supposed to hold the phone in his/her hand, and by doing different kinds of gesture, the user creates music in different kinds of ways.
+In the micromotion apps, we use accelerometer and gyroscope sensor data from the phone to detect tiny changes in movement. The user is supposed to hold the phone in their hand, and by doing different kinds of gesture, the user creates music in different kinds of ways.
 
 The prototypes are written in JavaScript/HTML/CSS and must be opened on android or iPhone to work, and can be reached from this link: 
 
