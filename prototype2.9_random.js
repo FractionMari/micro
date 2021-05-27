@@ -219,11 +219,27 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         phaser.octaves = (yDotValues / 10);
         pingPong.feedback.value = (xDotValues / 200);
         
-        if ((yDotValues < 20) && (xDotValues < 10))
+        // On and off Pattern1
+        if ((yDotValues < 30) && (xDotValues < 30))
         pattern.mute = false;
 
-        else if ((yDotValues > 45) && (xDotValues > 90))
+        else if ((yDotValues > 40) && (xDotValues > 80))
         pattern.mute = true;
+
+        // On and off Pattern2
+        if ((yDotValues < 30) && (xDotValues > 80))
+        pattern2.mute = false;
+
+        else if ((yDotValues > 40) && (xDotValues < 30))
+        pattern2.mute = true;
+
+    
+        // On and off Pattern3
+        if (yDotValues < 3)
+        pattern3.mute = false;
+
+        else if (yDotValues > 45)
+        pattern3.mute = true;
 
 
 
