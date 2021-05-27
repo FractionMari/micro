@@ -40,8 +40,7 @@ var offset = newMin - prevMin,
 };
 
 // Scales
-var diatonicScale = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3"];
-var pentaScale = ["G1", "A1","C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4", "G4", "A4", "C5", "D5", "F5", "G5", "A5", "C6"];
+var scaleSelect = ["G1", "A1","C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4", "G4", "A4", "C5", "D5", "F5", "G5", "A5", "C6"];
 
 // Function for shifting pitch
 function pitchShift (pitch, instrument, scale) {
@@ -177,8 +176,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     // Will give a range from 0-20
     pitchWheel = (pitchWheel * -1) + 10;
     updateFieldIfNotNull('pitchwheel', pitchWheel);
-    pitchShift(pitchWheel, synth, pentaScale);
-    pitchShift(pitchWheel, synth2, pentaScale);
+    pitchShift(pitchWheel, synth, scaleSelect);
+    pitchShift(pitchWheel, synth2, scaleSelect);
 
     // Effects
     
@@ -339,7 +338,7 @@ document.getElementById("scaleButton1").addEventListener("click", function(){
     {
       this.className = "is-playing2";
       this.innerHTML = "Penta Scale";
-      pentaScale = ["G1", "A1","C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4", "G4", "A4", "C5", "D5", "F5", "G5", "A5", "C6"];
+      scaleSelect = ["G1", "A1","C2", "D2", "F2", "G2", "A2","C3", "D3", "F3", "G3", "A3","C4", "D4", "F4", "G4", "A4", "C5", "D5", "F5", "G5", "A5", "C6"];
   
 
     }else if (this.className == 'is-playing2')
@@ -347,14 +346,14 @@ document.getElementById("scaleButton1").addEventListener("click", function(){
     {
       this.className = "";
       this.innerHTML = "whole note Scale";
-      pentaScale = ["C2", "D2", "E2", "Gb2", "Ab2", "Bb2", "C3", "D3", "Gb3", "Ab3", "Bb3", "C4", "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5", "E5", "Gb5", "Ab5", "Bb5", "C6"];
+      scaleSelect = ["C2", "D2", "E2", "Gb2", "Ab2", "Bb2", "C3", "D3", "Gb3", "Ab3", "Bb3", "C4", "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5", "E5", "Gb5", "Ab5", "Bb5", "C6"];
 
 
   
     }else{
       this.className = "is-playing";
       this.innerHTML = "Major Scale"
-      pentaScale = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5", "D5", "E5", "F5"];
+      scaleSelect = ["C2", "D2", "E2", "F2", "G2", "A2", "B2", "C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5", "D5", "E5", "F5"];
   
   
   
