@@ -24,7 +24,7 @@ const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const phaser = new Tone.Phaser().connect(gainNode);
 const synth = new Tone.FMSynth().connect(gainNode);
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
-const autoFilter = new Tone.autoFilter().connect(gainNode); // connect(pitchShift2);
+const autoFilter = new Tone.AutoFilter().connect(gainNode); // connect(pitchShift2);
 
 
 // Other Variables
@@ -568,6 +568,47 @@ player2_2.connect(phaser);
 player3_2.connect(phaser);
 player4_2.connect(phaser);
 player5_2.connect(phaser);
+
+
+}}
+); 
+
+
+
+document.getElementById("effectButton3").addEventListener("click", function(){
+
+  if (this.className == 'is-playing')
+    
+  {
+    this.className = "";
+    this.innerHTML = "FX3: OFF"
+    player.disconnect(autoFilter);
+    player2.disconnect(autoFilter);
+    player3.disconnect(autoFilter);
+    player4.disconnect(autoFilter);
+    //player5.connect(autoFilter);
+    player1_2.disconnect(autoFilter);
+    player2_2.disconnect(autoFilter);
+    player3_2.disconnect(autoFilter);
+    player4_2.disconnect(autoFilter);
+    player5_2.disconnect(autoFilter);
+  
+
+
+}else{
+this.className = "is-playing";
+this.innerHTML = "FX2: ON";
+
+player.connect(autoFilter);
+player2.connect(autoFilter);
+player3.connect(autoFilter);
+player4.connect(autoFilter);
+//player5.connect(autoFilter);
+player1_2.connect(autoFilter);
+player2_2.connect(autoFilter);
+player3_2.connect(autoFilter);
+player4_2.connect(autoFilter);
+player5_2.connect(autoFilter);
 
 
 }}
