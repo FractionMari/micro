@@ -182,10 +182,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     ///////// Red Dot Monitoring in GUI ///////
     ///////////////////////////////////////////
 
-/*     // multiplying with 5 to get values from 0-100
-    let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 5);
-    // multiplying with 4 to get values from 0-50
-    let yDotValues = ((event.accelerationIncludingGravity.y  + 10) * 2.5); */
+
         // multiplying with 6 to get values from 0-120
         let xDotValues = (((event.accelerationIncludingGravity.x * -1) + 10) * 6);
         // multiplying with 3 to get values from 0-60
@@ -222,21 +219,37 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         phaser.octaves = (yDotValues / 10);
         pingPong.feedback.value = (xDotValues / 200);
         
-        if (yDotValues < 20)
-        pattern.mute = false,
-        pattern2.mute = true,
-        pattern3.mute = false;
+        if ((yDotValues == 20) && (xDotValues == 10))
+        pattern.mute = false;
 
-        else if (yDotValues < 40)
-        pattern.mute = true,
-        pattern2.mute = false,
-        pattern3.mute = false;
+        else if ((yDotValues == 45) && (xDotValues == 90))
+        pattern.mute = true;
 
+
+
+
+/* 
+       
+       function loopActivate(players1, value, value2) {
+       
+        if (yDotValues < value)
+        players1.mute = true,
+        players2.mute = true;
       
-        else 
-        pattern.mute = false,
-        pattern2.mute = true,
-        pattern3.mute = true;
+        else if ((xDotValues > value2) && (yDotValues > value))
+        players1.mute = true;
+      
+        else
+        players2.mute = true,
+        players1.mute = false;
+      
+      };
+      
+      loopActivate(player, player1_2, 11);
+      loopActivate(player2, player2_2, 30);
+      loopActivate(player3, player3_2, 50);
+      loopActivate(player4, player4_2, 60);
+      //loopActivate(player5, player5_2, 80); */
         
     }
  
