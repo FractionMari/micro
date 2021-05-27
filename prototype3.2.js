@@ -204,7 +204,7 @@ var i = 0;
     ///////////////////////////////////////////////
 
     // Scaling values for inverted volume-control
-    var fn = generateScaleFunction(0.3, 11, 0.9, 0);
+    var fn = generateScaleFunction(0.3, 2, 0.9, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
 
