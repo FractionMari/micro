@@ -1,14 +1,3 @@
-// Update on 9 April 2021:
-// This version contains a better code for differing between motion frames, and is working on both iOS and Android.
-
-// Update 2. may 2021:
-// Two major changes: Going to use only accelerometer data, no orientation and gyroscope
-// Use only event.acceleration to decide QOM
-// event.accelerationIncludingGravity will do the tilting. Looks more stable.
-
-// 3. may:
-// Will try to use an easier way to detect QOM
-
 // Tone.js parameters:
 const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);

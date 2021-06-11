@@ -10,11 +10,15 @@ The prototypes are written in JavaScript/HTML/CSS and must be opened on android 
 * https://fractionmari.github.io/micro/
 
 
+
+# Tone.js Library
+
+
 ### Sverm
 
 The apps are related to the micromotion [Sverm instruments](https://www.uio.no/ritmo/english/projects/completed-projects/sverm/) which were an artistic research project by Alexander R. Jensenius and Kari Anne Vadstensvik Bjerkestrand, investigating standstill and micromotion in the context of a dance performance.
 
-Made by Mari Lesteberg, after an idea by Alexander R. Jensenius, spring 2021
+
 
 
 ### Code
@@ -100,3 +104,5 @@ Future ideas for this app is to include a recording function, or a version that 
 ### Feedback?
 
 If you have any feedback or suggestions about the apps, please give Mari a note on: lesteberg@gmail.com, or fill out this [form](https://fractionmari.github.io/micro/feedback.html).
+
+Made by Mari Lesteberg, after an idea by Alexander R. Jensenius, spring 2021

@@ -15,16 +15,12 @@
 // 4. may
 // visuals update and update with the new and better QOM
 
-// Tone.js parameters
-
 
 // Tone.js parameters:
 const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const phaser = new Tone.Phaser().connect(gainNode);
-const synth = new Tone.FMSynth().connect(gainNode);
-const pitchShift2 = new Tone.PitchShift().connect(gainNode);
-const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
+const pitchShift = new Tone.PitchShift().connect(gainNode); // 
 
 
 // Other Variables
@@ -34,8 +30,7 @@ let inverse = true;
 let is_running = false;
 let demo_button = document.getElementById("start_demo");
 
-// Pitch variables
-pitchShift2.pitch = 0; // down one octave
+
 
 // Players
 const player = new Tone.Player().connect(gainNode);
@@ -179,7 +174,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     var filterScale = generateScaleFunction(-10, 10, 10, 300);
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel);
-    autoFilter.pitch = xDotValues / 3;
+    pitchShift.pitch = xDotValues / 3;
 
        
        function loopActivate(players1, players2, value) {
@@ -525,16 +520,16 @@ document.getElementById("effectButton3").addEventListener("click", function(){
   {
     this.className = "";
     this.innerHTML = "FX3: OFF"
-    player.disconnect(autoFilter);
-    player2.disconnect(autoFilter);
-    player3.disconnect(autoFilter);
-    player4.disconnect(autoFilter);
-    //player5.connect(autoFilter);
-    player1_2.disconnect(autoFilter);
-    player2_2.disconnect(autoFilter);
-    player3_2.disconnect(autoFilter);
-    player4_2.disconnect(autoFilter);
-    player5_2.disconnect(autoFilter);
+    player.disconnect(pitchShift);
+    player2.disconnect(pitchShift);
+    player3.disconnect(pitchShift);
+    player4.disconnect(pitchShift);
+    //player5.connect(pitchShift);
+    player1_2.disconnect(pitchShift);
+    player2_2.disconnect(pitchShift);
+    player3_2.disconnect(pitchShift);
+    player4_2.disconnect(pitchShift);
+    player5_2.disconnect(pitchShift);
   
 
 
@@ -542,16 +537,16 @@ document.getElementById("effectButton3").addEventListener("click", function(){
 this.className = "is-playing";
 this.innerHTML = "FX2: ON";
 
-player.connect(autoFilter);
-player2.connect(autoFilter);
-player3.connect(autoFilter);
-player4.connect(autoFilter);
-//player5.connect(autoFilter);
-player1_2.connect(autoFilter);
-player2_2.connect(autoFilter);
-player3_2.connect(autoFilter);
-player4_2.connect(autoFilter);
-player5_2.connect(autoFilter);
+player.connect(pitchShift);
+player2.connect(pitchShift);
+player3.connect(pitchShift);
+player4.connect(pitchShift);
+//player5.connect(pitchShift);
+player1_2.connect(pitchShift);
+player2_2.connect(pitchShift);
+player3_2.connect(pitchShift);
+player4_2.connect(pitchShift);
+player5_2.connect(pitchShift);
 
 
 }}
