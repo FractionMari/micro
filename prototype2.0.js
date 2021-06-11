@@ -191,10 +191,6 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
         // Effects
         
-        
-        //let harmonicity = pitchWheel / 10;
-        //updateFieldIfNotNull('harmonicity', harmonicity);
-        //synth.harmonicity.value = harmonicity;
         phaser.baseFrequency.value = 100;
         phaser.frequency.value = xDotValues;
         phaser.octaves = (yDotValues / 10);
@@ -214,7 +210,6 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         else if ((yDotValues > 40) && (xDotValues < 30))
         pattern2.mute = true;
 
-    
         // On and off Pattern3
         if (yDotValues < 3)
         pattern3.mute = false;
