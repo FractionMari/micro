@@ -26,8 +26,6 @@ const synth = new Tone.FMSynth().connect(phaser);
 const synth2 = new Tone.FMSynth().connect(phaser);
 const synth3 = new Tone.PluckSynth().connect(phaser);
 
-const pitchShift2 = new Tone.PitchShift().connect(gainNode);
-const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
 
 gainNode.gain.value = 0.5;
 
@@ -51,19 +49,17 @@ Tone.Transport.bpm.value = 20;
   function createRandomness() {
     for (var i = 0; i < 100; i += 1) {
 
-      const randomNote = () => notes[Math.random() * notes.length | 0]; 
+    const randomNote = () => notes[Math.random() * notes.length | 0]; 
+    let random = freq(randomNote());
+    randomArray.push(random);
   
-      let random = freq(randomNote());
-      randomArray.push(random);
+    const randomNote2 = () => notes[Math.random() * notes.length | 0];
+    let random2 = freq(randomNote2());
+    randomArray2.push(random2);
   
-
-      const randomNote2 = () => notes[Math.random() * notes.length | 0];
-     let random2 = freq(randomNote2());
-     randomArray2.push(random2);
-  
-     const randomNote3 = () => notes[Math.random() * notes.length | 0]; 
-     let random3 = freq(randomNote3());
-     randomArray3.push(random3);
+    const randomNote3 = () => notes[Math.random() * notes.length | 0]; 
+    let random3 = freq(randomNote3());
+    randomArray3.push(random3);
 
   };
   }
