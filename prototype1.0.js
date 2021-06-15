@@ -114,7 +114,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     ///////////////////////////////////////////////
 
     // Scaling values for inverted volume-control
-    var fn = generateScaleFunction(0.3, 1, 0.5, 0);
+    var fn = generateScaleFunction(0.3, 0.6, 0.5, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.5, newAcc));
 
