@@ -26,6 +26,8 @@ const synth = new Tone.FMSynth().connect(phaser);
 const synth2 = new Tone.FMSynth().connect(phaser);
 const synth3 = new Tone.PluckSynth().connect(phaser);
 
+const pitchShift2 = new Tone.PitchShift().connect(gainNode);
+const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
 
 gainNode.gain.value = 0.5;
 
@@ -38,10 +40,11 @@ let demo_button = document.getElementById("start_demo");
 Tone.Transport.bpm.value = 20;
 
 
+
   // Random tone generator 
   const freq = note => 2 ** (note / 12) * 440; // 440 is the frequency of A4
-
-  const notes = [ -15, -14, -13, -12, -11, -10, -9, -8, -7,  -6, -5, -4, -3 ,-2, -1, 1, 2, 3, 4, 5, 6, 7, 8, 9]; 
+  // the bitwise Or does the same as Math.floor
+  const notes = [ -15, -14, -13, -12, -11, -10, -9, -8, -7,  -6, -5, -4, -3 ,-2, -1, 1, 2, 3, 4, 5, 6, 7, 8, 9]; // Close to your 100, 400, 1600 and 6300
 
   let randomArray = [];
   let randomArray2 = [];
@@ -49,17 +52,21 @@ Tone.Transport.bpm.value = 20;
   function createRandomness() {
     for (var i = 0; i < 100; i += 1) {
 
-    const randomNote = () => notes[Math.random() * notes.length | 0]; 
-    let random = freq(randomNote());
-    randomArray.push(random);
+      const randomNote = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
   
-    const randomNote2 = () => notes[Math.random() * notes.length | 0];
-    let random2 = freq(randomNote2());
-    randomArray2.push(random2);
+      let random = freq(randomNote());
+      randomArray.push(random);
   
-    const randomNote3 = () => notes[Math.random() * notes.length | 0]; 
-    let random3 = freq(randomNote3());
-    randomArray3.push(random3);
+  
+      const randomNote2 = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
+     let random2 = freq(randomNote2());
+     randomArray2.push(random2);
+  
+     const randomNote3 = () => notes[Math.random() * notes.length | 0]; // the bitwise Or does the same as Math.floor
+     let random3 = freq(randomNote3());
+     randomArray3.push(random3);
+
+
 
   };
   }
@@ -191,6 +198,10 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
         // Effects
         
+        
+        //let harmonicity = pitchWheel / 10;
+        //updateFieldIfNotNull('harmonicity', harmonicity);
+        //synth.harmonicity.value = harmonicity;
         phaser.baseFrequency.value = 100;
         phaser.frequency.value = xDotValues;
         phaser.octaves = (yDotValues / 10);
@@ -210,12 +221,14 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
         else if ((yDotValues > 40) && (xDotValues < 30))
         pattern2.mute = true;
 
+    
         // On and off Pattern3
         if (yDotValues < 3)
         pattern3.mute = false;
 
         else if (yDotValues > 45)
         pattern3.mute = true;
+
         
     }
  
@@ -224,8 +237,11 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
       Tone.start();
       window.addEventListener("devicemotion", handleMotion);
+	
 
-  // Request permission for iOS 13+ devices
+      
+      // start/stop the oscllator every quarter note
+             // Request permission for iOS 13+ devices
   if (
     DeviceMotionEvent &&
     typeof DeviceMotionEvent.requestPermission === "function"
