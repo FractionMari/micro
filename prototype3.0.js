@@ -129,7 +129,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     ///////////////////////////////////////////////
 
     // Scaling values for inverted volume-control
-    var fn = generateScaleFunction(0.3, 0.5, 0.9, 0);
+    var fn = generateScaleFunction(0.3, 0.6, 0.5, 0);
     newAcc = fn(totAcc);
     newAcc = (clamp(0, 0.9, newAcc));
 
@@ -145,7 +145,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     elem.style.opacity = newAcc2;
     else
     // more smooth change of volume:
-    gainNode.gain.rampTo(newAcc, 0.1),
+    gainNode.gain.rampTo(newAcc, 0.2),
     elem.style.opacity = newAcc;
 
     updateFieldIfNotNull('volume_acc', newAcc);
