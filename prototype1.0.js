@@ -226,7 +226,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
       this.className = "is-playing";
       this.innerHTML = "Synth 2: ON";
-      //const synth = new Tone.FMSynth().connect(gainNode);
+
       synth.triggerRelease();
       synth2.triggerAttack("C4"); 
       window.addEventListener("devicemotion", handleMotion);
@@ -249,6 +249,9 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     }}
     );
 
+let fx1on = false;
+let fx2on = false;
+let fx3on = false;
 
 document.getElementById("effectButton1").addEventListener("click", function(){
 
@@ -259,6 +262,7 @@ document.getElementById("effectButton1").addEventListener("click", function(){
     this.innerHTML = "FX1: OFF";
     synth.disconnect(pingPong);
     synth2.disconnect(pingPong);
+    let fx1on = false;
 
 
   }else{
@@ -266,6 +270,7 @@ document.getElementById("effectButton1").addEventListener("click", function(){
     this.innerHTML = "FX1: ON"
     synth.connect(pingPong);
     synth2.connect(pingPong);
+    let fx1on = true;
 
 
 }}
@@ -282,6 +287,7 @@ document.getElementById("effectButton2").addEventListener("click", function(){
     this.innerHTML = "FX2: OFF";
     synth.disconnect(autoWah);
     synth2.disconnect(autoWah);
+    let fx2on = false;
 
 
   }else{
@@ -289,6 +295,7 @@ document.getElementById("effectButton2").addEventListener("click", function(){
     this.innerHTML = "FX2: ON"
     synth.connect(autoWah);
     synth2.connect(autoWah);
+    let fx2on = true;
 
 
 
@@ -304,6 +311,7 @@ document.getElementById("effectButton3").addEventListener("click", function(){
     this.innerHTML = "FX3: OFF";
     synth.disconnect(phaser);
     synth2.disconnect(phaser);
+    let fx3on = false;
 
 
   }else{
@@ -311,6 +319,7 @@ document.getElementById("effectButton3").addEventListener("click", function(){
     this.innerHTML = "FX3: ON"
     synth.connect(phaser);
     synth2.connect(phaser);
+    let fx3on = true;
 
 
 
