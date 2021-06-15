@@ -319,6 +319,7 @@ background-size: cover;
 
 overflow: hidden;
 background-color: #333;
+height: 40px;
 }
 
 .topnav a {
@@ -327,7 +328,7 @@ color: #f2f2f2;
 text-align: center;
 padding: 10px 3px;
 text-decoration: none;
-font-size: 10px;
+font-size: 15px;
 }
 
 .topnav a:hover {
