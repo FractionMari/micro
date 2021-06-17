@@ -3,8 +3,18 @@ const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const phaser = new Tone.Phaser().connect(gainNode);
 const autoWah = new Tone.AutoWah(50, 6, -30).connect(gainNode);
-const synth = new Tone.FMSynth().connect(gainNode);
 
+const synth = new Tone.MonoSynth({
+	oscillator: {
+		type: "square"
+	},
+	envelope: {
+		attack: 0.5,
+		decay: 0.2,
+		sustain: 1.0,
+		release: 0.8
+	}
+}).connect(gainNode);
 const synth2 = new Tone.MonoSynth({
 	oscillator: {
 		type: "sine"
@@ -16,6 +26,9 @@ const synth2 = new Tone.MonoSynth({
 		release: 0.8
 	}
 }).connect(gainNode);
+
+
+//const synth = new Tone.FMSynth().connect(gainNode);
 //const synth2 = new Tone.DuoSynth().connect(gainNode);
 
 // Other Variables
@@ -126,14 +139,14 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     ///////////////////////////////////////////////
 
     // Scaling values for inverted volume-control
-    var fn = generateScaleFunction(0.3, 0.6, 0.5, 0);
+    var fn = generateScaleFunction(0.3, 0.6, 0.8, 0);
     newAcc = fn(totAcc);
-    newAcc = (clamp(0, 0.5, newAcc));
+    newAcc = (clamp(0, 0.8, newAcc));
 
     // Scaling values for non-inverted volume-control
-    var fn2 = generateScaleFunction(0.3, 11, 0, 0.9);
+    var fn2 = generateScaleFunction(0.3, 0.6, 0, 0.8);
     newAcc2 = fn2(totAcc);
-    newAcc2 = (clamp(0, 0.9, newAcc2));
+    newAcc2 = (clamp(0, 0.8, newAcc2));
 
     updateFieldIfNotNull('volume_acc', newAcc);
     updateFieldIfNotNull('volume_acc2', newAcc2);
