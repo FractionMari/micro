@@ -4,6 +4,7 @@ const pingPong = new Tone.PingPongDelay().connect(gainNode);
 const phaser = new Tone.Phaser().connect(gainNode);
 const autoWah = new Tone.AutoWah(50, 6, -30).connect(gainNode);
 
+
 const synth = new Tone.MonoSynth({
 	oscillator: {
 		type: "square"
@@ -215,7 +216,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     // for y axis effect, get a value between 0-1
     let pingPongYaxis = (yDotValues / 80);
     let pingPongXaxis = xDotValues / 100;
-    pingPong.delayTime.rampTo(pingPongXaxis,pingPongYaxis);
+    //pingPong.delayTime.rampTo(pingPongXaxis,pingPongYaxis);
     //pingPong.delayTime.value = pingPongXaxis + "n";
     pingPong.feedback.value = pingPongYaxis;
     //tremolo.frequency = yDotValues;
