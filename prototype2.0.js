@@ -155,13 +155,13 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     // and visual feedback indicated by the opacity of the element in GUI
     if (inverse == false)
     //gainNode.gain.rampTo(newAcc2, 0.1),
-    Tone.Transport.bpm.rampTo(tempo2, 0.5),
-    elem.style.opacity = newAcc2;
+    Tone.Transport.bpm.rampTo(tempo2, 0.5);
+    //elem.style.opacity = newAcc2; //Uncomment to map the opacity of red dot to motion
     else
     // more smooth change of volume:
     //gainNode.gain.rampTo(newAcc, 0.1),
-    Tone.Transport.bpm.rampTo(tempo, 0.5),
-    elem.style.opacity = newAcc;
+    Tone.Transport.bpm.rampTo(tempo, 0.5);
+    //elem.style.opacity = newAcc;//Uncomment to map the opacity of red dot to motion
 
     updateFieldIfNotNull('volume_acc', newAcc);
     updateFieldIfNotNull('volume_acc2', newAcc2);
