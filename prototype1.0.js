@@ -210,9 +210,12 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
          // Effects
     // for y axis effect, get a value between 0-1
-    let pingPongYaxis = yDotValues / 80;
+
+
     // FX1: pingPong delay
-    pingPong.wet.value = xDotValues / 100;
+
+    let pingPongYaxis = yDotValues / 80;
+    pingPong.delayTime.value = xDotValues / 100;
     pingPong.feedback.value = pingPongYaxis;
     //tremolo.frequency = yDotValues;
 
