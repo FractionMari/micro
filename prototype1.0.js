@@ -187,9 +187,11 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     pitchShift(pitchWheel, synth2, scaleSelect);
 
     // Effects
-
+    // for y axis effect, get a value between 0-1
+    let pingPongYaxis = yDotValues / 80;
     // FX1: pingPong delay
     pingPong.wet.value = xDotValues;
+    pingPong.feedback.value = pingPongYaxis;
 
     // FX2: Autowah Filter
     // filter x axis a number between 0 and 8
