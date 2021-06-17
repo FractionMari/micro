@@ -214,7 +214,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     // FX1: pingPong delay
     // for y axis effect, get a value between 0-1
     let pingPongYaxis = (yDotValues / 80);
-    let pingPongXaxis = Math.floor(xDotValues) / 10;
+    let pingPongXaxis = Math.floor(xDotValues) / 100;
     pingPongXaxis = (pingPongXaxis).toString();
     pingPongXaxis = pingPongXaxis + "n";
     pingPong.delayTime.rampTo(pingPongXaxis, 0.2);
