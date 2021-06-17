@@ -216,7 +216,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     let pingPongYaxis = (yDotValues / 80);
     let pingPongXaxis = (xDotValues / 100);
     pingPong.delayTime.value = pingPongXaxis;
-    pingPong.feedback.value = pingPongYaxis;
+    //pingPong.feedback.value = pingPongYaxis;
     //tremolo.frequency = yDotValues;
 
     }
