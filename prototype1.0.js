@@ -178,11 +178,13 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     /////// Variables for effects and pitch ///////
     ///////////////////////////////////////////////
     // Filter
+
+    // filter x axis a number between 0 and 8
     let filterXaxis = yDotValues / 8;
 /*     var filterScale = generateScaleFunction(-10, 10, 0, 100);
     filterWheel = Math.abs(filterWheel);
     filterWheel = filterScale(filterWheel); */
-    // Gives a value between 
+    // Gives a value between 0 and 6.5
     filterWheel = (filterWheel + 10) / 3;
     updateFieldIfNotNull('filterwheel', filterWheel);
     //autoWah.baseFrequency = filterWheel;
