@@ -177,23 +177,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     ///////////////////////////////////////////////
     /////// Variables for effects and pitch ///////
     ///////////////////////////////////////////////
+    // FX2: Filter
 
-
-    // Pitch and scale functions
-    // Will give a range from 0-20
-    pitchWheel = (pitchWheel * -1) + 10;
-    updateFieldIfNotNull('pitchwheel', pitchWheel);
-    pitchShift(pitchWheel, synth, scaleSelect);
-    pitchShift(pitchWheel, synth2, scaleSelect);
-
-    // Effects
-    // for y axis effect, get a value between 0-1
-    let pingPongYaxis = yDotValues / 80;
-    // FX1: pingPong delay
-    pingPong.wet.value = xDotValues;
-    pingPong.feedback.value = pingPongYaxis;
-
-    // FX2: Autowah Filter
     // filter x axis a number between 0 and 8
     let filterXaxis = yDotValues / 8;
 /*     var filterScale = generateScaleFunction(-10, 10, 0, 100);
@@ -205,6 +190,16 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     //autoWah.baseFrequency = filterWheel;
     autoWah.octaves = filterWheel;
     autoWah.Q.value = filterXaxis;
+
+    // Pitch and scale functions
+    // Will give a range from 0-20
+    pitchWheel = (pitchWheel * -1) + 10;
+    updateFieldIfNotNull('pitchwheel', pitchWheel);
+    pitchShift(pitchWheel, synth, scaleSelect);
+    pitchShift(pitchWheel, synth2, scaleSelect);
+
+    // Effects
+    
     
     let harmonicity = pitchWheel / 10;
     updateFieldIfNotNull('harmonicity', harmonicity);
@@ -212,8 +207,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     phaser.baseFrequency.value = 100;
     phaser.frequency.value = xDotValues;
     phaser.octaves = (yDotValues / 10);
-
-
+    pingPong.wet.value = xDotValues;
     tremolo.frequency = yDotValues;
 
     }
