@@ -1,6 +1,6 @@
 // Tone.js parameters:
 const gainNode = new Tone.Gain().toDestination();
-const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
+const pingPong = new Tone.PingPongDelay().connect(gainNode);
 const phaser = new Tone.Phaser().connect(gainNode);
 const autoWah = new Tone.AutoWah(50, 6, -30).connect(gainNode);
 
@@ -201,8 +201,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     // Effects
     
     
-    let harmonicity = pitchWheel / 10;
-    updateFieldIfNotNull('harmonicity', harmonicity);
+    //let harmonicity = pitchWheel / 10;
+    //updateFieldIfNotNull('harmonicity', harmonicity);
     //synth2.harmonicity.value = harmonicity;
     phaser.baseFrequency.value = 100;
     phaser.frequency.value = xDotValues;
