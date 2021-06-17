@@ -203,7 +203,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     
     let harmonicity = pitchWheel / 10;
     updateFieldIfNotNull('harmonicity', harmonicity);
-    synth2.harmonicity.value = harmonicity;
+    //synth2.harmonicity.value = harmonicity;
     phaser.baseFrequency.value = 100;
     phaser.frequency.value = xDotValues;
     phaser.octaves = (yDotValues / 10);
