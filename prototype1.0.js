@@ -139,14 +139,14 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     ///////////////////////////////////////////////
 
     // Scaling values for inverted volume-control
-    var fn = generateScaleFunction(0.3, 0.6, 0.8, 0);
+    var fn = generateScaleFunction(0.3, 0.6, 0.7, 0);
     newAcc = fn(totAcc);
-    newAcc = (clamp(0, 0.8, newAcc));
+    newAcc = (clamp(0, 0.7, newAcc));
 
     // Scaling values for non-inverted volume-control
-    var fn2 = generateScaleFunction(0.3, 0.6, 0, 0.8);
+    var fn2 = generateScaleFunction(0.3, 0.6, 0, 0.7);
     newAcc2 = fn2(totAcc);
-    newAcc2 = (clamp(0, 0.8, newAcc2));
+    newAcc2 = (clamp(0, 0.7, newAcc2));
 
     updateFieldIfNotNull('volume_acc', newAcc);
     updateFieldIfNotNull('volume_acc2', newAcc2);
