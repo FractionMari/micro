@@ -208,14 +208,14 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     phaser.frequency.value = xDotValues;
     phaser.octaves = (yDotValues / 10);
 
-         // Effects
-    // for y axis effect, get a value between 0-1
+    
 
 
     // FX1: pingPong delay
-
-    let pingPongYaxis = yDotValues / 80;
-    pingPong.delayTime.value = xDotValues / 100;
+    // for y axis effect, get a value between 0-1
+    let pingPongYaxis = (yDotValues / 80);
+    let pingPongXaxis = (xDotValues / 100);
+    pingPong.delayTime.value = pingPongXaxis;
     pingPong.feedback.value = pingPongYaxis;
     //tremolo.frequency = yDotValues;
 
