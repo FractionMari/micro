@@ -153,7 +153,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     // Switch between inverted and non-inverted volume-control, 
     // and visual feedback indicated by the opacity of the element in GUI
     if (inverse == false)
-    gainNode.gain.rampTo(newAcc2, 0.1);
+    gainNode.gain.rampTo(newAcc2, 0.2);
     //elem.style.opacity = newAcc2; //Uncomment to map the opacity of red dot to motion
     else
     // more smooth change of volume:
@@ -177,8 +177,21 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     ///////////////////////////////////////////////
     /////// Variables for effects and pitch ///////
     ///////////////////////////////////////////////
-    // Filter
 
+
+    // Pitch and scale functions
+    // Will give a range from 0-20
+    pitchWheel = (pitchWheel * -1) + 10;
+    updateFieldIfNotNull('pitchwheel', pitchWheel);
+    pitchShift(pitchWheel, synth, scaleSelect);
+    pitchShift(pitchWheel, synth2, scaleSelect);
+
+    // Effects
+
+    // FX1: pingPong delay
+    pingPong.wet.value = xDotValues;
+
+    // FX2: Autowah Filter
     // filter x axis a number between 0 and 8
     let filterXaxis = yDotValues / 8;
 /*     var filterScale = generateScaleFunction(-10, 10, 0, 100);
@@ -190,16 +203,6 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     //autoWah.baseFrequency = filterWheel;
     autoWah.octaves = filterWheel;
     autoWah.Q.value = filterXaxis;
-
-    // Pitch and scale functions
-    // Will give a range from 0-20
-    pitchWheel = (pitchWheel * -1) + 10;
-    updateFieldIfNotNull('pitchwheel', pitchWheel);
-    pitchShift(pitchWheel, synth, scaleSelect);
-    pitchShift(pitchWheel, synth2, scaleSelect);
-
-    // Effects
-    
     
     let harmonicity = pitchWheel / 10;
     updateFieldIfNotNull('harmonicity', harmonicity);
@@ -207,7 +210,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     phaser.baseFrequency.value = 100;
     phaser.frequency.value = xDotValues;
     phaser.octaves = (yDotValues / 10);
-    pingPong.wet.value = xDotValues;
+
+
     tremolo.frequency = yDotValues;
 
     }
