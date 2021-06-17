@@ -4,7 +4,19 @@ const pingPong = new Tone.PingPongDelay("4n", 0.2).connect(gainNode);
 const phaser = new Tone.Phaser().connect(gainNode);
 const autoWah = new Tone.AutoWah(50, 6, -30).connect(gainNode);
 const synth = new Tone.FMSynth().connect(gainNode);
-const synth2 = new Tone.DuoSynth().connect(gainNode);
+
+const synth2 = new Tone.MonoSynth({
+	oscillator: {
+		type: "sine"
+	},
+	envelope: {
+		attack: 0.5,
+		decay: 0.2,
+		sustain: 1.0,
+		release: 0.8
+	}
+}).connect(gainNode);
+//const synth2 = new Tone.DuoSynth().connect(gainNode);
 
 // Other Variables
 let newAcc;
