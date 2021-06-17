@@ -85,7 +85,7 @@ var pattern3 = new Tone.Pattern(function(time, note){
 pattern.start();
 pattern2.start();
 pattern3.start();
-pattern.mute = true;
+pattern.mute = false;
 pattern2.mute = true;
 pattern3.mute = true;
 
