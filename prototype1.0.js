@@ -214,8 +214,8 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     // FX1: pingPong delay
     // for y axis effect, get a value between 0-1
     let pingPongYaxis = (yDotValues / 80);
-    let pingPongXaxis = ((Math.floor(xDotValues)) / 10);
-    pingPong.delayTime.value = pingPongXaxis;
+    let pingPongXaxis = xDotValues.toString();
+    pingPong.delayTime.value = pingPongXaxis + "n";
     //pingPong.feedback.value = pingPongYaxis;
     //tremolo.frequency = yDotValues;
 
