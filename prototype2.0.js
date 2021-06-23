@@ -258,12 +258,19 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
     document.getElementById("looper1").addEventListener("click", function() {
 
+      if(this.className == 'is-playing'){
+      this.className = "";
+      this.innerHTML = "Press to START"
+      Tone.stop();
+      window.removeEventListener("devicemotion", handleMotion);
+
+      }else{
+      this.className = "is-playing";
+      this.innerHTML = "Press to STOP";
+
       Tone.start();
       window.addEventListener("devicemotion", handleMotion);
 	
-
-      
-      // start/stop the oscllator every quarter note
              // Request permission for iOS 13+ devices
   if (
     DeviceMotionEvent &&
