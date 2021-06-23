@@ -52,7 +52,7 @@ const synth3 = new Tone.PluckSynth().connect(phaser);
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
 const autoFilter = new Tone.PitchShift().connect(gainNode); // connect(pitchShift2);
 
-gainNode.gain.value = 0.5;
+gainNode.gain.value = 0.3;
 
 // Other Variables
 let newAcc;
