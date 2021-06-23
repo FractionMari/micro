@@ -258,6 +258,15 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
     document.getElementById("looper1").addEventListener("click", function() {
 
+                   // Request permission for iOS 13+ devices
+  if (
+    DeviceMotionEvent &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+  ) {
+    DeviceMotionEvent.requestPermission();
+  }
+      Tone.Transport.start();
+
       if(this.className == 'is-playing'){
       this.className = "";
       this.innerHTML = "Press to START"
@@ -270,15 +279,10 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
       Tone.start();
       window.addEventListener("devicemotion", handleMotion);
+
+      }
 	
-             // Request permission for iOS 13+ devices
-  if (
-    DeviceMotionEvent &&
-    typeof DeviceMotionEvent.requestPermission === "function"
-  ) {
-    DeviceMotionEvent.requestPermission();
-  }
-      Tone.Transport.start();
+
 
   });
 
