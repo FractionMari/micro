@@ -22,8 +22,31 @@
 const gainNode = new Tone.Gain().toDestination();
 const pingPong = new Tone.PingPongDelay().connect(gainNode);
 const phaser = new Tone.Phaser().connect(pingPong);
-const synth = new Tone.FMSynth().connect(phaser);
-const synth2 = new Tone.FMSynth().connect(phaser);
+
+
+const synth = new Tone.MonoSynth({
+	oscillator: {
+		type: "square"
+	},
+	envelope: {
+		attack: 0.5,
+		decay: 0.2,
+		sustain: 1.0,
+		release: 0.8
+	}
+}).connect(phaser);
+const synth2 = new Tone.MonoSynth({
+	oscillator: {
+		type: "sine"
+	},
+	envelope: {
+		attack: 0.5,
+		decay: 0.2,
+		sustain: 1.0,
+		release: 0.8
+	}
+}).connect(phaser);
+
 const synth3 = new Tone.PluckSynth().connect(phaser);
 
 const pitchShift2 = new Tone.PitchShift().connect(gainNode);
