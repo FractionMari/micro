@@ -431,7 +431,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
 
 
-    document.getElementById("effectButton1").addEventListener("click", function(){
+    document.getElementById("effectButton4").addEventListener("click", function(){
 
       if (this.className == 'is-playing')
         
@@ -472,7 +472,7 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
 
 
 
-document.getElementById("effectButton2").addEventListener("click", function(){
+document.getElementById("effectButton5").addEventListener("click", function(){
 
   if (this.className == 'is-playing')
     
@@ -513,7 +513,7 @@ player5_2.connect(phaser);
 
 
 
-document.getElementById("effectButton3").addEventListener("click", function(){
+document.getElementById("effectButton6").addEventListener("click", function(){
 
   if (this.className == 'is-playing')
     

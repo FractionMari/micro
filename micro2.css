@@ -279,9 +279,8 @@ background-size: cover;
     right: 70px;
     height: auto;
     display: flex;
-    align-items: center;
-    font-size:7px;
-    padding: 10px 10px;
+    font-size:8px;
+    padding: 10px 20px;
 }
 
 
@@ -293,7 +292,8 @@ background-size: cover;
     height: 30px;
     border-radius: 50%;
     height: auto;
-    font-size:7px;
+    font-size:8px;
+    padding: 10px 20px;
 }
 
 #effectButton3 {
@@ -304,7 +304,47 @@ background-size: cover;
     height: 30px;
     border-radius: 50%;
     height: auto;
-    font-size:7px;
+    font-size:8px;
+    padding: 10px 20px;
+}
+
+
+#effectButton4 {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    top: 22px;
+    right: 55px;
+    height: auto;
+    display: flex;
+    font-size:8px;
+    padding: 10px 20px;
+}
+
+
+#effectButton5 {
+    position: absolute;
+    top: 67px;
+    right: 55px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    height: auto;
+    font-size:8px;
+    padding: 10px 20px;
+}
+
+#effectButton6 {
+    position: absolute;
+    top: 112px;
+    right: 55px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    height: auto;
+    font-size:8px;
+    padding: 10px 20px;
 }
 
 
