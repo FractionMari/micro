@@ -128,15 +128,15 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
     /////////////// VOLUME VARIABLES //////////////
     ///////////////////////////////////////////////
 
-    // Scaling values for inverted volume-control
-    var fn = generateScaleFunction(0.3, 0.6, 0.5, 0);
+    // Scaling values for inverted volume-control 
+    var fn = generateScaleFunction(0.3, 1.6, 0.7, 0);
     newAcc = fn(totAcc);
-    newAcc = (clamp(0, 0.9, newAcc));
+    newAcc = (clamp(0, 0.7, newAcc));
 
     // Scaling values for non-inverted volume-control
-    var fn2 = generateScaleFunction(0.3, 11, 0, 0.9);
+    var fn2 = generateScaleFunction(0.3, 11, 0, 0.7);
     newAcc2 = fn2(totAcc);
-    newAcc2 = (clamp(0, 0.9, newAcc2));
+    newAcc2 = (clamp(0, 0.7, newAcc2));
 
     // Switch between inverted and non-inverted volume-control, 
     // and visual feedback indicated by the opacity of the element in GUI
