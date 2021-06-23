@@ -270,13 +270,13 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
       if(this.className == 'is-playing'){
       this.className = "";
       this.innerHTML = "Press to START"
-      Tone.stop();
-      Tone.Transport.stop();
+      gainNode.gain.value = 0;
       window.removeEventListener("devicemotion", handleMotion);
 
       }else{
       this.className = "is-playing";
       this.innerHTML = "Press to STOP";
+      gainNode.gain.value = 0.3;
       Tone.Transport.start();
       Tone.start();
       window.addEventListener("devicemotion", handleMotion);
