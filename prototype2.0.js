@@ -265,18 +265,19 @@ function updateFieldIfNotNull(fieldName, value, precision=2){
   ) {
     DeviceMotionEvent.requestPermission();
   }
-      Tone.Transport.start();
+      
 
       if(this.className == 'is-playing'){
       this.className = "";
       this.innerHTML = "Press to START"
       Tone.stop();
+      Tone.Transport.stop();
       window.removeEventListener("devicemotion", handleMotion);
 
       }else{
       this.className = "is-playing";
       this.innerHTML = "Press to STOP";
-
+      Tone.Transport.start();
       Tone.start();
       window.addEventListener("devicemotion", handleMotion);
 
